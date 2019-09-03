@@ -1,7 +1,28 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require(`path`)
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ graphql, actions }) => {
+   
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allMeetupGroup {
+        edges {
+          node {
+            name
+            urlname
+          }
+        }
+      }     
+    }
+  `)
+
+  result.data.allMeetupGroup.edges.forEach(({ node }) => {
+    createPage({
+      path: `/${node.urlname}`,
+      component: path.resolve(`./src/templates/meetup-group.js`),
+      context: {
+        someurl: node.urlname,
+      },
+    })
+  })
+}
