@@ -5,12 +5,22 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import PropTypes from "prop-types"
 
-import Header from "./header"
-import "./layout.css"
+import {
+  Box,
+  Button,
+  Collapsible,
+  Grommet,
+  Layer,
+  ResponsiveContext,
+} from "grommet"
+import { FormClose } from "grommet-icons"
+import { theme } from "./theme"
+
+import AppHeader from "./header/AppHeader"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,25 +33,65 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const [showSidebar, setShowSidebar] = useState(false)
+
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <Grommet full theme={theme}>
+      <ResponsiveContext.Consumer>
+        {size => (
+          <Box fill>
+            <AppHeader
+              appName="coding earth"
+              onToggleSidebar={() => {
+                setShowSidebar(!showSidebar)
+              }}
+            />
+
+            <Box direction="row" flex overflow={{ horizontal: `hidden` }}>
+              <Box flex>{children}</Box>
+              {!showSidebar || size !== `small` ? (
+                <Collapsible direction="horizontal" open={showSidebar}>
+                  <Box
+                    flex
+                    width="medium"
+                    background="light-2"
+                    elevation="small"
+                    align="center"
+                    justify="center"
+                  >
+                    sidebar
+                  </Box>
+                </Collapsible>
+              ) : (
+                <Layer>
+                  <Box
+                    background="light-2"
+                    tag="header"
+                    justify="end"
+                    align="center"
+                    direction="row"
+                  >
+                    <Button
+                      icon={<FormClose />}
+                      onClick={() => setShowSidebar(false)}
+                    />
+                  </Box>
+
+                  <Box
+                    fill
+                    background="light-2"
+                    align="center"
+                    justify="center"
+                  >
+                    sidebar
+                  </Box>
+                </Layer>
+              )}
+            </Box>
+          </Box>
+        )}
+      </ResponsiveContext.Consumer>
+    </Grommet>
   )
 }
 
