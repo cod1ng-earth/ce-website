@@ -1,0 +1,46 @@
+ allMeetupGroup {
+    edges {
+      node {
+        name
+        urlname
+        key_photo {
+          photo_link
+        }
+        group_photo {
+          highres_link
+          photo_link
+        }
+      }
+    }
+  }
+  allCloudinaryMedia(filter: {public_id: {regex: "/coding-berlin/"}}) {
+    edges {
+      node {
+        resource_type
+        type
+        public_id
+        format
+        url
+        internal {
+          mediaType
+        }
+        txb_preview_image {
+          secure_url
+        }
+        maxeco_image {
+          secure_url
+        }
+        thumb_dims {
+          w
+          h
+        }
+      }
+    }
+    pageInfo {
+      itemCount
+      currentPage
+      pageCount
+      hasNextPage
+      hasPreviousPage
+    }
+  }

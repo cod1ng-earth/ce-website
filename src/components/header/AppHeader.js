@@ -1,9 +1,9 @@
 import React from "react"
 
-import { Box, Button, Heading, TextInput } from "grommet"
-import { Ad as AdIcon, Notification } from "grommet-icons"
+import { Box, Button, Image } from "grommet"
+import logo from "../../images/coding_earth_logo.png"
 
-export default ({ appName, onToggleSidebar, children }) => (
+export default () => (
   <Box
     tag="header"
     direction="row"
@@ -13,44 +13,12 @@ export default ({ appName, onToggleSidebar, children }) => (
     responsive={false}
     pad={{ vertical: `small`, horizontal: `medium` }}
   >
-    <Button>
-      <Box
-        flex={false}
-        direction="row"
-        align="center"
-        margin={{ left: `small` }}
-      >
-        <AdIcon size="large" color="dark-4" />
-        <Heading
-          level="4"
-          margin={{ left: `small`, vertical: `none` }}
-          color="dark-4"
-        >
-          {appName}
-        </Heading>
-      </Box>
-    </Button>
+    <Button>Berlin</Button>
+    <Button>Leipzig</Button>
 
-    <Button>Features</Button>
-    <Button>Enterprise</Button>
-    <Button>Support</Button>
-    <Button color="primary" variant="outlined">
-      Login
-    </Button>
+    <Image src={logo} height={`50px`} />
 
-    <Box direction="row" align="center">
-      <Box
-        margin={{ left: `medium` }}
-        round="xsmall"
-        background={{ color: `white`, opacity: `weak` }}
-        direction="row"
-        align="center"
-        pad={{ horizontal: `small` }}
-      >
-        {/*<FormSearch color="white" />*/}
-        <TextInput plain placeholder="Search" type="search" />
-      </Box>
-    </Box>
-    <Button icon={<Notification />} onClick={onToggleSidebar} />
+    <Button>Stuttgart</Button>
+    <Button>Portugal</Button>
   </Box>
 )
