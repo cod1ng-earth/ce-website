@@ -1,6 +1,7 @@
 import React from "react"
+import { Link } from "gatsby"
 
-import { Box, Button, Image } from "grommet"
+import { Anchor, Box, Button, Image } from "grommet"
 import logo from "../../images/coding_earth_logo.png"
 
 export default () => (
@@ -13,12 +14,24 @@ export default () => (
     responsive={false}
     pad={{ vertical: `small`, horizontal: `medium` }}
   >
-    <Button>Berlin</Button>
-    <Button>Leipzig</Button>
+    <Anchor as={Link} to="/CODING-BERLIN/">
+      Berlin
+    </Anchor>
 
-    <Image src={logo} height={`50px`} />
+    <Anchor as={Link} to="/coding-leipzig/">
+      Leipzig
+    </Anchor>
 
-    <Button>Stuttgart</Button>
-    <Button>Portugal</Button>
+    <Anchor as={Link} to="/">
+      <Image src={logo} height={`50px`} />
+    </Anchor>
+
+    <Anchor as={Link} to="/coding-stuttgart/">
+      Stuttgart
+    </Anchor>
+
+    <Anchor as={Link} to="/CODING-PORTUGAL/">
+      Portugal
+    </Anchor>
   </Box>
 )

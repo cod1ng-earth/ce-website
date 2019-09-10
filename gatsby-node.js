@@ -1,7 +1,6 @@
 const path = require(`path`)
 
 exports.createPages = async ({ graphql, actions }) => {
-   
   const { createPage } = actions
   const result = await graphql(`
     query {
@@ -12,7 +11,7 @@ exports.createPages = async ({ graphql, actions }) => {
             urlname
           }
         }
-      }     
+      }
     }
   `)
 
@@ -21,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/${node.urlname}`,
       component: path.resolve(`./src/templates/meetup-group.js`),
       context: {
-        someurl: node.urlname,
+        urlname: node.urlname,
       },
     })
   })

@@ -4,7 +4,7 @@ import { Box, Grid, ResponsiveContext } from "grommet"
 
 const columns = {
   small: [`auto`],
-  medium: [`flex`, `xlarge`, `flex`],
+  medium: [`flex`, `large`, `flex`],
   large: [`flex`, `xlarge`, `flex`],
   xlarge: [`flex`, `xlarge`, `flex`],
 }

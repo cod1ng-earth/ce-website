@@ -1,4 +1,4 @@
-require("dotenv").config()
+require(`dotenv`).config()
 
 module.exports = {
   siteMetadata: {
@@ -30,38 +30,54 @@ module.exports = {
       },
     },
     {
-      resolve:`gatsby-source-cloudinary`,
-      options:{
+      resolve: `gatsby-source-cloudinary`,
+      options: {
         cloudName: process.env.CLOUDINARY_CLOUDNAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        resourceType: 'image',
+        resourceType: `image`,
         tags: true,
         maxResults: 500,
-        transformations: ['txb_preview', 'maxeco']
-      }
+        transformations: [`txb_preview`, `maxeco`],
+      },
     },
-    
+
     {
       resolve: `gatsby-source-meetup`,
       options: {
-        groupUrlName: "CODING-BERLIN",
-        status: "upcoming,past",
-        desc: "true",
-        page: 20
+        groupUrlName: `CODING-BERLIN`,
+        status: `upcoming,past`,
+        desc: `true`,
+        page: 20,
       },
-    }, 
+    },
     {
       resolve: `gatsby-source-meetup`,
       options: {
-        groupUrlName: "coding-leipzig",
-        status: "upcoming,past",
-        desc: "true",
-        page: 20
+        groupUrlName: `coding-leipzig`,
+        status: `upcoming,past`,
+        desc: `true`,
+        page: 20,
       },
-    }
-
-
+    },
+    {
+      resolve: `gatsby-source-meetup`,
+      options: {
+        groupUrlName: `coding-stuttgart`,
+        status: `upcoming,past`,
+        desc: `true`,
+        page: 20,
+      },
+    },
+    {
+      resolve: `gatsby-source-meetup`,
+      options: {
+        groupUrlName: `CODING-PORTUGAL`,
+        status: `upcoming,past`,
+        desc: `true`,
+        page: 20,
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import { Box, Grid, Heading, Paragraph, Text, Anchor } from "grommet"
+import { Box, Heading, Paragraph, Text, Anchor } from "grommet"
 
 import ResponsiveGrid from "../components/ResponsiveGrid"
 
