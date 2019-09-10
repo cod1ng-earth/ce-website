@@ -13,6 +13,20 @@
       }
     }
   }
+
+    query($regex: String) {
+   allCloudinaryMedia(filter: {public_id: {regex: $regex}} ) {
+    edges {
+      node {
+        txb_preview_image {
+          url
+        }
+      }
+    }
+  }
+  }
+
+  
   allCloudinaryMedia(filter: {public_id: {regex: "/coding-berlin/"}}) {
     edges {
       node {

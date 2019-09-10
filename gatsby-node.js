@@ -9,6 +9,9 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             name
             urlname
+            events {
+              meetupId
+            }
           }
         }
       }
@@ -22,6 +25,15 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         urlname: node.urlname,
       },
+    })
+    node.events.forEach(event => {
+      createPage({
+        path: `/${node.urlname}/${event.meetupId}`,
+        component: path.resolve(`./src/templates/meetup-event.js`),
+        context: {
+          eventId: event.meetupId,
+        },
+      })
     })
   })
 }
