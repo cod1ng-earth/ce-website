@@ -6,7 +6,9 @@ export const theme = deepMerge(dark, {
     colors: {
       active: `dark-5`,
       brand: `#FF9900`,
+      turqoise: `#02ffff`,
       placeholder: `rgba(255, 255,255, 0.4)`,
+      "very-dark": `rgba(255,255,255,0.05)`,
     },
     elevation: {
       light: {
@@ -16,7 +18,9 @@ export const theme = deepMerge(dark, {
         xlarge: `0 0 1px 0 rgba(0,0,0,0.40), 0 8px 16px 0 rgba(0,0,0,0.40)`,
       },
     },
+
     font: {
+      family: `'Oxygen', sans-serif`,
       size: `16px`,
       height: `20px`,
     },
@@ -28,10 +32,18 @@ export const theme = deepMerge(dark, {
       sidebar: `60px`,
     },
   },
+
+  anchor: {
+    color: `brand`,
+    fontWeight: 900,
+  },
   icon: {
     size: {
       medium: `18px`,
     },
+  },
+  heading: {
+    font: { family: `Source Code Pro` },
   },
   paragraph: {
     medium: {

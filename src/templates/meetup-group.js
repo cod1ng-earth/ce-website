@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box, Heading, Paragraph, Text, Anchor } from "grommet"
+import { Box, Heading, Image, Paragraph, Text, Anchor } from "grommet"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,7 +9,7 @@ import ResponsiveGrid from "../components/ResponsiveGrid"
 
 const MeetupEvent = ({ meetup }) => (
   <div>
-    <Heading>{meetup.name}</Heading>
+    <Heading level={2}>{meetup.name}</Heading>
     <Paragraph fill dangerouslySetInnerHTML={{ __html: meetup.description }} />
   </div>
 )
@@ -20,7 +20,13 @@ export default ({ data }) => (
     {data.urlname}
     <Box full={true} flex={false}>
       <ResponsiveGrid>
-        <Heading>{data.meetupGroup.name}</Heading>
+        <Image
+          alignSelf="center"
+          fit="contain"
+          width={200}
+          src={data.meetupGroup.group_photo.highres_link}
+        />
+
         {data.meetupGroup.events.map(event => (
           <MeetupEvent meetup={event} />
         ))}
@@ -34,6 +40,9 @@ export const query = graphql`
     meetupGroup(urlname: { eq: $urlname }) {
       id
       name
+      group_photo {
+        highres_link
+      }
       events {
         name
         status
