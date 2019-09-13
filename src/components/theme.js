@@ -36,6 +36,9 @@ export const theme = deepMerge(dark, {
   anchor: {
     color: `brand`,
     fontWeight: 900,
+    hover: {
+      color: `turquoise`,
+    },
   },
   icon: {
     size: {

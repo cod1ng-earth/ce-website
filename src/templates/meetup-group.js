@@ -1,25 +1,12 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
-import { Anchor, Box, Heading, Image, Paragraph } from "grommet"
+import { graphql } from "gatsby"
+import { Box, Image } from "grommet"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
 import ResponsiveGrid from "../components/ResponsiveGrid"
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"
-
-const MeetupEvent = ({ group, meetup }) => (
-  <div>
-    <Heading level={2}>{meetup.name}</Heading>
-    <Paragraph>
-      {meetup.local_date} {meetup.local_time}
-      <Anchor as={Link} to={`/${group.urlname}/${meetup.meetupId}`}>
-        Lets go
-      </Anchor>
-    </Paragraph>
-  </div>
-)
+import MeetupPreview from "../components/MeetupPreview"
 
 export default ({ data }) => (
   <Layout>
@@ -32,11 +19,15 @@ export default ({ data }) => (
           fit="contain"
           width={200}
           style={{ minHeight: 200 }}
-          src={data.meetupGroup.group_photo.highres_link}
+          src={data.meetupGroup.group_photo.photo_link}
         />
 
         {data.meetupGroup.events.map(event => (
-          <MeetupEvent group={data.meetupGroup} meetup={event} />
+          <MeetupPreview
+            group={data.meetupGroup}
+            meetup={event}
+            key={event.meetupId}
+          />
         ))}
       </ResponsiveGrid>
     </Box>
@@ -50,16 +41,23 @@ export const query = graphql`
       name
       urlname
       group_photo {
-        highres_link
+        photo_link
+      }
+      key_photo {
+        photo_link
       }
       events {
         meetupId
         name
         status
+        time
         local_date
         local_time
         link
         description
+        venue {
+          name
+        }
       }
     }
   }
