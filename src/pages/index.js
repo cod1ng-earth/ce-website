@@ -27,7 +27,7 @@ const IndexPage = () => (
 
     <ResponsiveGrid>{[...Array(2).keys()].map(k => Cont())}</ResponsiveGrid>
 
-    <Box full={true} flex={false} background={`green`} height={`medium`}>
+    <Box full={true} flex={false} background="dark-1" height={`medium`}>
       <ResponsiveGrid> so what </ResponsiveGrid>
     </Box>
   </Layout>

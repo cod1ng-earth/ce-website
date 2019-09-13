@@ -22,20 +22,6 @@ const StyledParagraph = styled.div`
   }
 `
 
-const MeetupEvent = ({ meetup }) => (
-  <div>
-    <StyledParagraph
-      fill
-      dangerouslySetInnerHTML={{ __html: meetup.description }}
-    />
-    <Carousel
-      showThumbs={false}
-      showArrows={false}
-      emulateTouch={true}
-    ></Carousel>
-  </div>
-)
-
 const Header = ({ meetup, group }) => {
   let date = DateTime.fromMillis(meetup.time)
   date = date.setZone(meetup.group.timezone)
@@ -71,17 +57,47 @@ export default ({ data }) => (
   <Layout>
     <SEO title={data.meetupEvent.name} />
     <Header meetup={data.meetupEvent} group={data.meetupGroup}></Header>
-
     <Box full={true} flex={false}>
       <ResponsiveGrid>
-        <MeetupEvent meetup={data.meetupEvent} />
+        <StyledParagraph
+          fill
+          dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
+        />
       </ResponsiveGrid>
+    </Box>
+    <Box full pad="medium" overflow="hidden">
+      <Carousel
+        transitionTime={800}
+        useKeyboardArrows
+        autoPlay
+        infiniteLoop
+        centerMode
+        showThumbs={false}
+        showArrows={true}
+        emulateTouch={true}
+        showIndicators={false}
+      >
+        {data.allCloudinaryMedia.edges.map(img => (
+          <Box
+            full
+            key={img.node.id}
+            height="75vh"
+            overflow="hidden"
+            pad="medium"
+          >
+            <img
+              src={img.node.maxeco_image.secure_url}
+              style={{ marginTop: `-20vh` }}
+            />
+          </Box>
+        ))}
+      </Carousel>
     </Box>
   </Layout>
 )
 
 export const query = graphql`
-  query($eventId: String, $groupId: String) {
+  query($eventId: String, $groupId: String, $cloudinaryTag: String) {
     meetupEvent(meetupId: { eq: $eventId }) {
       meetupId
       name
@@ -105,6 +121,20 @@ export const query = graphql`
       name
       group_photo {
         thumb_link
+      }
+    }
+
+    allCloudinaryMedia(
+      filter: { tags: { in: [$cloudinaryTag] } }
+      sort: { fields: created_at, order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          maxeco_image {
+            secure_url
+          }
+        }
       }
     }
   }

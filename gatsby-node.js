@@ -34,6 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           eventId: event.meetupId,
           groupId: node.id,
+          cloudinaryTag: `meetup:${event.meetupId}`,
         },
       })
     })
