@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allMeetupGroup {
         edges {
           node {
+            id
             name
             urlname
             events {
@@ -32,6 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
         component: path.resolve(`./src/templates/meetup-event.js`),
         context: {
           eventId: event.meetupId,
+          groupId: node.id,
         },
       })
     })
