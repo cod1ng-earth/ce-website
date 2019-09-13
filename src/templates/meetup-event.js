@@ -13,7 +13,7 @@ import { DateTime } from "luxon"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
 
-const StyledParagraph = styled(Paragraph)`
+const StyledParagraph = styled.div`
   a {
     color: ${theme.global.colors.brand};
     :hover {
@@ -24,7 +24,6 @@ const StyledParagraph = styled(Paragraph)`
 
 const MeetupEvent = ({ meetup }) => (
   <div>
-    <Heading level={2}>{meetup.name}</Heading>
     <StyledParagraph
       fill
       dangerouslySetInnerHTML={{ __html: meetup.description }}
@@ -43,25 +42,26 @@ const Header = ({ meetup, group }) => {
   return (
     <Box background="light-3" height="small">
       <ResponsiveGrid>
-        <Text>
-          {date.toFormat(`ccc`)},{` `}
-          {date.toLocaleString(DateTime.DATETIME_MED)}
-        </Text>
-
-        <Grid>
-          <Heading level={2} margin={{ bottom: `xsmall` }}>
-            {meetup.name}
-          </Heading>
+        <Grid columns={[`auto`, `auto`]} justifyContent="start">
           <Image
+            margin={{ right: `large` }}
+            justify="center"
             alignSelf="center"
             fit="contain"
-            width={200}
-            style={{ minHeight: 200 }}
             src={group.group_photo.thumb_link}
           />
-        </Grid>
+          <Box>
+            <Heading level={2} margin={{ bottom: `xsmall` }}>
+              {meetup.name}
+            </Heading>
+            <Text>
+              {date.toFormat(`ccc`)},{` `}
+              {date.toLocaleString(DateTime.DATETIME_MED)}
+            </Text>
 
-        <Text>{meetup.venue && meetup.venue.name}</Text>
+            <Text>{meetup.venue && meetup.venue.name}</Text>
+          </Box>
+        </Grid>
       </ResponsiveGrid>
     </Box>
   )

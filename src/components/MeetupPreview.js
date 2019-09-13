@@ -20,7 +20,6 @@ export default ({ group, meetup }) => {
       flex={true}
       width="large"
       alignSelf="center"
-      animation="zoomIn"
     >
       <Grid columns={[`auto`, `1/4`]}>
         <Box>

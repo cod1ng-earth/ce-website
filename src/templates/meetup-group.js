@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import ResponsiveGrid from "../components/ResponsiveGrid"
 
 import MeetupPreview from "../components/MeetupPreview"
+import Fade from "react-reveal/Fade"
 
 export default ({ data }) => (
   <Layout>
@@ -21,14 +22,15 @@ export default ({ data }) => (
           style={{ minHeight: 200 }}
           src={data.meetupGroup.group_photo.photo_link}
         />
-
-        {data.meetupGroup.events.map(event => (
-          <MeetupPreview
-            group={data.meetupGroup}
-            meetup={event}
-            key={event.meetupId}
-          />
-        ))}
+        <Fade left ssrFadeout distance="20px" duration={1000}>
+          {data.meetupGroup.events.map(event => (
+            <MeetupPreview
+              group={data.meetupGroup}
+              meetup={event}
+              key={event.meetupId}
+            />
+          ))}
+        </Fade>
       </ResponsiveGrid>
     </Box>
   </Layout>
