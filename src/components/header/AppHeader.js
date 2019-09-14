@@ -31,7 +31,7 @@ export default () => (
       <Box
         tag="header"
         direction="row"
-        background="dark"
+        background="very-dark"
         align="center"
         justify="between"
         responsive={false}

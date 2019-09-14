@@ -2,13 +2,14 @@ import React from "react"
 import { Link } from "gatsby"
 
 import styled from "styled-components"
-import { Box, Heading, Paragraph } from "grommet"
+import { Box, Grid, Heading, Image, Paragraph } from "grommet"
 
 import ResponsiveGrid from "../components/ResponsiveGrid"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Code, Globe, Grow, ForwardTen } from "grommet-icons"
+import ResponsiveTwoCols from "../components/ResponsiveTwoCols"
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -22,25 +23,35 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
 
-    <Box full={true} flex={false}>
+    <Box margin="large">
       <ResponsiveGrid>
-        <Heading level={2} color="turqoise">
-          <Globe
-            size="large"
-            color="turqoise"
-            style={{ verticalAlign: `sub` }}
-          />
-          {` `}
-          hello, world.
-        </Heading>
-        <Paragraph fill>
-          Coding Earth is a home for developers of all skill levels. Everybody's
-          welcome, everyone's invited, everyone will take something home from
-          our meetups. Our meetups are not your usual "experts talk, audience
-          listens" kind of experience but a community driven meetup that
-          embraces a knowledge exchange culture as well as a strict "nice to
-          have you here"-attitude.
-        </Paragraph>
+        <ResponsiveTwoCols>
+          <Box>
+            <Heading level={2} color="turqoise">
+              <Globe
+                size="large"
+                color="turqoise"
+                style={{ verticalAlign: `sub` }}
+              />
+              {` `}
+              hello, world.
+            </Heading>
+            <Paragraph fill>
+              Coding Earth is a home for developers of all skill levels.
+              Everybody's welcome, everyone's invited, everyone will take
+              something home from our meetups. Our meetups are not your usual
+              "experts talk, audience listens" kind of experience but a
+              community driven meetup that embraces a knowledge exchange culture
+              as well as a strict "nice to have you here"-attitude.
+            </Paragraph>
+          </Box>
+          <Box height="medium" overflow="hidden">
+            <Image
+              fit="cover"
+              src="//res.cloudinary.com/turbinekreuzberg/image/upload/t_maxeco/v1568491378/coding-earth/coding-berlin/sep_2018/IMG_3844.jpg"
+            />
+          </Box>
+        </ResponsiveTwoCols>
       </ResponsiveGrid>
     </Box>
 
@@ -85,7 +96,7 @@ const IndexPage = () => (
           />
           contribute!
         </Heading>
-        <Paragraph fill color="light-5" size="large">
+        <Paragraph fill color="light-5">
           We are looking forward to your ideas for upcoming meetups. If you want
           to share any of your knowledge with a highly motivated community, this
           is the right place. If you want to demonstrate a software stack that
@@ -108,7 +119,7 @@ const IndexPage = () => (
           {` `}
           The golden rules
         </Heading>
-        <Paragraph fill size="large">
+        <Paragraph fill>
           <StyledRules>
             <li>
               we neither care about your gender, your skin tone, your religious

@@ -50,8 +50,8 @@ export const theme = deepMerge(dark, {
   },
   paragraph: {
     medium: {
-      size: `16px`,
-      height: `20px`,
+      size: `20px`,
+      height: `28px`,
     },
     large: {
       size: `20px`,

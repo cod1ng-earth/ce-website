@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box, Grid, Heading, Image, Paragraph, Text, Anchor } from "grommet"
+import { Box, Grid, Heading, Image, Paragraph, Text } from "grommet"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -13,7 +13,7 @@ import { DateTime } from "luxon"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
 
-const StyledParagraph = styled.div`
+const StyledParagraph = styled(Paragraph)`
   a {
     color: ${theme.global.colors.brand};
     :hover {
@@ -26,7 +26,7 @@ const Header = ({ meetup, group }) => {
   let date = DateTime.fromMillis(meetup.time)
   date = date.setZone(meetup.group.timezone)
   return (
-    <Box background="light-3" height="small">
+    <Box background="dark-2" height="small">
       <ResponsiveGrid>
         <Grid columns={[`auto`, `auto`]} justifyContent="start">
           <Image
@@ -60,6 +60,7 @@ export default ({ data }) => (
     <Box full flex={false}>
       <ResponsiveGrid>
         <StyledParagraph
+          fill
           dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
         />
       </ResponsiveGrid>

@@ -30,7 +30,6 @@ export default ({ group, meetup }) => {
         round="xxsmall"
         full={true}
         flex={true}
-        width="large"
         alignSelf="center"
       >
         <Grid columns={[`auto`, `1/4`]}>
