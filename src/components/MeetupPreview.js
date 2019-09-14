@@ -11,7 +11,7 @@ const HoverBox = styled(Box)`
   transition: transform ease-in-out 200ms, box-shadow 500ms;
   :hover {
     transform: scale(1.01);
-    box-shadow: 0px 2px 1px #02ffff;
+    box-shadow: -2px 0px 0px #02ffff;
   }
 `
 
