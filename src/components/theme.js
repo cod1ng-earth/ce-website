@@ -46,7 +46,7 @@ export const theme = deepMerge(dark, {
     },
   },
   heading: {
-    font: { family: `Source Code Pro` },
+    font: { family: `OCR-A` },
   },
   paragraph: {
     medium: {
