@@ -6,7 +6,7 @@ import { Anchor, Box, Image } from "grommet"
 import logo from "../../images/coding_earth_logo.png"
 
 const StyledAnchor = styled(Anchor)`
-  font-family: "OCRA";
+  font-family: "OCR-A";
   color: ${theme.global.colors.brand};
   text-decoration: none;
   :hover {
@@ -37,12 +37,12 @@ export default () => (
       to="/coding-leipzig/"
       activeStyle={{ color: theme.global.colors.turqoise }}
     >
-      LeipZig
+      Leipzig
     </StyledAnchor>
 
-    <Anchor as={Link} to="/">
+    <StyledAnchor as={Link} to="/">
       <Image src={logo} height={`50px`} />
-    </Anchor>
+    </StyledAnchor>
 
     <StyledAnchor
       as={Link}

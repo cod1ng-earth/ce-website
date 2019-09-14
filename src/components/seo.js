@@ -69,11 +69,11 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-      <link href="/font/fonts.css" rel="stylesheet" />
       <link
         href="https://fonts.googleapis.com/css?family=Oxygen|Source+Code+Pro&display=swap"
         rel="stylesheet"
       />
+      <link href="/font/fonts.css" rel="stylesheet" />
     </Helmet>
   )
 }

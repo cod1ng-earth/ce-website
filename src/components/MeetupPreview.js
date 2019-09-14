@@ -44,14 +44,11 @@ export default ({ group, meetup }) => {
         {excerpt(meetup.description, { pruneLength: 280 })}
       </Paragraph>
 
-      <Button
-        primary={true}
-        color="turqoise"
-        alignSelf="end"
-        as={Link}
-        to={`/${group.urlname}/${meetup.meetupId}`}
-        label="Details"
-      />
+      <Box alignSelf="end">
+        <Link to={`/${group.urlname}/${meetup.meetupId}`}>
+          <Button primary={true} color="turqoise" label="Details" />
+        </Link>
+      </Box>
     </Box>
   )
 }

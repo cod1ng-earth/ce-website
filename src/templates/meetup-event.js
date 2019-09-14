@@ -57,10 +57,9 @@ export default ({ data }) => (
   <Layout>
     <SEO title={data.meetupEvent.name} />
     <Header meetup={data.meetupEvent} group={data.meetupGroup}></Header>
-    <Box full={true} flex={false}>
+    <Box full flex={false}>
       <ResponsiveGrid>
         <StyledParagraph
-          fill
           dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
         />
       </ResponsiveGrid>
