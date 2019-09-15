@@ -5,11 +5,14 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@mdx-js/mdx": "^1.4.5",
+    "@mdx-js/react": "^1.4.5",
     "dotenv": "^8.1.0",
     "excerpt-html": "^1.2.1",
     "gatsby": "^2.13.73",
     "gatsby-image": "^2.2.10",
     "gatsby-plugin-manifest": "^2.2.13",
+    "gatsby-plugin-mdx": "^1.0.41",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-react-helmet": "^3.1.4",
     "gatsby-plugin-sharp": "^2.2.19",
@@ -26,6 +29,7 @@
     "react-helmet": "^5.2.1",
     "react-responsive-carousel": "^3.1.50",
     "react-reveal": "^1.2.2",
+    "react-twitter-widgets": "^1.7.1",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {

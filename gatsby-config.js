@@ -22,6 +22,7 @@ module.exports = {
         path: `${__dirname}/data/`,
       },
     },
+    `gatsby-plugin-mdx`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -37,6 +38,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+
     {
       resolve: `gatsby-source-cloudinary`,
       options: {

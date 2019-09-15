@@ -16,6 +16,17 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            excerpt
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -37,6 +48,17 @@ exports.createPages = async ({ graphql, actions }) => {
           cloudinaryTag: `meetup:${event.meetupId}`,
         },
       })
+    })
+  })
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    if (node.slug === null) return
+    createPage({
+      path: `/markdown/${node.frontmatter.slug}`,
+      component: path.resolve(`./src/templates/article.js`),
+      context: {
+        slug: node.frontmatter.slug,
+      },
     })
   })
 }

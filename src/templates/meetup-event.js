@@ -1,68 +1,32 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box, Grid, Heading, Image, Paragraph, Text } from "grommet"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-
-import ResponsiveGrid from "../components/ResponsiveGrid"
-import styled from "styled-components"
-import { theme } from "../components/theme"
-import { DateTime } from "luxon"
+import { Box } from "grommet"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
 
-const StyledParagraph = styled(Paragraph)`
-  a {
-    color: ${theme.global.colors.brand};
-    :hover {
-      color: ${theme.global.colors.turqoise};
-    }
-  }
-`
-
-const Header = ({ meetup, group }) => {
-  let date = DateTime.fromMillis(meetup.time)
-  date = date.setZone(meetup.group.timezone)
-  return (
-    <Box background="dark-2" height="small">
-      <ResponsiveGrid>
-        <Grid columns={[`auto`, `auto`]} justifyContent="start">
-          <Image
-            margin={{ right: `large` }}
-            justify="center"
-            alignSelf="center"
-            fit="contain"
-            src={group.group_photo.thumb_link}
-          />
-          <Box>
-            <Heading level={2} margin={{ bottom: `xsmall` }}>
-              {meetup.name}
-            </Heading>
-            <Text>
-              {date.toFormat(`ccc`)},{` `}
-              {date.toLocaleString(DateTime.DATETIME_MED)}
-            </Text>
-
-            <Text>{meetup.venue && meetup.venue.name}</Text>
-          </Box>
-        </Grid>
-      </ResponsiveGrid>
-    </Box>
-  )
-}
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import EventHeader from "../components/event/header"
+import EventMDX from "../components/event/mdx"
+import StyledParagraph from "../components/StyledParagraph"
+import ResponsiveGrid from "../components/ResponsiveGrid"
 
 export default ({ data }) => (
   <Layout>
     <SEO title={data.meetupEvent.name} />
-    <Header meetup={data.meetupEvent} group={data.meetupGroup}></Header>
+    <EventHeader meetup={data.meetupEvent} group={data.meetupGroup} />
     <Box full flex={false}>
       <ResponsiveGrid>
-        <StyledParagraph
-          fill
-          dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
-        />
+        {data.mdx === null ? (
+          <StyledParagraph
+            fill
+            dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
+          />
+        ) : (
+          <EventMDX mdx={data.mdx} />
+        )}
       </ResponsiveGrid>
     </Box>
     <Box full pad="medium" overflow="hidden">
@@ -121,6 +85,14 @@ export const query = graphql`
       name
       group_photo {
         thumb_link
+      }
+    }
+
+    mdx(frontmatter: { meetupId: { eq: $eventId } }) {
+      id
+      body
+      frontmatter {
+        title
       }
     }
 

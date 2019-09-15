@@ -54,18 +54,22 @@ export const theme = deepMerge(dark, {
       height: `28px`,
     },
     large: {
-      size: `20px`,
-      height: `24px`,
+      size: `24px`,
+      height: `28px`,
     },
   },
   text: {
-    medium: {
+    small: {
       size: `16px`,
-      height: `20px`,
+      height: `18px`,
+    },
+    medium: {
+      size: `20px`,
+      height: `28px`,
     },
     large: {
-      size: `20px`,
-      height: `24px`,
+      size: `24px`,
+      height: `28px`,
     },
   },
 })
