@@ -74,7 +74,7 @@ const IndexPage = () => (
           nearly impossible to keep an eye on everything.
         </Paragraph>
         <Paragraph fill>
-          That’s where we jump in: Instead of specialising on a dedicated topic,
+          That's where we jump in: Instead of specialising on a dedicated topic,
           coding earth was established to become a space for Earth’s coder
           community: every software development related topic is welcome here,
           every developer with whatever skill level will take away something new
@@ -86,7 +86,7 @@ const IndexPage = () => (
       </ResponsiveGrid>
     </Box>
 
-    <Box full={true} flex={false} background="dark">
+    <Box flex={true} background="dark" height={{ min: `large` }}>
       <ResponsiveGrid>
         <Heading level={2} color="turqoise">
           <Grow
