@@ -22,6 +22,7 @@ module.exports = {
         path: `${__dirname}/data/`,
       },
     },
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-mdx`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,

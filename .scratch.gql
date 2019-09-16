@@ -1,3 +1,6 @@
+<Tweet tweetId="1167024813359194112" options={{ theme: `dark` }} />
+<Tweet tweetId="1167083952017956864" options={{ theme: `dark` }} />
+
  allMeetupGroup {
     edges {
       node {
