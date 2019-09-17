@@ -1,13 +1,23 @@
 import React from "react"
 
-import { Box, Grid, Image, ResponsiveContext, Text } from "grommet"
+import {
+  Anchor,
+  Box,
+  Grid,
+  Heading,
+  Image,
+  ResponsiveContext,
+  Text,
+} from "grommet"
 
 //import earth from "../../images/earth_v.jpg"
 import logo_ce from "../../images/coding_earth_logo.png"
-import meetup_logo from "../../images/meetup-wordmark-red.png"
-import { Twitter, Slack } from "grommet-icons"
+import meetup_button from "../../images/meetup_button.png"
+import twitter_button from "../../images/twitter_button.png"
+import slack_button from "../../images/slack_button.png"
 
 import ResponsiveGrid from "../ResponsiveGrid"
+import ContactForm from "./ContactForm"
 
 export default () => (
   <ResponsiveContext.Consumer>
@@ -22,28 +32,44 @@ export default () => (
         }}
         align="center"
         justify="between"
-        height="medium"
         responsive={false}
-        pad={{ vertical: `small`, horizontal: `medium` }}
+        pad={{ vertical: `large` }}
       >
         <ResponsiveGrid>
           <Grid
             gap="medium"
-            columns={size == `small` ? [`auto`] : [`auto`, `auto`, `auto`]}
+            columns={size == `small` ? [`auto`] : [`1/3`, `1/3`, `1/3`]}
           >
-            <Box>
-              <Twitter size="medium" />
-
-              <Image src={logo_ce} fit="contain" width="50%" />
+            <Box flex={false}>
+              <Image src={logo_ce} fit="contain" width="250px" />
+              <Heading level={6} margin={{ vertical: `small` }}>
+                1 line of code.
+              </Heading>
+            </Box>
+            <Box align="center">
+              <Text>follow us and get in touch with us</Text>
+              <Box gap="medium" direction="row" margin={{ vertical: `small` }}>
+                <Box>
+                  <Anchor href="https://twitter.com/coding_earth">
+                    <Image src={twitter_button} fit="contain" width="40px" />
+                  </Anchor>
+                </Box>
+                <Box>
+                  <Anchor href="https://www.meetup.com/CODING-BERLIN/">
+                    <Image src={meetup_button} fit="contain" width="40px" />
+                  </Anchor>
+                </Box>
+                <Box>
+                  <Anchor href="https://coding-earth.slack.com">
+                    <Image src={slack_button} fit="contain" width="40px" />
+                  </Anchor>
+                </Box>
+              </Box>
+              <Text>&copy; 2019 coding earth</Text>
             </Box>
             <Box>
-              <Text>follow us on</Text>
-              <Twitter size="medium" />
-              <Image src={meetup_logo} fit="contain" width="50%" />
-            </Box>
-            <Box>
-              <Text>contact us</Text>
-              <Slack size="medium" />
+              <Text>Contact us</Text>
+              <ContactForm></ContactForm>
             </Box>
           </Grid>
         </ResponsiveGrid>

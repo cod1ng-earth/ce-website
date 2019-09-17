@@ -7,6 +7,7 @@ import { theme } from "./theme"
 
 import AppHeader from "./header/AppHeader"
 import AppFooter from "./footer/AppFooter"
+import SubFooter from "./footer/SubFooter"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -31,6 +32,7 @@ const Layout = ({ children }) => {
         />
         {children}
         <AppFooter></AppFooter>
+        <SubFooter />
       </Box>
     </Grommet>
   )
