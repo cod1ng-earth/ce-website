@@ -15,6 +15,8 @@ const StyledRules = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  font-size: 18px;
+  line-height: 24px;
   li {
     margin-bottom: 10px;
   }
@@ -86,7 +88,7 @@ const IndexPage = () => (
       </ResponsiveGrid>
     </Box>
 
-    <Box flex={true} background="dark" height={{ min: `large` }}>
+    <Box flex={true} background="dark">
       <ResponsiveGrid>
         <Heading level={2} color="turqoise">
           <Grow
@@ -119,44 +121,41 @@ const IndexPage = () => (
           {` `}
           The golden rules
         </Heading>
-        <Paragraph fill>
-          <StyledRules>
-            <li>
-              we neither care about your gender, your skin tone, your religious
-              views, the language your mother taught you nor your heritage or
-              favorite science fiction series, we only care about you as a
-              developer.
-            </li>
-            <li>
-              no marketing, no recruiting, only tech and if possible: code (lets
-              consider yaml valid, and of course you may announce that your
-              company is hiring)
-            </li>
-            <li>
-              don't bash one technology in favor of another without giving a
-              concrete reason (Ruby is sh*t, Rust is much better, you know the
-              game)
-            </li>
-            <li>
-              one demo gets you rid of 10 slides so don't be shy and type live,
-              we're all developers so we'll only laugh at obvious typos
-            </li>
-            <li>
-              as soon as 1 person is around who doesn't understand German we
-              switch to English (exceptions must be announced and if she doesn't
-              understand English as well we ran out of options).
-            </li>
-            <li>
-              if your English is bad, talk more of it, it helps (for real!)
-            </li>
-            <li>food is not always free, but maybe you get a t-shirt</li>
-            <li>everyone can become a developer</li>
-            <li>everyone can become a better developer</li>
-            <li>being a bad developer doesn't make you a bad person</li>
-            <li>there are no bad developers</li>
-            <li>you do talk about coding berlin</li>
-          </StyledRules>
-        </Paragraph>
+
+        <StyledRules>
+          <li>
+            we neither care about your gender, your skin tone, your religious
+            views, the language your mother taught you nor your heritage or
+            favorite science fiction series, we only care about you as a
+            developer.
+          </li>
+          <li>
+            no marketing, no recruiting, only tech and if possible: code (lets
+            consider yaml valid, and of course you may announce that your
+            company is hiring)
+          </li>
+          <li>
+            don't bash one technology in favor of another without giving a
+            concrete reason (Ruby is sh*t, Rust is much better, you know the
+            game)
+          </li>
+          <li>
+            one demo gets you rid of 10 slides so don't be shy and type live,
+            we're all developers so we'll only laugh at obvious typos
+          </li>
+          <li>
+            as soon as 1 person is around who doesn't understand German we
+            switch to English (exceptions must be announced and if she doesn't
+            understand English as well we ran out of options).
+          </li>
+          <li>if your English is bad, talk more of it, it helps (for real!)</li>
+          <li>food is not always free, but maybe you get a t-shirt</li>
+          <li>everyone can become a developer</li>
+          <li>everyone can become a better developer</li>
+          <li>being a bad developer doesn't make you a bad person</li>
+          <li>there are no bad developers</li>
+          <li>you do talk about coding berlin</li>
+        </StyledRules>
       </ResponsiveGrid>
     </Box>
   </Layout>
