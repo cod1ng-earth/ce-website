@@ -24,6 +24,7 @@
     "gatsby-transformer-remark": "^2.6.22",
     "gatsby-transformer-sharp": "^2.2.13",
     "grommet": "^2.7.7",
+    "lodash.map": "^4.6.0",
     "luxon": "^1.17.2",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",

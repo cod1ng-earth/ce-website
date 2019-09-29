@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { Fade } from "react-reveal"
 import { Button, Form, FormField, TextArea, Paragraph } from "grommet"
+import postSubmission from "../../lib/postSubmission"
 
 const HiddenField = styled.div`
   display: none;
   height: 0;
 `
+const NETLIFY_FORM_NAME = `cearth-contact`
 
 export default () => {
   const [submitted, setSubmitted] = useState(false)
@@ -14,13 +16,13 @@ export default () => {
 
   const formSubmitted = async evt => {
     const action = evt.target.action
-    const body = JSON.stringify({
+    const body = {
       ...evt.value,
       message,
-    })
+    }
 
     try {
-      const response = await fetch(action, { method: `POST`, body })
+      const response = await postSubmission(NETLIFY_FORM_NAME, body)
       console.log(response)
     } catch (e) {
       console.error(e)
@@ -41,10 +43,10 @@ export default () => {
     </Fade>
   ) : (
     <Form
-      name="contact"
+      name={NETLIFY_FORM_NAME}
       method="POST"
       data-netlify="true"
-      netlify-honeypot="important-note-field"
+      data-netlify-honeypot="important-note-field"
       onSubmit={formSubmitted}
     >
       <FormField name="email" type="email" placeholder="Your@emailaddre.ss" />
@@ -52,6 +54,7 @@ export default () => {
         <label>
           Another field for you to fill: <input name="important-note-field" />
         </label>
+        <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
       </HiddenField>
 
       <TextArea
