@@ -8,7 +8,7 @@ export const theme = deepMerge(dark, {
       brand: `#FF9900`,
       turqoise: `#02ffff`,
       placeholder: `rgba(255, 255,255, 0.4)`,
-      "very-dark": `rgba(255,255,255,0.05)`,
+      "very-dark": `hsl(0,0%,10%)`,
       gatsby: `hsl(270, 50%, 40%)`,
       "gatsby-light": `hsl(270, 50%, 50%)`,
     },

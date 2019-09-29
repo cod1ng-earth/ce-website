@@ -15,12 +15,16 @@ import styled from "styled-components"
 
 import excerpt from "excerpt-html"
 import { DateTime } from "luxon"
+import { theme } from "./theme"
+
+const colors = theme.global.colors
 
 const HoverBox = styled(Box)`
   transition: transform ease-in-out 200ms, box-shadow 500ms;
   :hover {
     transform: scale(1.01);
-    box-shadow: -2px 0px 0px #02ffff;
+    box-shadow: 0px 2px 0px
+      ${props => (props.upcoming ? colors.brand : colors.turqoise)};
   }
 `
 
@@ -33,11 +37,12 @@ export default ({ group, meetup }) => {
       style={{ textDecoration: `none` }}
     >
       <HoverBox
-        background="dark-1"
+        background={meetup.status === `upcoming` ? `dark-1` : `dark-2`}
         margin={{ vertical: `medium` }}
         round="xxsmall"
         full={true}
         flex={true}
+        upcoming={meetup.status === `upcoming`}
         alignSelf="center"
       >
         <Stack anchor="top-right">
