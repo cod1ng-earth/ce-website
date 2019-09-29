@@ -176,7 +176,7 @@ const IndexPage = () => (
             <li>everyone can become a better developer</li>
             <li>being a bad developer doesn't make you a bad person</li>
             <li>there are no bad developers</li>
-            <li>you do talk about coding berlin</li>
+            <li>you do talk about coding earth</li>
           </StyledRules>
           {` `}
         </Fade>

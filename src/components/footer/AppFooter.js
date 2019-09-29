@@ -40,9 +40,9 @@ export default () => (
             gap="medium"
             columns={size == `small` ? [`auto`] : [`1/3`, `1/3`, `1/3`]}
           >
-            <Box flex={false}>
+            <Box alignSelf="start" align="center" flex={true}>
               <Image src={logo_ce} fit="contain" width="250px" />
-              <Heading level={6} margin={{ vertical: `small` }}>
+              <Heading level={6} margin={{ top: `medium` }}>
                 1 line of code.
               </Heading>
             </Box>
