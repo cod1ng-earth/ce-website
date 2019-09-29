@@ -3,6 +3,7 @@ import React from "react"
 import { Box, Grid, Heading, Image, Text } from "grommet"
 
 import ResponsiveGrid from "../ResponsiveGrid"
+import RSVPButton from "../ui/RSVPButton"
 import { DateTime } from "luxon"
 
 export default ({ meetup, group }) => {
@@ -11,7 +12,7 @@ export default ({ meetup, group }) => {
   return (
     <Box background="dark-2" height="small">
       <ResponsiveGrid>
-        <Grid columns={[`auto`, `auto`]} justifyContent="start">
+        <Grid columns={[`auto`, `auto`, `auto`]} justifyContent="start">
           <Image
             margin={{ right: `large` }}
             justify="center"
@@ -23,12 +24,14 @@ export default ({ meetup, group }) => {
             <Heading level={2} margin={{ bottom: `xsmall` }}>
               {meetup.name}
             </Heading>
-            <Text>
+            <Text justifyContent="start">
               {date.toFormat(`ccc`)},{` `}
               {date.toLocaleString(DateTime.DATETIME_MED)}
             </Text>
-
             <Text>{meetup.venue && meetup.venue.name}</Text>
+          </Box>
+          <Box justify="center">
+            {meetup.status === `upcoming` && <RSVPButton meetup={meetup} />}
           </Box>
         </Grid>
       </ResponsiveGrid>

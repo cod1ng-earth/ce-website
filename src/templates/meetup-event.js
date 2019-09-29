@@ -12,6 +12,7 @@ import EventHeader from "../components/event/header"
 import EventMDX from "../components/event/mdx"
 import StyledParagraph from "../components/StyledParagraph"
 import ResponsiveGrid from "../components/ResponsiveGrid"
+import RSVPButton from "../components/ui/RSVPButton"
 
 export default ({ data }) => (
   <Layout>
@@ -27,6 +28,11 @@ export default ({ data }) => (
         ) : (
           <EventMDX mdx={data.mdx} />
         )}
+        <Box justify="center">
+          {data.meetupEvent.status === `upcoming` && (
+            <RSVPButton meetup={data.meetupEvent} />
+          )}
+        </Box>
       </ResponsiveGrid>
     </Box>
     <Box full pad="medium" overflow="hidden">
@@ -68,6 +74,7 @@ export const query = graphql`
       description
       link
       time
+      status
       group {
         urlname
         timezone

@@ -1,92 +1,78 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-import {
-  Box,
-  Button,
-  Grid,
-  Heading,
-  Image,
-  Paragraph,
-  Stack,
-  Text,
-} from "grommet"
+import React from "react"
+
+import { navigate } from "gatsby"
+
+import { Box, Grid, Heading, Paragraph, Text } from "grommet"
 import { Map } from "grommet-icons"
 import styled from "styled-components"
 
 import excerpt from "excerpt-html"
 import { DateTime } from "luxon"
 import { theme } from "./theme"
+import RSVPButton from "./ui/RSVPButton"
 
 const colors = theme.global.colors
 
 const HoverBox = styled(Box)`
-  transition: transform ease-in-out 200ms, box-shadow 500ms;
+  transition: all 300ms;
+  cursor: pointer;
   :hover {
-    transform: scale(1.01);
-    box-shadow: 0px 2px 0px
-      ${props => (props.upcoming ? colors.brand : colors.turqoise)};
+    background-color: ${props =>
+      props.upcoming ? colors[`dark-1-active`] : colors[`dark-2`]};
+    box-shadow: 0px 3px 0px
+      ${props => (props.upcoming ? colors[`meetup-red`] : colors.turqoise)};
   }
 `
 
-export default ({ group, meetup }) => {
-  let date = DateTime.fromMillis(meetup.time).setZone(group.timezone)
+export default ({ meetup }) => {
+  let date = DateTime.fromMillis(meetup.time).setZone(meetup.group.timezone)
 
   return (
-    <Link
-      to={`/${group.urlname}/${meetup.meetupId}`}
-      style={{ textDecoration: `none` }}
+    <HoverBox
+      background={meetup.status === `upcoming` ? `dark-1` : `dark-2`}
+      margin={{ vertical: `medium` }}
+      round="xxsmall"
+      fill
+      upcoming={meetup.status === `upcoming`}
+      alignSelf="center"
+      onClick={() => navigate(`/${meetup.group.urlname}/${meetup.meetupId}`)}
     >
-      <HoverBox
-        background={meetup.status === `upcoming` ? `dark-1` : `dark-2`}
-        margin={{ vertical: `medium` }}
-        round="xxsmall"
-        full={true}
-        flex={true}
-        upcoming={meetup.status === `upcoming`}
-        alignSelf="center"
+      <Grid
+        columns={[`auto`, `small`]}
+        rows={[`auto`, `auto`]}
+        areas={[
+          { name: `title`, start: [0, 0], end: [1, 1] },
+          { name: `img`, start: [1, 0], end: [1, 0] },
+          { name: `desc`, start: [0, 1], end: [1, 1] },
+        ]}
       >
-        <Stack anchor="top-right">
-          <Grid
-            columns={[`auto`, `1/4`]}
-            rows={[`auto`, `auto`]}
-            areas={[
-              { name: `title`, start: [0, 0], end: [1, 1] },
-              { name: `img`, start: [1, 0], end: [1, 0] },
-              { name: `desc`, start: [0, 1], end: [1, 1] },
-            ]}
-          >
-            <Box gridArea="title" pad="small">
-              <Text>
-                {date.toFormat(`ccc`)},{` `}
-                {date.toLocaleString(DateTime.DATETIME_MED)}
-              </Text>
-              <Heading full level={4} margin={{ bottom: `xsmall` }}>
-                {meetup.name}
-              </Heading>
+        <Box gridArea="title" pad="small">
+          <Text>
+            {date.toFormat(`ccc`)},{` `}
+            {date.toLocaleString(DateTime.DATETIME_MED)}
+          </Text>
+          <Heading full level={3} margin={{ bottom: `small` }}>
+            {meetup.name}
+          </Heading>
 
-              <Text>
-                <Map size="medium" /> {meetup.venue && meetup.venue.name}
-              </Text>
-            </Box>
-            <Box gridArea="img" height="170px" pad="small">
-              <Image fit="cover" src={group.key_photo.photo_link} />
-            </Box>
+          {meetup.venue ? (
+            <Text weight="bold">
+              <Map size="medium" /> {meetup.venue.name}
+            </Text>
+          ) : (
+            <Text color="turqoise">needs a venue</Text>
+          )}
+        </Box>
+        <Box>
+          {meetup.status === `upcoming` && <RSVPButton meetup={meetup} />}
+        </Box>
 
-            <Box gridArea="desc" size="small" pad="small">
-              <Paragraph fill>
-                {excerpt(meetup.description, { pruneLength: 500 })}
-              </Paragraph>
-            </Box>
-          </Grid>
-          <Box
-            background={meetup.status === `upcoming` ? `brand` : `dark-3`}
-            pad={{ vertical: `xxsmall`, horizontal: `medium` }}
-            style={{ marginTop: `-1.5rem` }}
-          >
-            <Text weight="bold">{meetup.status}</Text>
-          </Box>
-        </Stack>
-      </HoverBox>
-    </Link>
+        <Box gridArea="desc" size="small" pad="small">
+          <Paragraph fill>
+            {excerpt(meetup.description, { pruneLength: 500 })}
+          </Paragraph>
+        </Box>
+      </Grid>
+    </HoverBox>
   )
 }

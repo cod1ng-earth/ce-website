@@ -15,13 +15,11 @@ export default () => {
   const [message, setMessage] = useState(``)
 
   const formSubmitted = async evt => {
-    const action = evt.target.action
-    const body = {
-      ...evt.value,
-      message,
-    }
-
     try {
+      const body = {
+        ...evt.value,
+        message,
+      }
       const response = await postSubmission(NETLIFY_FORM_NAME, body)
       console.log(response)
     } catch (e) {

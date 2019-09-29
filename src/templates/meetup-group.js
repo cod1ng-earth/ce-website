@@ -24,11 +24,7 @@ export default ({ data }) => (
         />
         <Fade left ssrFadeout distance="20px" duration={1000}>
           {data.meetupGroup.events.map(event => (
-            <MeetupPreview
-              group={data.meetupGroup}
-              meetup={event}
-              key={event.meetupId}
-            />
+            <MeetupPreview meetup={event} key={event.meetupId} />
           ))}
         </Fade>
       </ResponsiveGrid>
@@ -59,6 +55,11 @@ export const query = graphql`
         description
         venue {
           name
+        }
+        group {
+          urlname
+          timezone
+          urlname
         }
       }
     }

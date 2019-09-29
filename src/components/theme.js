@@ -9,8 +9,10 @@ export const theme = deepMerge(dark, {
       turqoise: `#02ffff`,
       placeholder: `rgba(255, 255,255, 0.4)`,
       "very-dark": `hsl(0,0%,10%)`,
+      "dark-1-active": `hsl(0,0%,23%)`,
       gatsby: `hsl(270, 50%, 40%)`,
       "gatsby-light": `hsl(270, 50%, 50%)`,
+      "meetup-red": `#F64060`,
     },
     elevation: {
       light: {
@@ -22,7 +24,7 @@ export const theme = deepMerge(dark, {
     },
 
     font: {
-      family: `'Oxygen', sans-serif`,
+      family: `'Lato', sans-serif`,
       size: `16px`,
       height: `20px`,
     },
