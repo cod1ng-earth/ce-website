@@ -86,6 +86,7 @@ const IndexPage = () => {
                 </Paragraph>
               </Fade>
             </Box>
+
             <Box height="medium" overflow="hidden">
               <Image
                 fit="cover"
@@ -98,43 +99,51 @@ const IndexPage = () => {
 
       <Box full={true} flex={false} background="dark-1">
         <ResponsiveGrid>
-          <Box>
-            <Fade right ssrFadeout distance="20px" duration={1000}>
-              <Heading
-                level={2}
+          <Box align="start">
+            <Heading
+              level={2}
+              color="brand"
+              style={{ transform: `rotate3d(0,0,2,180deg)` }}
+            >
+              <Code
+                size="large"
                 color="brand"
-                style={{ transform: `rotate3d(1,0,4,180deg)` }}
-              >
-                <Code
-                  size="large"
-                  color="brand"
-                  style={{ verticalAlign: `sub` }}
-                />
-                {` `}1 line of code.
-              </Heading>
-              <Paragraph fill>
-                Isn’t it amazing how many technologies you have to learn to
-                follow the path of modern software development? Be it
-                blockchains for storing transactions, machines taking decisions
-                based upon digital learning sets, virtual clusters providing
-                computing power for scaled applications and command line tools
-                that improve your workflow: it's nearly impossible to keep an
-                eye on everything.
-              </Paragraph>
-              <Paragraph fill>
-                That's where we jump in: Instead of specialising on a dedicated
-                topic, coding earth was established to become a space for
-                Earth’s coder community: every software development related
-                topic is welcome here, every developer with whatever skill level
-                will take away something new on every session, every question
-                may be asked and everyone should have a good time. There's only
-                one golden rule:
-              </Paragraph>
-              <Paragraph fill style={{ fontWeight: `bold` }}>
-                talks have to be hands on, they must contain at least 1 line of
-                code and in the best case they're massively supported by demos.
-              </Paragraph>
-            </Fade>
+                style={{ verticalAlign: `sub` }}
+              />
+              {` `}1 line of code.
+            </Heading>
+            <ResponsiveTwoCols>
+              <Fade left ssrFadeout distance="20px" duration={1000}>
+                <Paragraph fill>
+                  Isn’t it amazing how many technologies you have to learn to
+                  follow the path of modern software development? Be it
+                  blockchains for storing transactions, machines taking
+                  decisions based upon digital learning sets, virtual clusters
+                  providing computing power for scaled applications and command
+                  line tools that improve your workflow: it's nearly impossible
+                  to keep an eye on everything.
+                </Paragraph>
+              </Fade>
+              <Fade right ssrFadeout distance="20px" duration={1000}>
+                <Paragraph fill>
+                  That's where we jump in: Instead of specialising on a
+                  dedicated topic, coding earth was established to become a
+                  space for Earth’s coder community: every software development
+                  related topic is welcome here, every developer with whatever
+                  skill level will take away something new on every session,
+                  every question may be asked and everyone should have a good
+                  time. There's only one golden rule:
+                </Paragraph>
+              </Fade>
+            </ResponsiveTwoCols>
+            <Paragraph
+              fill
+              style={{ fontWeight: `bold` }}
+              margin={{ horizontal: `large` }}
+            >
+              talks have to be hands on, they must contain at least 1 line of
+              code and in the best case they're massively supported by demos.
+            </Paragraph>
           </Box>
         </ResponsiveGrid>
       </Box>
@@ -146,7 +155,8 @@ const IndexPage = () => {
               size="large"
               color="turqoise"
               style={{ verticalAlign: `sub` }}
-            />{" "}
+            />
+            {` `}
             upcoming meetups
           </Heading>
 
@@ -200,9 +210,9 @@ const IndexPage = () => {
                 you as a developer.
               </li>
               <li>
-                no marketing, no recruiting, only tech and if possible: code
-                (lets consider yaml valid, and of course you may announce that
-                your company is hiring)
+                no marketing, no recruiting, only tech and if possible:{` `}
+                <b>code</b> (lets consider yaml valid, and of course you may
+                announce that your company is hiring)
               </li>
               <li>
                 don't bash one technology in favor of another without giving a
@@ -214,18 +224,17 @@ const IndexPage = () => {
                 live, we're all developers so we'll only laugh at obvious typos
               </li>
               <li>
-                as soon as 1 person is around who doesn't understand German we
-                switch to English (exceptions must be announced and if she
-                doesn't understand English as well we ran out of options).
-              </li>
-              <li>
-                if your English is bad, talk more of it, it helps (for real!)
+                as soon as 1 person is around who doesn't understand the local
+                language we <b>switch to English</b> (exceptions must be
+                announced and if she doesn't understand English as well we ran
+                out of options).
               </li>
               <li>food is not always free, but maybe you get a t-shirt</li>
-              <li>everyone can become a developer</li>
-              <li>everyone can become a better developer</li>
-              <li>being a bad developer doesn't make you a bad person</li>
-              <li>there are no bad developers</li>
+              <li>
+                everyone can become a developer. everyone can become a better
+                developer. being a bad developer doesn't make you a bad person.
+                there are no bad developers
+              </li>
               <li>you do talk about coding earth</li>
             </StyledRules>
             {` `}

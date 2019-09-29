@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title }) {
       ].concat(meta)}
     >
       <link
-        href="https://fonts.googleapis.com/css?family=Lato|Source+Code+Pro&display=swap"
+        href="https://fonts.googleapis.com/css?family=Karla|Source+Code+Pro&display=swap"
         rel="stylesheet"
       />
       <link href="/font/fonts.css" rel="stylesheet" />

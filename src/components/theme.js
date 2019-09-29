@@ -24,7 +24,7 @@ export const theme = deepMerge(dark, {
     },
 
     font: {
-      family: `'Lato', sans-serif`,
+      family: `'Karla', sans-serif`,
       size: `16px`,
       height: `20px`,
     },
