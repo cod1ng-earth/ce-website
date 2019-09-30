@@ -5,18 +5,21 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Box } from "grommet"
 
-export default ({ data }) => (
+import MdxRenderer from "../components/Mdx"
+
+export default ({ data: { mdx } }) => (
   <Layout>
-    <SEO title={data.markdownRemark.frontmatter.title} />
-    <Box dangerouslySetInnerHTML={{ __html: data.html }} />
+    <SEO title={mdx.frontmatter.title} />
+    <MdxRenderer mdx={mdx} />
   </Layout>
 )
 
 export const query = graphql`
   query($slug: String) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
       id
-      html
+      body
+      rawBody
       frontmatter {
         slug
         title

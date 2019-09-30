@@ -1,6 +1,13 @@
 import { dark } from "grommet"
 import { deepMerge } from "grommet/utils"
 
+const noMaxWidthHeaders = {
+  small: { maxWidth: `none` },
+  medium: { maxWidth: `none` },
+  large: { maxWidth: `none` },
+  xlarge: { maxWidth: `none` },
+}
+
 export const theme = deepMerge(dark, {
   global: {
     colors: {
@@ -51,6 +58,12 @@ export const theme = deepMerge(dark, {
   },
   heading: {
     font: { family: `OCR-A` },
+    level: {
+      "1": noMaxWidthHeaders,
+      "2": noMaxWidthHeaders,
+      "3": noMaxWidthHeaders,
+      "4": noMaxWidthHeaders,
+    },
   },
   paragraph: {
     medium: {

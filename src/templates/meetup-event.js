@@ -9,7 +9,7 @@ import { Carousel } from "react-responsive-carousel"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import EventHeader from "../components/event/header"
-import EventMDX from "../components/event/mdx"
+import Mdx from "../components/Mdx"
 import StyledParagraph from "../components/StyledParagraph"
 import ResponsiveGrid from "../components/ResponsiveGrid"
 import RSVPButton from "../components/ui/RSVPButton"
@@ -26,7 +26,7 @@ export default ({ data }) => (
             dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
           />
         ) : (
-          <EventMDX mdx={data.mdx} />
+          <Mdx mdx={data.mdx} />
         )}
         <Box justify="center">
           {data.meetupEvent.status === `upcoming` && (

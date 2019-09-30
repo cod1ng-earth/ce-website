@@ -16,13 +16,13 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
-            id
-            excerpt
+            fileAbsolutePath
             frontmatter {
               title
+              slug
             }
           }
         }
@@ -51,10 +51,10 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allMdx.edges.forEach(({ node }) => {
     if (node.frontmatter.slug == null) return
     createPage({
-      path: `/markdown/${node.frontmatter.slug}`,
+      path: `/${node.frontmatter.slug}`,
       component: path.resolve(`./src/templates/article.js`),
       context: {
         slug: node.frontmatter.slug,

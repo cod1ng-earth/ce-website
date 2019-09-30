@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import {
   Anchor,
@@ -65,8 +66,18 @@ export default () => (
                   </Anchor>
                 </Box>
               </Box>
+              <Box direction="row" margin={{ vertical: `medium` }}>
+                <Anchor as={Link} to="/imprint">
+                  Imprint
+                </Anchor>
+                &nbsp;|&nbsp;
+                <Anchor as={Link} to="/code-of-conduct">
+                  Code of Conduct
+                </Anchor>
+              </Box>
               <Text>&copy; 2019 coding earth</Text>
             </Box>
+
             <Box>
               <Text>Contact us</Text>
               <ContactForm></ContactForm>
