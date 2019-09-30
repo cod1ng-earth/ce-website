@@ -47,6 +47,7 @@ export default ({ meetup, group }) => {
                   justify="center"
                   alignSelf="center"
                   justifySelf="center"
+                  alt={`${group.name} meetup logo`}
                 />
 
                 <Box gridArea="headline">
