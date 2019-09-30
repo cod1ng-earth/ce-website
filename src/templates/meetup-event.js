@@ -18,23 +18,23 @@ export default ({ data }) => (
   <Layout>
     <SEO title={data.meetupEvent.name} />
     <EventHeader meetup={data.meetupEvent} group={data.meetupGroup} />
-    <Box full flex={false}>
-      <ResponsiveGrid>
-        {data.mdx === null ? (
-          <StyledParagraph
-            fill
-            dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
-          />
-        ) : (
-          <Mdx mdx={data.mdx} />
+
+    <ResponsiveGrid>
+      {data.mdx === null ? (
+        <StyledParagraph
+          fill
+          dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
+        />
+      ) : (
+        <Mdx mdx={data.mdx} />
+      )}
+      <Box justify="center">
+        {data.meetupEvent.status === `upcoming` && (
+          <RSVPButton meetup={data.meetupEvent} />
         )}
-        <Box justify="center">
-          {data.meetupEvent.status === `upcoming` && (
-            <RSVPButton meetup={data.meetupEvent} />
-          )}
-        </Box>
-      </ResponsiveGrid>
-    </Box>
+      </Box>
+    </ResponsiveGrid>
+
     <Box full pad="medium" overflow="hidden">
       <Carousel
         transitionTime={800}

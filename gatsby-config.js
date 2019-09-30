@@ -25,7 +25,9 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-mdx`,
     `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
+
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,

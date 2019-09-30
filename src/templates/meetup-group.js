@@ -13,22 +13,20 @@ export default ({ data }) => (
   <Layout>
     <SEO title={data.meetupGroup.name} />
 
-    <Box full={true} flex={false}>
-      <ResponsiveGrid>
-        <Image
-          alignSelf="center"
-          fit="contain"
-          width={200}
-          style={{ minHeight: 200 }}
-          src={data.meetupGroup.group_photo.photo_link}
-        />
-        <Fade left ssrFadeout distance="20px" duration={1000}>
-          {data.meetupGroup.events.map(event => (
-            <MeetupPreview meetup={event} key={event.meetupId} />
-          ))}
-        </Fade>
-      </ResponsiveGrid>
-    </Box>
+    <ResponsiveGrid>
+      <Image
+        alignSelf="center"
+        fit="contain"
+        width={200}
+        style={{ minHeight: 200 }}
+        src={data.meetupGroup.group_photo.photo_link}
+      />
+      <Fade left ssrFadeout distance="20px" duration={1000}>
+        {data.meetupGroup.events.map(event => (
+          <MeetupPreview meetup={event} key={event.meetupId} />
+        ))}
+      </Fade>
+    </ResponsiveGrid>
   </Layout>
 )
 

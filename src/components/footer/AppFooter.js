@@ -74,6 +74,10 @@ export default () => (
                 <Anchor as={Link} to="/code-of-conduct">
                   Code of Conduct
                 </Anchor>
+                &nbsp;|&nbsp;
+                <Anchor as={Link} to="/team">
+                  Team
+                </Anchor>
               </Box>
               <Text>&copy; 2019 coding earth</Text>
             </Box>

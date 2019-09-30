@@ -21,6 +21,7 @@
     "gatsby-source-cloudinary": "github:elmariachi111/gatsby-source-cloudinary",
     "gatsby-source-filesystem": "^2.1.11",
     "gatsby-source-meetup": "github:elmariachi111/gatsby-source-meetup#prelim",
+    "gatsby-transformer-json": "^2.2.11",
     "gatsby-transformer-remark": "^2.6.22",
     "gatsby-transformer-sharp": "^2.2.13",
     "grommet": "^2.7.7",

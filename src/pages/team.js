@@ -1,23 +1,75 @@
 import React from "react"
 import { Fade } from "react-reveal"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
-import { Box, Heading, Image, Paragraph } from "grommet"
-import { Code, Globe, Grow, ForwardTen, ScheduleNew } from "grommet-icons"
-
-import styled from "styled-components"
+import {
+  Box,
+  Grid,
+  Heading,
+  Image,
+  Paragraph,
+  ResponsiveContext,
+} from "grommet"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import { theme } from "../components/theme"
+
 import ResponsiveGrid from "../components/ResponsiveGrid"
-import ResponsiveTwoCols from "../components/ResponsiveTwoCols"
 
-export default () => (
-  <Layout>
-    <SEO title="Home" />
+export default () => {
+  const team = useStaticQuery(graphql`
+    {
+      allTeamJson {
+        edges {
+          node {
+            name
+            position
+            img
+          }
+        }
+      }
+    }
+  `)
 
-    <Box margin="large">
-      <ResponsiveGrid></ResponsiveGrid>
-    </Box>
-  </Layout>
-)
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <ResponsiveGrid>
+        <Heading level={1} color="turqoise">
+          Team &amp; Organizers
+        </Heading>
+        <ResponsiveContext.Consumer>
+          {size => (
+            <Grid
+              columns={size === `small` ? `auto` : [`1/2`, `1/2`]}
+              gap="small"
+            >
+              {team.allTeamJson.edges.map(({ node }) => (
+                <Box key={node.id}>
+                  <Heading level={3} color="brand" margin="none">
+                    {node.name}
+                  </Heading>
+                  <Heading
+                    level={4}
+                    color="turqoise"
+                    margin={{ vertical: `small` }}
+                  >
+                    {node.position}
+                  </Heading>
+                  <Box height="medium" margin={{ bottom: `large` }}>
+                    <Image
+                      src={node.img}
+                      fit="cover"
+                      width="auto"
+                      style={{ objectPosition: `top` }}
+                    />
+                  </Box>
+                </Box>
+              ))}
+            </Grid>
+          )}
+        </ResponsiveContext.Consumer>
+      </ResponsiveGrid>
+    </Layout>
+  )
+}
