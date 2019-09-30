@@ -40,13 +40,13 @@ export default () => (
         {size == `small` ? (
           <DropButton
             label={
-              <Text size="large" weight="bold" color="brand">
+              <Text size="medium" weight="bold" color="brand">
                 Location
               </Text>
             }
             color="brand"
             size="xlarge"
-            icon={<Globe color="brand" />}
+            icon={<Globe color="turqoise" />}
             dropProps={{ elevation: `xsmall` }}
             dropContent={
               <Box pad="medium" background="dark-1">

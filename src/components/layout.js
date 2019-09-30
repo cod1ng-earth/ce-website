@@ -22,18 +22,16 @@ const Layout = ({ children }) => {
 
   const [showSidebar, setShowSidebar] = useState(false)
   return (
-    <Grommet full theme={theme}>
-      <Box full={true} flex={false}>
-        <AppHeader
-          appName="coding earth"
-          onToggleSidebar={() => {
-            setShowSidebar(!showSidebar)
-          }}
-        />
-        {children}
-        <AppFooter></AppFooter>
-        <SubFooter />
-      </Box>
+    <Grommet theme={theme}>
+      <AppHeader
+        appName="coding earth"
+        onToggleSidebar={() => {
+          setShowSidebar(!showSidebar)
+        }}
+      />
+      {children}
+      <AppFooter></AppFooter>
+      <SubFooter />
     </Grommet>
   )
 }

@@ -74,6 +74,12 @@ function SEO({ description, lang, meta, title }) {
         rel="stylesheet"
       />
       <link href="/font/fonts.css" rel="stylesheet" />
+      <style type="text/css">{`
+        body {
+            margin:0;
+        }
+
+    `}</style>
     </Helmet>
   )
 }
