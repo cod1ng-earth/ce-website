@@ -42,6 +42,11 @@ export const theme = deepMerge(dark, {
       avatar: `36px`,
       sidebar: `60px`,
     },
+    breakpoints: {
+      medium: {
+        value: 1180,
+      },
+    },
   },
 
   anchor: {
