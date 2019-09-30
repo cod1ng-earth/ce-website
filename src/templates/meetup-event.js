@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import { Box, Image } from "grommet"
+import excerpt from "excerpt-html"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
@@ -16,7 +17,10 @@ import RSVPButton from "../components/ui/RSVPButton"
 
 export default ({ data }) => (
   <Layout>
-    <SEO title={data.meetupEvent.name} />
+    <SEO
+      title={data.meetupEvent.name}
+      description={excerpt(data.meetupEvent.description)}
+    />
     <EventHeader meetup={data.meetupEvent} group={data.meetupGroup} />
 
     <ResponsiveGrid>

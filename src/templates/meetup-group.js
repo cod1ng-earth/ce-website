@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Box, Image } from "grommet"
+import excerpt from "excerpt-html"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -11,10 +12,14 @@ import Fade from "react-reveal/Fade"
 
 export default ({ data }) => (
   <Layout>
-    <SEO title={data.meetupGroup.name} />
+    <SEO
+      title={data.meetupGroup.name}
+      description={excerpt(data.meetupGroup.description)}
+    />
 
     <ResponsiveGrid>
       <Image
+        alt={`${data.meetupGroup.name} logo`}
         alignSelf="center"
         fit="contain"
         width={200}
@@ -35,6 +40,7 @@ export const query = graphql`
     meetupGroup(urlname: { eq: $urlname }) {
       id
       name
+      description
       urlname
       group_photo {
         photo_link
