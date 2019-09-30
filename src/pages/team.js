@@ -71,7 +71,10 @@ export default () => {
                     {node.position}
                   </Heading>
                   <Box height="medium" margin={{ bottom: `large` }}>
-                    <Image fluid={imgMap[node.img].childImageSharp.fluid} />
+                    <Image
+                      durationFadeIn={5000}
+                      fluid={imgMap[node.img].childImageSharp.fluid}
+                    />
                   </Box>
                 </Box>
               ))}
