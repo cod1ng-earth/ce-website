@@ -23,10 +23,11 @@ const MeetupButton = styled(Button)`
 export default ({ meetup }) => (
   <MeetupButton
     href={meetup.link}
+    rel="noopener"
     color="brand"
     margin="small"
     target="_blank"
-    icon={<Image src={meetup_button} height="30px" />}
+    icon={<Image alt="meetup.com logo" src={meetup_button} height="30px" />}
     label="RSVP"
   ></MeetupButton>
 )

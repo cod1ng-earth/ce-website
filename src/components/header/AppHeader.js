@@ -58,7 +58,7 @@ export default () => (
           <Menu />
         )}
         <StyledAnchor as={Link} to="/">
-          <Image src={logo} height={`50px`} />
+          <Image src={logo} height={`50px`} alt="coding earth logo" />
         </StyledAnchor>
       </Box>
     )}

@@ -39,6 +39,7 @@ const TheForm = ({ submitForm }) => {
       onSubmit={() => submitForm(body)}
     >
       <FormField
+        aria-label="your email address"
         name="email"
         type="email"
         placeholder="Your@emailaddre.ss"
@@ -46,15 +47,25 @@ const TheForm = ({ submitForm }) => {
       />
       <HiddenField>
         <label>
-          Another field for you to fill: <input name="important-note-field" />
+          Another field for you to fill:{` `}
+          <input
+            aria-label="dont fill this field if youre not a machine"
+            name="important-note-field"
+          />
         </label>
-        <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
+        <input
+          type="hidden"
+          name="form-name"
+          aria-label="a technical field thats filled automatically"
+          value={NETLIFY_FORM_NAME}
+        />
       </HiddenField>
 
       <TextArea
         name="message"
         focusIndicator={true}
         resize="vertical"
+        ariaLabel="your message for us"
         placeholder="your message"
         value={body.message}
         onChange={e => setBody({ ...body, message: e.target.value })}

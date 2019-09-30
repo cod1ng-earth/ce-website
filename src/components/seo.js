@@ -73,8 +73,14 @@ function SEO({ description, lang, meta, title }) {
         href="https://fonts.googleapis.com/css?family=Karla|Source+Code+Pro&display=swap"
         rel="stylesheet"
       />
-      <link href="/font/fonts.css" rel="stylesheet" />
       <style type="text/css">{`
+        /* latin-ext */
+        @font-face {
+          font-family: 'OCR-A';
+          font-display: auto;
+          src: local('OCR-A'), url(/font/OCRA.ttf) format("truetype");
+        }
+
         body {
             margin:0;
         }

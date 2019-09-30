@@ -60,7 +60,10 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO
+        title="home"
+        description="coding earth is a meetup community for developers"
+      />
 
       <Box margin="large">
         <ResponsiveGrid>
@@ -89,6 +92,7 @@ const IndexPage = () => {
 
             <Box height="medium" overflow="hidden">
               <Image
+                alt="coding berlin crowd in september 2018 waving at you"
                 fit="cover"
                 src="//res.cloudinary.com/turbinekreuzberg/image/upload/t_maxeco/v1568491378/coding-earth/coding-berlin/sep_2018/IMG_3844.jpg"
               />

@@ -47,7 +47,7 @@ export default () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Team" description="The team members of Coding Earth" />
       <ResponsiveGrid>
         <Heading level={1} color="turqoise">
           Team &amp; Organizers

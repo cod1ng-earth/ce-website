@@ -11,9 +11,10 @@ export default () => (
     <ResponsiveGrid>
       <Text textAlign="center">
         built with
-        <Anchor href="https://www.gatsbyjs.org" target="_blank">
+        <Anchor href="https://www.gatsbyjs.org" target="_blank" rel="noopener">
           <Image
             title="Gatsby"
+            alt="Gatsby static site generator logo"
             src={gatsby_icon}
             fit="contain"
             width="30px"
@@ -23,9 +24,10 @@ export default () => (
         </Anchor>
         {` `}
         and
-        <Anchor href="https://grommet.io" target="_blank">
+        <Anchor href="https://grommet.io" target="_blank" rel="noopener">
           <Image
             title="grommet v2"
+            alt="Grommet frontend library logo"
             src={grommet_icon}
             fit="contain"
             width="40px"
@@ -39,6 +41,7 @@ export default () => (
         <Anchor
           href="https://github.com/cod1ng-earth/ce-website"
           target="_blank"
+          rel="noopener"
         >
           <Github size="medium" color="brand" /> Fork us and fix it
         </Anchor>

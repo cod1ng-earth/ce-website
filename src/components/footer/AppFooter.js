@@ -42,7 +42,12 @@ export default () => (
             columns={size == `small` ? [`auto`] : [`1/3`, `1/3`, `1/3`]}
           >
             <Box alignSelf="start" align="center" flex={true}>
-              <Image src={logo_ce} fit="contain" width="250px" />
+              <Image
+                src={logo_ce}
+                fit="contain"
+                width="250px"
+                alt="coding earth logo"
+              />
               <Heading level={6} margin={{ top: `medium` }}>
                 1 line of code.
               </Heading>
@@ -51,31 +56,67 @@ export default () => (
               <Text>follow us and get in touch with us</Text>
               <Box gap="medium" direction="row" margin={{ vertical: `small` }}>
                 <Box>
-                  <Anchor href="https://twitter.com/coding_earth">
-                    <Image src={twitter_button} fit="contain" width="40px" />
+                  <Anchor
+                    href="https://twitter.com/coding_earth"
+                    ariaLabel="follow us on Twitter"
+                  >
+                    <Image
+                      src={twitter_button}
+                      fit="contain"
+                      width="40px"
+                      alt="twitter logo button"
+                    />
                   </Anchor>
                 </Box>
                 <Box>
-                  <Anchor href="https://www.meetup.com/CODING-BERLIN/">
-                    <Image src={meetup_button} fit="contain" width="40px" />
+                  <Anchor
+                    href="https://www.meetup.com/CODING-BERLIN/"
+                    ariaLabel="visit our meetup.com page"
+                  >
+                    <Image
+                      src={meetup_button}
+                      fit="contain"
+                      width="40px"
+                      alt="meetup logo button"
+                    />
                   </Anchor>
                 </Box>
                 <Box>
-                  <Anchor href="https://coding-earth.slack.com">
-                    <Image src={slack_button} fit="contain" width="40px" />
+                  <Anchor
+                    href="https://coding-earth.slack.com"
+                    ariaLabel="connect to us on Slack"
+                  >
+                    <Image
+                      src={slack_button}
+                      fit="contain"
+                      width="40px"
+                      alt="slack logo button"
+                    />
                   </Anchor>
                 </Box>
               </Box>
               <Box direction="row" margin={{ vertical: `medium` }}>
-                <Anchor as={Link} to="/imprint">
+                <Anchor
+                  as={Link}
+                  to="/imprint"
+                  ariaLabel="information about our contact"
+                >
                   Imprint
                 </Anchor>
                 &nbsp;|&nbsp;
-                <Anchor as={Link} to="/code-of-conduct">
+                <Anchor
+                  as={Link}
+                  to="/code-of-conduct"
+                  ariaLabel="our code of conduct"
+                >
                   Code of Conduct
                 </Anchor>
                 &nbsp;|&nbsp;
-                <Anchor as={Link} to="/team">
+                <Anchor
+                  as={Link}
+                  to="/team"
+                  ariaLabel="see who's behind coding earth"
+                >
                   Team
                 </Anchor>
               </Box>
