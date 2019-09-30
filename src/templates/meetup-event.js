@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Box } from "grommet"
+import { Box, Image } from "grommet"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
@@ -35,7 +35,7 @@ export default ({ data }) => (
       </Box>
     </ResponsiveGrid>
 
-    <Box full pad="medium" overflow="hidden">
+    <Box pad="medium">
       <Carousel
         transitionTime={800}
         useKeyboardArrows
@@ -48,17 +48,8 @@ export default ({ data }) => (
         showIndicators={false}
       >
         {data.allCloudinaryMedia.edges.map(img => (
-          <Box
-            full
-            key={img.node.id}
-            height="75vh"
-            overflow="hidden"
-            pad="medium"
-          >
-            <img
-              src={img.node.maxeco_image.secure_url}
-              style={{ marginTop: `-20vh` }}
-            />
+          <Box key={img.node.id} height="large" pad="medium">
+            <Image src={img.node.maxeco_image.secure_url} fit="contain" />
           </Box>
         ))}
       </Carousel>

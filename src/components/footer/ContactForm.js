@@ -10,44 +10,40 @@ const HiddenField = styled.div`
 `
 const NETLIFY_FORM_NAME = `cearth-contact`
 
-export default () => {
-  const [submitted, setSubmitted] = useState(false)
-  const [message, setMessage] = useState(``)
+const ThankYou = () => (
+  <Fade bottom distance="40px" duration={2000}>
+    <Paragraph
+      color="turqoise"
+      textAlign="center"
+      style={{ fontWeight: `bolder` }}
+    >
+      We received your message. <br /> Please standby.
+    </Paragraph>
+  </Fade>
+)
 
-  const formSubmitted = async evt => {
-    try {
-      const body = {
-        ...evt.value,
-        message,
-      }
-      const response = await postSubmission(NETLIFY_FORM_NAME, body)
-      console.log(response)
-    } catch (e) {
-      console.error(e)
-    }
+const TheForm = ({ submitForm }) => {
+  const [body, setBody] = useState({
+    message: ``,
+    email: ``,
+  })
 
-    setSubmitted(true)
-  }
+  const disabled = body.message.length < 5 || body.email.length < 5
 
-  return submitted ? (
-    <Fade bottom distance="40px" duration={2000}>
-      <Paragraph
-        color="turqoise"
-        textAlign="center"
-        style={{ fontWeight: `bolder` }}
-      >
-        We received your messsage. <br /> Please standby.
-      </Paragraph>
-    </Fade>
-  ) : (
+  return (
     <Form
       name={NETLIFY_FORM_NAME}
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="important-note-field"
-      onSubmit={formSubmitted}
+      onSubmit={() => submitForm(body)}
     >
-      <FormField name="email" type="email" placeholder="Your@emailaddre.ss" />
+      <FormField
+        name="email"
+        type="email"
+        placeholder="Your@emailaddre.ss"
+        onChange={e => setBody({ ...body, email: e.target.value })}
+      />
       <HiddenField>
         <label>
           Another field for you to fill: <input name="important-note-field" />
@@ -60,17 +56,33 @@ export default () => {
         focusIndicator={true}
         resize="vertical"
         placeholder="your message"
-        value={message}
-        onChange={e => setMessage(e.target.value)}
+        value={body.message}
+        onChange={e => setBody({ ...body, message: e.target.value })}
       />
       <Button
         type="submit"
         color="brand"
-        fill
-        primary
+        disabled={disabled}
+        primarymessage
+        fill="horizontal"
         label="Submit"
         margin={{ top: `medium` }}
       />
     </Form>
   )
+}
+
+export default () => {
+  const [submitted, setSubmitted] = useState(false)
+
+  const submitForm = async body => {
+    try {
+      const response = await postSubmission(NETLIFY_FORM_NAME, body)
+    } catch (e) {
+      console.error(e)
+    }
+    setSubmitted(true)
+  }
+
+  return submitted ? <ThankYou /> : <TheForm submitForm={submitForm} />
 }
