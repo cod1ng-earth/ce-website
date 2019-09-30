@@ -1,15 +1,9 @@
 import React from "react"
 import { Fade } from "react-reveal"
 import { Link, graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
 
-import {
-  Box,
-  Grid,
-  Heading,
-  Image,
-  Paragraph,
-  ResponsiveContext,
-} from "grommet"
+import { Box, Grid, Heading, ResponsiveContext } from "grommet"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
@@ -28,8 +22,28 @@ export default () => {
           }
         }
       }
+
+      allFile(filter: { relativePath: { regex: "/team/" } }) {
+        edges {
+          node {
+            id
+            name
+            relativePath
+            childImageSharp {
+              fluid(maxWidth: 600, maxHeight: 600) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
+        }
+      }
     }
   `)
+
+  const imgMap = {}
+  team.allFile.edges.forEach(({ node }) => {
+    imgMap[node.name] = node
+  })
 
   return (
     <Layout>
@@ -57,12 +71,7 @@ export default () => {
                     {node.position}
                   </Heading>
                   <Box height="medium" margin={{ bottom: `large` }}>
-                    <Image
-                      src={node.img}
-                      fit="cover"
-                      width="auto"
-                      style={{ objectPosition: `top` }}
-                    />
+                    <Image fluid={imgMap[node.img].childImageSharp.fluid} />
                   </Box>
                 </Box>
               ))}

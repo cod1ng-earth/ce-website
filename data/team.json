@@ -1,37 +1,37 @@
 [
     {
         "name": "Stefan Adolf",
-        "img": "/img/team/stefan.jpg",
+        "img": "stefan",
         "position": "president"
     },
     {
         "name": "Bernd Alter",
-        "img": "/img/team/bernd.jpg",
+        "img": "bernd",
         "position": "vice president"
     },
     {
         "name": "Tom Ullner",
-        "img": "/img/team/tom.jpg",
+        "img": "tom",
         "position": "local host"
     },
     {
         "name": "Florian Möller",
-        "img": "/img/team/flo2.jpg",
+        "img": "flo2",
         "position": "treasurer"
     },
     {
         "name": "Tobias Peter",
-        "img": "/img/team/tobias.jpg",
+        "img": "tobias",
         "position": "event host leipzig"
     },
     {
         "name": "Joao Henrique",
-        "img": "/img/team/joao.jpg",
+        "img": "joao",
         "position": "event host portugal"
     },
     {
         "name": "Phillip Kessels",
-        "img": "/img/team/phillip.jpg",
+        "img": "phillip",
         "position": "event host portugal"
     }
 ]
