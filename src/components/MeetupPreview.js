@@ -37,42 +37,36 @@ export default ({ meetup }) => {
       alignSelf="center"
       onClick={() => navigate(`/${meetup.group.urlname}/${meetup.meetupId}`)}
     >
-      <Grid
-        columns={[`auto`, `small`]}
-        rows={[`auto`, `auto`]}
-        areas={[
-          { name: `title`, start: [0, 0], end: [1, 1] },
-          { name: `img`, start: [1, 0], end: [1, 0] },
-          { name: `desc`, start: [0, 1], end: [1, 1] },
-        ]}
-      >
-        <Box gridArea="title" pad="small">
+      <Grid columns={[`auto`, `small`]}>
+        <Box pad="small">
           <Text>
             {date.toFormat(`ccc`)},{` `}
             {date.toLocaleString(DateTime.DATETIME_MED)}
           </Text>
-          <Heading full level={3} margin={{ bottom: `small` }}>
-            {meetup.name}
-          </Heading>
-
-          {meetup.venue ? (
-            <Text weight="bold">
-              <Map size="medium" /> {meetup.venue.name}
-            </Text>
-          ) : (
-            <Text color="turqoise">needs a venue</Text>
-          )}
         </Box>
         <Box>
           {meetup.status === `upcoming` && <RSVPButton meetup={meetup} />}
         </Box>
-
-        <Box gridArea="desc" size="small" pad="small">
-          <Paragraph fill>
-            {excerpt(meetup.description, { pruneLength: 500 })}
-          </Paragraph>
-        </Box>
       </Grid>
+      <Box pad="small">
+        <Heading level={3} margin="{{ vertical: `small` }}">
+          {meetup.name}
+        </Heading>
+
+        {meetup.venue ? (
+          <Text weight="bold">
+            <Map size="medium" /> {meetup.venue.name}
+          </Text>
+        ) : (
+          <Text color="turqoise">needs a venue</Text>
+        )}
+      </Box>
+
+      <Box gridArea="desc" size="small" pad="small">
+        <Paragraph fill>
+          {excerpt(meetup.description, { pruneLength: 500 })}
+        </Paragraph>
+      </Box>
     </HoverBox>
   )
 }

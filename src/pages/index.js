@@ -161,7 +161,7 @@ const IndexPage = () => {
           </Heading>
 
           {upcomingMeetups.allMeetupEvent.edges.map(({ node }) => (
-            <MeetupPreview meetup={node} />
+            <MeetupPreview meetup={node} key={node.meetupId} />
           ))}
         </ResponsiveGrid>
       </Box>
