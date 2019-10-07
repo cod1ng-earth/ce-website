@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box, Image } from "grommet"
+import { Box, Image, Heading } from "grommet"
 import excerpt from "excerpt-html"
 
 import Layout from "../components/layout"
@@ -26,6 +26,7 @@ export default ({ data }) => (
         style={{ minHeight: 200 }}
         src={data.meetupGroup.group_photo.photo_link}
       />
+      <Heading level={1}>{data.meetupGroup.name}</Heading>
       <Fade left ssrFadeout distance="20px" duration={1000}>
         {data.meetupGroup.events.map(event => (
           <MeetupPreview meetup={event} key={event.meetupId} />

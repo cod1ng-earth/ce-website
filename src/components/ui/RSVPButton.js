@@ -27,7 +27,14 @@ export default ({ meetup }) => (
     color="brand"
     margin="small"
     target="_blank"
-    icon={<Image alt="meetup.com logo" src={meetup_button} height="30px" />}
+    icon={
+      <Image
+        alt="meetup.com logo"
+        src={meetup_button}
+        height="30px"
+        margin={{ left: `1em` }}
+      />
+    }
     label="RSVP"
   ></MeetupButton>
 )

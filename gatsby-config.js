@@ -3,8 +3,9 @@ require(`dotenv`).config()
 module.exports = {
   siteMetadata: {
     title: `coding.earth`,
-    description: ``,
-    author: `@stadolf`,
+    description: `coding earth is a non profit association, based in Berlin. We want to improve the life of coders. We support you with community, knowledge, meetups, hackathons.`,
+    author: `@coding_earth`,
+    googleSiteVerification: `talc7NDTVj5vV1Z5Y0lSeWyuE67cCpajQVMSQmK5xMw`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -63,6 +64,7 @@ module.exports = {
       options: {
         groupUrlName: `CODING-BERLIN`,
         status: `upcoming,past`,
+        fields: `featured_photo`,
         desc: `true`,
         page: 20,
       },
@@ -72,6 +74,7 @@ module.exports = {
       options: {
         groupUrlName: `coding-leipzig`,
         status: `upcoming,past`,
+        fields: `featured_photo`,
         desc: `true`,
         page: 20,
       },
@@ -81,6 +84,7 @@ module.exports = {
       options: {
         groupUrlName: `coding-stuttgart`,
         status: `upcoming,past`,
+        fields: `featured_photo`,
         desc: `true`,
         page: 20,
       },
@@ -90,6 +94,7 @@ module.exports = {
       options: {
         groupUrlName: `CODING-PORTUGAL`,
         status: `upcoming,past`,
+        fields: `featured_photo`,
         desc: `true`,
         page: 20,
       },

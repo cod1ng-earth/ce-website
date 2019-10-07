@@ -51,7 +51,7 @@ export default ({ meetup, group }) => {
                 />
 
                 <Box gridArea="headline">
-                  <Heading level={2} margin={{ bottom: `xsmall` }}>
+                  <Heading level={1} margin={{ bottom: `xsmall` }}>
                     {meetup.name}
                   </Heading>
 

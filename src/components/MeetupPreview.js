@@ -49,7 +49,7 @@ export default ({ meetup }) => {
         </Box>
       </Grid>
       <Box pad="small">
-        <Heading level={3} margin="{{ vertical: `small` }}">
+        <Heading level={2} margin="{{ vertical: `small` }}">
           {meetup.name}
         </Heading>
 

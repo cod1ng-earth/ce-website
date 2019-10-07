@@ -15,51 +15,82 @@ import StyledParagraph from "../components/StyledParagraph"
 import ResponsiveGrid from "../components/ResponsiveGrid"
 import RSVPButton from "../components/ui/RSVPButton"
 
-export default ({ data }) => (
-  <Layout>
-    <SEO
-      title={data.meetupEvent.name}
-      description={excerpt(data.meetupEvent.description)}
-    />
-    <EventHeader meetup={data.meetupEvent} group={data.meetupGroup} />
+export default ({ data }) => {
+  const featuredPhoto = data.meetupEvent.featured_photo
+    ? data.meetupEvent.featured_photo.photo_link
+    : data.meetupGroup.group_photo.thumb_link
 
-    <ResponsiveGrid>
-      {data.mdx === null ? (
-        <StyledParagraph
-          fill
-          dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
-        />
-      ) : (
-        <Mdx mdx={data.mdx} />
-      )}
-      <Box justify="center">
-        {data.meetupEvent.status === `upcoming` && (
-          <RSVPButton meetup={data.meetupEvent} />
+  return (
+    <Layout>
+      <SEO
+        meta={[
+          {
+            property: `og:image`,
+            content: featuredPhoto,
+          },
+          {
+            property: `twitter:image`,
+            content: featuredPhoto,
+          },
+        ]}
+        title={data.meetupEvent.name}
+        description={excerpt(data.meetupEvent.description)}
+      />
+      <EventHeader meetup={data.meetupEvent} group={data.meetupGroup} />
+
+      <ResponsiveGrid>
+        {data.meetupEvent.featured_photo && (
+          <Image
+            gridArea="logo"
+            fit="contain"
+            src={data.meetupEvent.featured_photo.photo_link}
+            justify="center"
+            alignSelf="center"
+            justifySelf="center"
+            alt={`${data.meetupEvent.name} featured photo`}
+          />
+        )}
+        {data.mdx === null ? (
+          <StyledParagraph fill>
+            <div
+              dangerouslySetInnerHTML={{ __html: data.meetupEvent.description }}
+            />
+          </StyledParagraph>
+        ) : (
+          <Mdx mdx={data.mdx} />
+        )}
+
+        <Box justify="center">
+          {data.meetupEvent.status === `upcoming` && (
+            <RSVPButton meetup={data.meetupEvent} />
+          )}
+        </Box>
+      </ResponsiveGrid>
+
+      <Box pad="medium">
+        {data.allCloudinaryMedia.edges.length > 0 && (
+          <Carousel
+            transitionTime={800}
+            useKeyboardArrows
+            autoPlay
+            infiniteLoop
+            centerMode
+            showThumbs={false}
+            showArrows={true}
+            emulateTouch={true}
+            showIndicators={false}
+          >
+            {data.allCloudinaryMedia.edges.map(({ node }) => (
+              <Box key={node.id} height="large" pad="medium">
+                <Image src={node.maxeco_image.secure_url} fit="contain" />
+              </Box>
+            ))}
+          </Carousel>
         )}
       </Box>
-    </ResponsiveGrid>
-
-    <Box pad="medium">
-      <Carousel
-        transitionTime={800}
-        useKeyboardArrows
-        autoPlay
-        infiniteLoop
-        centerMode
-        showThumbs={false}
-        showArrows={true}
-        emulateTouch={true}
-        showIndicators={false}
-      >
-        {data.allCloudinaryMedia.edges.map(img => (
-          <Box key={img.node.id} height="large" pad="medium">
-            <Image src={img.node.maxeco_image.secure_url} fit="contain" />
-          </Box>
-        ))}
-      </Carousel>
-    </Box>
-  </Layout>
-)
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query($eventId: String, $groupId: String, $cloudinaryTag: String) {
@@ -74,7 +105,10 @@ export const query = graphql`
         urlname
         timezone
       }
-
+      featured_photo {
+        highres_link
+        photo_link
+      }
       venue {
         name
         address_1
