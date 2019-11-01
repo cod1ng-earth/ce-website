@@ -94,7 +94,7 @@ const IndexPage = () => {
               <Image
                 alt="coding stuttgart crowd in october 2019 waving at you"
                 fit="cover"
-                src="//res.cloudinary.com/turbinekreuzberg/image/upload/t_maxeco/v1571864861/coding-earth/coding-stuttgart/oct_19/IMG_7243.jpg"
+                src="//res.cloudinary.com/turbinekreuzberg/image/upload/t_maxeco/v1572613038/coding-earth/coding-portugal/3/FAO/IMG_7477.jpg"
               />
             </Box>
           </ResponsiveTwoCols>
