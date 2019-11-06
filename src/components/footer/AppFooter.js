@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Github } from "grommet-icons"
 
 import {
   Anchor,
@@ -63,7 +64,7 @@ export default () => (
                     <Image
                       src={twitter_button}
                       fit="contain"
-                      width="40px"
+                      width="45px"
                       alt="twitter logo button"
                     />
                   </Anchor>
@@ -76,7 +77,7 @@ export default () => (
                     <Image
                       src={meetup_button}
                       fit="contain"
-                      width="40px"
+                      width="50px"
                       alt="meetup logo button"
                     />
                   </Anchor>
@@ -89,12 +90,21 @@ export default () => (
                     <Image
                       src={slack_button}
                       fit="contain"
-                      width="40px"
+                      width="45px"
                       alt="slack logo button"
                     />
                   </Anchor>
                 </Box>
+                <Box>
+                  <Anchor
+                    href="http://github.com/cod1ng-earth/"
+                    ariaLabel="collaborate on Github"
+                  >
+                    <Github size="large" />
+                  </Anchor>
+                </Box>
               </Box>
+
               <Box direction="row" margin={{ vertical: `medium` }}>
                 <Anchor
                   as={Link}
