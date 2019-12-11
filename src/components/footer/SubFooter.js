@@ -31,8 +31,21 @@ export default () => (
             src={grommet_icon}
             fit="contain"
             width="40px"
-            margin={{ left: `small` }}
             style={{ verticalAlign: `-10px` }}
+          />
+        </Anchor>
+        on
+        <Anchor
+          href="https://app.netlify.com/sites/codingearth/deploys"
+          target="_blank"
+          rel=" noopener"
+        >
+          <Image
+            alt="Netlify deploy status"
+            fit="contain"
+            margin={{ left: `small` }}
+            style={{ verticalAlign: `middle` }}
+            src="https://api.netlify.com/api/v1/badges/91bcced6-44a4-4266-89b3-1bf16b9192b7/deploy-status"
           />
         </Anchor>
       </Text>
