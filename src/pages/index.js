@@ -1,18 +1,18 @@
-import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import { Fade } from "react-reveal"
+import React from 'react'
+import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Fade } from 'react-reveal'
 
-import { Box, Heading, Image, Paragraph } from "grommet"
-import { Code, Globe, Grow, ForwardTen, ScheduleNew } from "grommet-icons"
+import { Box, Heading, Image, Paragraph } from 'grommet'
+import { Code, Globe, Grow, ForwardTen, ScheduleNew } from 'grommet-icons'
 
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import SEO from "../components/seo"
-import Layout from "../components/layout"
-import { theme } from "../components/theme"
-import ResponsiveGrid from "../components/ResponsiveGrid"
-import ResponsiveTwoCols from "../components/ResponsiveTwoCols"
-import MeetupPreview from "../components/MeetupPreview"
+import SEO from '../components/seo'
+import Layout from '../components/layout'
+import { theme } from '../components/theme'
+import ResponsiveGrid from '../components/ResponsiveGrid'
+import ResponsiveTwoCols from '../components/ResponsiveTwoCols'
+import MeetupPreview from '../components/MeetupPreview'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -20,8 +20,8 @@ const StyledRules = styled.ul`
   margin: 0;
 
   li {
-    background-color: ${theme.global.colors[`very-dark`]};
-    border-bottom: 3px solid ${theme.global.colors[`brand`]};
+    background-color: ${theme.global.colors['very-dark']};
+    border-bottom: 3px solid ${theme.global.colors['brand']};
     padding: 30px 30px 40px;
     font-size: 1.5em;
     margin-bottom: 2em;
@@ -74,9 +74,8 @@ const IndexPage = () => {
                   <Globe
                     size="large"
                     color="turqoise"
-                    style={{ verticalAlign: `sub` }}
-                  />
-                  {` `}
+                    style={{ verticalAlign: 'sub' }}
+                  />{' '}
                   hello, world.
                 </Heading>
                 <Paragraph fill>
@@ -107,14 +106,14 @@ const IndexPage = () => {
             <Heading
               level={2}
               color="brand"
-              style={{ transform: `rotate3d(0,0,2,180deg)` }}
+              style={{ transform: 'rotate3d(0,0,2,180deg)' }}
             >
               <Code
                 size="large"
                 color="brand"
-                style={{ verticalAlign: `sub` }}
-              />
-              {` `}1 line of code.
+                style={{ verticalAlign: 'sub' }}
+              />{' '}
+              1 line of code.
             </Heading>
             <ResponsiveTwoCols>
               <Fade left ssrFadeout distance="20px" duration={1000}>
@@ -142,8 +141,8 @@ const IndexPage = () => {
             </ResponsiveTwoCols>
             <Paragraph
               fill
-              style={{ fontWeight: `bold` }}
-              margin={{ horizontal: `large` }}
+              style={{ fontWeight: 'bold' }}
+              margin={{ horizontal: 'large' }}
             >
               talks have to be hands on, they must contain at least 1 line of
               code and in the best case they're massively supported by demos.
@@ -158,9 +157,8 @@ const IndexPage = () => {
             <ScheduleNew
               size="large"
               color="turqoise"
-              style={{ verticalAlign: `sub` }}
-            />
-            {` `}
+              style={{ verticalAlign: 'sub' }}
+            />{' '}
             upcoming meetups
           </Heading>
 
@@ -176,7 +174,7 @@ const IndexPage = () => {
               <Grow
                 size="large"
                 color="turqoise"
-                style={{ verticalAlign: `sub` }}
+                style={{ verticalAlign: 'sub' }}
               />
               contribute!
             </Heading>
@@ -200,9 +198,8 @@ const IndexPage = () => {
             <ForwardTen
               size="large"
               color="brand"
-              style={{ verticalAlign: `sub` }}
-            />
-            {` `}
+              style={{ verticalAlign: 'sub' }}
+            />{' '}
             Our rules
           </Heading>
           <Fade left ssrFadeout distance="20px" duration={1000} cascade>
@@ -214,7 +211,7 @@ const IndexPage = () => {
                 you as a developer.
               </li>
               <li>
-                no marketing, no recruiting, only tech and if possible:{` `}
+                no marketing, no recruiting, only tech and if possible:{' '}
                 <b>code</b> (lets consider yaml valid, and of course you may
                 announce that your company is hiring)
               </li>
@@ -240,8 +237,7 @@ const IndexPage = () => {
                 there are no bad developers
               </li>
               <li>you do talk about coding earth</li>
-            </StyledRules>
-            {` `}
+            </StyledRules>{' '}
           </Fade>
         </ResponsiveGrid>
       </Box>

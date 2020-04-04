@@ -1,11 +1,11 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { theme } from "../theme"
-import { Text } from "grommet"
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
+import { theme } from '../theme'
+import { Text } from 'grommet'
 
 const StyledLink = styled(Link)`
-  font-family: "OCR-A";
+  font-family: 'OCR-A';
   color: ${theme.global.colors.brand};
   text-decoration: none;
   :hover {

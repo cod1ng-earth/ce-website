@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { theme } from "../theme"
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
+import { theme } from '../theme'
 import {
   Anchor,
   Box,
@@ -9,15 +9,15 @@ import {
   Image,
   ResponsiveContext,
   Text,
-} from "grommet"
-import { Globe } from "grommet-icons"
+} from 'grommet'
+import { Globe } from 'grommet-icons'
 
-import Menu from "./Menu"
+import Menu from './Menu'
 
-import logo from "../../images/coding_earth_logo.png"
+import logo from '../../images/coding_earth_logo.png'
 
 const StyledAnchor = styled(Anchor)`
-  font-family: "OCR-A";
+  font-family: 'OCR-A';
   color: ${theme.global.colors.brand};
   text-decoration: none;
   :hover {
@@ -35,9 +35,9 @@ export default () => (
         align="center"
         justify="between"
         responsive={false}
-        pad={{ vertical: `small`, horizontal: `medium` }}
+        pad={{ vertical: 'small', horizontal: 'medium' }}
       >
-        {size == `small` ? (
+        {size == 'small' ? (
           <DropButton
             label={
               <Text size="medium" weight="bold" color="brand">
@@ -47,7 +47,7 @@ export default () => (
             color="brand"
             size="xlarge"
             icon={<Globe color="turqoise" />}
-            dropProps={{ elevation: `xsmall` }}
+            dropProps={{ elevation: 'xsmall' }}
             dropContent={
               <Box pad="medium" background="dark-1">
                 <Menu />
@@ -58,7 +58,7 @@ export default () => (
           <Menu />
         )}
         <StyledAnchor as={Link} to="/">
-          <Image src={logo} height={`50px`} alt="coding earth logo" />
+          <Image src={logo} height={'50px'} alt="coding earth logo" />
         </StyledAnchor>
       </Box>
     )}

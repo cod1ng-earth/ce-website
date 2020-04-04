@@ -1,19 +1,19 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 
-import { Box, Image } from "grommet"
-import excerpt from "excerpt-html"
+import { Box, Image } from 'grommet'
+import excerpt from 'excerpt-html'
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"
-import { Carousel } from "react-responsive-carousel"
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { Carousel } from 'react-responsive-carousel'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import EventHeader from "../components/event/header"
-import Mdx from "../components/Mdx"
-import StyledParagraph from "../components/StyledParagraph"
-import ResponsiveGrid from "../components/ResponsiveGrid"
-import RSVPButton from "../components/ui/RSVPButton"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import EventHeader from '../components/event/header'
+import Mdx from '../components/Mdx'
+import StyledParagraph from '../components/StyledParagraph'
+import ResponsiveGrid from '../components/ResponsiveGrid'
+import RSVPButton from '../components/ui/RSVPButton'
 
 export default ({ data }) => {
   const featuredPhoto = data.meetupEvent.featured_photo
@@ -25,11 +25,11 @@ export default ({ data }) => {
       <SEO
         meta={[
           {
-            property: `og:image`,
+            property: 'og:image',
             content: featuredPhoto,
           },
           {
-            property: `twitter:image`,
+            property: 'twitter:image',
             content: featuredPhoto,
           },
         ]}
@@ -61,7 +61,7 @@ export default ({ data }) => {
         )}
 
         <Box justify="center">
-          {data.meetupEvent.status === `upcoming` && (
+          {data.meetupEvent.status === 'upcoming' && (
             <RSVPButton meetup={data.meetupEvent} />
           )}
         </Box>

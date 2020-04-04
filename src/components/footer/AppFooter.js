@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Github } from "grommet-icons"
+import React from 'react'
+import { Link } from 'gatsby'
+import { Github } from 'grommet-icons'
 
 import {
   Anchor,
@@ -10,16 +10,16 @@ import {
   Image,
   ResponsiveContext,
   Text,
-} from "grommet"
+} from 'grommet'
 
 //import earth from "../../images/earth_v.jpg"
-import logo_ce from "../../images/coding_earth_logo.png"
-import meetup_button from "../../images/meetup_button.png"
-import twitter_button from "../../images/twitter_button.png"
-import slack_button from "../../images/slack_button.png"
+import logo_ce from '../../images/coding_earth_logo.png'
+import meetup_button from '../../images/meetup_button.png'
+import twitter_button from '../../images/twitter_button.png'
+import slack_button from '../../images/slack_button.png'
 
-import ResponsiveGrid from "../ResponsiveGrid"
-import ContactForm from "./ContactForm"
+import ResponsiveGrid from '../ResponsiveGrid'
+import ContactForm from './ContactForm'
 
 export default () => (
   <ResponsiveContext.Consumer>
@@ -28,19 +28,19 @@ export default () => (
         tag="footer"
         direction="row"
         background={{
-          color: `dark-4`,
+          color: 'dark-4',
           dark: true,
           opacity: true,
         }}
         align="center"
         justify="between"
         responsive={false}
-        pad={{ vertical: `large` }}
+        pad={{ vertical: 'large' }}
       >
         <ResponsiveGrid>
           <Grid
             gap="medium"
-            columns={size == `small` ? [`auto`] : [`1/3`, `1/3`, `1/3`]}
+            columns={size == 'small' ? ['auto'] : ['1/3', '1/3', '1/3']}
           >
             <Box alignSelf="start" align="center" flex={true}>
               <Image
@@ -49,13 +49,13 @@ export default () => (
                 width="250px"
                 alt="coding earth logo"
               />
-              <Heading level={6} margin={{ top: `medium` }}>
+              <Heading level={6} margin={{ top: 'medium' }}>
                 1 line of code.
               </Heading>
             </Box>
             <Box align="center">
               <Text>follow us and get in touch with us</Text>
-              <Box gap="medium" direction="row" margin={{ vertical: `small` }}>
+              <Box gap="medium" direction="row" margin={{ vertical: 'small' }}>
                 <Box>
                   <Anchor
                     href="https://twitter.com/coding_earth"
@@ -105,7 +105,7 @@ export default () => (
                 </Box>
               </Box>
 
-              <Box direction="row" margin={{ vertical: `medium` }}>
+              <Box direction="row" margin={{ vertical: 'medium' }}>
                 <Anchor
                   as={Link}
                   to="/imprint"
