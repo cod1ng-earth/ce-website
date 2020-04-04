@@ -1,0 +1,32 @@
+[parity]
+# Local Development Chain
+chain = "dev"
+# Parity continously syncs the chain
+mode = "active"
+
+[network]
+# Parity will try to maintain connection to at least 3 peers.
+min_peers = 3
+# Parity will maintain at most 15 peers.
+max_peers = 15
+
+[rpc]
+#  JSON-RPC will be listening for connections on IP 0.0.0.0.
+interface = "0.0.0.0"
+# Allows Cross-Origin Requests from domain '*'.
+cors = ["*"]
+
+[websockets]
+#  JSON-RPC will be listening for connections on IP 0.0.0.0.
+interface = "0.0.0.0"
+
+[account]
+unlock = ["0x00a329c0648769A73afAc7F9381E08FB43dBEA72"]
+password = ["/home/parity/dev.password"]
+keys_iterations = 10240
+enable_signing_queue = false
+
+[misc]
+logging = "info"
+log_file = "/var/log/parity.log"
+color = true

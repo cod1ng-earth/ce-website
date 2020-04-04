@@ -1,0 +1,125 @@
+{
+  "contracts": {
+    "MeetupGroups": {
+      "address": "0x002155d5323cb425a89ecD3ab87AE5Ffdf4DB5F7",
+      "constructorCode": "6080604052612e56806100136000396000f3fe",
+      "bodyBytecodeHash": "9a5de48ff8ee78bf707e15dee1fa9b1986a5d1af1283ad8dba10b7e76f19f879",
+      "localBytecodeHash": "6f3b3fbcb9236379c720a1d3220f24e9fd2e03b3baa1558884c773f243095d7a",
+      "deployedBytecodeHash": "6f3b3fbcb9236379c720a1d3220f24e9fd2e03b3baa1558884c773f243095d7a",
+      "types": {
+        "t_bool": {
+          "id": "t_bool",
+          "kind": "elementary",
+          "label": "bool"
+        },
+        "t_uint256": {
+          "id": "t_uint256",
+          "kind": "elementary",
+          "label": "uint256"
+        },
+        "t_array:50<t_uint256>": {
+          "id": "t_array:50<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "50",
+          "kind": "array",
+          "label": "uint256[50]"
+        },
+        "t_address": {
+          "id": "t_address",
+          "kind": "elementary",
+          "label": "address"
+        },
+        "t_array:dyn<t_address>": {
+          "id": "t_array:dyn<t_address>",
+          "valueType": "t_address",
+          "length": "dyn",
+          "kind": "array",
+          "label": "address[]"
+        }
+      },
+      "storage": [
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
+          "label": "initialized",
+          "astId": 344,
+          "type": "t_bool",
+          "src": "757:24:3"
+        },
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
+          "label": "initializing",
+          "astId": 346,
+          "type": "t_bool",
+          "src": "876:25:3"
+        },
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
+          "label": "______gap",
+          "astId": 408,
+          "type": "t_array:50<t_uint256>",
+          "src": "1982:29:3"
+        },
+        {
+          "contract": "Ownable",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
+          "label": "_owner",
+          "astId": 226,
+          "type": "t_address",
+          "src": "526:22:2"
+        },
+        {
+          "contract": "Ownable",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
+          "label": "______gap",
+          "astId": 339,
+          "type": "t_array:50<t_uint256>",
+          "src": "2471:29:2"
+        },
+        {
+          "contract": "MeetupGroups",
+          "path": "contracts/MeetupGroups.sol",
+          "label": "groups",
+          "astId": 618,
+          "type": "t_array:dyn<t_address>",
+          "src": "1973:27:4"
+        }
+      ],
+      "warnings": {
+        "hasConstructor": false,
+        "hasSelfDestruct": false,
+        "hasDelegateCall": false,
+        "hasInitialValuesInDeclarations": false,
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [],
+        "storageDiff": []
+      }
+    }
+  },
+  "solidityLibs": {},
+  "proxies": {
+    "coding.earth/MeetupGroups": [
+      {
+        "address": "0xcd9a70C13C88863ECE51B302a77D2EB98fBBBD65",
+        "version": "1.0.0",
+        "implementation": "0x002155d5323cb425a89ecD3ab87AE5Ffdf4DB5F7",
+        "admin": "0xb13B5e34092E21A53Cb1110A3050Bd0e117Dc15D",
+        "kind": "Upgradeable"
+      }
+    ]
+  },
+  "manifestVersion": "2.2",
+  "dependencies": {
+    "@openzeppelin/contracts-ethereum-package": {
+      "package": "0x731a10897d267e19B34503aD902d0A29173Ba4B1",
+      "version": "2.5.0",
+      "customDeploy": true
+    }
+  },
+  "version": "1.0.0",
+  "proxyAdmin": {
+    "address": "0xb13B5e34092E21A53Cb1110A3050Bd0e117Dc15D"
+  }
+}

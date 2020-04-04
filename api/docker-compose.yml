@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  ganache:
+    image: trufflesuite/ganache-cli
+    volumes:
+      - ./chain/.ganache_data:/ganache_data
+    ports:
+      - '7545:8545'
+
+  parity:
+    image: parity/parity:stable
+    ports:
+      - 8088:8080
+      - 8180:8180
+      - 9545:8545
+      - 9546:8546
+      - 30303:30303
+    user: root
+    working_dir: /home/parity'
+    volumes:
+      - ./chain/.parity_data:/home/parity/data
+      - ./chain/dev.toml:/home/parity/dev.toml
+      - ./chain/dev.password:/home/parity/dev.password
+    command: --config /home/parity/dev.toml -d /home/parity/data
