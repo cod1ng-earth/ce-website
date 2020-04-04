@@ -1,10 +1,10 @@
-import React from "react"
-import { Link } from "gatsby"
-import { Box, Button, Image } from "grommet"
-import meetup_button from "../../images/meetup_button.png"
-import styled from "styled-components"
+import React from 'react'
+import { Link } from 'gatsby'
+import { Box, Button, Image } from 'grommet'
+import meetup_button from '../../images/meetup_button.png'
+import styled from 'styled-components'
 
-import { theme } from "../theme"
+import { theme } from '../theme'
 const colors = theme.global.colors
 
 const MeetupButton = styled(Button)`
@@ -15,8 +15,8 @@ const MeetupButton = styled(Button)`
   font-weight: bold;
   transition: all 500ms;
   :hover {
-    background-color: ${colors[`meetup-red`]};
-    box-shadow: 0px 0px 0px 4px ${colors[`meetup-red`]};
+    background-color: ${colors['meetup-red']};
+    box-shadow: 0px 0px 0px 4px ${colors['meetup-red']};
   }
 `
 
@@ -32,7 +32,7 @@ export default ({ meetup }) => (
         alt="meetup.com logo"
         src={meetup_button}
         height="30px"
-        margin={{ left: `1em` }}
+        margin={{ left: '1em' }}
       />
     }
     label="RSVP"

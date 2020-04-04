@@ -1,17 +1,17 @@
-import _map from "lodash.map"
+import _map from 'lodash.map'
 
 export default (formName, submission) => {
   const encoded = _map(
     {
-      "form-name": formName,
+      'form-name': formName,
       ...submission,
     },
-    (val, key) => encodeURIComponent(key) + `=` + encodeURIComponent(val)
-  ).join(`&`)
+    (val, key) => encodeURIComponent(key) + '=' + encodeURIComponent(val)
+  ).join('&')
 
-  return fetch(`/`, {
-    method: `POST`,
-    headers: { "Content-Type": `application/x-www-form-urlencoded` },
+  return fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: encoded,
   })
 }

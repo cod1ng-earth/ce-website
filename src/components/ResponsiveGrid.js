@@ -1,12 +1,12 @@
-import React from "react"
+import React from 'react'
 
-import { Box, Grid, ResponsiveContext } from "grommet"
+import { Box, Grid, ResponsiveContext } from 'grommet'
 
 const columns = {
-  small: [`auto`],
-  medium: [`flex`, `large`, `flex`],
-  large: [`flex`, `xlarge`, `flex`],
-  xlarge: [`flex`, `xlarge`, `flex`],
+  small: ['auto'],
+  medium: ['flex', 'large', 'flex'],
+  large: ['flex', 'xlarge', 'flex'],
+  xlarge: ['flex', 'xlarge', 'flex'],
 }
 
 export default ({ children }) => (
@@ -15,11 +15,11 @@ export default ({ children }) => (
       <Grid
         fill
         columns={columns[size]}
-        rows={[`full`, `flex`, `full`]}
+        rows={['full', 'flex', 'full']}
         areas={
-          size === `small`
-            ? [{ name: `main`, start: [0, 0], end: [0, 0] }]
-            : [{ name: `main`, start: [1, 0], end: [1, 0] }]
+          size === 'small'
+            ? [{ name: 'main', start: [0, 0], end: [0, 0] }]
+            : [{ name: 'main', start: [1, 0], end: [1, 0] }]
         }
       >
         <Box gridArea="main" pad="small">
