@@ -30,6 +30,8 @@
     "grommet": "^2.12.0",
     "lodash.map": "^4.6.0",
     "luxon": "^1.23.0",
+    "netlify-lambda": "^1.6.3",
+    "node-fetch": "^2.6.0",
     "polished": "^3.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -61,7 +63,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && npm run lambda",
+    "lambda": "netlify-lambda build src/lambda/",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",

@@ -19,7 +19,7 @@ const StyledAnchor = styled(Anchor)`
 export default () => {
   const {
     isAuthenticated,
-    loginWithRedirect,
+    loginWithPopup,
     logout,
 
     user,
@@ -49,13 +49,13 @@ export default () => {
             primary
             icon={<Github />}
             label="Log in"
-            onClick={() => loginWithRedirect({})}
+            onClick={() => loginWithPopup({})}
           />
         )}
 
         {isAuthenticated && (
           <Button
-            color="dark-2"
+            color="dark-1"
             primary
             icon={
               user && (

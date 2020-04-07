@@ -1,13 +1,18 @@
-import { Heading, Box, Text, Paragraph } from 'grommet'
-import { ScheduleNew } from 'grommet-icons'
-import React from 'react'
-import { HoverBox } from '../components/MeetupPreview'
-import ce_meetup from '../images/coding_earth_meetup.png'
+import { Heading, Box, Text, Paragraph, Button } from 'grommet'
+import { ScheduleNew, Checkmark } from 'grommet-icons'
+import React, { useState, useEffect } from 'react'
+
 import { FullWidth } from './TwoCols'
 import Image from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useAuth0 } from './auth/react-auth0-spa'
+import { theme } from './theme'
+const colors = theme.global.colors
 
 export default function() {
+  const { isAuthenticated, user } = useAuth0()
+  const [attending, setAttending] = useState(false)
+
   const data = useStaticQuery(graphql`
     {
       image: imageSharp(
@@ -20,6 +25,31 @@ export default function() {
     }
   `)
 
+  async function attend() {
+    const body = {
+      name: user.name,
+      email: user.email,
+      ref: user.nickname,
+      meetup: 'global_1',
+    }
+    const result = await fetch('/.netlify/lambda/attend', {
+      method: 'POST',
+      body,
+    })
+    console.log(result)
+    const attending = JSON.parse(localStorage.getItem('attending') || '{}')
+    attending['global_1'] = true
+    localStorage.setItem('attending', JSON.stringify(attending))
+    setAttending(true)
+  }
+
+  useEffect(() => {
+    const attending = JSON.parse(localStorage.getItem('attending') || '{}')
+    if (attending['global_1']) {
+      setAttending(true)
+    }
+  }, [])
+
   return (
     <FullWidth background="very-dark">
       <Heading level={2} color="turqoise">
@@ -30,7 +60,7 @@ export default function() {
         />{' '}
         upcoming meetups
       </Heading>
-      <HoverBox upcoming pad={{ vertical: 'medium', horizontal: 'small' }}>
+      <Box pad={{ vertical: 'medium' }}>
         <Box direction="row-responsive" justify="between" align="center">
           <Heading level={3} color="brand">
             coding earth global meetup #1
@@ -67,7 +97,29 @@ export default function() {
             demos and live code will be abound.
           </Paragraph>
         </Box>
-      </HoverBox>
+      </Box>
+
+      {attending ? (
+        <Button
+          color="status-ok"
+          alignSelf="center"
+          primary
+          active={false}
+          icon={<Checkmark />}
+          disabled={!isAuthenticated}
+          label="you are registered for this meetup"
+        />
+      ) : (
+        <Button
+          onClick={() => attend()}
+          color={colors['meetup-red']}
+          primary
+          size="large"
+          alignSelf="center"
+          label="Attend"
+          disabled={!isAuthenticated}
+        />
+      )}
     </FullWidth>
   )
 }
