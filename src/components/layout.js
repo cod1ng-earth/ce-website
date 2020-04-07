@@ -1,7 +1,7 @@
 import { graphql, navigate, useStaticQuery } from 'gatsby'
 import { Box, Grommet } from 'grommet'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Auth0Provider } from './auth/react-auth0-spa'
 import AppFooter from './footer/AppFooter'
 import SubFooter from './footer/SubFooter'
@@ -28,12 +28,18 @@ const Layout = ({ children }) => {
         : window.location.pathname
     )
   }
+  const [redirectUri, setRedirectUri] = useState('')
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      setRedirectUri(window.location.origin)
+    }
+  }, [])
 
   return (
     <Auth0Provider
       domain={process.env.GATSBY_AUTH0_DOMAIN}
       client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
-      redirect_uri={window.location.origin}
+      redirect_uri={redirectUri}
       onRedirectCallback={onRedirectCallback}
     >
       <Grommet theme={theme} themeMode="dark">
