@@ -13,7 +13,7 @@ import RSVPButton from './ui/RSVPButton'
 
 const colors = theme.global.colors
 
-const HoverBox = styled(Box)`
+export const HoverBox = styled(Box)`
   transition: all 300ms;
   cursor: pointer;
   :hover {
