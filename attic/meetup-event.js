@@ -7,13 +7,13 @@ import excerpt from 'excerpt-html'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import EventHeader from '../components/event/header'
-import Mdx from '../components/Mdx'
-import StyledParagraph from '../components/StyledParagraph'
-import ResponsiveGrid from '../components/ResponsiveGrid'
-import RSVPButton from '../components/ui/RSVPButton'
+import Layout from '../src/components/layout'
+import SEO from '../src/components/seo'
+import EventHeader from '../src/components/event/header'
+import Mdx from '../src/components/Mdx'
+import StyledParagraph from '../src/components/StyledParagraph'
+import ResponsiveGrid from '../src/components/ResponsiveGrid'
+import RSVPButton from '../src/components/ui/RSVPButton'
 
 export default ({ data }) => {
   const featuredPhoto = data.meetupEvent.featured_photo

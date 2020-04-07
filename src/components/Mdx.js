@@ -9,7 +9,6 @@ import Twitter from './ui/Twitter'
 import Agenda from './ui/Agenda'
 
 import StyledParagraph from './StyledParagraph'
-import ResponsiveGrid from './ResponsiveGrid'
 
 const shortcodes = { Twitter, Agenda }
 
@@ -37,8 +36,6 @@ export default ({ mdx }) => (
       ),
     }}
   >
-    <ResponsiveGrid>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
-    </ResponsiveGrid>
+    <MDXRenderer>{mdx.body}</MDXRenderer>
   </MDXProvider>
 )

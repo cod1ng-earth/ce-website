@@ -29,8 +29,10 @@ const Layout = ({ children }) => {
           setShowSidebar(!showSidebar)
         }}
       />
-      {children}
-      <AppFooter></AppFooter>
+      <Box full align="center">
+        {children}
+      </Box>
+      <AppFooter />
       <SubFooter />
     </Grommet>
   )

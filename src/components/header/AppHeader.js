@@ -37,26 +37,7 @@ export default () => (
         responsive={false}
         pad={{ vertical: 'small', horizontal: 'medium' }}
       >
-        {size == 'small' ? (
-          <DropButton
-            label={
-              <Text size="medium" weight="bold" color="brand">
-                Location
-              </Text>
-            }
-            color="brand"
-            size="xlarge"
-            icon={<Globe color="turqoise" />}
-            dropProps={{ elevation: 'xsmall' }}
-            dropContent={
-              <Box pad="medium" background="dark-1">
-                <Menu />
-              </Box>
-            }
-          />
-        ) : (
-          <Menu />
-        )}
+        <Menu />
         <StyledAnchor as={Link} to="/">
           <Image src={logo} height={'50px'} alt="coding earth logo" />
         </StyledAnchor>

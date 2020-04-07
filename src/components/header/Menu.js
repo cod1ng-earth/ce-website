@@ -19,12 +19,4 @@ const MenuLink = props => (
   </StyledLink>
 )
 
-export default () => (
-  <>
-    <MenuLink to="/" label="Earth" />
-    <MenuLink to="/CODING-BERLIN/" label="Berlin" partiallyActive />
-    <MenuLink to="/coding-leipzig/" label="Leipzig" partiallyActive />
-    <MenuLink to="/coding-stuttgart/" label="Stuttgart" partiallyActive />
-    <MenuLink to="/CODING-PORTUGAL/" label="Portugal" partiallyActive />
-  </>
-)
+export default () => <></>

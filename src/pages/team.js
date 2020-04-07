@@ -1,14 +1,10 @@
-import React from 'react'
-import { Fade } from 'react-reveal'
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Image from 'gatsby-image'
-
 import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
-
-import SEO from '../components/seo'
+import React from 'react'
 import Layout from '../components/layout'
-
-import ResponsiveGrid from '../components/ResponsiveGrid'
+import SEO from '../components/seo'
+import { FullWidth } from '../components/TwoCols'
 
 export default () => {
   const team = useStaticQuery(graphql`
@@ -48,40 +44,33 @@ export default () => {
   return (
     <Layout>
       <SEO title="Team" description="The team members of Coding Earth" />
-      <ResponsiveGrid>
+      <FullWidth>
         <Heading level={1} color="turqoise">
           Team &amp; Organizers
         </Heading>
-        <ResponsiveContext.Consumer>
-          {size => (
-            <Grid
-              columns={size === 'small' ? 'auto' : ['1/2', '1/2']}
-              gap="small"
-            >
-              {team.allTeamJson.edges.map(({ node }) => (
-                <Box key={node.id}>
-                  <Heading level={3} color="brand" margin="none">
-                    {node.name}
-                  </Heading>
-                  <Heading
-                    level={4}
-                    color="turqoise"
-                    margin={{ vertical: 'small' }}
-                  >
-                    {node.position}
-                  </Heading>
-                  <Box height="medium" margin={{ bottom: 'large' }}>
-                    <Image
-                      durationFadeIn={5000}
-                      fluid={imgMap[node.img].childImageSharp.fluid}
-                    />
-                  </Box>
-                </Box>
-              ))}
-            </Grid>
-          )}
-        </ResponsiveContext.Consumer>
-      </ResponsiveGrid>
+        <Box direction="row-responsive" wrap>
+          {team.allTeamJson.edges.map(({ node }) => (
+            <Box key={node.id} basis="1/2" pad="small">
+              <Heading level={3} color="brand" margin="none">
+                {node.name}
+              </Heading>
+              <Heading
+                level={4}
+                color="turqoise"
+                margin={{ vertical: 'small' }}
+              >
+                {node.position}
+              </Heading>
+              <Box margin={{ bottom: 'large' }} height={{ min: 'medium' }}>
+                <Image
+                  durationFadeIn={5000}
+                  fluid={imgMap[node.img].childImageSharp.fluid}
+                />
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      </FullWidth>
     </Layout>
   )
 }
