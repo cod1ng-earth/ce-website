@@ -26,12 +26,12 @@ export default function() {
   `)
 
   async function attend() {
-    const body = {
+    const body = JSON.stringify({
       name: user.name,
       email: user.email,
       ref: user.nickname,
       meetup: 'global_1',
-    }
+    })
     const result = await fetch('/.netlify/functions/attend', {
       method: 'POST',
       body,
