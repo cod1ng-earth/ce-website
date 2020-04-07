@@ -1,26 +1,26 @@
-import React from "react"
+import React from 'react'
 
-import { navigate } from "gatsby"
+import { navigate } from 'gatsby'
 
-import { Box, Grid, Heading, Paragraph, Text } from "grommet"
-import { Map } from "grommet-icons"
-import styled from "styled-components"
+import { Box, Grid, Heading, Paragraph, Text } from 'grommet'
+import { Map } from 'grommet-icons'
+import styled from 'styled-components'
 
-import excerpt from "excerpt-html"
-import { DateTime } from "luxon"
-import { theme } from "./theme"
-import RSVPButton from "./ui/RSVPButton"
+import excerpt from 'excerpt-html'
+import { DateTime } from 'luxon'
+import { theme } from './theme'
+import RSVPButton from './ui/RSVPButton'
 
 const colors = theme.global.colors
 
-const HoverBox = styled(Box)`
+export const HoverBox = styled(Box)`
   transition: all 300ms;
   cursor: pointer;
   :hover {
     background-color: ${props =>
-      props.upcoming ? colors[`dark-1-active`] : colors[`dark-2`]};
+      props.upcoming ? colors['dark-1-active'] : colors['dark-2']};
     box-shadow: 0px 3px 0px
-      ${props => (props.upcoming ? colors[`meetup-red`] : colors.turqoise)};
+      ${props => (props.upcoming ? colors['meetup-red'] : colors.turqoise)};
   }
 `
 
@@ -29,23 +29,22 @@ export default ({ meetup }) => {
 
   return (
     <HoverBox
-      background={meetup.status === `upcoming` ? `dark-1` : `dark-2`}
-      margin={{ vertical: `medium` }}
+      background={meetup.status === 'upcoming' ? 'dark-1' : 'dark-2'}
+      margin={{ vertical: 'medium' }}
       round="xxsmall"
       fill
-      upcoming={meetup.status === `upcoming`}
+      upcoming={meetup.status === 'upcoming'}
       alignSelf="center"
       onClick={() => navigate(`/${meetup.group.urlname}/${meetup.meetupId}`)}
     >
-      <Grid columns={[`auto`, `small`]}>
+      <Grid columns={['auto', 'small']}>
         <Box pad="small">
           <Text>
-            {date.toFormat(`ccc`)},{` `}
-            {date.toLocaleString(DateTime.DATETIME_MED)}
+            {date.toFormat('ccc')}, {date.toLocaleString(DateTime.DATETIME_MED)}
           </Text>
         </Box>
         <Box>
-          {meetup.status === `upcoming` && <RSVPButton meetup={meetup} />}
+          {meetup.status === 'upcoming' && <RSVPButton meetup={meetup} />}
         </Box>
       </Grid>
       <Box pad="small">

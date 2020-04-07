@@ -1,16 +1,19 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { Box } from "grommet"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import { Box } from 'grommet'
 
-import MdxRenderer from "../components/Mdx"
+import MdxRenderer from '../components/Mdx'
+import { FullWidth } from '../components/TwoCols'
 
 export default ({ data: { mdx } }) => (
   <Layout>
     <SEO title={mdx.frontmatter.title} />
-    <MdxRenderer mdx={mdx} />
+    <FullWidth>
+      <MdxRenderer mdx={mdx} />
+    </FullWidth>
   </Layout>
 )
 

@@ -1,21 +1,21 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import { Fade } from "react-reveal"
-import { Button, Form, FormField, TextArea, Paragraph } from "grommet"
-import postSubmission from "../../lib/postSubmission"
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { Fade } from 'react-reveal'
+import { Button, Form, FormField, TextArea, Paragraph } from 'grommet'
+import postSubmission from '../../lib/postSubmission'
 
 const HiddenField = styled.div`
   display: none;
   height: 0;
 `
-const NETLIFY_FORM_NAME = `cearth-contact`
+const NETLIFY_FORM_NAME = 'cearth-contact'
 
 const ThankYou = () => (
   <Fade bottom distance="40px" duration={2000}>
     <Paragraph
       color="turqoise"
       textAlign="center"
-      style={{ fontWeight: `bolder` }}
+      style={{ fontWeight: 'bolder' }}
     >
       We received your message. <br /> Please standby.
     </Paragraph>
@@ -24,8 +24,8 @@ const ThankYou = () => (
 
 const TheForm = ({ submitForm }) => {
   const [body, setBody] = useState({
-    message: ``,
-    email: ``,
+    message: '',
+    email: '',
   })
 
   const disabled = body.message.length < 5 || body.email.length < 5
@@ -47,7 +47,7 @@ const TheForm = ({ submitForm }) => {
       />
       <HiddenField>
         <label>
-          Another field for you to fill:{` `}
+          Another field for you to fill:{' '}
           <input
             aria-label="dont fill this field if youre not a machine"
             name="important-note-field"
@@ -77,7 +77,7 @@ const TheForm = ({ submitForm }) => {
         primarymessage
         fill="horizontal"
         label="Submit"
-        margin={{ top: `medium` }}
+        margin={{ top: 'medium' }}
       />
     </Form>
   )

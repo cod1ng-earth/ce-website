@@ -1,23 +1,23 @@
-import React from "react"
+import React from 'react'
 
-import { Box, Grid, Heading, Image, ResponsiveContext, Text } from "grommet"
+import { Box, Grid, Heading, Image, ResponsiveContext, Text } from 'grommet'
 
-import ResponsiveGrid from "../ResponsiveGrid"
-import RSVPButton from "../ui/RSVPButton"
-import { DateTime } from "luxon"
+import ResponsiveGrid from '../ResponsiveGrid'
+import RSVPButton from '../ui/RSVPButton'
+import { DateTime } from 'luxon'
 
 const areas = {
   small: [
-    { name: `logo`, start: [1, 0], end: [1, 0] },
-    { name: `headline`, start: [0, 1], end: [2, 1] },
+    { name: 'logo', start: [1, 0], end: [1, 0] },
+    { name: 'headline', start: [0, 1], end: [2, 1] },
   ],
   medium: [
-    { name: `logo`, start: [0, 0], end: [0, 0] },
-    { name: `headline`, start: [1, 0], end: [1, 0] },
+    { name: 'logo', start: [0, 0], end: [0, 0] },
+    { name: 'headline', start: [1, 0], end: [1, 0] },
   ],
   large: [
-    { name: `logo`, start: [0, 0], end: [0, 0] },
-    { name: `headline`, start: [1, 0], end: [1, 0] },
+    { name: 'logo', start: [0, 0], end: [0, 0] },
+    { name: 'headline', start: [1, 0], end: [1, 0] },
   ],
 }
 areas.xlarge = areas.large
@@ -34,8 +34,8 @@ export default ({ meetup, group }) => {
               <Grid
                 gap="medium"
                 areas={areas[size]}
-                columns={[`auto`, `auto`, `auto`]}
-                rows={[`auto`, `auto`]}
+                columns={['auto', 'auto', 'auto']}
+                rows={['auto', 'auto']}
                 justifyContent="center"
                 alignContent="center"
                 align="center"
@@ -51,20 +51,20 @@ export default ({ meetup, group }) => {
                 />
 
                 <Box gridArea="headline">
-                  <Heading level={1} margin={{ bottom: `xsmall` }}>
+                  <Heading level={1} margin={{ bottom: 'xsmall' }}>
                     {meetup.name}
                   </Heading>
 
-                  <Grid columns={[`auto`, `auto`]} align="center">
+                  <Grid columns={['auto', 'auto']} align="center">
                     <Box>
                       <Text>
-                        {date.toFormat(`ccc`)},{` `}
+                        {date.toFormat('ccc')},{' '}
                         {date.toLocaleString(DateTime.DATETIME_MED)}
                       </Text>
                       <Text>{meetup.venue && meetup.venue.name}</Text>
                     </Box>
                     <Box>
-                      {meetup.status === `upcoming` && (
+                      {meetup.status === 'upcoming' && (
                         <RSVPButton meetup={meetup} />
                       )}
                     </Box>

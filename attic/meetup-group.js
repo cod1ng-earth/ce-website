@@ -1,14 +1,14 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Box, Image, Heading } from "grommet"
-import excerpt from "excerpt-html"
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Box, Image, Heading } from 'grommet'
+import excerpt from 'excerpt-html'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import ResponsiveGrid from "../components/ResponsiveGrid"
+import Layout from '../src/components/layout'
+import SEO from '../src/components/seo'
+import ResponsiveGrid from '../src/components/ResponsiveGrid'
 
-import MeetupPreview from "../components/MeetupPreview"
-import Fade from "react-reveal/Fade"
+import MeetupPreview from '../src/components/MeetupPreview'
+import Fade from 'react-reveal/Fade'
 
 export default ({ data }) => (
   <Layout>

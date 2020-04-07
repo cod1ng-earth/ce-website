@@ -1,0 +1,9 @@
+[build]
+  functions = "./lambda"
+
+[dev]
+  command = "npm run build"
+  port = 3000 # Port that the dev server will be listening on
+  targetPort = 3000 # Port of target app server
+  publish = "public" # If you use a _redirect file, provide the path to your static content folder
+  autoLaunch = true

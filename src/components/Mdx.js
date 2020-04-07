@@ -1,15 +1,14 @@
-import React from "react"
+import React from 'react'
 
-import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from '@mdx-js/react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import { Box, Heading } from "grommet"
+import { Box, Heading } from 'grommet'
 
-import Twitter from "./ui/Twitter"
-import Agenda from "./ui/Agenda"
+import Twitter from './ui/Twitter'
+import Agenda from './ui/Agenda'
 
-import StyledParagraph from "./StyledParagraph"
-import ResponsiveGrid from "./ResponsiveGrid"
+import StyledParagraph from './StyledParagraph'
 
 const shortcodes = { Twitter, Agenda }
 
@@ -37,8 +36,6 @@ export default ({ mdx }) => (
       ),
     }}
   >
-    <ResponsiveGrid>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
-    </ResponsiveGrid>
+    <MDXRenderer>{mdx.body}</MDXRenderer>
   </MDXProvider>
 )
