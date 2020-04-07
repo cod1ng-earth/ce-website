@@ -27,13 +27,13 @@ const StyledRules = styled.ul`
 const IndexPage = () => (
   <Layout>
     <SEO
-      title="home"
+      title="coding earth :: home"
       description="coding earth is a meetup community for developers"
     />
 
     <FullWidth>
       <TwoCols>
-        <Box>
+        <Box basis="1/2">
           <Fade left ssrFadeout distance="20px" duration={1000}>
             <Heading level={2} color="turqoise">
               <Globe
@@ -54,26 +54,27 @@ const IndexPage = () => (
           </Fade>
         </Box>
 
-        <Box height="medium" overflow="hidden">
+        <Box basis="1/2" height="medium" overflow="hidden">
           <Image
             alt="coding stuttgart crowd in october 2019 waving at you"
             fit="cover"
-            src="//res.cloudinary.com/turbinekreuzberg/image/upload/t_maxeco/v1572613038/coding-earth/coding-portugal/3/FAO/IMG_7477.jpg"
+            src="//res.cloudinary.com/turbinekreuzberg/image/upload/t_maxeco/v1582656870/birthday-hackathon/2020/DSC01981.jpg"
           />
         </Box>
       </TwoCols>
     </FullWidth>
 
     <FullWidth background="dark-1">
-      <Heading
-        level={2}
-        color="brand"
-        style={{ transform: 'rotate3d(0,0,2,180deg)' }}
-      >
-        <Code size="large" color="brand" style={{ verticalAlign: 'sub' }} /> 1
-        line of code.
-      </Heading>
-
+      <Box>
+        <Heading
+          level={2}
+          color="brand"
+          style={{ transform: 'rotateX(180deg)' }}
+        >
+          <Code size="large" color="brand" style={{ verticalAlign: 'sub' }} /> 1
+          line of code.
+        </Heading>
+      </Box>
       <TwoCols>
         <Fade left ssrFadeout distance="20px" duration={1000}>
           <Paragraph fill>
@@ -82,13 +83,13 @@ const IndexPage = () => (
             storing transactions, machines taking decisions based upon digital
             learning sets, virtual clusters providing computing power for scaled
             applications and command line tools that improve your workflow: it's
-            nearly impossible to keep an eye on everything.
+            nearly impossible to keep track of everything.
           </Paragraph>
         </Fade>
         <Fade right ssrFadeout distance="20px" duration={1000}>
           <Paragraph fill>
             That's where we jump in: Instead of specialising on a dedicated
-            topic, coding earth was established to become a space for Earth’s
+            topic, coding earth was established to become a space for earth's
             coder community: every software development related topic is welcome
             here, every developer with whatever skill level will take away
             something new on every session, every question may be asked and
@@ -98,11 +99,12 @@ const IndexPage = () => (
       </TwoCols>
       <Paragraph
         fill
+        size="large"
         style={{ fontWeight: 'bold' }}
         margin={{ horizontal: 'large' }}
       >
         talks have to be hands on, they must contain at least 1 line of code and
-        in the best case they're massively supported by demos.
+        in the best case they're supported by demos.
       </Paragraph>
     </FullWidth>
 
@@ -131,10 +133,10 @@ const IndexPage = () => (
           We are looking forward to your ideas for upcoming meetups. If you want
           to share any of your knowledge with a highly motivated community, this
           is the right place. If you want to demonstrate a software stack that
-          you’re using in your startup, this is the place to present. If you
+          you're using in your startup, this is the place to present. If you
           seek for an opportunity to spread the evangelism of the next big
-          programming language: give a talk at coding berlin. We’re embracing
-          developers and we’re just waiting for you.
+          programming language: give a talk at coding earth. We're embracing
+          every technology and personality and we're just waiting for you.
         </Paragraph>
       </Fade>
     </FullWidth>
