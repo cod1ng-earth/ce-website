@@ -1,4 +1,4 @@
-import { Heading, Box, Text, Paragraph, Button } from 'grommet'
+import { Heading, Box, Text, Paragraph, Button, Anchor } from 'grommet'
 import { ScheduleNew, Checkmark } from 'grommet-icons'
 import React, { useState, useEffect } from 'react'
 
@@ -30,7 +30,7 @@ export default function() {
       const body = JSON.stringify({
         name: user.name,
         email: user.email,
-        ref: user.nickname,
+        nickname: user.nickname,
         meetup: 'global_1',
       })
 
@@ -91,11 +91,25 @@ export default function() {
           </Paragraph>
 
           <Text>
-            Filipe Barroso (Lisbon) will give an intro to Google's Flutter SDK,
+            <Anchor
+              href="https://twitter.com/ABarroso"
+              target="_blank"
+              rel="noopener"
+            >
+              Filipe Barroso
+            </Anchor>{' '}
+            (Lisbon) will give an intro to Google's Flutter SDK,{' '}
           </Text>
 
           <Text>
-            Phillip Kessels (Porto) will give a talk on the Web Audio API.
+            <Anchor
+              href="https://twitter.com/PhillipKessels"
+              target="_blank"
+              rel="noopener"
+            >
+              Phillip Kessels
+            </Anchor>{' '}
+            (Porto) will give a talk on the Web Audio API.
           </Text>
 
           <Paragraph fill>
