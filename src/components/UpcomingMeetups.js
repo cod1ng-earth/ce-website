@@ -32,7 +32,7 @@ export default function() {
       ref: user.nickname,
       meetup: 'global_1',
     }
-    const result = await fetch('/.netlify/lambda/attend', {
+    const result = await fetch('/.netlify/functions/attend', {
       method: 'POST',
       body,
     })

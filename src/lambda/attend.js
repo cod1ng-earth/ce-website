@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const fetch = require('node-fetch')
 
-exports.handler = async function(event, context, lambdaCallback) {
+exports.handler = function(event, context, lambdaCallback) {
   const _incoming = JSON.parse(event.body)
 
   const incoming = {
@@ -16,14 +16,15 @@ exports.handler = async function(event, context, lambdaCallback) {
     text: `${incoming.email} <${incoming.name}> (${incoming.ref}) registered for ${incoming.meetup}`,
   })
 
-  const res = await fetch(process.env.SLACK_ATTEND_HOOK, {
+  fetch(process.env.SLACK_ATTEND_HOOK, {
     method: 'POST',
     body,
   })
-  const result = await res.text()
-
-  return lambdaCallback(null, {
-    statusCode: 200,
-    body: result,
-  })
+    .then(result => result.text())
+    .then(text => {
+      lambdaCallback(null, {
+        statusCode: 200,
+        body: text,
+      })
+    })
 }
