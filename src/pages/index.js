@@ -1,5 +1,5 @@
 import { Box, Heading, Image, Paragraph, Text } from 'grommet'
-import { Code, ForwardTen, Globe, Grow, ScheduleNew } from 'grommet-icons'
+import { Code, ForwardTen, Globe, Grow, ScheduleNew, Mail } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
@@ -8,7 +8,7 @@ import SEO from '../components/seo'
 import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
 import { HoverBox } from '../components/MeetupPreview'
-
+import { MailchimpSignup } from '../components/MailchimpSignup'
 //import MeetupPreview from '../components/MeetupPreview'
 
 const StyledRules = styled.ul`
@@ -134,41 +134,61 @@ const IndexPage = () => (
           Portugal) in one global community. Mark your calendars for the 21st,
           grab a cold beverage that night and come join us! The meetup will have
           three sessions, two of which are already can announce.
-          <ul>
-            <li>
-              Filipe Barroso (Lisbon) will give an intro to Google's Flutter
-              SDK,
-            </li>
-            <li>
-              Phillip Kessels (Porto) will give a talk on the Web Audio API.
-            </li>
-          </ul>
+        </Paragraph>
+
+        <Text>
+          Filipe Barroso (Lisbon) will give an intro to Google's Flutter SDK,
+        </Text>
+
+        <Text>
+          Phillip Kessels (Porto) will give a talk on the Web Audio API.
+        </Text>
+
+        <Paragraph fill>
           All contributions follow our golden "*1 line of code*" rule, so demos
           and live code will be abound.
         </Paragraph>
       </HoverBox>
     </FullWidth>
 
-    <FullWidth background="dark">
-      <Fade left ssrFadeout distance="20px" duration={1000}>
-        <Heading level={2} color="turqoise">
-          <Grow
-            size="large"
-            color="turqoise"
-            style={{ verticalAlign: 'sub' }}
-          />
-          contribute!
-        </Heading>
-        <Paragraph fill color="light-5">
-          We are looking forward to your ideas for upcoming meetups. If you want
-          to share any of your knowledge with a highly motivated community, this
-          is the right place. If you want to demonstrate a software stack that
-          you're using in your startup, this is the place to present. If you
-          seek for an opportunity to spread the evangelism of the next big
-          programming language: give a talk at coding earth. We're embracing
-          every technology and personality and we're just waiting for you.
-        </Paragraph>
-      </Fade>
+    <FullWidth background="black">
+      <TwoCols>
+        <Box basis="1/2">
+          <Fade left ssrFadeout distance="20px" duration={1000}>
+            <Heading level={2} color="turqoise">
+              <Grow
+                size="large"
+                color="turqoise"
+                style={{ verticalAlign: 'sub' }}
+              />
+              contribute!
+            </Heading>
+            <Paragraph fill color="light-5">
+              We are looking forward to your ideas for upcoming meetups. If you
+              want to share any of your knowledge with a highly motivated
+              community, this is the right place. If you want to demonstrate a
+              software stack that you're using in your startup, this is the
+              place to present. If you seek for an opportunity to spread the
+              evangelism of the next big programming language: give a talk at
+              coding earth. We're embracing every technology and personality and
+              we're just waiting for you.
+            </Paragraph>
+          </Fade>
+        </Box>
+        <Box basis="1/2">
+          <Heading level={2} color="turqoise">
+            <Mail
+              size="large"
+              color="turqoise"
+              style={{ verticalAlign: 'sub', marginRight: '10px' }}
+            />
+            stay tuned
+          </Heading>
+          <Box>
+            <MailchimpSignup />
+          </Box>
+        </Box>
+      </TwoCols>
     </FullWidth>
 
     <FullWidth background="dark-1">

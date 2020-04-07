@@ -9,6 +9,7 @@
     "@mdx-js/react": "^1.5.8",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
     "excerpt-html": "^1.2.1",
     "gatsby": "^2.20.12",
     "gatsby-image": "^2.3.1",
