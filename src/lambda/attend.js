@@ -1,4 +1,6 @@
-const fetch = require('node-fetch')
+require('dotenv').config()
+
+const fetch = require('node-fetch').default
 
 exports.handler = async function(event, context) {
   const _incoming = JSON.parse(event.body)
@@ -14,13 +16,22 @@ exports.handler = async function(event, context) {
     text: `${incoming.email} <${incoming.name}> (${incoming.ref}) registered for ${incoming.meetup}`,
   })
 
-  const res = await fetch(process.env.SLACK_ATTEND_HOOK, {
-    method: 'POST',
-    body,
-  })
-  const text = await res.text()
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ status: text }),
+  try {
+    const res = await fetch(process.env.SLACK_ATTEND_HOOK, {
+      method: 'POST',
+      body: body,
+      headers: { 'Content-Type': 'application/json' },
+    })
+    const text = await res.text()
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ status: text }),
+    }
+  } catch (foo) {
+    console.error(foo)
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ status: foo }),
+    }
   }
 }

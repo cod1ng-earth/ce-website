@@ -26,21 +26,27 @@ export default function() {
   `)
 
   async function attend() {
-    const body = JSON.stringify({
-      name: user.name,
-      email: user.email,
-      ref: user.nickname,
-      meetup: 'global_1',
-    })
-    const result = await fetch('/.netlify/functions/attend', {
-      method: 'POST',
-      body,
-    })
-    console.log(result)
-    const attending = JSON.parse(localStorage.getItem('attending') || '{}')
-    attending['global_1'] = true
-    localStorage.setItem('attending', JSON.stringify(attending))
-    setAttending(true)
+    try {
+      const body = JSON.stringify({
+        name: user.name,
+        email: user.email,
+        ref: user.nickname,
+        meetup: 'global_1',
+      })
+
+      const result = await fetch('/.netlify/functions/attend', {
+        method: 'POST',
+        body,
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      const attending = JSON.parse(localStorage.getItem('attending') || '{}')
+      attending['global_1'] = true
+      localStorage.setItem('attending', JSON.stringify(attending))
+      setAttending(true)
+    } catch (e) {
+      alert('uhoh, something went wrong')
+    }
   }
 
   useEffect(() => {
