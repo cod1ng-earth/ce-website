@@ -44,12 +44,12 @@ const IndexPage = () => (
               hello, world.
             </Heading>
             <Paragraph fill>
-              Coding Earth is a home for developers of all skill levels.
+              Coding Earth is a <b>home for developers</b> of all skill levels.
               Everybody's welcome, everyone's invited, everyone will take
               something home from our meetups. Our meetups are not your usual
               "experts talk, audience listens" kind of experience but a
               community driven meetup that embraces a knowledge exchange culture
-              as well as a strict "nice to have you here"-attitude.
+              as well as a strict "<b>nice to have you here</b>"-attitude.
             </Paragraph>
           </Fade>
         </Box>
@@ -78,22 +78,23 @@ const IndexPage = () => (
       <TwoCols>
         <Fade left ssrFadeout distance="20px" duration={1000}>
           <Paragraph fill>
-            Isn't it amazing how many technologies you have to learn to follow
-            the path of modern software development? Be it blockchains for
-            storing transactions, machines taking decisions based upon digital
-            learning sets, virtual clusters providing computing power for scaled
-            applications and command line tools that improve your workflow: it's
-            nearly impossible to keep track of everything.
+            Isn't it amazing <b>how many technologies</b> you have to learn to
+            follow the path of modern software development? Be it blockchains
+            for storing transactions, machines taking decisions based upon
+            digital learning sets, virtual clusters providing computing power
+            for scaled applications and command line tools that improve your
+            workflow: <b>it's nearly impossible to keep track of everything.</b>
           </Paragraph>
         </Fade>
         <Fade right ssrFadeout distance="20px" duration={1000}>
           <Paragraph fill>
             That's where we jump in: Instead of specialising on a dedicated
-            topic, coding earth was established to become a space for earth's
-            coder community: every software development related topic is welcome
-            here, every developer with whatever skill level will take away
-            something new on every session, every question may be asked and
-            everyone should have a good time. There's only one golden rule:
+            topic, coding earth was established to become{' '}
+            <b>a space for earth's coder community</b>: every software
+            development related topic is welcome here, every developer with
+            whatever skill level will take away something new on every session,
+            every question may be asked and everyone should have a good time.
+            There's only one golden rule:
           </Paragraph>
         </Fade>
       </TwoCols>

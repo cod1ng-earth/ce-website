@@ -35,7 +35,7 @@ export default function() {
           <Heading level={3} color="brand">
             coding earth global meetup #1
           </Heading>
-          <Text size="small">2020, Apr 21st 7PM CEST</Text>
+          <Text size="medium">2020, Apr 21st 7PM CEST</Text>
         </Box>
         <Box>
           <Image

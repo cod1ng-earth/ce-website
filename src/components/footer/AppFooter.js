@@ -19,18 +19,11 @@ export default () => (
   >
     <Box
       width="xlarge"
-      pad="small"
-      justify="between"
+      pad={{ vertical: 'large' }}
+      justify="start"
       direction="row-responsive"
     >
-      <Box align="center">
-        <Image src={logo_ce} fit="contain" alt="coding earth logo" />
-        <Heading level={6} margin={{ top: 'medium' }}>
-          1 line of code.
-        </Heading>
-      </Box>
-
-      <Box align="center" direction="column">
+      <Box align="center" basis="1/3" direction="column">
         <Text>follow us and get in touch with us</Text>
 
         <SocialButtons />
@@ -62,8 +55,13 @@ export default () => (
         </Box>
         <Text>&copy; 2019-2020 coding earth</Text>
       </Box>
-
-      <Box>
+      <Box align="center" basis="1/3">
+        <Image src={logo_ce} fit="contain" alt="coding earth logo" />
+        <Heading level={6} margin={{ top: 'medium' }}>
+          1 line of code.
+        </Heading>
+      </Box>
+      <Box basis="1/3">
         <Text>Contact us</Text>
         <ContactForm></ContactForm>
       </Box>

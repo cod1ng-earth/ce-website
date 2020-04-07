@@ -7,10 +7,10 @@ export const TwoCols = ({ children }) => (
   </Box>
 )
 
-export const FullWidth = ({ children, background = 'black', tag = 'div' }) => (
-  <Box background={background} tag={tag} fill align="center">
+export const FullWidth = props => (
+  <Box pad={{ vertical: 'medium' }} {...props} fill align="center">
     <Box width="xlarge" pad="small">
-      {children}
+      {props.children}
     </Box>
   </Box>
 )
