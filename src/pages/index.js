@@ -7,9 +7,8 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
-import { HoverBox } from '../components/MeetupPreview'
 import { MailchimpSignup } from '../components/MailchimpSignup'
-//import MeetupPreview from '../components/MeetupPreview'
+import UpcomingMeetups from '../components/UpcomingMeetups'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -109,47 +108,7 @@ const IndexPage = () => (
       </Paragraph>
     </FullWidth>
 
-    <FullWidth background="very-dark">
-      <Heading level={2} color="turqoise">
-        <ScheduleNew
-          size="large"
-          color="turqoise"
-          style={{ verticalAlign: 'sub' }}
-        />{' '}
-        upcoming meetups
-      </Heading>
-
-      <HoverBox upcoming pad={{ vertical: 'medium', horizontal: 'small' }}>
-        <Box direction="row-responsive" justify="between" align="center">
-          <Heading level={3} color="brand">
-            coding earth global meetup #1
-          </Heading>
-          <Text size="small">2020, Apr 21st 7PM CEST</Text>
-        </Box>
-        <Paragraph fill>
-          Our <b>first worldwide coding earth meetup</b> will take place on{' '}
-          <b>Tuesday, April 21st, 2020</b>. And of course - no surprise here -
-          we're going fully remote. We're hereby trying to bring together our
-          local chapters (Stuttgart, Leipzig, Berlin &amp; Porto, Lisbon, Faro /
-          Portugal) in one global community. Mark your calendars for the 21st,
-          grab a cold beverage that night and come join us! The meetup will have
-          three sessions, two of which are already can announce.
-        </Paragraph>
-
-        <Text>
-          Filipe Barroso (Lisbon) will give an intro to Google's Flutter SDK,
-        </Text>
-
-        <Text>
-          Phillip Kessels (Porto) will give a talk on the Web Audio API.
-        </Text>
-
-        <Paragraph fill>
-          All contributions follow our golden "*1 line of code*" rule, so demos
-          and live code will be abound.
-        </Paragraph>
-      </HoverBox>
-    </FullWidth>
+    <UpcomingMeetups />
 
     <FullWidth background="black">
       <TwoCols>

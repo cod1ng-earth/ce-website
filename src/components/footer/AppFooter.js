@@ -2,7 +2,7 @@ import { Link } from 'gatsby'
 import { Anchor, Box, Heading, Image, Text } from 'grommet'
 import React from 'react'
 //import earth from "../../images/earth_v.jpg"
-import logo_ce from '../../images/coding_earth_logo.png'
+import logo_ce from '../../images/coding_earth_x_120.png'
 import ContactForm from './ContactForm'
 import SocialButtons from './SocialButtons'
 
@@ -24,12 +24,7 @@ export default () => (
       direction="row-responsive"
     >
       <Box align="center">
-        <Image
-          src={logo_ce}
-          fit="contain"
-          width="250px"
-          alt="coding earth logo"
-        />
+        <Image src={logo_ce} fit="contain" alt="coding earth logo" />
         <Heading level={6} margin={{ top: 'medium' }}>
           1 line of code.
         </Heading>

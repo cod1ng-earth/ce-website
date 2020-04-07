@@ -1,20 +1,9 @@
-import React from 'react'
 import { Link } from 'gatsby'
+import { Anchor, Box, Image, ResponsiveContext } from 'grommet'
+import React from 'react'
 import styled from 'styled-components'
+import logo from '../../images/coding_earth_x_120.png'
 import { theme } from '../theme'
-import {
-  Anchor,
-  Box,
-  DropButton,
-  Image,
-  ResponsiveContext,
-  Text,
-} from 'grommet'
-import { Globe } from 'grommet-icons'
-
-import Menu from './Menu'
-
-import logo from '../../images/coding_earth_logo.png'
 
 const StyledAnchor = styled(Anchor)`
   font-family: 'OCR-A';
@@ -33,13 +22,14 @@ export default () => (
         direction="row"
         background="very-dark"
         align="center"
-        justify="between"
-        responsive={false}
-        pad={{ vertical: 'small', horizontal: 'medium' }}
+        justify="center"
+        margin={{ vertical: 'medium' }}
+        pad={{ horizontal: 'medium' }}
+        style={{ position: 'relative' }}
+        height="xsmall"
       >
-        <Menu />
         <Link to="/">
-          <Image src={logo} height={'50px'} alt="coding earth logo" />
+          <Image src={logo} alt="coding earth logo" />
         </Link>
       </Box>
     )}
