@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 
   const [showSidebar, setShowSidebar] = useState(false)
   return (
-    <Grommet theme={theme}>
+    <Grommet theme={theme} themeMode="dark">
       <AppHeader
         appName="coding earth"
         onToggleSidebar={() => {

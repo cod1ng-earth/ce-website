@@ -11,6 +11,7 @@ const noMaxWidthHeaders = {
 export const theme = deepMerge(dark, {
   global: {
     colors: {
+      black: '#000000',
       active: 'dark-5',
       brand: '#FF9900',
       turqoise: '#02ffff',

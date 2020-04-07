@@ -38,9 +38,9 @@ export default () => (
         pad={{ vertical: 'small', horizontal: 'medium' }}
       >
         <Menu />
-        <StyledAnchor as={Link} to="/">
+        <Link to="/">
           <Image src={logo} height={'50px'} alt="coding earth logo" />
-        </StyledAnchor>
+        </Link>
       </Box>
     )}
   </ResponsiveContext.Consumer>
