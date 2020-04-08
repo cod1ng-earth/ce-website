@@ -1,7 +1,16 @@
-import { Heading, Box, Text, Paragraph, Button, Anchor } from 'grommet'
-import { ScheduleNew, Checkmark } from 'grommet-icons'
+import {
+  Heading,
+  Box,
+  Text,
+  Paragraph,
+  Button,
+  Anchor,
+  FormField,
+  TextInput,
+} from 'grommet'
+import { ScheduleNew, Checkmark, Github } from 'grommet-icons'
 import React, { useState, useEffect } from 'react'
-
+import emailValidator from 'email-validator'
 import { FullWidth } from './TwoCols'
 import Image from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -9,8 +18,43 @@ import { useAuth0 } from './auth/react-auth0-spa'
 import { theme } from './theme'
 const colors = theme.global.colors
 
+function SignupButton({ user, attend }) {
+  const [email, setEmail] = useState(user.email)
+  const [submittable, setSubmittable] = useState(false)
+
+  useEffect(() => {
+    setSubmittable(emailValidator.validate(email))
+  }, [email])
+
+  return (
+    <Box
+      direction="row"
+      width="large"
+      alignSelf="center"
+      align="center"
+      gap="small"
+    >
+      <Text>Notify</Text>
+      <TextInput
+        placeholder="your@email-addre.ss"
+        value={email}
+        onChange={event => setEmail(event.target.value)}
+      />
+      <Text>and</Text>
+      <Button
+        onClick={() => attend(email)}
+        color={colors['meetup-red']}
+        primary
+        disabled={!submittable}
+        alignSelf="center"
+        label="Attend"
+      />
+    </Box>
+  )
+}
+
 export default function() {
-  const { isAuthenticated, user } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, user } = useAuth0()
   const [attending, setAttending] = useState(false)
 
   const data = useStaticQuery(graphql`
@@ -25,11 +69,11 @@ export default function() {
     }
   `)
 
-  async function attend() {
+  async function attend(email) {
     try {
       const body = JSON.stringify({
         name: user.name,
-        email: user.email,
+        email,
         nickname: user.nickname,
         meetup: 'global_1',
       })
@@ -114,11 +158,12 @@ export default function() {
 
           <Paragraph fill>
             All contributions follow our golden "*1 line of code*" rule, so
-            demos and live code will be abound.
+            demos and live code will be abound. You don't have to register to
+            get into our stream but if you do, we send you updates (and nothing
+            else) like the final YouTube URL of the stream before the event:
           </Paragraph>
         </Box>
       </Box>
-
       {attending ? (
         <Button
           color="status-ok"
@@ -129,16 +174,19 @@ export default function() {
           disabled={!isAuthenticated}
           label="you are registered for this meetup"
         />
+      ) : user ? (
+        <SignupButton user={user} attend={attend} />
       ) : (
-        <Button
-          onClick={() => attend()}
-          color={colors['meetup-red']}
-          primary
-          size="large"
-          alignSelf="center"
-          label="Attend"
-          disabled={!isAuthenticated}
-        />
+        <Text alignSelf="center" color="light-6">
+          You must be{' '}
+          <Button
+            label="authenticated"
+            icon={<Github />}
+            onClick={loginWithRedirect}
+            color="dark-1"
+          />{' '}
+          to signup for this event
+        </Text>
       )}
     </FullWidth>
   )
