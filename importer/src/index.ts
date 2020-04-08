@@ -1,11 +1,14 @@
 #!/usr/bin/env node
-const yargs = require('yargs')
-const importGroup = require('./importGroup.js')
+import { config } from 'dotenv'
+config()
 
-yargs // eslint-disable-line
+import * as yargs from 'yargs'
+import importGroup from './importGroup'
+
+yargs
   .command({
     command: 'group <group>',
-    desc: 'import a group',
+    describe: 'import a group',
     builder: yargs =>
       yargs.option('count', {
         alias: 'c',
@@ -17,7 +20,7 @@ yargs // eslint-disable-line
   })
   .command({
     command: 'meetups <group>',
-    desc: 'imports meetups for a group',
+    describe: 'imports meetups for a group',
     handler: argv => {
       console.info(`importing meetups: ${argv.group}`)
     },

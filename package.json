@@ -12,6 +12,7 @@
     "apollo-client": "^2.6.8",
     "apollo-link-http": "^1.5.16",
     "babel-plugin-styled-components": "^1.10.7",
+    "cross-fetch": "^3.0.4",
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
     "excerpt-html": "^1.2.1",
@@ -35,7 +36,6 @@
     "lodash.map": "^4.6.0",
     "luxon": "^1.23.0",
     "netlify-lambda": "^1.6.3",
-    "node-fetch": "^2.6.0",
     "polished": "^3.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -49,6 +49,8 @@
     "yargs": "^15.3.1"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.5.5",
+    "@types/yargs": "^15.0.4",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "babel-eslint": "^10.1.0",
@@ -62,7 +64,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "netlify-cli": "^2.41.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
   },
   "keywords": [
     "gatsby"
@@ -75,7 +78,9 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
+    "build:importer": "tsc -p importer",
+    "start:importer": "tsc --watch --inlineSourceMap --inlineSources -p importer"
   },
   "repository": {
     "type": "git",
