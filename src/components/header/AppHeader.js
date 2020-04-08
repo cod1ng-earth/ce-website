@@ -17,13 +17,7 @@ const StyledAnchor = styled(Anchor)`
 `
 
 export default () => {
-  const {
-    isAuthenticated,
-    loginWithPopup,
-    logout,
-
-    user,
-  } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
 
   return (
     <Box
@@ -49,7 +43,7 @@ export default () => {
             primary
             icon={<Github />}
             label="Log in"
-            onClick={() => loginWithPopup({})}
+            onClick={() => loginWithRedirect()}
           />
         )}
 

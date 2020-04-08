@@ -18,9 +18,21 @@ export const Auth0Provider = ({
   const [loading, setLoading] = useState(true)
   const [popupOpen, setPopupOpen] = useState(false)
 
+  const [redirectUri, setRedirectUri] = useState('')
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const _r = window.location.origin
+      setRedirectUri(_r)
+    }
+  }, [])
+
   useEffect(() => {
     const initAuth0 = async () => {
-      const auth0FromHook = await createAuth0Client(initOptions)
+      console.log(redirectUri)
+      const auth0FromHook = await createAuth0Client({
+        ...initOptions,
+        redirectUri,
+      })
       setAuth0(auth0FromHook)
 
       if (
@@ -44,7 +56,7 @@ export const Auth0Provider = ({
     }
     initAuth0()
     // eslint-disable-next-line
-  }, []);
+  }, [redirectUri]);
 
   const loginWithPopup = async (params = {}) => {
     setPopupOpen(true)
