@@ -18,21 +18,9 @@ export const Auth0Provider = ({
   const [loading, setLoading] = useState(true)
   const [popupOpen, setPopupOpen] = useState(false)
 
-  const [redirectUri, setRedirectUri] = useState('')
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const _r = window.location.origin
-      setRedirectUri(_r)
-    }
-  }, [])
-
   useEffect(() => {
     const initAuth0 = async () => {
-      console.log(redirectUri)
-      const auth0FromHook = await createAuth0Client({
-        ...initOptions,
-        redirectUri,
-      })
+      const auth0FromHook = await createAuth0Client(initOptions)
       setAuth0(auth0FromHook)
 
       if (
@@ -56,7 +44,13 @@ export const Auth0Provider = ({
     }
     initAuth0()
     // eslint-disable-next-line
-  }, [redirectUri]);
+  }, []);
+
+  const loginWithRedirect = async (params = {}) =>
+    await auth0Client.loginWithRedirect({
+      ...params,
+      redirect_uri: window.location.origin,
+    })
 
   const loginWithPopup = async (params = {}) => {
     setPopupOpen(true)
@@ -90,7 +84,7 @@ export const Auth0Provider = ({
         loginWithPopup,
         handleRedirectCallback,
         getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
-        loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+        loginWithRedirect: (...p) => loginWithRedirect(...p),
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
         logout: (...p) => auth0Client.logout(...p),
