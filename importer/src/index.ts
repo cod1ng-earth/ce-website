@@ -4,6 +4,7 @@ config()
 
 import * as yargs from 'yargs'
 import { getGroup, importGroup } from './groupCommands'
+import { getMeetups, importMeetups } from './meetupCommands'
 
 yargs
   .command({
@@ -32,9 +33,30 @@ yargs
   })
   .command({
     command: 'meetups <group>',
-    describe: 'imports meetups for a group',
-    handler: argv => {
-      console.info(`importing meetups: ${argv.group}`)
+    describe: 'meetups for a group',
+    builder: yargs =>
+      yargs.option('file', {
+        alias: 'f',
+        type: 'string',
+        default: null,
+      }),
+    handler: async argv => {
+      let meetups
+      try {
+        if (argv.import) {
+          console.info(`importing meetups for ${argv.group} by: ${argv.file}`)
+          meetups = await importMeetups(
+            argv.group as string,
+            argv.file as string
+          )
+          console.log(meetups)
+        } else {
+          meetups = await getMeetups(argv.group as string)
+          console.log(meetups)
+        }
+      } catch (e) {
+        console.error(e)
+      }
     },
   })
   .demandCommand(1, 'You need at least one command before moving on')
