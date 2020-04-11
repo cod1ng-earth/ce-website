@@ -3,15 +3,20 @@ import {
   get as getMeetupGroup,
   createMeetupGroup,
 } from './persistence/MeetupGroup'
+import fetch from 'cross-fetch'
 import { MeetupGroup } from './types/MeetupGroup'
 
-function _fetch(groupUrlName): MeetupGroup {
+async function _fetch(groupUrlName): Promise<MeetupGroup> {
   if (fs.existsSync(groupUrlName)) {
     const data = fs.readFileSync(groupUrlName)
     return JSON.parse(data.toString())
   } else {
-    //const meetupApiUrl = `https://api.meetup.com/${groupUrlName}`
-    throw new Error('not impl')
+    const meetupData = await fetch(`https://api.meetup.com/${groupUrlName}`)
+    const jsonData = await meetupData.json()
+    if (jsonData.errors) {
+      throw new Error(jsonData.errors[0].message)
+    }
+    return jsonData
   }
 }
 
@@ -28,7 +33,7 @@ export async function getGroup(
 export async function importGroup(
   groupUrl: string
 ): Promise<MeetupGroup | null> {
-  const group = _fetch(groupUrl)
+  const group = await _fetch(groupUrl)
 
   const existingGroup = await getGroup(group.urlname)
 
