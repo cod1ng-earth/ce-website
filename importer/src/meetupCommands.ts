@@ -7,9 +7,12 @@ import fetch from 'cross-fetch'
 import { Meetup } from './types/MeetupGroup'
 import { getGroup } from './groupCommands'
 
-async function _fetch(groupUrlName): Promise<Meetup[]> {
-  if (fs.existsSync(groupUrlName)) {
-    const data = fs.readFileSync(groupUrlName)
+async function _fetch(groupUrlName, file): Promise<Meetup[]> {
+  if (file) {
+    if (!fs.existsSync(file)) {
+      throw new Error(`file ${file} not found`)
+    }
+    const data = fs.readFileSync(file)
     return JSON.parse(data.toString())
   } else {
     const meetupData = await fetch(
@@ -36,12 +39,9 @@ export async function importMeetups(
   if (!existingGroup) {
     throw new Error(`you must create the group ${groupUrlName} first`)
   }
-  if (file && !fs.existsSync(file)) {
-    throw new Error(`file ${file} not found`)
-  }
-  const data = fs.readFileSync(file)
-  const meetupContent = JSON.parse(data.toString())
   const results = []
+  const meetupContent = await _fetch(groupUrlName, file)
+
   const meetups = meetupContent.map(meetup => {
     return createMeetup(existingGroup, {
       ...meetup,
