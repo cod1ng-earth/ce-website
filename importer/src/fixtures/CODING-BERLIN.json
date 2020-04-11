@@ -1,76 +1,76 @@
 {
-    "id": 20370223,
-    "name": "coding berlin",
-    "status": "active",
-    "link": "https://www.meetup.com/CODING-BERLIN/",
-    "urlname": "CODING-BERLIN",
-    "description": "<p><span>Coding Berlin is a home for developers of all skill levels. Everybody's welcome, everyone's invited, everyone will take something home from our meetups. This is not your usual \"experts talk, audience listens\" kind of experience but a community driven meetup that embraces a knowledge exchange culture as well as a strict \"nice to have you here\"-attitude.&nbsp;</span><br></p>\n<p><span><b>Note for new members:</b>&nbsp;because of the current spam flood that runs in on meetup.com an organizer will have to approve your join request. That won't take longer than a few minutes.&nbsp;<br></span></p>\n<p>Isn\u2019t it amazing how many technologies you have to learn to follow the path of modern software development? Be it blockchains for storing transactions, machines taking decisions based upon digital learning sets, virtual clusters providing computing power for scaled applications and command line tools that improve your workflow: it\u2019s nearly impossible to keep an eye on everything.</p>\n<p>That\u2019s where we jump in: Instead of specialising on a dedicated topic, coding berlin was established to become a hub meetup for Berlin\u2019s coder community: every software development related topic is welcome here, every developer with whatever skill level will take away something new on every session, every question may be asked and everyone should have a good time. There\u2019s only one golden rule: don\u2019t bore us with bs, talks have to be hands on, the must contain at least 1 line of code and in the best case they\u2019re massively supported by demos.</p>\n<p>We are looking forward to your ideas for upcoming meetups. If you want to share any of your knowledge with a highly motivated community, this is the right place. If you want to demonstrate a software stack that you\u2019re using in your startup, this is the place to present. If you seek for an opportunity to spread the evangelism of the next big programming language: give a talk at coding berlin. We\u2019re embracing developers and we\u2019re just waiting for you. </p>\n<p>Here are some golden rules of coding berlin:</p>\n<p>\u2022 we neither care about your gender, your skin tone, your religious views, the language your mother taught you nor your heritage or favorite science fiction series, we only care about you as a developer.</p>\n<p>\u2022 no marketing, no recruiting, only tech and if possible: code (lets consider yaml valid, and of course you may announce that your company is hiring)</p>\n<p>\u2022 don't bash one technology in favor of another without giving a concrete reason (Ruby is sh*t, Rust is much better, you know the game)</p>\n<p>\u2022 one demo gets you rid of 10 slides so don't be shy and type live, we're all developers so we'll only laugh at obvious typos</p>\n<p>\u2022 as soon as 1 person is around who doesn't understand German we switch to English (exceptions must be announced and if she doesn't understand English as well we ran out of options).</p>\n<p>\u2022 if your English is bad, talk more of it, it helps (for real!)</p>\n<p>\u2022 food is not always free, but maybe you get a t-shirt</p>\n<p>\u2022 everyone can become a developer</p>\n<p>\u2022 everyone can become a better developer</p>\n<p>\u2022 being a bad developer doesn't make you a bad person</p>\n<p>\u2022 there are no bad developers</p>\n<p>\u2022 you do talk about coding berlin</p>\n<p>We also have our own Slack: codingberlin.slack.com - Shoot us a message if you want to help planning upcoming meetups, workshops, coding dojos or even hackathons. If you want to promote your developer related event: let us know, we're glad to support you, lets see if we can help! &lt;br&gt;</p>",
-    "created": 1472569505000,
-    "city": "Berlin",
-    "untranslated_city": "Berlin",
-    "country": "DE",
-    "localized_country_name": "Germany",
-    "localized_location": "Berlin, Germany",
-    "region2": "",
-    "state": "",
-    "join_mode": "approval",
-    "visibility": "public",
-    "lat": 52.52,
-    "lon": 13.38,
-    "members": 1378,
-    "member_pay_fee": false,
-    "organizer": {
-        "id": 219847815,
-        "name": "Peter B.",
-        "bio": "",
-        "photo": {
-            "id": 263301207,
-            "highres_link": "https://secure.meetupstatic.com/photos/member/5/2/d/7/highres_263301207.jpeg",
-            "photo_link": "https://secure.meetupstatic.com/photos/member/5/2/d/7/member_263301207.jpeg",
-            "thumb_link": "https://secure.meetupstatic.com/photos/member/5/2/d/7/thumb_263301207.jpeg",
-            "type": "member",
-            "base_url": "https://secure.meetupstatic.com"
-        }
-    },
-    "who": "Coders",
-    "group_photo": {
-        "id": 473532140,
-        "highres_link": "https://secure.meetupstatic.com/photos/event/2/f/6/c/highres_473532140.jpeg",
-        "photo_link": "https://secure.meetupstatic.com/photos/event/2/f/6/c/600_473532140.jpeg",
-        "thumb_link": "https://secure.meetupstatic.com/photos/event/2/f/6/c/thumb_473532140.jpeg",
-        "type": "event",
-        "base_url": "https://secure.meetupstatic.com"
-    },
-    "key_photo": {
-        "id": 468049399,
-        "highres_link": "https://secure.meetupstatic.com/photos/event/c/0/f/7/highres_468049399.jpeg",
-        "photo_link": "https://secure.meetupstatic.com/photos/event/c/0/f/7/600_468049399.jpeg",
-        "thumb_link": "https://secure.meetupstatic.com/photos/event/c/0/f/7/thumb_468049399.jpeg",
-        "type": "event",
-        "base_url": "https://secure.meetupstatic.com"
-    },
-    "timezone": "Europe/Berlin",
-    "category": {
-        "id": 34,
-        "name": "Tech",
-        "shortname": "tech",
-        "sort_name": "Tech"
-    },
-    "meta_category": {
-        "id": 292,
-        "shortname": "tech",
-        "name": "Tech",
-        "sort_name": "Tech",
-        "photo": {
-            "id": 450131949,
-            "highres_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
-            "photo_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
-            "thumb_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
-            "type": "event",
-            "base_url": "https://secure.meetupstatic.com"
-        },
-        "category_ids": [
-            34
-        ]
+  "id": 20370223,
+  "name": "coding berlin",
+  "status": "active",
+  "link": "https://www.meetup.com/CODING-BERLIN/",
+  "urlname": "CODING-BERLIN2",
+  "description": "<p><span>Coding Berlin is a home for developers of all skill levels. Everybody's welcome, everyone's invited, everyone will take something home from our meetups. This is not your usual \"experts talk, audience listens\" kind of experience but a community driven meetup that embraces a knowledge exchange culture as well as a strict \"nice to have you here\"-attitude.&nbsp;</span><br></p>\n<p><span><b>Note for new members:</b>&nbsp;because of the current spam flood that runs in on meetup.com an organizer will have to approve your join request. That won't take longer than a few minutes.&nbsp;<br></span></p>\n<p>Isn\u2019t it amazing how many technologies you have to learn to follow the path of modern software development? Be it blockchains for storing transactions, machines taking decisions based upon digital learning sets, virtual clusters providing computing power for scaled applications and command line tools that improve your workflow: it\u2019s nearly impossible to keep an eye on everything.</p>\n<p>That\u2019s where we jump in: Instead of specialising on a dedicated topic, coding berlin was established to become a hub meetup for Berlin\u2019s coder community: every software development related topic is welcome here, every developer with whatever skill level will take away something new on every session, every question may be asked and everyone should have a good time. There\u2019s only one golden rule: don\u2019t bore us with bs, talks have to be hands on, the must contain at least 1 line of code and in the best case they\u2019re massively supported by demos.</p>\n<p>We are looking forward to your ideas for upcoming meetups. If you want to share any of your knowledge with a highly motivated community, this is the right place. If you want to demonstrate a software stack that you\u2019re using in your startup, this is the place to present. If you seek for an opportunity to spread the evangelism of the next big programming language: give a talk at coding berlin. We\u2019re embracing developers and we\u2019re just waiting for you. </p>\n<p>Here are some golden rules of coding berlin:</p>\n<p>\u2022 we neither care about your gender, your skin tone, your religious views, the language your mother taught you nor your heritage or favorite science fiction series, we only care about you as a developer.</p>\n<p>\u2022 no marketing, no recruiting, only tech and if possible: code (lets consider yaml valid, and of course you may announce that your company is hiring)</p>\n<p>\u2022 don't bash one technology in favor of another without giving a concrete reason (Ruby is sh*t, Rust is much better, you know the game)</p>\n<p>\u2022 one demo gets you rid of 10 slides so don't be shy and type live, we're all developers so we'll only laugh at obvious typos</p>\n<p>\u2022 as soon as 1 person is around who doesn't understand German we switch to English (exceptions must be announced and if she doesn't understand English as well we ran out of options).</p>\n<p>\u2022 if your English is bad, talk more of it, it helps (for real!)</p>\n<p>\u2022 food is not always free, but maybe you get a t-shirt</p>\n<p>\u2022 everyone can become a developer</p>\n<p>\u2022 everyone can become a better developer</p>\n<p>\u2022 being a bad developer doesn't make you a bad person</p>\n<p>\u2022 there are no bad developers</p>\n<p>\u2022 you do talk about coding berlin</p>\n<p>We also have our own Slack: codingberlin.slack.com - Shoot us a message if you want to help planning upcoming meetups, workshops, coding dojos or even hackathons. If you want to promote your developer related event: let us know, we're glad to support you, lets see if we can help! &lt;br&gt;</p>",
+  "created": 1472569505000,
+  "city": "Berlin",
+  "untranslated_city": "Berlin",
+  "country": "DE",
+  "localized_country_name": "Germany",
+  "localized_location": "Berlin, Germany",
+  "region2": "",
+  "state": "",
+  "join_mode": "approval",
+  "visibility": "public",
+  "lat": 52.52,
+  "lon": 13.38,
+  "members": 1378,
+  "member_pay_fee": false,
+  "organizer": {
+    "id": 219847815,
+    "name": "Peter B.",
+    "bio": "",
+    "photo": {
+      "id": 263301207,
+      "highres_link": "https://secure.meetupstatic.com/photos/member/5/2/d/7/highres_263301207.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/member/5/2/d/7/member_263301207.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/member/5/2/d/7/thumb_263301207.jpeg",
+      "type": "member",
+      "base_url": "https://secure.meetupstatic.com"
     }
+  },
+  "who": "Coders",
+  "group_photo": {
+    "id": 473532140,
+    "highres_link": "https://secure.meetupstatic.com/photos/event/2/f/6/c/highres_473532140.jpeg",
+    "photo_link": "https://secure.meetupstatic.com/photos/event/2/f/6/c/600_473532140.jpeg",
+    "thumb_link": "https://secure.meetupstatic.com/photos/event/2/f/6/c/thumb_473532140.jpeg",
+    "type": "event",
+    "base_url": "https://secure.meetupstatic.com"
+  },
+  "key_photo": {
+    "id": 468049399,
+    "highres_link": "https://secure.meetupstatic.com/photos/event/c/0/f/7/highres_468049399.jpeg",
+    "photo_link": "https://secure.meetupstatic.com/photos/event/c/0/f/7/600_468049399.jpeg",
+    "thumb_link": "https://secure.meetupstatic.com/photos/event/c/0/f/7/thumb_468049399.jpeg",
+    "type": "event",
+    "base_url": "https://secure.meetupstatic.com"
+  },
+  "timezone": "Europe/Berlin",
+  "category": {
+    "id": 34,
+    "name": "Tech",
+    "shortname": "tech",
+    "sort_name": "Tech"
+  },
+  "meta_category": {
+    "id": 292,
+    "shortname": "tech",
+    "name": "Tech",
+    "sort_name": "Tech",
+    "photo": {
+      "id": 450131949,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "category_ids": [
+      34
+    ]
+  }
 }
