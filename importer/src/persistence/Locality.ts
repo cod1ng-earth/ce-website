@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const GQL_CREATE_LOCALITY = gql`
-  mutation(
+  mutation CreateLocality(
     $city: String
     $untranslatedCity: String!
     $country: String

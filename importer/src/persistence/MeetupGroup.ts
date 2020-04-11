@@ -1,8 +1,9 @@
 import gql from 'graphql-tag'
-import ApolloClient from 'apollo-client'
+import apolloClient from '../apolloClient'
+import { MeetupGroup } from '../types/MeetupGroup'
 
-const GQL_CREATE_MEETUP_GROUP = gql`
-  mutation(
+export const CREATE_MEETUP_GROUP = gql`
+  mutation CreateMeetupGroup(
     $id: String
     $name: String!
     $description: String
@@ -26,9 +27,20 @@ const GQL_CREATE_MEETUP_GROUP = gql`
   }
 `
 
-const QUERY_GROUP = gql`
-  query($urlname: String) {
+export const QUERY_GROUP = gql`
+  query MeetupGroupByURL($urlname: String) {
     meetupGroups(where: { urlname: $urlname }) {
+      id
+      meetupComId
+      urlname
+      name
+    }
+  }
+`
+
+export const QUERY_ONE_GROUP = gql`
+  query MeetupGroup($id: ID!) {
+    meetupGroup(where: { id: $id }) {
       id
       meetupComId
       urlname
@@ -51,10 +63,17 @@ const QUERY_GROUP = gql`
 export async function createMeetupGroup(meetupGroup) {}
 export async function update(group) {}
 
-export async function get(client: ApolloClient<any>, group: string) {
-  const result = await client.query({
+export async function get(group: string) {
+  const result = await apolloClient.query({
     query: QUERY_GROUP,
     variables: { urlname: group },
   })
   return result
+}
+
+export async function add(group: MeetupGroup) {
+  await apolloClient.mutate({
+    mutation: CREATE_MEETUP_GROUP,
+    variables: {},
+  })
 }
