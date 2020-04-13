@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import ReactMarkdown from 'react-markdown/with-html'
 import Layout from '../components/layout'
@@ -10,6 +10,8 @@ import Mdx from '../components/Mdx'
 import { Carousel } from 'react-responsive-carousel'
 import { FullWidth } from '../components/TwoCols'
 import { Paragraph, Heading, Anchor, Box, Image, Text } from 'grommet'
+import { FormPrevious } from 'grommet-icons'
+
 import Time from '../components/Time'
 
 const renderers = {
@@ -27,6 +29,12 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
     <Layout>
       <SEO title={meetup.name} />
       <FullWidth>
+        <Anchor
+          as={Link}
+          icon={<FormPrevious />}
+          to="/sofar"
+          label="all meetups"
+        />
         <Text>{Time({ timeString: meetup.time })} </Text>
         <Heading level={1} color="turqoise">
           {meetup.name}

@@ -24,6 +24,7 @@ export default ({ data }) => {
         {meetups.map(m => (
           <Box key={m.id} margin={{ bottom: 'medium' }}>
             <Text>{Time({ timeString: m.time })} </Text>
+            <Text size="small">{m.meetupGroup.name}</Text>
             <Anchor as={Link} to={`meetup/${m.id}`} size="medium">
               {m.name}
             </Anchor>
@@ -41,6 +42,9 @@ export const query = graphql`
         id
         name
         time
+        meetupGroup {
+          name
+        }
       }
     }
   }

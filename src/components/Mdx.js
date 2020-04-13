@@ -9,7 +9,7 @@ const shortcodes = { Twitter, Agenda }
 const components = {
   //...shortcodes,
 
-  p: props => <Paragraph fill>qqq{props.children}</Paragraph>,
+  p: props => <Paragraph fill>{props.children}</Paragraph>,
   paragraph: Paragraph,
   h1: props => (
     <Heading level={1} color="turqoise">
