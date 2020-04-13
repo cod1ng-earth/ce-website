@@ -1,41 +1,30 @@
 import React from 'react'
 
-import { MDXProvider } from '@mdx-js/react'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-
-import { Box, Heading } from 'grommet'
+import { Heading, Paragraph } from 'grommet'
 
 import Twitter from './ui/Twitter'
 import Agenda from './ui/Agenda'
 
-import StyledParagraph from './StyledParagraph'
-
 const shortcodes = { Twitter, Agenda }
+const components = {
+  //...shortcodes,
 
-export default ({ mdx }) => (
-  <MDXProvider
-    components={{
-      ...shortcodes,
-      p: props => <StyledParagraph fill>{props.children}</StyledParagraph>,
-      h1: props => (
-        <Box>
-          <Heading level={1} color="turqoise">
-            {props.children}
-          </Heading>
-        </Box>
-      ),
-      h2: props => (
-        <Heading level={2} color="brand">
-          {props.children}
-        </Heading>
-      ),
-      h3: props => (
-        <Heading level={3} color="brand">
-          {props.children}
-        </Heading>
-      ),
-    }}
-  >
-    <MDXRenderer>{mdx.body}</MDXRenderer>
-  </MDXProvider>
-)
+  p: props => <Paragraph fill>{props.children}</Paragraph>,
+  paragraph: Paragraph,
+  h1: props => (
+    <Heading level={1} color="turqoise">
+      {props.children}
+    </Heading>
+  ),
+  h2: props => (
+    <Heading level={2} color="brand">
+      {props.children}
+    </Heading>
+  ),
+  h3: props => (
+    <Heading level={3} color="brand">
+      {props.children}
+    </Heading>
+  ),
+}
+export default components

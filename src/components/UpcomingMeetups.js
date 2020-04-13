@@ -131,7 +131,7 @@ export default function() {
             local chapters (Stuttgart, Leipzig, Berlin &amp; Porto, Lisbon, Faro
             / Portugal) in one global community. Mark your calendars for the
             21st, grab a cold beverage that night and come join us! The meetup
-            will have three sessions, two of which are already can announce.
+            will have three sessions, one of which are already can announce:
           </Paragraph>
 
           <Text>
@@ -145,7 +145,7 @@ export default function() {
             (Lisbon) will give an intro to Google's Flutter SDK,{' '}
           </Text>
 
-          <Text>
+          {/*<Text>
             <Anchor
               href="https://twitter.com/PhillipKessels"
               target="_blank"
@@ -154,7 +154,7 @@ export default function() {
               Phillip Kessels
             </Anchor>{' '}
             (Porto) will give a talk on the Web Audio API.
-          </Text>
+          </Text>*/}
 
           <Paragraph fill>
             All contributions follow our golden "*1 line of code*" rule, so

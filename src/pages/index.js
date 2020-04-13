@@ -9,6 +9,7 @@ import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
 import { MailchimpSignup } from '../components/MailchimpSignup'
 import UpcomingMeetups from '../components/UpcomingMeetups'
+import PastMeetups from '../components/PastMeetups'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -110,6 +111,8 @@ const IndexPage = () => (
     </FullWidth>
 
     <UpcomingMeetups />
+
+    <PastMeetups />
 
     <FullWidth background="black">
       <TwoCols>
