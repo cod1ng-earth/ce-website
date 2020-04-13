@@ -8,6 +8,8 @@ import SubFooter from './footer/SubFooter'
 import AppHeader from './header/AppHeader'
 import { theme } from './theme'
 
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {

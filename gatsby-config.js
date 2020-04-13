@@ -26,11 +26,22 @@ module.exports = {
       },
     },
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-mdx',
-    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        mediaTypes: ['text/markdown', 'text/x-markdown'],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-global-context',
+      options: {
+        context: {
+          today: new Date(),
+        },
+      },
+    },
     'gatsby-transformer-json',
     'gatsby-transformer-sharp',
-
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -44,7 +55,18 @@ module.exports = {
         icon: 'src/images/coding_earth_icon.png',
       },
     },
-
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'GraphCMS',
+        fieldName: 'graphcms',
+        refetchInterval: 480,
+        url: process.env.GRAPHCMS_ENDPOINT,
+        headers: {
+          Authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-cloudinary',
       options: {

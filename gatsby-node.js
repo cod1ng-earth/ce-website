@@ -15,6 +15,12 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      graphcms {
+        meetups(orderBy: time_DESC) {
+          id
+          meetupComId
+        }
+      }
     }
   `)
 
@@ -28,4 +34,68 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  result.data.graphcms.meetups.forEach(({ id, meetupComId }) => {
+    createPage({
+      path: `/meetup/${id}`,
+      component: path.resolve('./src/templates/meetup.js'),
+      context: {
+        id,
+        cloudinaryTag: `meetup:${meetupComId}`,
+      },
+    })
+  })
 }
+
+//render graphcms descriptions to HTML
+//
+
+// exports.createResolvers = ({
+//   actions,
+//   createResolvers,
+//   createContentDigest,
+//   createNodeId,
+// }) => {
+//   const { createNode } = actions
+
+//   createResolvers({
+//     GraphCMS_Meetup: {
+//       mdxDescription: {
+//         type: 'String',
+//         resolve(source) {
+//           return createNode({
+//             id: createNodeId(source.description),
+//             parent: source.id,
+//             children: [],
+
+//             internal: {
+//               type: 'GraphCMSMdxField',
+//               contentDigest: createContentDigest(source.description),
+//               //mediaType: 'text/x-markdown',
+//               content: source.description,
+//             },
+//           })
+//         },
+//       },
+//     },
+//   })
+// }
+
+// exports.createResolvers = ({
+//   actions,
+//   createResolvers,
+//   createContentDigest,
+//   createNodeId,
+// }) => {
+//   const { createNode } = actions
+
+//   createResolvers({
+//     GraphCMS_Meetup: {
+//       description: {
+//         type: 'String',
+//         resolve(source) {
+//           return mdx(source.description)
+//         },
+//       },
+//     },
+//   })
+// }
