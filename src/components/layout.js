@@ -1,10 +1,11 @@
 import { graphql, navigate, useStaticQuery } from 'gatsby'
 import { Box, Grommet } from 'grommet'
 import PropTypes from 'prop-types'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Auth0Provider } from './auth/react-auth0-spa'
 import AppFooter from './footer/AppFooter'
 import SubFooter from './footer/SubFooter'
+import Partners from './footer/Partners'
 import AppHeader from './header/AppHeader'
 import { theme } from './theme'
 
@@ -43,6 +44,7 @@ const Layout = ({ children }) => {
           <Box full align="center">
             {children}
           </Box>
+          <Partners />
           <AppFooter />
           <SubFooter />
         </Box>
