@@ -8,7 +8,13 @@ export const TwoCols = ({ children }) => (
 )
 
 export const FullWidth = props => (
-  <Box pad={{ vertical: 'medium' }} {...props} fill align="center">
+  <Box
+    pad={{ vertical: 'medium' }}
+    {...props}
+    fill
+    align="center"
+    justify="center"
+  >
     <Box width="xlarge" pad="small">
       {props.children}
     </Box>
