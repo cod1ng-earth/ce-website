@@ -1,6 +1,7 @@
 // src/react-auth0-spa.js
 import React, { useState, useEffect, useContext } from 'react'
 import createAuth0Client from '@auth0/auth0-spa-js'
+import { useLocation } from '@reach/router'
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname)
@@ -17,6 +18,7 @@ export const Auth0Provider = ({
   const [auth0Client, setAuth0] = useState()
   const [loading, setLoading] = useState(true)
   const [popupOpen, setPopupOpen] = useState(false)
+  const currentLocation = useLocation()
 
   useEffect(() => {
     const initAuth0 = async () => {
@@ -49,7 +51,7 @@ export const Auth0Provider = ({
   const loginWithRedirect = async (params = {}) =>
     await auth0Client.loginWithRedirect({
       ...params,
-      redirect_uri: window.location.origin,
+      redirect_uri: params.redirect_uri || currentLocation.origin,
     })
 
   const loginWithPopup = async (params = {}) => {

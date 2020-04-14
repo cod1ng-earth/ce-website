@@ -9,8 +9,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useLocation } from '@reach/router'
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, seoImage }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -27,7 +28,7 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-
+  const location = useLocation()
   return (
     <Helmet
       htmlAttributes={{
@@ -53,12 +54,28 @@ function SEO({ description, lang, meta, title }) {
           content: 'website',
         },
         {
+          property: 'og:url',
+          content: location ? location.href : 'https://coding.earth',
+        },
+        {
+          property: 'og:image',
+          content: seoImage || 'https://coding.earth/img/coding_earth_og.png',
+        },
+        {
           name: 'twitter:card',
-          content: 'summary',
+          content: 'summary_large_image',
+        },
+        {
+          name: 'twitter:image',
+          content: seoImage || 'https://coding.earth/img/coding_earth_og.png',
         },
         {
           name: 'twitter:creator',
           content: site.siteMetadata.author,
+        },
+        {
+          name: 'twitter:site',
+          content: '@coding_earth',
         },
         {
           name: 'twitter:title',
@@ -99,6 +116,8 @@ SEO.defaultProps = {
   lang: 'en',
   meta: [],
   description: '',
+  title: '',
+  seoImage: '',
 }
 
 SEO.propTypes = {
@@ -106,6 +125,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  seoImage: PropTypes.string,
 }
 
 export default SEO

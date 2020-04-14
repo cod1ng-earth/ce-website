@@ -52,7 +52,7 @@ module.exports = {
         background_color: '#333333',
         theme_color: '#FF9900',
         display: 'minimal-ui',
-        icon: 'src/images/coding_earth_icon.png',
+        icon: 'src/images/coding_earth_x_120.png',
       },
     },
     {

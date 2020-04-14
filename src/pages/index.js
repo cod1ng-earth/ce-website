@@ -110,7 +110,17 @@ const IndexPage = () => (
       </Paragraph>
     </FullWidth>
 
-    <UpcomingMeetups />
+    <FullWidth background="very-dark">
+      <Heading level={2} color="turqoise">
+        <ScheduleNew
+          size="large"
+          color="turqoise"
+          style={{ verticalAlign: 'sub' }}
+        />{' '}
+        upcoming meetups
+      </Heading>
+      <UpcomingMeetups />
+    </FullWidth>
 
     <PastMeetups />
 

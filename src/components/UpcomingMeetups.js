@@ -1,21 +1,20 @@
+import emailValidator from 'email-validator'
+import { graphql, useStaticQuery } from 'gatsby'
+import Image from 'gatsby-image'
 import {
-  Heading,
-  Box,
-  Text,
-  Paragraph,
-  Button,
   Anchor,
-  FormField,
+  Box,
+  Button,
+  Heading,
+  Paragraph,
+  Text,
   TextInput,
 } from 'grommet'
-import { ScheduleNew, Checkmark, Github } from 'grommet-icons'
-import React, { useState, useEffect } from 'react'
-import emailValidator from 'email-validator'
-import { FullWidth } from './TwoCols'
-import Image from 'gatsby-image'
-import { useStaticQuery, graphql } from 'gatsby'
+import { Checkmark, Github } from 'grommet-icons'
+import React, { useEffect, useState } from 'react'
 import { useAuth0 } from './auth/react-auth0-spa'
 import { theme } from './theme'
+
 const colors = theme.global.colors
 
 function SignupButton({ user, attend }) {
@@ -101,15 +100,7 @@ export default function() {
   }, [])
 
   return (
-    <FullWidth background="very-dark">
-      <Heading level={2} color="turqoise">
-        <ScheduleNew
-          size="large"
-          color="turqoise"
-          style={{ verticalAlign: 'sub' }}
-        />{' '}
-        upcoming meetups
-      </Heading>
+    <Box pad="none" margin="none">
       <Box pad={{ vertical: 'medium' }}>
         <Box direction="row-responsive" justify="between" align="center">
           <Heading level={3} color="brand">
@@ -178,16 +169,16 @@ export default function() {
         <SignupButton user={user} attend={attend} />
       ) : (
         <Text alignSelf="center" color="light-6">
-          You must be{' '}
+          If you were{' '}
           <Button
             label="authenticated"
             icon={<Github />}
-            onClick={loginWithRedirect}
+            onClick={() => loginWithRedirect()}
             color="dark-1"
           />{' '}
-          to signup for this event
+          you could signup for this event
         </Text>
       )}
-    </FullWidth>
+    </Box>
   )
 }
