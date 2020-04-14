@@ -21,7 +21,11 @@ const renderers = {
       {children}
     </Heading>
   ),
-  link: ({ href, children }) => <Anchor to={href}>{children}</Anchor>,
+  link: ({ href, children }) => (
+    <Anchor href={href} target="_blank">
+      {children}
+    </Anchor>
+  ),
 }
 export default ({ data: { graphcms, allCloudinaryMedia } }) => {
   const { meetup } = graphcms
