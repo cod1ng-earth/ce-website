@@ -10,11 +10,10 @@ import {
   Text,
   TextInput,
 } from 'grommet'
-import { Checkmark, Github } from 'grommet-icons'
+import { Checkmark, Github, UserNew } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
 import { useAuth0 } from './auth/react-auth0-spa'
 import { theme } from './theme'
-
 const colors = theme.global.colors
 
 function SignupButton({ user, attend }) {
@@ -106,7 +105,7 @@ export default function() {
           <Heading level={3} color="brand">
             coding earth global meetup #1
           </Heading>
-          <Text size="medium">2020, Apr 21st 7PM CEST</Text>
+          <Text size="medium">Apr 21st 2020, 7PM CEST</Text>
         </Box>
         <Box>
           <Image
@@ -133,7 +132,11 @@ export default function() {
             >
               Filipe Barroso
             </Anchor>{' '}
-            (Lisbon) will give an intro to Google's Flutter SDK,{' '}
+            (Lisbon) will give an intro to Google's{' '}
+            <Anchor href="https://flutter.dev/" target="_blank">
+              Flutter
+            </Anchor>{' '}
+            SDK{' '}
           </Text>
 
           {/*<Text>
@@ -151,8 +154,26 @@ export default function() {
             All contributions follow our golden "*1 line of code*" rule, so
             demos and live code will be abound. You don't have to register to
             get into our stream but if you do, we send you updates (and nothing
-            else) like the final YouTube URL of the stream before the event:
+            else) like the final YouTube URL of the stream before the event.
           </Paragraph>
+          <Box direction="row" align="center" background="turqoise" gap="large">
+            <Box pad="medium">
+              <UserNew size="large" />
+            </Box>
+            <Box>
+              <Paragraph fill>
+                we're still looking for contributions, so don't be shy to share
+                20 minutes of your lifetime and enlighten other developers
+                around the world with the stuff you've recently been working on
+                and what you're proud of having achieved during quarantine.
+                Simply{' '}
+                <Anchor href="mailto://info@coding-earth.com?subject=I want a talk slot at coding earth global meetup #1">
+                  drop us a line
+                </Anchor>{' '}
+                and we'll promote you to the video stage :)
+              </Paragraph>
+            </Box>
+          </Box>
         </Box>
       </Box>
       {attending ? (
