@@ -11,6 +11,7 @@ const GlobalOnePage = () => (
     <SEO
       title="coding earth :: Apr 21st: global meetup #1"
       description="Apr 21st: global meetup #1"
+      seoImage="https://coding.earth/img/ce_global_1.jpeg"
     />
 
     <FullWidth background="very-dark">
