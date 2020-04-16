@@ -1,14 +1,16 @@
 import emailValidator from 'email-validator'
 import { graphql, useStaticQuery } from 'gatsby'
-import Image from 'gatsby-image'
+import { default as Img } from 'gatsby-image'
 import {
   Anchor,
   Box,
   Button,
   Heading,
+  Image,
   Paragraph,
   Text,
   TextInput,
+  Avatar,
 } from 'grommet'
 import { Checkmark, Github, UserNew } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
@@ -108,7 +110,7 @@ export default function() {
           <Text size="medium">Apr 21st 2020, 7PM CEST</Text>
         </Box>
         <Box>
-          <Image
+          <Img
             objectFit="contain"
             objectPosition="0% 0%"
             durationFadeIn={5000}
@@ -125,48 +127,60 @@ export default function() {
           </Paragraph>
 
           <Box background="dark-1" pad="medium">
-            <Paragraph fill>
-              <Anchor
-                href="https://twitter.com/ABarroso"
-                target="_blank"
-                rel="noopener"
-              >
-                Filipe Barroso
-              </Anchor>{' '}
-              (
-              <Anchor
-                href="https://www.gdglisbon.xyz/"
-                target="_blank"
-                rel="noopener"
-              >
-                GDG Lisbon
-              </Anchor>
-              , Lisbon) will give an intro to Google's{' '}
-              <Anchor href="https://flutter.dev/" target="_blank">
-                Flutter
-              </Anchor>{' '}
-              SDK{' '}
-            </Paragraph>
+            <Box
+              direction="row"
+              align="center"
+              gap="small"
+              margin={{ bottom: 'medium' }}
+            >
+              <Avatar src="//pbs.twimg.com/profile_images/973591262686302209/luVnG3Bn_400x400.jpg" />
+              <Text>
+                <Anchor
+                  href="https://twitter.com/ABarroso"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Filipe Barroso
+                </Anchor>{' '}
+                (
+                <Anchor
+                  href="https://www.gdglisbon.xyz/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  GDG Lisbon
+                </Anchor>
+                , Lisbon) <br /> will give an intro to Google's{' '}
+                <Anchor href="https://flutter.dev/" target="_blank">
+                  Flutter
+                </Anchor>{' '}
+                SDK{' '}
+              </Text>
+            </Box>
 
-            <Text>
-              <Anchor
-                href="https://twitter.com/expede"
-                target="_blank"
-                rel="noopener"
-              >
-                Brooklyn Zelenka
-              </Anchor>{' '}
-              (
-              <Anchor
-                href="https://fission.codes/"
-                target="_blank"
-                rel="noopener"
-              >
-                fission.codes
-              </Anchor>{' '}
-              / Vancouver) will tell us how you can authenticate users safely
-              without a backend{' '}
-            </Text>
+            <Box direction="row" align="center" gap="small">
+              <Avatar src="//pbs.twimg.com/profile_images/1176524572423639042/hT2G40Gd_400x400.jpg" />
+              <Text>
+                <Anchor
+                  href="https://twitter.com/expede"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Brooklyn Zelenka
+                </Anchor>{' '}
+                (
+                <Anchor
+                  href="https://fission.codes/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  fission.codes
+                </Anchor>
+                , Vancouver) <br /> will tell us how you can authenticate users
+                safely without a backend
+              </Text>
+            </Box>
+
             <Paragraph fill>
               Web apps are too complex - what if we got rid of the back end? It
               turns out that we can push most things into the browser. In this
@@ -175,36 +189,35 @@ export default function() {
               browser all you need.
             </Paragraph>
 
-            <Text>
-              <Anchor
-                href="https://twitter.com/motleydev"
-                target="_blank"
-                rel="noopener"
-              >
-                Jesse Martin
-              </Anchor>{' '}
-              (
-              <Anchor
-                href="https://graphcms.com/"
-                target="_blank"
-                rel="noopener"
-              >
-                GraphCMS
-              </Anchor>{' '}
-              / Constance) will demonstrate the brand new release of{' '}
-              <strong>GraphCMS</strong>
-            </Text>
+            <Box direction="row" align="center" gap="small">
+              <Avatar src="//pbs.twimg.com/profile_images/1204366626738622466/ufPGhfrp_400x400.jpg" />
+              <Text>
+                <Anchor
+                  href="https://twitter.com/motleydev"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Jesse Martin
+                </Anchor>{' '}
+                (
+                <Anchor
+                  href="https://graphcms.com/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  GraphCMS
+                </Anchor>
+                , Constance) <br /> All About Headless with the New{' '}
+                <strong>GraphCMS</strong>
+              </Text>
+            </Box>
+
+            <Paragraph fill>
+              join us for an entertaining talk about the benefits of a headless
+              CMS, see a demo of the new GraphCMS and learn a few new features
+              about GraphQL along the way!
+            </Paragraph>
           </Box>
-          {/*<Text>
-            <Anchor
-              href="https://twitter.com/PhillipKessels"
-              target="_blank"
-              rel="noopener"
-            >
-              Phillip Kessels
-            </Anchor>{' '}
-            (Porto) will give a talk on the Web Audio API.
-          </Text>*/}
 
           <Paragraph fill>
             All contributions follow our golden "*1 line of code*" rule, so
