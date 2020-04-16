@@ -1,21 +1,13 @@
 import emailValidator from 'email-validator'
 import { graphql, useStaticQuery } from 'gatsby'
 import { default as Img } from 'gatsby-image'
-import {
-  Anchor,
-  Box,
-  Button,
-  Heading,
-  Image,
-  Paragraph,
-  Text,
-  TextInput,
-  Avatar,
-} from 'grommet'
-import { Checkmark, Github, UserNew } from 'grommet-icons'
+import { Box, Button, Heading, Paragraph, Text, TextInput } from 'grommet'
+import { Checkmark, Github } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
 import { useAuth0 } from './auth/react-auth0-spa'
+import Talk from './Talk'
 import { theme } from './theme'
+
 const colors = theme.global.colors
 
 function SignupButton({ user, attend }) {
@@ -127,96 +119,57 @@ export default function() {
           </Paragraph>
 
           <Box background="dark-1" pad="medium">
-            <Box
-              direction="row"
-              align="center"
-              gap="small"
-              margin={{ bottom: 'medium' }}
+            <Talk
+              name="Filipe Barroso"
+              company={{
+                url: 'https://www.gdglisbon.xyz/',
+                name: 'GDG Lisbon',
+              }}
+              link="https://twitter.com/ABarroso"
+              image="//pbs.twimg.com/profile_images/973591262686302209/luVnG3Bn_400x400.jpg"
+              origin="Lisbon"
+              title="What is Flutter and why should you care about it?"
             >
-              <Avatar src="//pbs.twimg.com/profile_images/973591262686302209/luVnG3Bn_400x400.jpg" />
-              <Text>
-                <Anchor
-                  href="https://twitter.com/ABarroso"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Filipe Barroso
-                </Anchor>{' '}
-                (
-                <Anchor
-                  href="https://www.gdglisbon.xyz/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  GDG Lisbon
-                </Anchor>
-                , Lisbon) <br /> will give an intro to Google's{' '}
-                <Anchor href="https://flutter.dev/" target="_blank">
-                  Flutter
-                </Anchor>{' '}
-                SDK{' '}
-              </Text>
-            </Box>
+              The Flutter SDK by Google is the new Open Source UI SDK to create
+              native applications with one codebase. At the end of the talk, you
+              will understand the decisions behind Flutter, why it is so
+              different from other mobile development tools and platforms, and
+              why are so many developers already addicted to it.
+            </Talk>
 
-            <Box direction="row" align="center" gap="small">
-              <Avatar src="//pbs.twimg.com/profile_images/1176524572423639042/hT2G40Gd_400x400.jpg" />
-              <Text>
-                <Anchor
-                  href="https://twitter.com/expede"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Brooklyn Zelenka
-                </Anchor>{' '}
-                (
-                <Anchor
-                  href="https://fission.codes/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  fission.codes
-                </Anchor>
-                , Vancouver) <br /> will tell us how you can authenticate users
-                safely without a backend
-              </Text>
-            </Box>
-
-            <Paragraph fill>
+            <Talk
+              name="Brooklyn Zelenka"
+              company={{
+                url: 'https://fission.codes/',
+                name: 'fission.codes',
+              }}
+              link="https://twitter.com/expede"
+              image="//pbs.twimg.com/profile_images/1176524572423639042/hT2G40Gd_400x400.jpg"
+              origin="Vancouver"
+              title="how you can authenticate users safely without a backend?"
+            >
               Web apps are too complex - what if we got rid of the back end? It
               turns out that we can push most things into the browser. In this
               talk, Brooklyn will talk about doing secure auth without requiring
               an auth server, plus a bit about the broader project of making the
               browser all you need.
-            </Paragraph>
+            </Talk>
 
-            <Box direction="row" align="center" gap="small">
-              <Avatar src="//pbs.twimg.com/profile_images/1204366626738622466/ufPGhfrp_400x400.jpg" />
-              <Text>
-                <Anchor
-                  href="https://twitter.com/motleydev"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Jesse Martin
-                </Anchor>{' '}
-                (
-                <Anchor
-                  href="https://graphcms.com/"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  GraphCMS
-                </Anchor>
-                , Constance) <br /> All About Headless with the New{' '}
-                <strong>GraphCMS</strong>
-              </Text>
-            </Box>
-
-            <Paragraph fill>
+            <Talk
+              name="Jesse Martin"
+              company={{
+                url: 'https://graphcms.com/',
+                name: 'GraphCMS',
+              }}
+              link="https://twitter.com/motleydev"
+              image="//pbs.twimg.com/profile_images/1204366626738622466/ufPGhfrp_400x400.jpg"
+              origin="Constance"
+              title="All About Headless with the New GraphCMS"
+            >
               join us for an entertaining talk about the benefits of a headless
               CMS, see a demo of the new GraphCMS and learn a few new features
               about GraphQL along the way!
-            </Paragraph>
+            </Talk>
           </Box>
 
           <Paragraph fill>
