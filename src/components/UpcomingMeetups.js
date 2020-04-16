@@ -121,24 +121,80 @@ export default function() {
             local chapters (Stuttgart, Leipzig, Berlin &amp; Porto, Lisbon, Faro
             / Portugal) in one global community. Mark your calendars for the
             21st, grab a cold beverage that night and come join us! The meetup
-            will have three sessions, one of which are already can announce:
+            will have three sessions:
           </Paragraph>
 
-          <Text>
-            <Anchor
-              href="https://twitter.com/ABarroso"
-              target="_blank"
-              rel="noopener"
-            >
-              Filipe Barroso
-            </Anchor>{' '}
-            (Lisbon) will give an intro to Google's{' '}
-            <Anchor href="https://flutter.dev/" target="_blank">
-              Flutter
-            </Anchor>{' '}
-            SDK{' '}
-          </Text>
+          <Box background="dark-1" pad="medium">
+            <Paragraph fill>
+              <Anchor
+                href="https://twitter.com/ABarroso"
+                target="_blank"
+                rel="noopener"
+              >
+                Filipe Barroso
+              </Anchor>{' '}
+              (
+              <Anchor
+                href="https://www.gdglisbon.xyz/"
+                target="_blank"
+                rel="noopener"
+              >
+                GDG Lisbon
+              </Anchor>
+              , Lisbon) will give an intro to Google's{' '}
+              <Anchor href="https://flutter.dev/" target="_blank">
+                Flutter
+              </Anchor>{' '}
+              SDK{' '}
+            </Paragraph>
 
+            <Text>
+              <Anchor
+                href="https://twitter.com/expede"
+                target="_blank"
+                rel="noopener"
+              >
+                Brooklyn Zelenka
+              </Anchor>{' '}
+              (
+              <Anchor
+                href="https://fission.codes/"
+                target="_blank"
+                rel="noopener"
+              >
+                fission.codes
+              </Anchor>{' '}
+              / Vancouver) will tell us how you can authenticate users safely
+              without a backend{' '}
+            </Text>
+            <Paragraph fill>
+              Web apps are too complex - what if we got rid of the back end? It
+              turns out that we can push most things into the browser. In this
+              talk, Brooklyn will talk about doing secure auth without requiring
+              an auth server, plus a bit about the broader project of making the
+              browser all you need.
+            </Paragraph>
+
+            <Text>
+              <Anchor
+                href="https://twitter.com/motleydev"
+                target="_blank"
+                rel="noopener"
+              >
+                Jesse Martin
+              </Anchor>{' '}
+              (
+              <Anchor
+                href="https://graphcms.com/"
+                target="_blank"
+                rel="noopener"
+              >
+                GraphCMS
+              </Anchor>{' '}
+              / Constance) will demonstrate the brand new release of{' '}
+              <strong>GraphCMS</strong>
+            </Text>
+          </Box>
           {/*<Text>
             <Anchor
               href="https://twitter.com/PhillipKessels"
@@ -156,24 +212,6 @@ export default function() {
             get into our stream but if you do, we send you updates (and nothing
             else) like the final YouTube URL of the stream before the event.
           </Paragraph>
-          <Box direction="row" align="center" background="turqoise" gap="large">
-            <Box pad="medium">
-              <UserNew size="large" />
-            </Box>
-            <Box>
-              <Paragraph fill>
-                we're still looking for contributions, so don't be shy to share
-                20 minutes of your lifetime and enlighten other developers
-                around the world with the stuff you've recently been working on
-                and what you're proud of having achieved during quarantine.
-                Simply{' '}
-                <Anchor href="mailto://info@coding-earth.com?subject=I want a talk slot at coding earth global meetup #1">
-                  drop us a line
-                </Anchor>{' '}
-                and we'll promote you to the video stage :)
-              </Paragraph>
-            </Box>
-          </Box>
         </Box>
       </Box>
       {attending ? (
