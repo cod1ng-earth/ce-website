@@ -1,15 +1,27 @@
 import emailValidator from 'email-validator'
 import { graphql, useStaticQuery } from 'gatsby'
 import { default as Img } from 'gatsby-image'
-import { Box, Button, Heading, Paragraph, Text, TextInput } from 'grommet'
+import {
+  Box,
+  Button,
+  Heading,
+  Paragraph,
+  Select,
+  Text,
+  TextInput,
+} from 'grommet'
 import { Checkmark, Github } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
 import { useAuth0 } from './auth/react-auth0-spa'
 import Talk from './Talk'
 import { theme } from './theme'
+import tz from './timezones.json'
 
 const colors = theme.global.colors
 
+const meetupUTCTime = new Date('2020-04-21T19:00:00+02:00')
+
+const timezones = [...tz.sort()]
 function SignupButton({ user, attend }) {
   const [email, setEmail] = useState(user.email)
   const [submittable, setSubmittable] = useState(false)
@@ -48,6 +60,11 @@ function SignupButton({ user, attend }) {
 export default function() {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0()
   const [attending, setAttending] = useState(false)
+  const [timeZone, setTimeZone] = useState(
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+  )
+
+  const userLocale = Intl.DateTimeFormat().resolvedOptions().locale
 
   const data = useStaticQuery(graphql`
     {
@@ -99,7 +116,26 @@ export default function() {
           <Heading level={3} color="brand">
             coding earth global meetup #1
           </Heading>
-          <Text size="medium">Apr 21st 2020, 7PM CEST</Text>
+          <Text size="medium">
+            {meetupUTCTime.toLocaleString(userLocale, {
+              timeZone,
+              weekday: 'short',
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+            })}{' '}
+            <Select
+              plain
+              dropProps={{ stretch: 'false' }}
+              size="small"
+              dropHeight="medium"
+              options={timezones}
+              value={timeZone}
+              onChange={({ option }) => setTimeZone(option)}
+            />
+          </Text>
         </Box>
         <Box>
           <Img
@@ -129,6 +165,7 @@ export default function() {
               image="//pbs.twimg.com/profile_images/973591262686302209/luVnG3Bn_400x400.jpg"
               origin="Lisbon"
               title="What is Flutter and why should you care about it?"
+              time={{ time: '2020-04-21T19:10+0200', userLocale, timeZone }}
             >
               The Flutter SDK by Google is the new Open Source UI SDK to create
               native applications with one codebase. At the end of the talk, you
@@ -147,6 +184,7 @@ export default function() {
               image="//pbs.twimg.com/profile_images/1176524572423639042/hT2G40Gd_400x400.jpg"
               origin="Vancouver"
               title="how you can authenticate users safely without a backend?"
+              time={{ time: '2020-04-21T19:45+0200', userLocale, timeZone }}
             >
               Web apps are too complex - what if we got rid of the back end? It
               turns out that we can push most things into the browser. In this
@@ -165,6 +203,7 @@ export default function() {
               image="//pbs.twimg.com/profile_images/1204366626738622466/ufPGhfrp_400x400.jpg"
               origin="Constance"
               title="All About Headless with the New GraphCMS"
+              time={{ time: '2020-04-21T20:15+0200', userLocale, timeZone }}
             >
               join us for an entertaining talk about the benefits of a headless
               CMS, see a demo of the new GraphCMS and learn a few new features
