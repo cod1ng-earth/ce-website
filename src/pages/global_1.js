@@ -23,7 +23,7 @@ const GlobalOnePage = () => (
         />{' '}
         upcoming meetups
       </Heading>
-      <UpcomingMeetups />
+      <UpcomingMeetups showEmbed />
     </FullWidth>
   </Layout>
 )
