@@ -12,13 +12,13 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO
-        title="recently at coding earth"
+        title="previously on coding earth"
         description="what happened so far at coding earth"
       />
 
       <FullWidth>
         <Heading level={1} color="turqoise">
-          so far, at coding earth.
+          previously, on coding earth.
         </Heading>
 
         {meetups.map(m => (

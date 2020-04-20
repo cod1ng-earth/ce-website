@@ -1,14 +1,15 @@
 import emailValidator from 'email-validator'
 import { graphql, useStaticQuery } from 'gatsby'
-import { default as Img } from 'gatsby-image'
 import {
   Box,
   Button,
   Heading,
   Paragraph,
+  RadioButton,
   Select,
   Text,
   TextInput,
+  Anchor,
 } from 'grommet'
 import { Checkmark, Github } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
@@ -22,6 +23,51 @@ const colors = theme.global.colors
 const meetupUTCTime = new Date('2020-04-21T19:00:00+02:00')
 
 const timezones = [...tz.sort()]
+
+const YoutubeEmbed = () => (
+  <iframe
+    width="100%"
+    height="600"
+    src="https://www.youtube.com/embed/Jg-RNeWH4vo"
+    frameBorder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+)
+
+const CrowdcastEmbed = () => (
+  <>
+    <iframe
+      width="100%"
+      height="800"
+      frameBorder="0"
+      marginHeight="0"
+      marginWidth="0"
+      allowtransparency="true"
+      src="https://www.crowdcast.io/e/codingearth1?navlinks=false&embed=true"
+      style={{ border: '1px solid #EEE', borderRadius: '3px' }}
+      allowFullScreen="true"
+      webkitallowfullscreen="true"
+      mozallowfullscreen="true"
+      allow="microphone; camera;"
+    ></iframe>
+    <a
+      ng-href="https://www.crowdcast.io/?utm_source=embed&utm_medium=website&utm_campaign=embed"
+      style={{
+        color: '#aaa',
+        fontFamily: '\'Helvetica\', \'Arial\', sans-serif',
+        textDecoration: 'none',
+        display: 'block',
+        textAlign: 'center',
+        fontSize: '13px',
+        padding: '5px 0',
+      }}
+    >
+      powered by Crowdcast
+    </a>
+  </>
+)
+
 function SignupButton({ user, attend }) {
   const [email, setEmail] = useState(user.email)
   const [submittable, setSubmittable] = useState(false)
@@ -57,7 +103,7 @@ function SignupButton({ user, attend }) {
   )
 }
 
-export default function() {
+export default function UpcomingMeetup({ showEmbed = false }) {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0()
   const [attending, setAttending] = useState(false)
   const [timeZone, setTimeZone] = useState(
@@ -65,6 +111,7 @@ export default function() {
   )
 
   const userLocale = Intl.DateTimeFormat().resolvedOptions().locale
+  const [embed, setEmbed] = useState('yt')
 
   const data = useStaticQuery(graphql`
     {
@@ -137,22 +184,38 @@ export default function() {
             />
           </Text>
         </Box>
+        <Paragraph fill>
+          Our <b>first worldwide coding earth meetup</b> will take place on{' '}
+          <b>Tuesday, April 21st, 2020</b>. And of course - no surprise here -
+          we're going fully remote. We're hereby trying to bring together our
+          local chapters (Stuttgart, Leipzig, Berlin &amp; Porto, Lisbon, Faro /
+          Portugal) in one global community. Mark your calendars for the 21st,
+          grab a cold beverage that night and come join us! To become part of
+          the meetup, ask questions, chat with us and be able to bookmark parts
+          of the sessions, select{' '}
+          <Anchor onClick={() => setEmbed('cc')}>CrowdCast</Anchor> as streaming
+          option (and please signup for it). If you'd just want to watch the
+          livestream stay on the{' '}
+          <Anchor onClick={() => setEmbed('yt')}>Youtube channel</Anchor>
+        </Paragraph>
         <Box>
-          <Img
-            objectFit="contain"
-            objectPosition="0% 0%"
-            durationFadeIn={5000}
-            fluid={data.image.fluid}
-          />
-          <Paragraph fill>
-            Our <b>first worldwide coding earth meetup</b> will take place on{' '}
-            <b>Tuesday, April 21st, 2020</b>. And of course - no surprise here -
-            we're going fully remote. We're hereby trying to bring together our
-            local chapters (Stuttgart, Leipzig, Berlin &amp; Porto, Lisbon, Faro
-            / Portugal) in one global community. Mark your calendars for the
-            21st, grab a cold beverage that night and come join us! The meetup
-            will have three sessions:
-          </Paragraph>
+          <Box direction="row" margin={{ vertical: 'medium' }} gap="medium">
+            <Text>Stream: </Text>
+            <RadioButton
+              checked={embed === 'yt'}
+              label="Youtube"
+              onChange={() => setEmbed('yt')}
+            />
+            <RadioButton
+              checked={embed === 'cc'}
+              label="CrowdCast"
+              onChange={() => setEmbed('cc')}
+            />
+          </Box>
+
+          {embed === 'yt' ? <YoutubeEmbed /> : <CrowdcastEmbed />}
+
+          <Paragraph fill> The meetup will have three sessions:</Paragraph>
 
           <Box background="dark-1" pad="medium">
             <Talk
