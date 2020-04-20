@@ -9,6 +9,7 @@ import {
   Select,
   Text,
   TextInput,
+  Anchor,
 } from 'grommet'
 import { Checkmark, Github } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
@@ -27,7 +28,7 @@ const YoutubeEmbed = () => (
   <iframe
     width="100%"
     height="600"
-    src="https://www.youtube.com/embed/o9XMd_PU8CQ"
+    src="https://www.youtube.com/embed/Jg-RNeWH4vo"
     frameBorder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen
@@ -183,6 +184,20 @@ export default function UpcomingMeetup({ showEmbed = false }) {
             />
           </Text>
         </Box>
+        <Paragraph fill>
+          Our <b>first worldwide coding earth meetup</b> will take place on{' '}
+          <b>Tuesday, April 21st, 2020</b>. And of course - no surprise here -
+          we're going fully remote. We're hereby trying to bring together our
+          local chapters (Stuttgart, Leipzig, Berlin &amp; Porto, Lisbon, Faro /
+          Portugal) in one global community. Mark your calendars for the 21st,
+          grab a cold beverage that night and come join us! To become part of
+          the meetup, ask questions, chat with us and be able to bookmark parts
+          of the sessions, select{' '}
+          <Anchor onClick={() => setEmbed('cc')}>CrowdCast</Anchor> as streaming
+          option (and please signup for it). If you'd just want to watch the
+          livestream stay on the{' '}
+          <Anchor onClick={() => setEmbed('yt')}>Youtube channel</Anchor>
+        </Paragraph>
         <Box>
           <Box direction="row" margin={{ vertical: 'medium' }} gap="medium">
             <Text>Stream: </Text>
@@ -200,10 +215,7 @@ export default function UpcomingMeetup({ showEmbed = false }) {
 
           {embed === 'yt' ? <YoutubeEmbed /> : <CrowdcastEmbed />}
 
-          <Paragraph fill>
-            You're watching our <b>first worldwide coding earth meetup</b>.
-            These are the three sessions:
-          </Paragraph>
+          <Paragraph fill> The meetup will have three sessions:</Paragraph>
 
           <Box background="dark-1" pad="medium">
             <Talk

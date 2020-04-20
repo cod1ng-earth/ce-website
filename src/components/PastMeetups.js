@@ -50,7 +50,7 @@ export default function() {
           color="turqoise"
           style={{ verticalAlign: 'sub' }}
         />{' '}
-        So far, at coding earth
+        Previously, on coding earth
       </Heading>
       <Box pad={{ vertical: 'medium' }} direction="row-responsive" wrap={true}>
         {meetups.map(meetup => (
