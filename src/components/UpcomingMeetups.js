@@ -11,7 +11,7 @@ import {
   TextInput,
   Anchor,
 } from 'grommet'
-import { Checkmark, Github } from 'grommet-icons'
+import { Checkmark, Github, Schedule, Globe } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
 import { useAuth0 } from './auth/react-auth0-spa'
 import Talk from './Talk'
@@ -173,8 +173,14 @@ export default function UpcomingMeetup({ showEmbed = false }) {
               hour: 'numeric',
               minute: 'numeric',
             })}{' '}
+            <Anchor
+              icon={<Schedule />}
+              href="/ics/ce_global_1.ics"
+              title="download as ICS"
+            />
             <Select
               plain
+              icon={<Globe />}
               dropProps={{ stretch: 'false' }}
               size="small"
               dropHeight="medium"
