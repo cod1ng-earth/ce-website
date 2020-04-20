@@ -1,0 +1,56 @@
+BEGIN:VCALENDAR
+CALSCALE:GREGORIAN
+VERSION:2.0
+X-WR-CALNAME:coding earth global meetup #1
+METHOD:PUBLISH
+PRODID:-//Apple Inc.//Mac OS X 10.14.6//EN
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+DTSTART:19810329T020000
+TZNAME:MESZ
+TZOFFSETTO:+0200
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+DTSTART:19961027T030000
+TZNAME:MEZ
+TZOFFSETTO:+0100
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=Europe/Berlin:20200421T210000
+UID:1cslqqk08cou6kghdc4muu1qs8@google.com
+DTSTAMP:20200420T101000Z
+LOCATION:https://coding.earth/
+DESCRIPTION:Our first worldwide coding earth meetup will take place on T
+ uesday\, April 21st\, 2020. And of course – no surprise here – we're goi
+ ng fully remote. We're hereby trying to bring together our local chapter
+ s (Stuttgart\, Leipzig\, Berlin & Porto\, Lisbon\, Faro / Portugal) in o
+ ne global community. Mark your calendars for the 21st\, grab a cold beve
+ rage and come join us! The meetup will have three sessions:\n\nFilipe Ba
+ rroso (GDG Lisbon\, Lisbon)\nWhat is Flutter and why should you care abo
+ ut it?\n\nBrooklyn Zelenka (fission.codes\, Vancouver)\nhow you can auth
+ enticate users safely without a backend?\n\nJesse Martin (GraphCMS\, Con
+ stance)\nAll About Headless with the New GraphCMS\n\nYOUTUBE Stream: htt
+ ps://youtu.be/Jg-RNeWH4vo\nCROWDCAST: crowdcast.io/e/codingearth1
+STATUS:CONFIRMED
+SEQUENCE:0
+SUMMARY:coding earth global meetup #1
+LAST-MODIFIED:20200420T101000Z
+DTSTART;TZID=Europe/Berlin:20200421T190000
+CREATED:20200420T100511Z
+X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC
+BEGIN:VALARM
+X-WR-ALARMUID:81AD1CC2-CFDE-4329-B808-1CB3A2AF897E
+UID:81AD1CC2-CFDE-4329-B808-1CB3A2AF897E
+TRIGGER:-PT30M
+DESCRIPTION:This is an event reminder
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR
