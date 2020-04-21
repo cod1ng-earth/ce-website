@@ -1,117 +1,31 @@
-import emailValidator from 'email-validator'
 import { graphql, useStaticQuery } from 'gatsby'
 import {
+  Anchor,
   Box,
   Button,
   Heading,
   Paragraph,
   RadioButton,
-  Select,
   Text,
-  TextInput,
-  Anchor,
 } from 'grommet'
-import { Checkmark, Github, Schedule, Globe } from 'grommet-icons'
+import { Checkmark, Github } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
 import { useAuth0 } from './auth/react-auth0-spa'
+import CrowdcastEmbed from './event/CrowdCastEmbed'
+import ReactMarkdown from './event/ReactMarkdown'
+import TimezonePicker from './event/TimezonePicker'
+import { YoutubeEmbed } from './event/YoutubeEmbed'
 import Talk from './Talk'
-import { theme } from './theme'
-import tz from './timezones.json'
+import AttendButton from './event/AttendButton'
 
-const colors = theme.global.colors
-
-const meetupUTCTime = new Date('2020-04-21T19:00:00+02:00')
-
-const timezones = [...tz.sort()]
-
-const YoutubeEmbed = () => (
-  <iframe
-    width="100%"
-    height="600"
-    src="https://www.youtube.com/embed/Jg-RNeWH4vo"
-    frameBorder="0"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
-)
-
-const CrowdcastEmbed = () => (
-  <>
-    <iframe
-      width="100%"
-      height="800"
-      frameBorder="0"
-      marginHeight="0"
-      marginWidth="0"
-      allowtransparency="true"
-      src="https://www.crowdcast.io/e/codingearth1?navlinks=false&embed=true"
-      style={{ border: '1px solid #EEE', borderRadius: '3px' }}
-      allowFullScreen="true"
-      webkitallowfullscreen="true"
-      mozallowfullscreen="true"
-      allow="microphone; camera;"
-    ></iframe>
-    <a
-      ng-href="https://www.crowdcast.io/?utm_source=embed&utm_medium=website&utm_campaign=embed"
-      style={{
-        color: '#aaa',
-        fontFamily: '\'Helvetica\', \'Arial\', sans-serif',
-        textDecoration: 'none',
-        display: 'block',
-        textAlign: 'center',
-        fontSize: '13px',
-        padding: '5px 0',
-      }}
-    >
-      powered by Crowdcast
-    </a>
-  </>
-)
-
-function SignupButton({ user, attend }) {
-  const [email, setEmail] = useState(user.email)
-  const [submittable, setSubmittable] = useState(false)
-
-  useEffect(() => {
-    setSubmittable(emailValidator.validate(email))
-  }, [email])
-
-  return (
-    <Box
-      direction="row"
-      width="large"
-      alignSelf="center"
-      align="center"
-      gap="small"
-    >
-      <Text>Notify</Text>
-      <TextInput
-        placeholder="your@email-addre.ss"
-        value={email}
-        onChange={event => setEmail(event.target.value)}
-      />
-      <Text>and</Text>
-      <Button
-        onClick={() => attend(email)}
-        color={colors['meetup-red']}
-        primary
-        disabled={!submittable}
-        alignSelf="center"
-        label="Attend"
-      />
-    </Box>
-  )
-}
-
-export default function UpcomingMeetup({ showEmbed = false }) {
+export default function UpcomingMeetup({ meetup }) {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0()
   const [attending, setAttending] = useState(false)
+  const [embed, setEmbed] = useState('yt')
   const [timeZone, setTimeZone] = useState(
     Intl.DateTimeFormat().resolvedOptions().timeZone
   )
-
   const userLocale = Intl.DateTimeFormat().resolvedOptions().locale
-  const [embed, setEmbed] = useState('yt')
 
   const data = useStaticQuery(graphql`
     {
@@ -125,33 +39,11 @@ export default function UpcomingMeetup({ showEmbed = false }) {
     }
   `)
 
-  async function attend(email) {
-    try {
-      const body = JSON.stringify({
-        name: user.name,
-        email,
-        nickname: user.nickname,
-        meetup: 'global_1',
-      })
-
-      const result = await fetch('/.netlify/functions/attend', {
-        method: 'POST',
-        body,
-        headers: { 'Content-Type': 'application/json' },
-      })
-
-      const attending = JSON.parse(localStorage.getItem('attending') || '{}')
-      attending['global_1'] = true
-      localStorage.setItem('attending', JSON.stringify(attending))
-      setAttending(true)
-    } catch (e) {
-      alert('uhoh, something went wrong')
-    }
-  }
-
   useEffect(() => {
-    const attending = JSON.parse(localStorage.getItem('attending') || '{}')
-    if (attending['global_1']) {
+    const attending = JSON.parse(
+      localStorage.getItem(`attending[${meetup.id}]`) || '{}'
+    )
+    if (attending[meetup.id]) {
       setAttending(true)
     }
   }, [])
@@ -161,44 +53,14 @@ export default function UpcomingMeetup({ showEmbed = false }) {
       <Box pad={{ vertical: 'medium' }}>
         <Box direction="row-responsive" justify="between" align="center">
           <Heading level={3} color="brand">
-            coding earth global meetup #1
+            {meetup.name}
           </Heading>
-          <Text size="medium">
-            {meetupUTCTime.toLocaleString(userLocale, {
-              timeZone,
-              weekday: 'short',
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-              hour: 'numeric',
-              minute: 'numeric',
-            })}{' '}
-            <Anchor
-              icon={<Schedule />}
-              href="/ics/ce_global_1.ics"
-              title="download as ICS"
-            />
-            <Select
-              plain
-              icon={<Globe />}
-              dropProps={{ stretch: 'false' }}
-              size="small"
-              dropHeight="medium"
-              options={timezones}
-              value={timeZone}
-              onChange={({ option }) => setTimeZone(option)}
-            />
-          </Text>
+          <TimezonePicker meetupUTCTime={meetup.time} tzUpdated={setTimeZone} />
         </Box>
         <Paragraph fill>
-          Our <b>first worldwide coding earth meetup</b> will take place on{' '}
-          <b>Tuesday, April 21st, 2020</b>. And of course - no surprise here -
-          we're going fully remote. We're hereby trying to bring together our
-          local chapters (Stuttgart, Leipzig, Berlin &amp; Porto, Lisbon, Faro /
-          Portugal) in one global community. Mark your calendars for the 21st,
-          grab a cold beverage that night and come join us! To become part of
-          the meetup, ask questions, chat with us and be able to bookmark parts
-          of the sessions, select{' '}
+          <ReactMarkdown>{meetup.description}</ReactMarkdown>
+          To become part of the meetup, ask questions, chat with us and be able
+          to bookmark parts of the sessions, select{' '}
           <Anchor onClick={() => setEmbed('cc')}>CrowdCast</Anchor> as streaming
           option (and please signup for it). If you'd just want to watch the
           livestream stay on the{' '}
@@ -219,7 +81,11 @@ export default function UpcomingMeetup({ showEmbed = false }) {
             />
           </Box>
 
-          {embed === 'yt' ? <YoutubeEmbed /> : <CrowdcastEmbed />}
+          {embed === 'yt' ? (
+            <YoutubeEmbed url={meetup.recoding} />
+          ) : (
+            <CrowdcastEmbed url={meetup.onlineUrl} />
+          )}
 
           <Paragraph fill> The meetup will have three sessions:</Paragraph>
 
@@ -299,7 +165,7 @@ export default function UpcomingMeetup({ showEmbed = false }) {
           label="you are registered for this meetup"
         />
       ) : user ? (
-        <SignupButton user={user} attend={attend} />
+        <AttendButton user={user} setAttending={setAttending} />
       ) : (
         <Text alignSelf="center" color="light-6">
           If you were{' '}

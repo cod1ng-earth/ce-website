@@ -1,5 +1,5 @@
-import { Box, Heading, Image, Paragraph, Text } from 'grommet'
-import { Code, ForwardTen, Globe, Grow, ScheduleNew, Mail } from 'grommet-icons'
+import { Box, Heading, Image, Paragraph, Text, Button } from 'grommet'
+import { Code, ForwardTen, Globe, Grow, Rewind, Mail } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
@@ -10,6 +10,7 @@ import { FullWidth, TwoCols } from '../components/TwoCols'
 import { MailchimpSignup } from '../components/MailchimpSignup'
 import UpcomingMeetups from '../components/UpcomingMeetups'
 import PastMeetups from '../components/PastMeetups'
+import { Link } from 'gatsby'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -30,6 +31,7 @@ const IndexPage = () => (
     <SEO
       title="coding earth :: home"
       description="coding earth is a meetup community for developers"
+      seoImage="https://coding.earth/img/coding_earth_og.png"
     />
 
     <FullWidth>
@@ -112,17 +114,25 @@ const IndexPage = () => (
 
     <FullWidth background="very-dark">
       <Heading level={2} color="turqoise">
-        <ScheduleNew
+        <Rewind
           size="large"
           color="turqoise"
           style={{ verticalAlign: 'sub' }}
         />{' '}
-        upcoming meetups
+        Previously, on coding earth
       </Heading>
-      <UpcomingMeetups />
+      <PastMeetups />
+      <Button
+        as={Link}
+        to="/sofar"
+        color="status-ok"
+        alignSelf="center"
+        size="large"
+        primary
+        active={false}
+        label="see all recent meetups"
+      />
     </FullWidth>
-
-    <PastMeetups />
 
     <FullWidth background="black">
       <TwoCols>

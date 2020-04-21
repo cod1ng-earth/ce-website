@@ -1,37 +1,30 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-
-import ReactMarkdown from 'react-markdown/with-html'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 //import { Box, Heading, Paragraph } from 'grommet'
-import Mdx from '../components/Mdx'
 
 import { Carousel } from 'react-responsive-carousel'
 import { FullWidth } from '../components/TwoCols'
-import { Paragraph, Heading, Anchor, Box, Image, Text } from 'grommet'
+import { Heading, Anchor, Box, Image, Text } from 'grommet'
 import { FormPrevious } from 'grommet-icons'
 
 import Time from '../components/Time'
+import { YoutubeEmbed } from '../components/event/YoutubeEmbed'
+import ReactMarkdown from '../components/event/ReactMarkdown'
 
-const renderers = {
-  paragraph: props => <Paragraph fill>{props.children}</Paragraph>,
-  heading: ({ level, children }) => (
-    <Heading level={level} color={level == 1 ? 'turqoise' : 'brand'}>
-      {children}
-    </Heading>
-  ),
-  link: ({ href, children }) => (
-    <Anchor href={href} target="_blank">
-      {children}
-    </Anchor>
-  ),
-}
 export default ({ data: { graphcms, allCloudinaryMedia } }) => {
   const { meetup } = graphcms
   return (
     <Layout>
-      <SEO title={meetup.name} />
+      <SEO
+        title={meetup.name}
+        description={meetup.name}
+        seoImage={
+          meetup.highlightImage?.url ||
+          'https://coding.earth/img/coding_earth_og.png'
+        }
+      />
       <FullWidth>
         <Anchor
           as={Link}
@@ -43,9 +36,8 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
         <Heading level={1} color="turqoise">
           {meetup.name}
         </Heading>
-        <ReactMarkdown escapeHtml={false} renderers={renderers}>
-          {meetup.description}
-        </ReactMarkdown>
+        {meetup.recording && <YoutubeEmbed url={meetup.recording} />}
+        <ReactMarkdown>{meetup.description}</ReactMarkdown>
         <Box pad="medium">
           {allCloudinaryMedia.edges.length > 0 && (
             <Carousel
@@ -76,13 +68,20 @@ export const query = graphql`
   query($id: ID!, $cloudinaryTag: String) {
     graphcms {
       meetup(where: { id: $id }) {
+        id
         meetupComId
         name
         time
         description
         onlineUrl
+        recording
         meetupGroup {
           name
+        }
+        highlightImage {
+          fileName
+          handle
+          url
         }
       }
     }
