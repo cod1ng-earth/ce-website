@@ -1,16 +1,15 @@
-import { Box, Heading, Image, Paragraph, Text, Button } from 'grommet'
-import { Code, ForwardTen, Globe, Grow, Rewind, Mail } from 'grommet-icons'
+import { Link } from 'gatsby'
+import { Box, Button, Heading, Image, Paragraph } from 'grommet'
+import { Code, ForwardTen, Globe, Grow, Mail, Rewind } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
 import Layout from '../components/layout'
+import { MailchimpSignup } from '../components/MailchimpSignup'
+import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
 import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
-import { MailchimpSignup } from '../components/MailchimpSignup'
-import UpcomingMeetups from '../components/UpcomingMeetups'
-import PastMeetups from '../components/PastMeetups'
-import { Link } from 'gatsby'
 
 const StyledRules = styled.ul`
   list-style-type: none;
