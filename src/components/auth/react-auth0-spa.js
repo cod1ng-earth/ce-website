@@ -2,8 +2,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useLocation } from '@reach/router'
 
-const auth0SpaJs = () => import('@auth0/auth0-spa-js')
-
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname)
 
@@ -23,28 +21,35 @@ export const Auth0Provider = ({
 
   useEffect(() => {
     const initAuth0 = async () => {
-      const createAuth0Client = await auth0SpaJs()
-      const auth0FromHook = await createAuth0Client.default(initOptions)
-      setAuth0(auth0FromHook)
+      try {
+        import(
+          /* webpackChunkName: "auth0-spa-js" */ '@auth0/auth0-spa-js'
+        ).then(async ({ default: createAuth0Client }) => {
+          const auth0FromHook = await createAuth0Client(initOptions)
+          setAuth0(auth0FromHook)
 
-      if (
-        window.location.search.includes('code=') &&
-        window.location.search.includes('state=')
-      ) {
-        const { appState } = await auth0FromHook.handleRedirectCallback()
-        onRedirectCallback(appState)
+          if (
+            window.location.search.includes('code=') &&
+            window.location.search.includes('state=')
+          ) {
+            const { appState } = await auth0FromHook.handleRedirectCallback()
+            onRedirectCallback(appState)
+          }
+
+          const isAuthenticated = await auth0FromHook.isAuthenticated()
+
+          setIsAuthenticated(isAuthenticated)
+
+          if (isAuthenticated) {
+            const user = await auth0FromHook.getUser()
+            setUser(user)
+          }
+        })
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setLoading(false)
       }
-
-      const isAuthenticated = await auth0FromHook.isAuthenticated()
-
-      setIsAuthenticated(isAuthenticated)
-
-      if (isAuthenticated) {
-        const user = await auth0FromHook.getUser()
-        setUser(user)
-      }
-
-      setLoading(false)
     }
     initAuth0()
     // eslint-disable-next-line
