@@ -1,5 +1,6 @@
 [build]
   functions = "./lambda"
+  publish = "public"
 
 [dev]
   command = "npm run build"
@@ -14,3 +15,6 @@
   status = 301
   force = false
   headers = {X-From = "Netlify"}
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
