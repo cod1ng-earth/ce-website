@@ -10,6 +10,7 @@ import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
 import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
+import Partners from '../components/footer/Partners'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -220,6 +221,7 @@ const IndexPage = () => (
         </StyledRules>{' '}
       </Fade>
     </FullWidth>
+    <Partners />
   </Layout>
 )
 

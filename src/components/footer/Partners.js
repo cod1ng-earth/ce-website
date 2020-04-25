@@ -37,23 +37,33 @@ export default () => {
   const partners = data.graphcms.partners
 
   return (
-    <FullWidth tag="section" background="neutral-3" pad={{ vertical: 'large' }}>
-      <Heading level={2} color="accent-4">
-        <Cubes size="large" color="accent-4" style={{ verticalAlign: 'sub' }} />{' '}
-        Our partners
-      </Heading>
-      <Grid rows={['auto']} columns={['1fr 1fr 1fr 1fr 1fr 1fr']} gap="small">
-        {partners.map((partner, index) => (
-          <Partner key={index} website={partner.website}>
-            <Box height="small" width="100%" pad={{ horizontal: 'small' }}>
-              <Image fit="contain" src={partner.logo.url} />
-            </Box>
-            <Text color="white" textAlign="center" tag="div">
-              {partner.name}
-            </Text>
-          </Partner>
-        ))}
-      </Grid>
-    </FullWidth>
+    partners.length > 0 && (
+      <FullWidth
+        tag="section"
+        background="neutral-3"
+        pad={{ vertical: 'large' }}
+      >
+        <Heading level={2} color="accent-4">
+          <Cubes
+            size="large"
+            color="accent-4"
+            style={{ verticalAlign: 'sub' }}
+          />{' '}
+          Our partners
+        </Heading>
+        <Grid rows={['auto']} columns={['1fr 1fr 1fr 1fr 1fr 1fr']} gap="small">
+          {partners.map((partner, index) => (
+            <Partner key={index} website={partner.website}>
+              <Box height="small" width="100%" pad={{ horizontal: 'small' }}>
+                <Image fit="contain" src={partner.logo.url} />
+              </Box>
+              <Text color="white" textAlign="center" tag="div">
+                {partner.name}
+              </Text>
+            </Partner>
+          ))}
+        </Grid>
+      </FullWidth>
+    )
   )
 }
