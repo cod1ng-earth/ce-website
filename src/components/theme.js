@@ -21,6 +21,24 @@ export const theme = deepMerge(dark, {
       gatsby: 'hsl(270, 50%, 40%)',
       'gatsby-light': 'hsl(270, 50%, 50%)',
       'meetup-red': '#F64060',
+
+      // Grey
+      'grey-900': '#1A1A1A',
+      'grey-800': '#242424',
+      'grey-700': '#2E2E2E',
+      'grey-600': '#3D3D3D',
+      'grey-400': '#999999',
+
+      // Purple
+      'purple-700': '#4B1383',
+      'purple-600': '#6528A1',
+      'purple-500': '#8040BF',
+      'purple-400': '#9E66D4',
+      'purple-300': '#BB9ED7',
+
+      // Orange
+      'orange-600': '#E06C00',
+      'orange-400': '#FF9900',
     },
     elevation: {
       light: {
@@ -32,9 +50,10 @@ export const theme = deepMerge(dark, {
     },
 
     font: {
-      family: "'Karla', sans-serif",
+      // eslint-disable-next-line
+      family: "'Manrope', sans-serif",
       size: '16px',
-      height: '20px',
+      height: '1.75',
     },
     input: {
       weight: 500,
@@ -63,7 +82,6 @@ export const theme = deepMerge(dark, {
     },
   },
   heading: {
-    font: { family: 'OCR-A' },
     level: {
       '1': noMaxWidthHeaders,
       '2': noMaxWidthHeaders,
