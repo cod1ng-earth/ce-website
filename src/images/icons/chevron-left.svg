@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="15px" viewBox="0 0 10 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>chevron-left</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Event-Details" transform="translate(-265.000000, -272.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Meta-Row" transform="translate(0.000000, 220.000000)">
+                <g id="Button-See-all" transform="translate(250.000000, 40.000000)">
+                    <g id="chevron-left" transform="translate(20.000000, 19.500000) scale(-1, 1) translate(-20.000000, -19.500000) translate(15.000000, 12.000000)">
+                        <polygon id="Path" points="2.08125 15 0.3125 13.231875 6.149375 7.4975 0.3125 1.768125 2.08125 0 9.6875 7.4975"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
