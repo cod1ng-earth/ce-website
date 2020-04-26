@@ -10,6 +10,8 @@ import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
 import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
+import heroPattern from '../images/icons/hero-pattern.svg'
+import logo from '../images/icons/ce-logo.svg'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -25,6 +27,36 @@ const StyledRules = styled.ul`
     line-height: 1.6em;
   }
 `
+
+const StyledH1 = styled(Heading)`
+  font-size: 110px;
+  line-height: 0.85;
+  max-width: 450px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+  span {
+    display: inline-block;
+  }
+`
+
+const StyledHero = styled(FullWidth)`
+  background-image: 
+    linear-gradient(
+      to right,
+      rgba(${theme.global.colors['grey-900-rgb']}, 0),
+      rgba(${theme.global.colors['grey-900-rgb']}, 1)
+    ),
+    url('${heroPattern}'),
+    linear-gradient(
+      to right,
+      ${theme.global.colors['grey-900']},
+      ${theme.global.colors['grey-900']}
+    );
+
+    background-repeat: repeat;
+`
+
 const IndexPage = () => (
   <Layout>
     <SEO
@@ -33,38 +65,26 @@ const IndexPage = () => (
       seoImage="https://coding.earth/img/coding_earth_og.png"
     />
 
-    <FullWidth>
+    <StyledHero pad={{ vertical: 'xlarge' }}>
+      {/* Hero Section */}
+
       <TwoCols>
         <Box basis="1/2">
-          <Fade left ssrFadeout distance="20px" duration={1000}>
-            <Heading level={2} color="turqoise">
-              <Globe
-                size="large"
-                color="turqoise"
-                style={{ verticalAlign: 'sub' }}
-              />{' '}
-              hello, world.
-            </Heading>
-            <Paragraph fill>
-              Coding Earth is a <b>home for developers</b> of all skill levels.
-              Everybody's welcome, everyone's invited, everyone will take
-              something home from our meetups. Our meetups are not your usual
-              "experts talk, audience listens" kind of experience but a
-              community driven meetup that embraces a knowledge exchange culture
-              as well as a strict "<b>nice to have you here</b>"-attitude.
-            </Paragraph>
-          </Fade>
+          <Image src={logo} />
         </Box>
 
-        <Box basis="1/2" height="medium" overflow="hidden">
-          <Image
-            alt="coding stuttgart crowd in october 2019 waving at you"
-            fit="cover"
-            src="//res.cloudinary.com/turbinekreuzberg/image/upload/t_maxeco/v1582656870/birthday-hackathon/2020/DSC01981.jpg"
-          />
+        <Box basis="1/2">
+          <StyledH1 level={1} color="grey-100">
+            <span>Hello,</span>
+            <span style={{ marginLeft: '90px' }}>World.</span>
+          </StyledH1>
+          <Paragraph fill margin={{ top: 'large' }}>
+            Welcome to a <strong>meetup-home for developers</strong> of all
+            skill-levels.
+          </Paragraph>
         </Box>
       </TwoCols>
-    </FullWidth>
+    </StyledHero>
 
     <FullWidth background="dark-1">
       <Box>

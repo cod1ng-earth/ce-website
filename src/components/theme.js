@@ -24,10 +24,12 @@ export const theme = deepMerge(dark, {
 
       // Grey
       'grey-900': '#1A1A1A',
+      'grey-900-rgb': '26, 26, 26',
       'grey-800': '#242424',
       'grey-700': '#2E2E2E',
       'grey-600': '#3D3D3D',
       'grey-400': '#999999',
+      'grey-100': '#E6E6E6',
 
       // Purple
       'purple-700': '#4B1383',
@@ -42,7 +44,7 @@ export const theme = deepMerge(dark, {
     },
     elevation: {
       light: {
-        small: '0 0 1px 0 rgba(0, 0, 0, 0.40), 0 1px 2px 0 rgba(0,0,0,0.40)',
+        small: '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0,0,0,0.24)',
         medium: '0 0 2px 0 rgba(0,0,0,0.40), 0 2px 4px 0 rgba(0,0,0,0.40)',
         large: '0 0 1px 0 rgba(0,0,0,0.40), 0 4px 8px 0 rgba(0,0,0,0.40)',
         xlarge: '0 0 1px 0 rgba(0,0,0,0.40), 0 8px 16px 0 rgba(0,0,0,0.40)',
@@ -56,7 +58,7 @@ export const theme = deepMerge(dark, {
       height: '1.75',
     },
     input: {
-      weight: 500,
+      weight: 400,
     },
     size: {
       avatar: '36px',
@@ -90,13 +92,17 @@ export const theme = deepMerge(dark, {
     },
   },
   paragraph: {
+    small: {
+      size: '14px',
+      height: '1.75',
+    },
     medium: {
-      size: '20px',
-      height: '28px',
+      size: '16px',
+      height: '1.75',
     },
     large: {
-      size: '24px',
-      height: '28px',
+      size: '18px',
+      height: '1.75',
     },
   },
   text: {
