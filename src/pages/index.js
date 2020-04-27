@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import { Box, Button, Heading, Image, Paragraph } from 'grommet'
-import { Code, ForwardTen, Globe, Grow, Mail, Rewind } from 'grommet-icons'
+import { ForwardTen, Grow, Mail, Rewind } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
@@ -12,6 +12,7 @@ import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
 import heroPattern from '../images/icons/hero-pattern.svg'
 import logo from '../images/icons/ce-logo.svg'
+import { Divider } from '../components/Divider'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -86,49 +87,27 @@ const IndexPage = () => (
       </TwoCols>
     </StyledHero>
 
-    <FullWidth background="dark-1">
-      <Box>
-        <Heading
-          level={2}
-          color="brand"
-          style={{ transform: 'rotateX(180deg)' }}
-        >
-          <Code size="large" color="brand" style={{ verticalAlign: 'sub' }} /> 1
-          line of code.
-        </Heading>
-      </Box>
-      <TwoCols>
+    <FullWidth
+      background="grey-100"
+      pad={{ vertical: 'medium', horizontal: 'large' }}
+    >
+      <Box pad={{ vertical: 'large', horizontal: 'xlarge' }} justify="center">
         <Fade left ssrFadeout distance="20px" duration={1000}>
-          <Paragraph fill>
-            Isn't it amazing <b>how many technologies</b> you have to learn to
-            follow the path of modern software development? Be it blockchains
-            for storing transactions, machines taking decisions based upon
-            digital learning sets, virtual clusters providing computing power
-            for scaled applications and command line tools that improve your
-            workflow: <b>it's nearly impossible to keep track of everything.</b>
+          <Divider />
+          <Paragraph
+            fill
+            textAlign="center"
+            margin={{ top: 'large' }}
+            color="grey-800"
+          >
+            Everybody's welcome, everyone's invited, everyone will take
+            something home from our meetups. Our meetups are not your usual
+            "experts talk, audience listens" kind of experience but a community
+            driven meetup that embraces a knowledge exchange culture as well as
+            a strict "nice to have you here"-attitude.
           </Paragraph>
         </Fade>
-        <Fade right ssrFadeout distance="20px" duration={1000}>
-          <Paragraph fill>
-            That's where we jump in: Instead of specialising on a dedicated
-            topic, coding earth was established to become{' '}
-            <b>a space for earth's coder community</b>: every software
-            development related topic is welcome here, every developer with
-            whatever skill level will take away something new on every session,
-            every question may be asked and everyone should have a good time.
-            There's only one golden rule:
-          </Paragraph>
-        </Fade>
-      </TwoCols>
-      <Paragraph
-        fill
-        size="large"
-        style={{ fontWeight: 'bold' }}
-        margin={{ horizontal: 'large' }}
-      >
-        talks have to be hands on, they must contain at least 1 line of code and
-        in the best case they're supported by demos.
-      </Paragraph>
+      </Box>
     </FullWidth>
 
     <FullWidth background="very-dark">

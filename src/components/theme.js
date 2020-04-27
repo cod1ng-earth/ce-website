@@ -28,6 +28,7 @@ export const theme = deepMerge(dark, {
       'grey-800': '#242424',
       'grey-700': '#2E2E2E',
       'grey-600': '#3D3D3D',
+      'grey-500': '#4D4D4D',
       'grey-400': '#999999',
       'grey-100': '#E6E6E6',
 
