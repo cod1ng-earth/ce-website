@@ -26,34 +26,43 @@ const StyledAnchor = styled(Anchor)`
   ${LinkStyles}
 `
 
-export default () => {
+const StyledWrapper = styled(Box)`
+  background: ${props =>
+    props.inHero ? 'transparent' : theme.global.colors['grey-800']};
+  justify-content: ${props => (props.inHero ? 'flex-end' : 'space-between')};
+  position: ${props => (props.inHero ? 'absolute' : 'relative')};
+  height: 80px;
+`
+
+export default ({ currentPath }) => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
 
   return (
-    <Box
+    <StyledWrapper
       tag="header"
       direction="row"
-      background="grey-800"
       align="center"
-      justify="between"
       margin={{ top: '20px' }}
       pad={{ horizontal: 'medium' }}
-      style={{ position: 'relative', height: '80px' }}
       height="xsmall"
+      fill="horizontal"
+      inHero={currentPath === '/'}
     >
-      <Box>
-        <Link to="/">
-          <Image
-            src={logo}
-            alt="coding earth logo"
-            style={{
-              width: '87px',
-              height: '100px',
-              display: 'block',
-            }}
-          />
-        </Link>
-      </Box>
+      {currentPath !== '/' && (
+        <Box>
+          <Link to="/">
+            <Image
+              src={logo}
+              alt="coding earth logo"
+              style={{
+                width: '87px',
+                height: '100px',
+                display: 'block',
+              }}
+            />
+          </Link>
+        </Box>
+      )}
       <Box direction="row" align="center">
         <Nav direction="row" margin={{ right: 'medium' }}>
           <StyledLink to="/">Upcoming Events</StyledLink>
@@ -84,6 +93,6 @@ export default () => {
           />
         )}
       </Box>
-    </Box>
+    </StyledWrapper>
   )
 }

@@ -43,7 +43,7 @@ const StyledH1 = styled(Heading)`
 `
 
 const StyledHero = styled(FullWidth)`
-  background-image: 
+  background-image:
     linear-gradient(
       to right,
       rgba(${theme.global.colors['grey-900-rgb']}, 0),
@@ -56,11 +56,19 @@ const StyledHero = styled(FullWidth)`
       ${theme.global.colors['grey-900']}
     );
 
-    background-repeat: repeat;
+  background-repeat: repeat;
+  background-position: 0 -90px;
+  height: 693px;
 `
 
-const IndexPage = () => (
-  <Layout>
+const StyledLogo = styled(Image)`
+  position: absolute;
+  left: 98px;
+  top: 140px;
+`
+
+const IndexPage = ({ path }) => (
+  <Layout currentPath={path}>
     <SEO
       title="coding earth :: home"
       description="coding earth is a meetup community for developers"
@@ -72,7 +80,7 @@ const IndexPage = () => (
 
       <TwoCols>
         <Box basis="1/2">
-          <Image src={logo} />
+          <StyledLogo src={logo} />
         </Box>
 
         <Box basis="1/2">
