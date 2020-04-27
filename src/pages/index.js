@@ -11,8 +11,8 @@ import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
 import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
-import heroPattern from '../images/icons/hero-pattern.svg'
-import logo from '../images/icons/ce-logo.svg'
+import heroPattern from '../images/hero-pattern.svg'
+import logo from '../images/ce-logo.svg'
 import { Divider } from '../components/Divider'
 
 const StyledRules = styled.ul`

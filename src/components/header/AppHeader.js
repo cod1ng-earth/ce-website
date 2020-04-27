@@ -3,7 +3,7 @@ import { Anchor, Avatar, Box, Button, Image, Nav } from 'grommet'
 import { Github } from 'grommet-icons'
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../../images/icons/ce-logo.svg'
+import logo from '../../images/ce-logo.svg'
 import { useAuth0 } from '../auth/react-auth0-spa'
 import { theme } from '../theme'
 
