@@ -10,7 +10,7 @@ import { theme } from './theme'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, currentPath }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
     >
       <Grommet theme={theme} themeMode="dark">
         <Box background="black">
-          <AppHeader appName="coding earth" />
+          <AppHeader appName="coding earth" currentPath={currentPath} />
           <Box full align="center">
             {children}
           </Box>
