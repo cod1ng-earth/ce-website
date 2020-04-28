@@ -28,9 +28,10 @@ const StyledAnchor = styled(Anchor)`
 
 const StyledWrapper = styled(Box)`
   background: ${props =>
-    props.inHero ? 'transparent' : theme.global.colors['grey-800']};
-  justify-content: ${props => (props.inHero ? 'flex-end' : 'space-between')};
-  position: ${props => (props.inHero ? 'absolute' : 'relative')};
+    props.inHero === true ? 'transparent' : theme.global.colors['grey-800']};
+  justify-content: ${props =>
+    props.inHero === true ? 'flex-end' : 'space-between'};
+  position: ${props => (props.inHero === true ? 'absolute' : 'relative')};
   height: 80px;
 `
 

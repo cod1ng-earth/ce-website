@@ -18,6 +18,7 @@
     "email-validator": "^2.0.4",
     "excerpt-html": "^1.2.1",
     "gatsby": "^2.20.12",
+    "gatsby-cli": "^2.12.1",
     "gatsby-image": "^2.3.1",
     "gatsby-plugin-global-context": "^1.0.0",
     "gatsby-plugin-manifest": "^2.3.3",
