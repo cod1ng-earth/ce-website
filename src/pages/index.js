@@ -67,8 +67,8 @@ const StyledLogo = styled(Image)`
   top: 140px;
 `
 
-const IndexPage = ({ path }) => (
-  <Layout currentPath={path}>
+const IndexPage = ({ location }) => (
+  <Layout currentPath={location.pathname}>
     <SEO
       title="coding earth :: home"
       description="coding earth is a meetup community for developers"
