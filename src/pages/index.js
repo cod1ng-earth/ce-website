@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import { Box, Button, Heading, Image, Paragraph } from 'grommet'
+import { Box, Button, Heading, Image, Paragraph, Text } from 'grommet'
 import { ForwardTen, Grow, Mail, Rewind } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
@@ -12,6 +12,7 @@ import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
 import heroPattern from '../images/hero-pattern.svg'
 import logo from '../images/ce-logo.svg'
+import codeImage from '../images/ce-code.svg'
 import { Divider } from '../components/Divider'
 
 const StyledRules = styled.ul`
@@ -64,6 +65,10 @@ const StyledLogo = styled(Image)`
   position: absolute;
   left: 98px;
   top: 140px;
+`
+
+const StyledCodeImage = styled(Image)`
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `
 
 const IndexPage = ({ location }) => (
@@ -138,6 +143,47 @@ const IndexPage = ({ location }) => (
         active={false}
         label="see all recent meetups"
       />
+    </FullWidth>
+
+    <FullWidth background="grey-800" pad={{ vertical: 'medium' }}>
+      <Box pad={{ vertical: 'large', horizontal: 'none' }} justify="center">
+        <Fade left ssrFadeout distance="20px" duration={1000}>
+          <TwoCols>
+            <Box basis="1/2">
+              <StyledCodeImage src={codeImage} fill="horizontal" />
+            </Box>
+            <Box basis="1/2" pad={{ left: 'xlarge', right: 'small' }}>
+              <Heading color="white" level="2" margin={{ top: 'none' }}>
+                1 line of code.
+              </Heading>
+              <Paragraph fill color="white" size="small">
+                Isn't it amazing how many technologies you have to learn to
+                follow the path of modern software development? Be it
+                blockchains for storing transactions, machines taking decisions
+                based upon digital learning sets, virtual clusters providing
+                computing power for scaled applications and command line tools
+                that improve your workflow: it's nearly impossible to keep track
+                of everything.
+              </Paragraph>
+              <Paragraph fill color="white" size="small">
+                That's where we jump in: Instead of specialising on a dedicated
+                topic, coding earth was established to become a space for
+                earth's coder community: every software development related
+                topic is welcome here, every developer with whatever skill level
+                will take away something new on every session, every question
+                may be asked and everyone should have a good time. There's only
+                one golden rule:
+              </Paragraph>
+            </Box>
+          </TwoCols>
+          <Box margin={{ top: 'large', horizontal: 'auto' }} width="large">
+            <Text as="span" textAlign="center" size="medium" weight="bold">
+              Talks have to be hands on, they must contain at least 1 line of
+              code and in the best case they're supported by demos.
+            </Text>
+          </Box>
+        </Fade>
+      </Box>
     </FullWidth>
 
     <FullWidth background="black">
