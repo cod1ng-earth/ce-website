@@ -97,7 +97,7 @@ const IndexPage = ({ location }) => (
     </StyledHero>
 
     <FullWidth
-      background="grey-100"
+      background="grey-800"
       pad={{ vertical: 'medium', horizontal: 'large' }}
     >
       <Box pad={{ vertical: 'large', horizontal: 'xlarge' }} justify="center">
@@ -107,7 +107,7 @@ const IndexPage = ({ location }) => (
             fill
             textAlign="center"
             margin={{ top: 'large' }}
-            color="grey-800"
+            color="grey-100"
           >
             Everybody's welcome, everyone's invited, everyone will take
             something home from our meetups. Our meetups are not your usual
