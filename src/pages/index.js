@@ -1,6 +1,5 @@
-import { Link } from 'gatsby'
-import { Box, Button, Heading, Image, Paragraph, Text } from 'grommet'
-import { ForwardTen, Grow, Mail, Next } from 'grommet-icons'
+import { Box, Heading, Image, Paragraph, Text } from 'grommet'
+import { ForwardTen, Grow, Mail } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
@@ -42,6 +41,11 @@ const StyledH1 = styled(Heading)`
   span {
     display: inline-block;
   }
+`
+
+const StyledH2 = styled(Heading)`
+  font-size: 30px;
+  line-height: 0.85;
 `
 
 const StyledHero = styled(FullWidth)`
@@ -125,20 +129,22 @@ const IndexPage = ({ location }) => (
       </Box>
     </FullWidth>
 
-    <FullWidth background="grey-900" pad={{ vertical: 'xlarge' }}>
-      <Box direction="row" align="baseline">
-        <Heading level={2} color="white" margin={{ right: 'small' }}>
+    <FullWidth background="grey-900" pad={{ vertical: 'large' }}>
+      <Box direction="row" align="baseline" margin={{ top: 'small' }}>
+        <StyledH2 level={2} color="white" margin={{ right: 'small' }}>
           Previously.
-        </Heading>
+        </StyledH2>
         <Text color="grey-400" size="small">
           On coding.earth
         </Text>
       </Box>
       <PastMeetups />
-      <SectionButton to="/sofar" label="See all previous events" />
+      <Box margin={{ bottom: 'large' }}>
+        <SectionButton to="/sofar" label="See all previous events" />
+      </Box>
     </FullWidth>
 
-    <FullWidth background="grey-800" pad={{ vertical: 'medium' }}>
+    <FullWidth background="grey-800" pad={{ vertical: 'large' }}>
       <Box pad={{ vertical: 'large', horizontal: 'none' }} justify="center">
         <Fade left ssrFadeout distance="20px" duration={1000}>
           <TwoCols>
