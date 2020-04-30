@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import { Box, Button, Heading, Image, Paragraph, Text } from 'grommet'
-import { ForwardTen, Grow, Mail, Rewind } from 'grommet-icons'
+import { ForwardTen, Grow, Mail, Next } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
@@ -14,6 +14,7 @@ import heroPattern from '../images/hero-pattern.svg'
 import logo from '../images/ce-logo.svg'
 import codeImage from '../images/ce-code.svg'
 import { Divider } from '../components/Divider'
+import { SectionButton } from '../components/SectionButton'
 
 const StyledRules = styled.ul`
   list-style-type: none;
@@ -123,26 +124,17 @@ const IndexPage = ({ location }) => (
       </Box>
     </FullWidth>
 
-    <FullWidth background="very-dark">
-      <Heading level={2} color="turqoise">
-        <Rewind
-          size="large"
-          color="turqoise"
-          style={{ verticalAlign: 'sub' }}
-        />{' '}
-        Previously, on coding earth
-      </Heading>
+    <FullWidth background="grey-900" pad={{ vertical: 'xlarge' }}>
+      <Box direction="row" align="baseline">
+        <Heading level={2} color="white" margin={{ right: 'small' }}>
+          Previously.
+        </Heading>
+        <Text color="grey-400" size="small">
+          On coding.earth
+        </Text>
+      </Box>
       <PastMeetups />
-      <Button
-        as={Link}
-        to="/sofar"
-        color="status-ok"
-        alignSelf="center"
-        size="large"
-        primary
-        active={false}
-        label="see all recent meetups"
-      />
+      <SectionButton to="/sofar" label="See all previous events" />
     </FullWidth>
 
     <FullWidth background="grey-800" pad={{ vertical: 'medium' }}>
