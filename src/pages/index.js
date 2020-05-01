@@ -47,21 +47,6 @@ const StyledH2 = styled(Heading)`
 `
 
 const StyledHero = styled(FullWidth)`
-  background-image:
-    linear-gradient(
-      to right,
-      rgba(${theme.global.colors['grey-900-rgb']}, 0),
-      rgba(${theme.global.colors['grey-900-rgb']}, 1)
-    ),
-    url('${heroPattern}'),
-    linear-gradient(
-      to right,
-      ${theme.global.colors['grey-900']},
-      ${theme.global.colors['grey-900']}
-    );
-
-  background-repeat: repeat;
-  background-position: 0 -90px;
   height: 693px;
 `
 
@@ -110,7 +95,7 @@ const IndexPage = ({ location }) => (
     >
       <Box pad={{ vertical: 'large', horizontal: 'xlarge' }} justify="center">
         <Fade left ssrFadeout distance="20px" duration={1000}>
-          <Divider borderColor="grey-500" color="grey-400" />
+          <Divider />
           <Paragraph
             fill
             textAlign="center"
@@ -187,7 +172,7 @@ const IndexPage = ({ location }) => (
 
     <FullWidth background="purple-500" pad={{ vertical: 'large' }}>
       <Box margin={{ top: 'small', bottom: 'large' }}>
-        <Divider borderColor="purple-400" color="purple-300" />
+        <Divider />
       </Box>
       <TwoCols>
         <Box basis="1/2" pad={{ right: 'small' }}>

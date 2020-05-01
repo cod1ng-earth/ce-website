@@ -7,6 +7,7 @@ import AppFooter from './footer/AppFooter'
 import SubFooter from './footer/SubFooter'
 import AppHeader from './header/AppHeader'
 import { theme } from './theme'
+import heroPattern from '../images/hero-pattern.svg'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
@@ -20,6 +21,24 @@ const Layout = ({ children, currentPath }) => {
       }
     }
   `)
+
+  const topBackground = {
+    image: `
+        linear-gradient(
+          to right,
+          rgba(${theme.global.colors['grey-900-rgb']}, 0),
+          rgba(${theme.global.colors['grey-900-rgb']}, 1)
+        ),
+        url('${heroPattern}'),
+        linear-gradient(
+          to right,
+          ${theme.global.colors['grey-900']},
+          ${theme.global.colors['grey-900']}
+        )`,
+    position: '0 -90px',
+    repeat: 'repeat',
+    size: 'initial',
+  }
 
   //const [showSidebar, setShowSidebar] = useState(false)
 
@@ -38,7 +57,7 @@ const Layout = ({ children, currentPath }) => {
       onRedirectCallback={onRedirectCallback}
     >
       <Grommet theme={theme} themeMode="dark">
-        <Box background="black">
+        <Box background={topBackground}>
           <AppHeader appName="coding earth" currentPath={currentPath} />
           <Box full align="center">
             {children}
