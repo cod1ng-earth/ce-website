@@ -7,7 +7,8 @@ import { FullWidth } from '../components/TwoCols'
 import Time from '../components/Time'
 
 export default ({ data }) => {
-  const meetups = data.graphcms.meetups
+  // const meetups = data.graphcms.meetups
+  const meetups = []
 
   return (
     <Layout>
@@ -17,9 +18,7 @@ export default ({ data }) => {
       />
 
       <FullWidth>
-        <Heading level={1} color="turqoise">
-          previously, on coding earth.
-        </Heading>
+        <Heading level={1}>previously, on coding earth.</Heading>
 
         {meetups.map(m => (
           <Box key={m.id} margin={{ bottom: 'medium' }}>
@@ -37,17 +36,17 @@ export default ({ data }) => {
   )
 }
 
-export const query = graphql`
-  query($today: GraphCMS_DateTime) {
-    graphcms {
-      meetups(orderBy: time_DESC, where: { time_lt: $today }) {
-        id
-        name
-        time
-        meetupGroup {
-          name
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query($today: GraphCMS_DateTime) {
+//     graphcms {
+//       meetups(orderBy: time_DESC, where: { time_lt: $today }) {
+//         id
+//         name
+//         time
+//         meetupGroup {
+//           name
+//         }
+//       }
+//     }
+//   }
+// `

@@ -96,19 +96,4 @@ export const query = graphql`
         }
       }
     }
-
-    allCloudinaryMedia(
-      filter: { tags: { in: [$cloudinaryTag] } }
-      sort: { fields: created_at, order: ASC }
-    ) {
-      edges {
-        node {
-          id
-          maxeco_image {
-            secure_url
-          }
-        }
-      }
-    }
-  }
-`
+    `

@@ -1,5 +1,4 @@
 import { Box, Heading, Image, Paragraph, Text } from 'grommet'
-import { ForwardTen } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
@@ -10,22 +9,57 @@ import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
 import { theme } from '../components/theme'
 import { FullWidth, TwoCols } from '../components/TwoCols'
-import heroPattern from '../images/hero-pattern.svg'
 import logo from '../images/ce-logo.svg'
 import codeImage from '../images/ce-code.svg'
 import { Divider } from '../components/Divider'
 import { SectionButton } from '../components/SectionButton'
+import Hexagon from '../images/hexagon.svg'
 
 const StyledRules = styled.ol`
-  list-style-type: none;
   padding: 0;
   margin: 0;
+  list-style: none;
+  counter-reset: listCounter;
 
   li {
-    padding: 30px 30px 40px;
+    position: relative;
+    counter-increment: listCounter;
+    padding: 0 0 0 60px;
+    margin: 0;
     font-size: 14px;
-    margin-bottom: 2em;
-    line-height: 1.6em;
+    line-height: 1.9em;
+
+    &::before {
+      content: '#' counter(listCounter);
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: ${theme.global.colors.brand};
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    &::after {
+      content: '';
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: -50px;
+      width: 25px;
+      height: 27px;
+      mask-image: url(${Hexagon});
+      background-repeat: no-repeat;
+      background-color: #999999;
+    }
+
+    + li {
+      margin-top: 80px;
+
+      &::after {
+        display: block;
+      }
+    }
   }
 `
 
@@ -215,45 +249,61 @@ const IndexPage = ({ location }) => (
       >
         Our rules.
       </StyledH2>
-      <Fade left ssrFadeout distance="20px" duration={1000} cascade>
-        <Box width="large" alignSelf="center">
-          <StyledRules>
+      <Box width="large" alignSelf="center">
+        <StyledRules>
+          <Fade top ssrFadeout distance="20px" duration={500}>
             <li>
               we neither care about your gender, your skin tone, your religious
               views, the language your mother taught you nor your heritage or
               favorite science fiction series, we only care about you as a
               developer.
             </li>
+          </Fade>
+          <Fade top ssrFadeout distance="20px" duration={500}>
             <li>
               no marketing, no recruiting, only tech and if possible:{' '}
               <b>code</b> (lets consider yaml valid, and of course you may
               announce that your company is hiring)
             </li>
+          </Fade>
+          <Fade top ssrFadeout distance="20px" duration={500}>
             <li>
               don't bash one technology in favor of another without giving a
               concrete reason (Ruby is sh*t, Rust is much better, you know the
               game)
             </li>
+          </Fade>
+          <Fade top ssrFadeout distance="20px" duration={500}>
             <li>
               one demo gets you rid of 10 slides so don't be shy and type live,
               we're all developers so we'll only laugh at obvious typos
             </li>
+          </Fade>
+          <Fade top ssrFadeout distance="20px" duration={500}>
             <li>
               as soon as 1 person is around who doesn't understand the local
               language we <b>switch to English</b> (exceptions must be announced
               and if she doesn't understand English as well we ran out of
               options).
             </li>
+          </Fade>
+          <Fade top ssrFadeout distance="20px" duration={500}>
             <li>food is not always free, but maybe you get a t-shirt</li>
+          </Fade>
+          <Fade top ssrFadeout distance="20px" duration={500}>
             <li>
               everyone can become a developer. everyone can become a better
               developer. being a bad developer doesn't make you a bad person.
               there are no bad developers
             </li>
-            <li>you do talk about coding earth</li>
-          </StyledRules>
-        </Box>
-      </Fade>
+          </Fade>
+          <Fade top ssrFadeout distance="20px" duration={500}>
+            <li>
+              <strong>you do talk about coding earth</strong>
+            </li>
+          </Fade>
+        </StyledRules>
+      </Box>
     </FullWidth>
   </Layout>
 )
