@@ -2,7 +2,6 @@ import React from 'react'
 import { Box } from 'grommet'
 import Hexagon from '../images/icons/hexagon.svg'
 import styled from 'styled-components'
-import { theme } from '../components/theme'
 
 const StyledHr = styled.hr`
   max-width: 200px;

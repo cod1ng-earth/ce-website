@@ -15,38 +15,39 @@ const StyledH3 = styled(Heading)`
 export default function() {
   const breakpoint = useContext(ResponsiveContext)
 
-  const data = useStaticQuery(graphql`
-    query {
-      graphcms {
-        meetups(
-          orderBy: time_DESC
-          where: {
-            id_in: [
-              "ck8vxvl1k1a700104ygm809n9"
-              "ck8vxuq6g1a6i0104fcr7s9qm"
-              "ck8vxvl1k1a710104juon23a5"
-              "ck8vxp38w1h4x01645txt71eb"
-              "ck8vxpthc1h5m0164m62lfqvp"
-              "ck8vxp38w1h4t0164eujq7shc"
-            ]
-          }
-        ) {
-          id
-          name
-          time
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     graphcms {
+  //       meetups(
+  //         orderBy: time_DESC
+  //         where: {
+  //           id_in: [
+  //             "ck8vxvl1k1a700104ygm809n9"
+  //             "ck8vxuq6g1a6i0104fcr7s9qm"
+  //             "ck8vxvl1k1a710104juon23a5"
+  //             "ck8vxp38w1h4x01645txt71eb"
+  //             "ck8vxpthc1h5m0164m62lfqvp"
+  //             "ck8vxp38w1h4t0164eujq7shc"
+  //           ]
+  //         }
+  //       ) {
+  //         id
+  //         name
+  //         time
 
-          keyImage {
-            url
-          }
-          highlightImage {
-            url
-          }
-        }
-      }
-    }
-  `)
+  //         keyImage {
+  //           url
+  //         }
+  //         highlightImage {
+  //           url
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  const meetups = data.graphcms.meetups
+  // const meetups = data.graphcms.meetups
+  const meetups = []
 
   return (
     <Box

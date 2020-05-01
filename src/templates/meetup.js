@@ -64,40 +64,40 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
   )
 }
 
-export const query = graphql`
-  query($id: ID!, $cloudinaryTag: String) {
-    graphcms {
-      meetup(where: { id: $id }) {
-        id
-        meetupComId
-        name
-        time
-        description
-        onlineUrl
-        recording
-        meetupGroup {
-          name
-        }
-        highlightImage {
-          fileName
-          handle
-          url
-        }
-      }
-    }
+// export const query = graphql`
+//   query($id: ID!, $cloudinaryTag: String) {
+//     graphcms {
+//       meetup(where: { id: $id }) {
+//         id
+//         meetupComId
+//         name
+//         time
+//         description
+//         onlineUrl
+//         recording
+//         meetupGroup {
+//           name
+//         }
+//         highlightImage {
+//           fileName
+//           handle
+//           url
+//         }
+//       }
+//     }
 
-    allCloudinaryMedia(
-      filter: { tags: { in: [$cloudinaryTag] } }
-      sort: { fields: created_at, order: ASC }
-    ) {
-      edges {
-        node {
-          id
-          maxeco_image {
-            secure_url
-          }
-        }
-      }
-    }
-  }
-`
+//     allCloudinaryMedia(
+//       filter: { tags: { in: [$cloudinaryTag] } }
+//       sort: { fields: created_at, order: ASC }
+//     ) {
+//       edges {
+//         node {
+//           id
+//           maxeco_image {
+//             secure_url
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

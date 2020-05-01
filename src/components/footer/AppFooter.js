@@ -4,6 +4,11 @@ import React from 'react'
 import logo_ce from '../../images/ce-logo.svg'
 import ContactForm from './ContactForm'
 import SocialButtons from './SocialButtons'
+import styled from 'styled-components'
+
+const StyledCodeText = styled(Text)`
+  font-family: 'OCR-A', monospace;
+`
 
 export default () => (
   <Box
@@ -17,12 +22,12 @@ export default () => (
   >
     <Box
       width="xlarge"
-      pad={{ vertical: 'large' }}
+      pad={{ vertical: 'xlarge' }}
       justify="start"
       direction="row-responsive"
     >
-      <Box align="center" basis="1/3" direction="column">
-        <Heading level="4" textAlign="center">
+      <Box align="center" basis="1/3" direction="column" alignContent="around">
+        <Heading level="4" textAlign="center" margin={{ top: 'none' }}>
           follow us and get in touch with us
         </Heading>
 
@@ -57,12 +62,17 @@ export default () => (
         </Box>
         <Text size="xsmall">&copy; 2019-2020 coding earth</Text>
       </Box>
-      <Box align="center" basis="1/3">
-        <Image src={logo_ce} fit="contain" alt="coding earth logo" />
-        <Text margin={{ top: 'medium' }}>1 line of code.</Text>
+      <Box align="center" basis="1/3" direction="column" alignContent="around">
+        <Image
+          src={logo_ce}
+          fit="contain"
+          alt="coding earth logo"
+          width="120"
+        />
+        <StyledCodeText size="code">1 line of code.</StyledCodeText>
       </Box>
-      <Box basis="1/3">
-        <Heading level="4" textAlign="center">
+      <Box basis="1/3" alignContent="around">
+        <Heading level="4" textAlign="center" margin={{ top: 'none' }}>
           contact us
         </Heading>
         <ContactForm></ContactForm>

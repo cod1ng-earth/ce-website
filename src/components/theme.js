@@ -79,6 +79,18 @@ export const theme = deepMerge(dark, {
         value: 1180,
       },
     },
+    control: {
+      border: {
+        radius: '4px',
+      },
+    },
+    focus: {
+      border: {
+        color: {
+          dark: '#000',
+        },
+      },
+    },
   },
 
   anchor: {
@@ -136,5 +148,48 @@ export const theme = deepMerge(dark, {
       size: '24px',
       height: '28px',
     },
+    code: {
+      size: '18px',
+      height: '1.75',
+      extend: {
+        family: 'OCR-A',
+      },
+    },
+  },
+  formField: {
+    border: {
+      color: {
+        dark: 'transparent',
+      },
+      side: 'none',
+      size: '0',
+    },
+    extend: `
+      border-radius: 4px;
+      background: #2E2E2E;
+      border: 1px solid #141414;
+      font-size: 14px;
+      padding: 10px 12px;
+    `,
+  },
+  textArea: {
+    border: {
+      color: {
+        dark: 'transparent',
+      },
+      side: 'none',
+      size: '0',
+    },
+    extend: `
+      border-radius: 4px;
+      background: #2E2E2E;
+      border: 1px solid #141414;
+      font-size: 14px;
+      padding: 20px 25px;
+
+      &:focus {
+        border-color: #000;
+      }
+    `,
   },
 })
