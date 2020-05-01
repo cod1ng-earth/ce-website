@@ -140,6 +140,10 @@ export const theme = deepMerge(dark, {
       size: '16px',
       height: '18px',
     },
+    xmedium: {
+      size: '18px',
+      height: '1.75',
+    },
     medium: {
       size: '20px',
       height: '28px',

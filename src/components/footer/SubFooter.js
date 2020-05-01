@@ -7,8 +7,13 @@ import grommet_icon from '../../images/grommet.png'
 import { FullWidth } from '../TwoCols'
 
 export default () => (
-  <FullWidth tag="footer" direction="row" background="gatsby-light">
-    <Text textAlign="center">
+  <FullWidth
+    tag="footer"
+    direction="row"
+    background="gatsby-light"
+    pad={{ vertical: 'large' }}
+  >
+    <Text textAlign="center" size="xmedium" weight="600">
       built with
       <Anchor href="https://www.gatsbyjs.org" target="_blank" rel="noopener">
         <Image
@@ -47,7 +52,7 @@ export default () => (
         />
       </Anchor>
     </Text>
-    <Text textAlign="center">
+    <Text textAlign="center" margin={{ top: 'medium' }} size="small">
       Found an issue?{' '}
       <Anchor
         href="https://github.com/cod1ng-earth/ce-website"
