@@ -38,6 +38,7 @@ export const theme = deepMerge(dark, {
       'purple-500': '#8040BF',
       'purple-400': '#9E66D4',
       'purple-300': '#BB9ED7',
+      'purple-100': '#C19AE8',
 
       // Orange
       'orange-600': '#E06C00',
@@ -74,7 +75,7 @@ export const theme = deepMerge(dark, {
 
   anchor: {
     color: 'brand',
-    fontWeight: 900,
+    fontWeight: 500,
     hover: {
       color: 'turquoise',
     },
@@ -93,9 +94,13 @@ export const theme = deepMerge(dark, {
     },
   },
   paragraph: {
+    xsmall: {
+      size: '12px',
+      height: '1.417',
+    },
     small: {
       size: '14px',
-      height: '1.75',
+      height: '1.85',
     },
     medium: {
       size: '16px',

@@ -1,5 +1,5 @@
 import { Box, Heading, Image, Paragraph, Text } from 'grommet'
-import { ForwardTen, Grow, Mail } from 'grommet-icons'
+import { ForwardTen } from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
@@ -111,7 +111,7 @@ const IndexPage = ({ location }) => (
     >
       <Box pad={{ vertical: 'large', horizontal: 'xlarge' }} justify="center">
         <Fade left ssrFadeout distance="20px" duration={1000}>
-          <Divider />
+          <Divider borderColor="grey-500" color="grey-400" />
           <Paragraph
             fill
             textAlign="center"
@@ -184,19 +184,17 @@ const IndexPage = ({ location }) => (
       </Box>
     </FullWidth>
 
-    <FullWidth background="black">
+    <FullWidth background="purple-500" pad={{ vertical: 'large' }}>
+      <Box margin={{ top: 'small', bottom: 'large' }}>
+        <Divider borderColor="purple-400" color="purple-300" />
+      </Box>
       <TwoCols>
-        <Box basis="1/2">
+        <Box basis="1/2" pad={{ right: 'small' }}>
           <Fade left ssrFadeout distance="20px" duration={1000}>
-            <Heading level={2} color="turqoise">
-              <Grow
-                size="large"
-                color="turqoise"
-                style={{ verticalAlign: 'sub' }}
-              />
-              contribute!
-            </Heading>
-            <Paragraph fill color="light-5">
+            <StyledH2 level={2} color="white">
+              Contribute!
+            </StyledH2>
+            <Paragraph fill color="light-5" size="small">
               We are looking forward to your ideas for upcoming meetups. If you
               want to share any of your knowledge with a highly motivated
               community, this is the right place. If you want to demonstrate a
@@ -209,14 +207,9 @@ const IndexPage = ({ location }) => (
           </Fade>
         </Box>
         <Box basis="1/2">
-          <Heading level={2} color="turqoise">
-            <Mail
-              size="large"
-              color="turqoise"
-              style={{ verticalAlign: 'sub', marginRight: '10px' }}
-            />
-            stay tuned
-          </Heading>
+          <StyledH2 level={2} color="white">
+            Stay tuned.
+          </StyledH2>
           <Box>
             <MailchimpSignup />
           </Box>

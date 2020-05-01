@@ -8,17 +8,17 @@ const StyledHr = styled.hr`
   max-width: 200px;
   margin: 0;
   flex-grow: 1;
-  border-color: ${theme.global.colors['grey-500']};
+  border-color: ${props => theme.global.colors[props.borderColor]};
 `
 
 const StyledHexagon = styled(Hexagon)`
-  color: ${theme.global.colors['grey-400']};
+  color: ${props => theme.global.colors[props.color]};
 `
 
-export const Divider = () => (
+export const Divider = props => (
   <Box direction="row" gap="small" align="center" justify="center">
-    <StyledHr />
-    <StyledHexagon />
-    <StyledHr />
+    <StyledHr borderColor={props.borderColor} />
+    <StyledHexagon color={props.color} />
+    <StyledHr borderColor={props.borderColor} />
   </Box>
 )

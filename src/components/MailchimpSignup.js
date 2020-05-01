@@ -1,25 +1,25 @@
-import emailValidator from 'email-validator'
-import {
-  Anchor,
-  Box,
-  Button,
-  CheckBox,
-  FormField,
-  Paragraph,
-  Text,
-  TextInput,
-} from 'grommet'
-import { Mail } from 'grommet-icons'
 import React, { useEffect, useState } from 'react'
+import emailValidator from 'email-validator'
+import styled from 'styled-components'
+import { Anchor, Box, Button, Paragraph, TextInput } from 'grommet'
+import { MailOption } from 'grommet-icons'
 
-export function MailchimpSignup(props) {
+const StyledButton = styled(Button)`
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  float: right;
+`
+
+export function MailchimpSignup() {
   const [email, setEmail] = useState('')
-  const [emailChecked, setEmailChecked] = useState(false)
   const [submittable, setSubmittable] = useState(false)
 
   useEffect(() => {
-    setSubmittable(emailValidator.validate(email) && emailChecked)
-  }, [email, emailChecked])
+    setSubmittable(emailValidator.validate(email))
+  }, [email])
 
   return (
     <form
@@ -27,39 +27,33 @@ export function MailchimpSignup(props) {
       method="post"
       style={{ position: 'relative' }}
     >
-      <FormField label="email">
+      <Box
+        fill
+        background="purple-400"
+        border={{ side: 'all', color: 'purple-600' }}
+        pad={{ horizontal: 'small', vertical: 'xsmall' }}
+        margin={{ top: 'small' }}
+        round="4px"
+      >
         <TextInput
           type="email"
           value={email}
           name="EMAIL"
           className="email"
           id="mce-EMAIL"
-          placeholder="email address"
+          placeholder="john.doe@coding.earth"
           required
           onChange={evt => setEmail(evt.target.value)}
-        />
-      </FormField>
-
-      <Box direction="row">
-        <Text>
-          Please select all the ways you would like to hear from coding earth:
-        </Text>
-        <CheckBox
-          checked={emailChecked}
-          label="Email"
-          id="gdpr_26026"
-          name="gdpr[26026]"
-          value="Y"
-          toggle
-          onChange={evt => setEmailChecked(evt.target.checked)}
+          plain
         />
       </Box>
-      <Paragraph fill size="small">
+
+      <Paragraph fill size="xsmall" color="purple-100">
         You can unsubscribe at any time by clicking the link in the footer of
         our emails. For information about our privacy practices, please visit
         our website.
       </Paragraph>
-      <Paragraph fill size="small">
+      <Paragraph fill size="xsmall" color="purple-100">
         We use Mailchimp as our marketing platform. By clicking below to
         subscribe, you acknowledge that your information will be transferred to
         Mailchimp for processing.{' '}
@@ -82,15 +76,16 @@ export function MailchimpSignup(props) {
         />
       </div>
 
-      <Button
-        icon={<Mail />}
+      <StyledButton
+        icon={<MailOption />}
         type="submit"
         name="subscribe"
         label="Subscribe"
         value="Subscribe"
+        disabled={submittable}
         primary
-        color="brand"
-        disabled={!submittable}
+        color="purple-700"
+        size="small"
       />
     </form>
   )
