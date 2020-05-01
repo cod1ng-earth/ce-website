@@ -78,6 +78,7 @@ export default function() {
             gap="small"
             height="115px"
             round={{ size: '4px', corner: 'bottom' }}
+            elevation="xsmall"
           >
             <StyledH3 level={3} color="white" margin="none">
               {meetup.name}
