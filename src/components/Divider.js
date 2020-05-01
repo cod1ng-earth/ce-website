@@ -8,11 +8,14 @@ const StyledHr = styled.hr`
   max-width: 200px;
   margin: 0;
   flex-grow: 1;
-  border-color: ${props => theme.global.colors[props.borderColor]};
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
 `
 
 const StyledHexagon = styled(Hexagon)`
-  color: ${props => theme.global.colors[props.color]};
+  color: rgba(255, 255, 255, 0.5);
 `
 
 export const Divider = props => (
