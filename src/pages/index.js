@@ -16,16 +16,14 @@ import codeImage from '../images/ce-code.svg'
 import { Divider } from '../components/Divider'
 import { SectionButton } from '../components/SectionButton'
 
-const StyledRules = styled.ul`
+const StyledRules = styled.ol`
   list-style-type: none;
   padding: 0;
   margin: 0;
 
   li {
-    background-color: ${theme.global.colors['very-dark']};
-    border-bottom: 3px solid ${theme.global.colors['brand']};
     padding: 30px 30px 40px;
-    font-size: 1.5em;
+    font-size: 14px;
     margin-bottom: 2em;
     line-height: 1.6em;
   }
@@ -220,51 +218,56 @@ const IndexPage = ({ location }) => (
       </TwoCols>
     </FullWidth>
 
-    <FullWidth background="dark-1">
-      <Heading level={2} color="brand">
-        <ForwardTen
-          size="large"
-          color="brand"
-          style={{ verticalAlign: 'sub' }}
-        />{' '}
-        Our rules
-      </Heading>
+    <FullWidth
+      background="grey-600"
+      pad={{ vertical: 'large', horizontal: 'xlarge' }}
+    >
+      <StyledH2
+        level={2}
+        color="white"
+        alignSelf="center"
+        margin={{ top: 'large', bottom: 'xlarge' }}
+      >
+        Our rules.
+      </StyledH2>
       <Fade left ssrFadeout distance="20px" duration={1000} cascade>
-        <StyledRules>
-          <li>
-            we neither care about your gender, your skin tone, your religious
-            views, the language your mother taught you nor your heritage or
-            favorite science fiction series, we only care about you as a
-            developer.
-          </li>
-          <li>
-            no marketing, no recruiting, only tech and if possible: <b>code</b>{' '}
-            (lets consider yaml valid, and of course you may announce that your
-            company is hiring)
-          </li>
-          <li>
-            don't bash one technology in favor of another without giving a
-            concrete reason (Ruby is sh*t, Rust is much better, you know the
-            game)
-          </li>
-          <li>
-            one demo gets you rid of 10 slides so don't be shy and type live,
-            we're all developers so we'll only laugh at obvious typos
-          </li>
-          <li>
-            as soon as 1 person is around who doesn't understand the local
-            language we <b>switch to English</b> (exceptions must be announced
-            and if she doesn't understand English as well we ran out of
-            options).
-          </li>
-          <li>food is not always free, but maybe you get a t-shirt</li>
-          <li>
-            everyone can become a developer. everyone can become a better
-            developer. being a bad developer doesn't make you a bad person.
-            there are no bad developers
-          </li>
-          <li>you do talk about coding earth</li>
-        </StyledRules>{' '}
+        <Box width="large" alignSelf="center">
+          <StyledRules>
+            <li>
+              we neither care about your gender, your skin tone, your religious
+              views, the language your mother taught you nor your heritage or
+              favorite science fiction series, we only care about you as a
+              developer.
+            </li>
+            <li>
+              no marketing, no recruiting, only tech and if possible:{' '}
+              <b>code</b> (lets consider yaml valid, and of course you may
+              announce that your company is hiring)
+            </li>
+            <li>
+              don't bash one technology in favor of another without giving a
+              concrete reason (Ruby is sh*t, Rust is much better, you know the
+              game)
+            </li>
+            <li>
+              one demo gets you rid of 10 slides so don't be shy and type live,
+              we're all developers so we'll only laugh at obvious typos
+            </li>
+            <li>
+              as soon as 1 person is around who doesn't understand the local
+              language we <b>switch to English</b> (exceptions must be announced
+              and if she doesn't understand English as well we ran out of
+              options).
+            </li>
+            <li>food is not always free, but maybe you get a t-shirt</li>
+            <li>
+              everyone can become a developer. everyone can become a better
+              developer. being a bad developer doesn't make you a bad person.
+              there are no bad developers
+            </li>
+            <li>you do talk about coding earth</li>
+          </StyledRules>
+        </Box>
       </Fade>
     </FullWidth>
   </Layout>
