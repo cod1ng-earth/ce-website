@@ -45,7 +45,7 @@ export default function() {
     >
       {meetups.map(meetup => (
         <Box
-          basis={`${breakpoint === 'medium' ? '1/2' : '1/3'}`}
+          basis={breakpoint === 'medium' ? '1/2' : '1/3'}
           key={meetup.id}
           align="center"
           pad="10px"
