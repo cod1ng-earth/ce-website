@@ -176,10 +176,12 @@ const IndexPage = ({ location }) => (
             </Box>
           </TwoCols>
           <Box margin={{ top: 'large', horizontal: 'auto' }} width="large">
-            <Text as="span" textAlign="center" size="medium" weight="bold">
-              Talks have to be hands on, they must contain at least 1 line of
-              code and in the best case they're supported by demos.
-            </Text>
+            <Paragraph textAlign="center" size="large" weight="bold" fill>
+              <strong>
+                Talks have to be hands on, they must contain at least 1 line of
+                code and in the best case they're supported by demos.
+              </strong>
+            </Paragraph>
           </Box>
         </Fade>
       </Box>
