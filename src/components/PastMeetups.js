@@ -60,14 +60,13 @@ export default function() {
   return (
     <Grid
       columns={{
-        count: { small: 1, medium: 2, large: 3, xlarge: 3 }[breakpoint],
+        count: { small: 1, medium: 2, large: 3 }[breakpoint],
         size: 'auto',
       }}
       gap="small"
     >
       {meetups.map(meetup => (
         <Box
-          basis={breakpoint === 'medium' ? '1/2' : '1/3'}
           key={meetup.id}
           align="center"
           onClick={() => navigate(`meetup/${meetup.id}`)}
