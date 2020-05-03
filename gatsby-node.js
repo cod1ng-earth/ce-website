@@ -24,7 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  result.data.allMdx.edges.forEach(({ node }) => {
+  /*result.data.allMdx.edges.forEach(({ node }) => {
     if (node.frontmatter.slug == null) return
     createPage({
       path: `/${node.frontmatter.slug}`,
@@ -41,6 +41,17 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id,
         cloudinaryTag: `meetup:${meetupComId}`,
+      },
+    })
+  })*/
+
+  ;[1, 2, 3].forEach(id => {
+    createPage({
+      path: `/meetup/foo${id}`,
+      component: path.resolve('./src/templates/meetup.js'),
+      context: {
+        id,
+        cloudinaryTag: `meetup:${id}`,
       },
     })
   })

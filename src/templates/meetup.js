@@ -13,8 +13,28 @@ import Time from '../components/Time'
 import { YoutubeEmbed } from '../components/event/YoutubeEmbed'
 import ReactMarkdown from '../components/event/ReactMarkdown'
 
-export default ({ data: { graphcms, allCloudinaryMedia } }) => {
-  const { meetup } = graphcms
+export default () => {
+  //const { meetup } = graphcms
+
+  const meetup = {
+    id: 1,
+    meetupComId: 1,
+    name: 'sample meetup',
+    time: '2010-10-12',
+    description: 'a foo description',
+    onlineUrl: 'http://foo.bar',
+    recording: 'http://foo.bar',
+    meetupGroup: {
+      name: 'coding x',
+    },
+    highlightImage: {
+      fileName: 'somaname.jpg',
+      url: 'https://picsum.photos/800/400',
+    },
+  }
+
+  const allCloudinaryMedia = { edges: [] }
+
   return (
     <Layout>
       <SEO

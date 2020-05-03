@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Box, Heading, Text, Image, ResponsiveContext } from 'grommet'
+import { Box, Heading, Text, Image, ResponsiveContext, Grid } from 'grommet'
 import { Calendar } from 'grommet-icons'
 import { graphql, useStaticQuery, navigate } from 'gatsby'
 import styled from 'styled-components'
@@ -47,25 +47,33 @@ export default function() {
   // `)
 
   // const meetups = data.graphcms.meetups
-  const meetups = []
+  const meetups = [1, 2, 3, 4, 5, 6].map(i => {
+    return {
+      id: 'foo' + i,
+      name: 'meetup',
+      time: '2012-10-23',
+      keyImage: { url: 'https://picsum.photos/800/400' },
+      highlightImage: { url: 'https://picsum.photos/800/300' },
+    }
+  })
 
   return (
-    <Box
-      direction="row-responsive"
-      wrap={true}
-      margin={{ horizontal: '-10px', top: 'medium', bottom: 'large' }}
-      width={{ max: 'none' }}
+    <Grid
+      columns={{
+        count: { small: 1, medium: 2, large: 3, xlarge: 3 }[breakpoint],
+        size: 'auto',
+      }}
+      gap="small"
     >
       {meetups.map(meetup => (
         <Box
           basis={breakpoint === 'medium' ? '1/2' : '1/3'}
           key={meetup.id}
           align="center"
-          pad="10px"
           onClick={() => navigate(`meetup/${meetup.id}`)}
         >
           <Box
-            height="200px"
+            height="small"
             round={{ size: '4px', corner: 'top' }}
             overflow="hidden"
           >
@@ -93,6 +101,6 @@ export default function() {
           </Box>
         </Box>
       ))}
-    </Box>
+    </Grid>
   )
 }

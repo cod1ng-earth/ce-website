@@ -55,7 +55,7 @@ module.exports = {
         icon: 'src/images/coding_earth_x_120.png',
       },
     },
-    {
+    /*{
       resolve: 'gatsby-source-graphql',
       options: {
         typeName: 'GraphCMS',
@@ -66,7 +66,7 @@ module.exports = {
           Authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
         },
       },
-    },
+    },*/
     {
       resolve: 'gatsby-source-cloudinary',
       options: {
