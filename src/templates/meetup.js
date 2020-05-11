@@ -12,6 +12,7 @@ import { FormPrevious } from 'grommet-icons'
 import Time from '../components/Time'
 import { YoutubeEmbed } from '../components/event/YoutubeEmbed'
 import ReactMarkdown from '../components/event/ReactMarkdown'
+import Talk from '../components/Talk'
 
 export default ({ data: { graphcms, allCloudinaryMedia } }) => {
   const { meetup } = graphcms
@@ -36,8 +37,39 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
         <Heading level={1} color="turqoise">
           {meetup.name}
         </Heading>
-        {meetup.recording && <YoutubeEmbed url={meetup.recording} />}
+        {meetup.recording && (
+          <Box margin={{ vertical: 'large' }}>
+            {' '}
+            <YoutubeEmbed url={meetup.recording} />
+          </Box>
+        )}
         <ReactMarkdown>{meetup.description}</ReactMarkdown>
+
+        {meetup.talks.length > 0 && (
+          <Box background="dark-1" pad="medium" margin={{ vertical: 'large' }}>
+            {meetup.talks.map(talk => {
+              const speaker = talk.speaker[0]
+
+              return (
+                <Talk
+                  key={talk.id}
+                  name={talk.name}
+                  company={{
+                    url: speaker.companyUrl,
+                    name: speaker.company,
+                  }}
+                  link={speaker.twitter}
+                  image={speaker.avatar && speaker.avatar.url}
+                  origin={speaker.location}
+                  title={talk.title}
+                >
+                  {talk.description}
+                </Talk>
+              )
+            })}
+          </Box>
+        )}
+
         <Box pad="medium">
           {allCloudinaryMedia.edges.length > 0 && (
             <Carousel
@@ -69,19 +101,37 @@ export const query = graphql`
     graphcms {
       meetup(where: { id: $id }) {
         id
-        meetupComId
         name
         time
+        duration
         description
         onlineUrl
         recording
-        meetupGroup {
-          name
+        keyImage {
+          url
         }
         highlightImage {
-          fileName
-          handle
           url
+        }
+        talks {
+          id
+          title
+          description
+          slides
+          recording
+          time
+          speaker {
+            name
+            location
+            company
+            companyUrl
+            twitter
+            github
+            linkedin
+            avatar {
+              url
+            }
+          }
         }
       }
     }

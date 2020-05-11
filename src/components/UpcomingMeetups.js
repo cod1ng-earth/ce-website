@@ -18,10 +18,10 @@ import { YoutubeEmbed } from './event/YoutubeEmbed'
 import Talk from './Talk'
 import AttendButton from './event/AttendButton'
 
-export default function UpcomingMeetup({ meetup }) {
+export default function UpcomingMeetup(props) {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0()
   const [attending, setAttending] = useState(false)
-  const [embed, setEmbed] = useState('yt')
+  const [embed, setEmbed] = useState('cc')
   const [timeZone, setTimeZone] = useState(
     Intl.DateTimeFormat().resolvedOptions().timeZone
   )
@@ -29,15 +29,46 @@ export default function UpcomingMeetup({ meetup }) {
 
   const data = useStaticQuery(graphql`
     {
-      image: imageSharp(
-        resize: { originalName: { eq: "coding_earth_meetup.png" } }
-      ) {
-        fluid(maxWidth: 800, maxHeight: 300) {
-          ...GatsbyImageSharpFluid_withWebp
+      graphcms {
+        meetups(where: { id: "cka2ooxts00ly0109uvysepfk" }) {
+          id
+          name
+          time
+          duration
+          description
+          onlineUrl
+          recording
+          keyImage {
+            url
+          }
+          highlightImage {
+            url
+          }
+          talks {
+            id
+            title
+            description
+            slides
+            recording
+            time
+            speaker {
+              name
+              location
+              company
+              companyUrl
+              twitter
+              github
+              linkedin
+              avatar {
+                url
+              }
+            }
+          }
         }
       }
     }
   `)
+  const meetup = data.graphcms.meetups[0]
 
   useEffect(() => {
     const attending = JSON.parse(
@@ -55,15 +86,18 @@ export default function UpcomingMeetup({ meetup }) {
           <Heading level={3} color="brand">
             {meetup.name}
           </Heading>
-          <TimezonePicker meetupUTCTime={meetup.time} tzUpdated={setTimeZone} />
+          <TimezonePicker
+            meetupUTCTime={new Date(meetup.time)}
+            tzUpdated={setTimeZone}
+          />
         </Box>
         <Paragraph fill>
           <ReactMarkdown>{meetup.description}</ReactMarkdown>
           To become part of the meetup, ask questions, chat with us and be able
           to bookmark parts of the sessions, select{' '}
           <Anchor onClick={() => setEmbed('cc')}>CrowdCast</Anchor> as streaming
-          option (and please signup for it). If you'd just want to watch the
-          livestream stay on the{' '}
+          option (and please signup for it). If you prefer to lean back and
+          watch, tune into the{' '}
           <Anchor onClick={() => setEmbed('yt')}>Youtube channel</Anchor>
         </Paragraph>
         <Box>
@@ -82,69 +116,38 @@ export default function UpcomingMeetup({ meetup }) {
           </Box>
 
           {embed === 'yt' ? (
-            <YoutubeEmbed url={meetup.recoding} />
+            <YoutubeEmbed url={meetup.recording} />
           ) : (
             <CrowdcastEmbed url={meetup.onlineUrl} />
           )}
 
-          <Paragraph fill> The meetup will have three sessions:</Paragraph>
+          {meetup.talks.length === 0 ? (
+            <Paragraph fill> Sessions will be announced shortly</Paragraph>
+          ) : (
+            <Box background="dark-1" pad="medium">
+              {meetup.talks.map(talk => {
+                const speaker = talk.speaker[0]
 
-          <Box background="dark-1" pad="medium">
-            <Talk
-              name="Filipe Barroso"
-              company={{
-                url: 'https://www.gdglisbon.xyz/',
-                name: 'GDG Lisbon',
-              }}
-              link="https://twitter.com/ABarroso"
-              image="//pbs.twimg.com/profile_images/973591262686302209/luVnG3Bn_400x400.jpg"
-              origin="Lisbon"
-              title="What is Flutter and why should you care about it?"
-              time={{ time: '2020-04-21T19:10+0200', userLocale, timeZone }}
-            >
-              The Flutter SDK by Google is the new Open Source UI SDK to create
-              native applications with one codebase. At the end of the talk, you
-              will understand the decisions behind Flutter, why it is so
-              different from other mobile development tools and platforms, and
-              why are so many developers already addicted to it.
-            </Talk>
-
-            <Talk
-              name="Brooklyn Zelenka"
-              company={{
-                url: 'https://fission.codes/',
-                name: 'fission.codes',
-              }}
-              link="https://twitter.com/expede"
-              image="//pbs.twimg.com/profile_images/1176524572423639042/hT2G40Gd_400x400.jpg"
-              origin="Vancouver"
-              title="how you can authenticate users safely without a backend?"
-              time={{ time: '2020-04-21T19:45+0200', userLocale, timeZone }}
-            >
-              Web apps are too complex - what if we got rid of the back end? It
-              turns out that we can push most things into the browser. In this
-              talk, Brooklyn will talk about doing secure auth without requiring
-              an auth server, plus a bit about the broader project of making the
-              browser all you need.
-            </Talk>
-
-            <Talk
-              name="Jesse Martin"
-              company={{
-                url: 'https://graphcms.com/',
-                name: 'GraphCMS',
-              }}
-              link="https://twitter.com/motleydev"
-              image="//pbs.twimg.com/profile_images/1204366626738622466/ufPGhfrp_400x400.jpg"
-              origin="Constance"
-              title="All About Headless with the New GraphCMS"
-              time={{ time: '2020-04-21T20:15+0200', userLocale, timeZone }}
-            >
-              join us for an entertaining talk about the benefits of a headless
-              CMS, see a demo of the new GraphCMS and learn a few new features
-              about GraphQL along the way!
-            </Talk>
-          </Box>
+                return (
+                  <Talk
+                    key={talk.id}
+                    name={talk.name}
+                    company={{
+                      url: speaker.companyUrl,
+                      name: speaker.company,
+                    }}
+                    link={speaker.twitter}
+                    image={speaker.avatar.url}
+                    origin={speaker.location}
+                    title={talk.title}
+                    time={{ time: talk.time, userLocale, timeZone }}
+                  >
+                    {talk.description}
+                  </Talk>
+                )
+              })}
+            </Box>
+          )}
 
           <Paragraph fill>
             All contributions follow our golden "*1 line of code*" rule, so

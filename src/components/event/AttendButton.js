@@ -18,7 +18,7 @@ export default function AttendButton({ user }) {
         name: user.name,
         email,
         nickname: user.nickname,
-        meetup: 'global_1',
+        meetup: 'global_2',
       })
 
       const result = await fetch('/.netlify/functions/attend', {
@@ -28,7 +28,7 @@ export default function AttendButton({ user }) {
       })
 
       const attending = JSON.parse(localStorage.getItem('attending') || '{}')
-      attending['global_1'] = true
+      attending['global_2'] = true
       localStorage.setItem('attending', JSON.stringify(attending))
       setAttending(true)
     } catch (e) {

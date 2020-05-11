@@ -11,37 +11,35 @@ export default ({
   company,
   children,
   time,
-}) => {
-  const dtime = new Date(time.time)
-
-  return (
-    <>
-      <Box direction="row-responsive" align="center" justify="between">
-        <Box direction="row" align="center" gap="small">
-          <Avatar src={image} />
-          <Text>
-            <Anchor href={link} target="_blank" rel="noopener">
-              {name}
-            </Anchor>{' '}
-            (
-            <Anchor href={company.url} target="_blank" rel="noopener">
-              {company.name}
-            </Anchor>
-            , {origin}) <br />
-            <Text>{title}</Text>
-          </Text>
-        </Box>
+}) => (
+  <>
+    <Box direction="row-responsive" align="center" justify="between">
+      <Box direction="row" align="center" gap="small">
+        <Avatar src={image} />
+        <Text>
+          <Anchor href={link} target="_blank" rel="noopener">
+            {name}
+          </Anchor>{' '}
+          (
+          <Anchor href={company.url} target="_blank" rel="noopener">
+            {company.name}
+          </Anchor>
+          , {origin}) <br />
+          <Text>{title}</Text>
+        </Text>
+      </Box>
+      {time && (
         <Box>
           <Text size="small">
-            {dtime.toLocaleTimeString(time.locale, {
+            {new Date(time.time).toLocaleTimeString(time.locale, {
               timeZone: time.timeZone,
               hour: 'numeric',
               minute: 'numeric',
             })}
           </Text>
         </Box>
-      </Box>
-      <Paragraph fill>{abstract || children}</Paragraph>
-    </>
-  )
-}
+      )}
+    </Box>
+    <Paragraph fill>{abstract || children}</Paragraph>
+  </>
+)

@@ -1,11 +1,20 @@
 import { Link } from 'gatsby'
 import { Box, Button, Heading, Image, Paragraph } from 'grommet'
-import { Code, ForwardTen, Globe, Grow, Mail, Rewind } from 'grommet-icons'
+import {
+  Code,
+  ForwardTen,
+  Globe,
+  Grow,
+  Mail,
+  Rewind,
+  ScheduleNew,
+} from 'grommet-icons'
 import React from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import { MailchimpSignup } from '../components/MailchimpSignup'
+import UpcomingMeetups from '../components/UpcomingMeetups'
 import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
 import { theme } from '../components/theme'
@@ -112,6 +121,17 @@ const IndexPage = () => (
     </FullWidth>
 
     <FullWidth background="very-dark">
+      <Heading level={2} color="turqoise">
+        <ScheduleNew
+          size="large"
+          color="turqoise"
+          style={{ verticalAlign: 'sub' }}
+        />{' '}
+        upcoming meetups
+      </Heading>
+
+      <UpcomingMeetups meetup="ck8vxvl1k1a700104ygm809n9" />
+
       <Heading level={2} color="turqoise">
         <Rewind
           size="large"
