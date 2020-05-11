@@ -71,9 +71,7 @@ export default function UpcomingMeetup(props) {
   const meetup = data.graphcms.meetups[0]
 
   useEffect(() => {
-    const attending = JSON.parse(
-      localStorage.getItem(`attending[${meetup.id}]`) || '{}'
-    )
+    const attending = JSON.parse(localStorage.getItem('attending') || '{}')
     if (attending[meetup.id]) {
       setAttending(true)
     }
@@ -168,7 +166,11 @@ export default function UpcomingMeetup(props) {
           label="you are registered for this meetup"
         />
       ) : user ? (
-        <AttendButton user={user} setAttending={setAttending} />
+        <AttendButton
+          user={user}
+          setAttending={setAttending}
+          meetupId={meetup.id}
+        />
       ) : (
         <Text alignSelf="center" color="light-6">
           If you were{' '}

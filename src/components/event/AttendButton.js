@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { theme } from '../theme'
 const colors = theme.global.colors
 
-export default function AttendButton({ user }) {
+export default function AttendButton({ meetupId, user, setAttending }) {
   const [email, setEmail] = useState(user.email)
   const [submittable, setSubmittable] = useState(false)
 
@@ -12,27 +12,27 @@ export default function AttendButton({ user }) {
     setSubmittable(emailValidator.validate(email))
   }, [email])
 
-  async function attend(email, setAttending) {
+  async function attend(email) {
     try {
       const body = JSON.stringify({
         name: user.name,
         email,
         nickname: user.nickname,
-        meetup: 'global_2',
+        meetup: meetupId,
       })
 
-      const result = await fetch('/.netlify/functions/attend', {
+      /* const result = await fetch('/.netlify/functions/attend', {
         method: 'POST',
         body,
         headers: { 'Content-Type': 'application/json' },
       })
-
+*/
       const attending = JSON.parse(localStorage.getItem('attending') || '{}')
-      attending['global_2'] = true
+      attending[meetupId] = true
       localStorage.setItem('attending', JSON.stringify(attending))
       setAttending(true)
     } catch (e) {
-      alert('uhoh, something went wrong')
+      //alert('uhoh, something went wrong')
     }
   }
 
