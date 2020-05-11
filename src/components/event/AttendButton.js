@@ -21,12 +21,12 @@ export default function AttendButton({ meetupId, user, setAttending }) {
         meetup: meetupId,
       })
 
-      /* const result = await fetch('/.netlify/functions/attend', {
+      const result = await fetch('/.netlify/functions/attend', {
         method: 'POST',
         body,
         headers: { 'Content-Type': 'application/json' },
       })
-*/
+
       const attending = JSON.parse(localStorage.getItem('attending') || '{}')
       attending[meetupId] = true
       localStorage.setItem('attending', JSON.stringify(attending))
