@@ -15,16 +15,19 @@ export default ({
   <>
     <Box direction="row-responsive" align="center" justify="between">
       <Box direction="row" align="center" gap="small">
-        <Avatar src={image} />
+        {image && <Avatar src={image} />}
         <Text>
           <Anchor href={link} target="_blank" rel="noopener">
             {name}
           </Anchor>{' '}
           (
-          <Anchor href={company.url} target="_blank" rel="noopener">
-            {company.name}
-          </Anchor>
-          , {origin}) <br />
+          {company.name &&
+            (
+              <Anchor href={company.url} target="_blank" rel="noopener">
+                {company.name}
+              </Anchor>
+            )`,`}
+          {origin}) <br />
           <Text>{title}</Text>
         </Text>
       </Box>

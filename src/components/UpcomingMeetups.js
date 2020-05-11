@@ -129,13 +129,13 @@ export default function UpcomingMeetup(props) {
                 return (
                   <Talk
                     key={talk.id}
-                    name={talk.name}
+                    name={speaker.name}
                     company={{
                       url: speaker.companyUrl,
                       name: speaker.company,
                     }}
                     link={speaker.twitter}
-                    image={speaker.avatar.url}
+                    image={speaker.avatar?.url}
                     origin={speaker.location}
                     title={talk.title}
                     time={{ time: talk.time, userLocale, timeZone }}
