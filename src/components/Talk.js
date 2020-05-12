@@ -21,12 +21,14 @@ export default ({
             {name}
           </Anchor>{' '}
           (
-          {company.name &&
-            (
+          {company.name && (
+            <span>
               <Anchor href={company.url} target="_blank" rel="noopener">
                 {company.name}
               </Anchor>
-            )`,`}
+              ,
+            </span>
+          )}
           {origin}) <br />
           <Text>{title}</Text>
         </Text>
