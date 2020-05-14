@@ -1,5 +1,6 @@
 import React from 'react'
-import { Box, Avatar, Text, Anchor, Paragraph } from 'grommet'
+import { Box, Avatar, Text, Anchor } from 'grommet'
+import ReactMarkdown from './event/ReactMarkdown'
 
 export default ({
   name,
@@ -12,7 +13,7 @@ export default ({
   children,
   time,
 }) => (
-  <>
+  <Box margin={{ bottom: 'medium' }}>
     <Box direction="row-responsive" align="center" justify="between">
       <Box direction="row" align="center" gap="small">
         {image && <Avatar src={image} />}
@@ -26,7 +27,7 @@ export default ({
               <Anchor href={company.url} target="_blank" rel="noopener">
                 {company.name}
               </Anchor>
-              ,
+              ,{' '}
             </span>
           )}
           {origin}) <br />
@@ -45,6 +46,8 @@ export default ({
         </Box>
       )}
     </Box>
-    <Paragraph fill>{abstract || children}</Paragraph>
-  </>
+    <Box>
+      <ReactMarkdown>{abstract || children}</ReactMarkdown>
+    </Box>
+  </Box>
 )

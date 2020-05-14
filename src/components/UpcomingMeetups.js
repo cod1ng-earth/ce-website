@@ -139,9 +139,8 @@ export default function UpcomingMeetup(props) {
                     origin={speaker.location}
                     title={talk.title}
                     time={{ time: talk.time, userLocale, timeZone }}
-                  >
-                    {talk.description}
-                  </Talk>
+                    abstract={talk.description}
+                  />
                 )
               })}
             </Box>
