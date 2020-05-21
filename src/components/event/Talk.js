@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Avatar, Text, Anchor } from 'grommet'
-import ReactMarkdown from './event/ReactMarkdown'
+import ReactMarkdown from '../ReactMarkdown'
+import YoutubeEmbed from './YoutubeEmbed'
 
 export default ({
   name,
@@ -12,6 +13,8 @@ export default ({
   company,
   children,
   time,
+  recording,
+  slides,
 }) => (
   <Box margin={{ bottom: 'medium' }}>
     <Box direction="row-responsive" align="center" justify="between">
@@ -48,6 +51,7 @@ export default ({
     </Box>
     <Box>
       <ReactMarkdown>{abstract || children}</ReactMarkdown>
+      {recording && <YoutubeEmbed url={recording} />}
     </Box>
   </Box>
 )

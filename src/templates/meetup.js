@@ -2,17 +2,13 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-//import { Box, Heading, Paragraph } from 'grommet'
 
 import { Carousel } from 'react-responsive-carousel'
 import { FullWidth } from '../components/TwoCols'
-import { Heading, Anchor, Box, Image, Text } from 'grommet'
+import { Anchor, Box, Image } from 'grommet'
 import { FormPrevious } from 'grommet-icons'
 
-import Time from '../components/Time'
-import { YoutubeEmbed } from '../components/event/YoutubeEmbed'
-import ReactMarkdown from '../components/event/ReactMarkdown'
-import Talk from '../components/Talk'
+import Meetup from '../components/event/Meetup'
 
 export default ({ data: { graphcms, allCloudinaryMedia } }) => {
   const { meetup } = graphcms
@@ -33,42 +29,7 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
           to="/sofar"
           label="all meetups"
         />
-        <Text>{Time({ timeString: meetup.time })} </Text>
-        <Heading level={1} color="turqoise">
-          {meetup.name}
-        </Heading>
-        {meetup.recording && (
-          <Box margin={{ vertical: 'large' }}>
-            {' '}
-            <YoutubeEmbed url={meetup.recording} />
-          </Box>
-        )}
-        <ReactMarkdown>{meetup.description}</ReactMarkdown>
-
-        {meetup.talks.length > 0 && (
-          <Box background="dark-1" pad="medium" margin={{ vertical: 'large' }}>
-            {meetup.talks.map(talk => {
-              const speaker = talk.speaker[0]
-
-              return (
-                <Talk
-                  key={talk.id}
-                  name={talk.name}
-                  company={{
-                    url: speaker.companyUrl,
-                    name: speaker.company,
-                  }}
-                  link={speaker.twitter}
-                  image={speaker.avatar && speaker.avatar.url}
-                  origin={speaker.location}
-                  title={talk.title}
-                >
-                  {talk.description}
-                </Talk>
-              )
-            })}
-          </Box>
-        )}
+        <Meetup meetup={meetup} />
 
         <Box pad="medium">
           {allCloudinaryMedia.edges.length > 0 && (

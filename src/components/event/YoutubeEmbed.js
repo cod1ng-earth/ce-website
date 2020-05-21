@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const YoutubeEmbed = ({ url }) => (
+const YoutubeEmbed = ({ url }) => (
   <iframe
     width="100%"
     height="600"
@@ -10,3 +10,5 @@ export const YoutubeEmbed = ({ url }) => (
     allowFullScreen
   ></iframe>
 )
+
+export default YoutubeEmbed
