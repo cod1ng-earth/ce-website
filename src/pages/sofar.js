@@ -1,12 +1,10 @@
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Box, Heading, Text } from 'grommet'
 import React from 'react'
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import { Anchor, Heading, Text, Box } from 'grommet'
 import FullWidth from '../components/FullWidth'
-import Time from '../components/Time'
+import Layout from '../components/layout'
 import PastMeetups from '../components/PastMeetups'
-import { SectionButton } from '../components/SectionButton'
+import SEO from '../components/seo'
 
 export default () => {
   const data = useStaticQuery(graphql`

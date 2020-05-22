@@ -16,29 +16,34 @@ export default ({
   recording,
   slides,
 }) => (
-  <Box margin={{ bottom: 'medium' }}>
+  <Box margin={{ vertical: 'large' }}>
     <Box direction="row-responsive" align="center" justify="between">
       <Box direction="row" align="center" gap="small">
-        {image && <Avatar src={image} />}
-        <Text>
-          <Anchor href={link} target="_blank" rel="noopener">
-            {name}
-          </Anchor>{' '}
-          (
+        {image && <Avatar src={image} size="large" />}
+        <Box direction="column">
+          <Text weight="bold" size="large" margin={{ bottom: 'small' }}>
+            {title}
+          </Text>
+          <Text size="medium">
+            <Anchor href={link} target="_blank" rel="noopener">
+              {name}
+            </Anchor>{' '}
+            {origin && <>({origin})</>}
+          </Text>
           {company.name && (
-            <span>
-              <Anchor href={company.url} target="_blank" rel="noopener">
-                {company.name}
-              </Anchor>
-              ,{' '}
-            </span>
+            <Anchor
+              size="medium"
+              href={company.url}
+              target="_blank"
+              rel="noopener"
+            >
+              {company.name}
+            </Anchor>
           )}
-          {origin}) <br />
-          <Text>{title}</Text>
-        </Text>
+        </Box>
       </Box>
       {time && (
-        <Box>
+        <Box background="grey-800" pad="small" round>
           <Text size="small">
             {new Date(time.time).toLocaleTimeString(time.locale, {
               timeZone: time.timeZone,

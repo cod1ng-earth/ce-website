@@ -38,6 +38,7 @@ const Layout = ({ children, isHero }) => {
     position: '0 -90px',
     repeat: 'repeat',
     size: 'initial',
+    dark: true,
   }
 
   //const [showSidebar, setShowSidebar] = useState(false)

@@ -18,34 +18,33 @@ export default ({ meetupUTCTime, tzUpdated }) => {
   }
 
   return (
-    <Box direct="row">
-      <Text size="medium">
-        {meetupUTCTime.toLocaleString(userLocale, {
-          timeZone,
-          weekday: 'short',
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-        })}{' '}
-        <Anchor
-          icon={<Schedule />}
-          href="/ics/ce_global_1.ics"
-          title="download as ICS"
+    <Box gap="small">
+      <Box align="center" direction="row" gap="small">
+        <Schedule color="grey-400" />
+        <Text size="medium">
+          {meetupUTCTime.toLocaleString(userLocale, {
+            timeZone,
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+          })}{' '}
+        </Text>
+      </Box>
+      <Box align="center" direction="row">
+        <Globe color="grey-400" />
+        <Select
+          plain
+          dropProps={{ stretch: true }}
+          size="medium"
+          dropHeight="medium"
+          options={timezones}
+          value={timeZone}
+          onChange={({ option }) => changeTimezone(option)}
         />
-      </Text>
-
-      <Select
-        plain
-        icon={<Globe />}
-        dropProps={{ stretch: 'false' }}
-        size="small"
-        dropHeight="medium"
-        options={timezones}
-        value={timeZone}
-        onChange={({ option }) => changeTimezone(option)}
-      />
+      </Box>
     </Box>
   )
 }

@@ -1,8 +1,6 @@
 import emailValidator from 'email-validator'
-import { Box, Button, Text, TextInput } from 'grommet'
+import { Box, Button, TextInput } from 'grommet'
 import React, { useEffect, useState } from 'react'
-import { theme } from '../theme'
-const colors = theme.global.colors
 
 export default function AttendButton({ meetupId, user, setAttending }) {
   const [email, setEmail] = useState(user.email)
@@ -37,27 +35,21 @@ export default function AttendButton({ meetupId, user, setAttending }) {
   }
 
   return (
-    <Box
-      direction="row"
-      width="large"
-      alignSelf="center"
-      align="center"
-      gap="small"
-    >
-      <Text>Notify</Text>
+    <Box direction="row" gap="small">
       <TextInput
         placeholder="your@email-addre.ss"
         value={email}
+        size="small"
         onChange={event => setEmail(event.target.value)}
       />
-      <Text>and</Text>
       <Button
         onClick={() => attend(email)}
-        color={colors['meetup-red']}
         primary
+        color="orange-400"
         disabled={!submittable}
         alignSelf="center"
         label="Attend"
+        size="medium"
       />
     </Box>
   )

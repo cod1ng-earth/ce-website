@@ -7,7 +7,7 @@ import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
 import TwoCols from '../components/TwoCols'
 import FullWidth from '../components/FullWidth'
-
+import { Next } from 'grommet-icons'
 import codeImage from '../images/ce-code.svg'
 import { Divider } from '../components/Divider'
 import { SectionButton } from '../components/SectionButton'
@@ -81,7 +81,11 @@ const IndexPage = () => {
         <PastMeetups meetups={pastMeetups} />
 
         <Box margin={{ top: 'large' }}>
-          <SectionButton to="/sofar" label="See all previous events" />
+          <SectionButton
+            to="/sofar"
+            icon={<Next color="white" />}
+            label="See all previous events"
+          />
         </Box>
       </FullWidth>
 

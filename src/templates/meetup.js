@@ -1,17 +1,28 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import { graphql } from 'gatsby'
+import { Box, Heading, Image } from 'grommet'
 
+import React, { useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
-import FullWidth from '../components/FullWidth'
-import { Anchor, Box, Image } from 'grommet'
-import { FormPrevious } from 'grommet-icons'
-
 import Meetup from '../components/event/Meetup'
+import MeetupSidebar from '../components/event/Sidebar'
+import MeetupHeader from '../components/event/Header'
+import FullWidth from '../components/FullWidth'
+import Layout from '../components/layout'
+
+import SEO from '../components/seo'
+import YoutubeEmbed from '../components/event/YoutubeEmbed'
 
 export default ({ data: { graphcms, allCloudinaryMedia } }) => {
   const { meetup } = graphcms
+
+  const [attending, setAttending] = useState(false)
+
+  const [timeZone, setTimeZone] = useState(
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+  )
+  const meetupUTCTime = new Date(meetup.time)
+  const upcoming = meetupUTCTime.getTime() > new Date().getTime()
+
   return (
     <Layout>
       <SEO
@@ -23,14 +34,37 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
         }
       />
       <FullWidth>
-        <Anchor
-          as={Link}
-          icon={<FormPrevious />}
-          to="/sofar"
-          label="all meetups"
-        />
-        <Meetup meetup={meetup} />
-
+        <Heading level={1} color="white" size="small">
+          {meetup.name}
+        </Heading>
+      </FullWidth>
+      <FullWidth background="grey-800">
+        <MeetupHeader meetup={meetup} timeZone={timeZone} />
+      </FullWidth>
+      <FullWidth>
+        <Box direction="row-responsive" gap="medium">
+          <Box basis="2/3">
+            <Meetup
+              meetup={meetup}
+              timeZone={timeZone}
+              meetupUTCTime={meetupUTCTime}
+            />
+          </Box>
+          <Box
+            basis="1/3"
+            background="grey-800"
+            pad="medium"
+            fill="horizontal"
+            height={{ max: 'medium' }}
+          >
+            <MeetupSidebar
+              meetup={meetup}
+              attending={attending}
+              setAttending={setAttending}
+              setTimeZone={setTimeZone}
+            />
+          </Box>
+        </Box>
         <Box pad="medium">
           {allCloudinaryMedia.edges.length > 0 && (
             <Carousel
@@ -50,6 +84,11 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
                 </Box>
               ))}
             </Carousel>
+          )}
+        </Box>
+        <Box>
+          {!upcoming && meetup.recording && (
+            <YoutubeEmbed url={meetup.recording} />
           )}
         </Box>
       </FullWidth>
