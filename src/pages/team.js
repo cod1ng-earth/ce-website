@@ -46,20 +46,14 @@ export default () => {
     <Layout>
       <SEO title="Team" description="The team members of Coding Earth" />
       <FullWidth>
-        <Heading level={1} color="turqoise">
-          Team &amp; Organizers
-        </Heading>
+        <Heading level={1}>Team &amp; Organizers</Heading>
         <Box direction="row-responsive" wrap>
           {team.allTeamJson.edges.map(({ node }) => (
             <Box key={node.id} basis="1/2" pad="small">
               <Heading level={3} color="brand" margin="none">
                 {node.name}
               </Heading>
-              <Heading
-                level={4}
-                color="turqoise"
-                margin={{ vertical: 'small' }}
-              >
+              <Heading level={4} margin={{ vertical: 'small' }}>
                 {node.position}
               </Heading>
               <Box margin={{ bottom: 'large' }} height={{ min: 'medium' }}>
