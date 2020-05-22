@@ -11,7 +11,7 @@ import heroPattern from '../images/hero-pattern.svg'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
-const Layout = ({ children, currentPath }) => {
+const Layout = ({ children, isHero }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -58,7 +58,7 @@ const Layout = ({ children, currentPath }) => {
     >
       <Grommet theme={theme} themeMode="dark">
         <Box background={topBackground}>
-          <AppHeader appName="coding earth" currentPath={currentPath} />
+          <AppHeader appName="coding earth" isHero={isHero} />
           <Box full align="center">
             {children}
           </Box>

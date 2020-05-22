@@ -6,13 +6,12 @@ import styled from 'styled-components'
 import logo from '../../images/ce-logo.svg'
 import { useAuth0 } from '../auth/react-auth0-spa'
 import { theme } from '../theme'
-import { HeaderWrapper } from './HeaderWrapper'
 
 const LinkStyles = `
   color: ${theme.global.colors.white};
   text-decoration: none;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   
   :hover {
     color: ${theme.global.colors.turqoise};
@@ -27,34 +26,34 @@ const StyledAnchor = styled(Anchor)`
   ${LinkStyles}
 `
 
-export default ({ currentPath }) => {
+export default ({ isHero = false }) => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
-  const isInHero = currentPath === '/'
-
-  const headerProps = isInHero
-    ? {
-        background: 'transparent',
-        justify: 'end',
-        style: { position: 'absolute', height: '80px' },
-      }
-    : {}
 
   return (
-    <HeaderWrapper {...headerProps}>
-      {!isInHero && (
-        <Box>
-          <Link to="/">
-            <Image
-              src={logo}
-              alt="coding earth logo"
-              style={{
-                width: '87px',
-                height: '100px',
-                display: 'block',
-              }}
-            />
-          </Link>
-        </Box>
+    <Box
+      tag="header"
+      direction="row"
+      margin={{ top: '20px' }}
+      pad={{ horizontal: 'medium' }}
+      fill="horizontal"
+      height="80px"
+      background={isHero ? 'transparent' : 'grey-800'}
+      justify={isHero ? 'end' : 'between'}
+      style={{ position: isHero ? 'absolute' : 'relative' }}
+    >
+      {!isHero && (
+        <Link to="/">
+          <Image
+            src={logo}
+            alt="coding earth logo"
+            style={{
+              width: '100px',
+              top: '-16px',
+              position: 'absolute',
+              display: 'block',
+            }}
+          />
+        </Link>
       )}
       <Box direction="row" align="center">
         <Nav direction="row" margin={{ right: 'medium' }}>
@@ -66,7 +65,9 @@ export default ({ currentPath }) => {
           <Button
             color="black"
             primary
-            icon={<Github />}
+            size="small"
+            icon={<Github size="20px" />}
+            style={{ padding: '10px 30px' }}
             label="Log in"
             onClick={() => loginWithRedirect()}
           />
@@ -86,6 +87,6 @@ export default ({ currentPath }) => {
           />
         )}
       </Box>
-    </HeaderWrapper>
+    </Box>
   )
 }

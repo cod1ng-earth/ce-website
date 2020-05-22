@@ -15,7 +15,7 @@ import Hero from '../components/index/Hero'
 import RulesOfCodingEarth from '../components/index/RulesOfCodingEarth'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const IndexPage = ({ location }) => {
+const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
       graphcms {
@@ -38,7 +38,7 @@ const IndexPage = ({ location }) => {
   const pastMeetups = data.graphcms.pastMeetups
 
   return (
-    <Layout currentPath={location.pathname}>
+    <Layout isHero>
       <SEO
         title="coding earth :: home"
         description="coding earth is a meetup community for developers"
