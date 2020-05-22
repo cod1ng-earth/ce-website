@@ -2,10 +2,6 @@ import React from 'react'
 
 import { Heading, Paragraph } from 'grommet'
 
-import Twitter from './ui/Twitter'
-import Agenda from './ui/Agenda'
-
-const shortcodes = { Twitter, Agenda }
 const components = {
   //...shortcodes,
 

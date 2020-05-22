@@ -17,7 +17,7 @@ const ThankYou = () => (
       textAlign="center"
       style={{ fontWeight: 'bolder' }}
     >
-      We received your message. <br /> Please standby.
+      We received your message and <br /> will get back to you shortly.
     </Paragraph>
   </Fade>
 )
@@ -73,9 +73,8 @@ const TheForm = ({ submitForm }) => {
       <Box direction="row-reverse">
         <Button
           type="submit"
-          color="brand"
           disabled={disabled}
-          primarymessage
+          primary
           label="Submit"
           margin={{ top: 'medium' }}
         />
