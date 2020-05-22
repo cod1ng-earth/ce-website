@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box } from 'grommet'
-import Hexagon from '../images/icons/hexagon.svg'
+import imgHexagon from '../images/icons/hexagon.svg'
 import styled from 'styled-components'
 
-const StyledHr = styled.hr`
+const Hr = styled.hr`
   max-width: 200px;
   margin: 0;
   flex-grow: 1;
@@ -13,14 +13,14 @@ const StyledHr = styled.hr`
   background-color: rgba(255, 255, 255, 0.2);
 `
 
-const StyledHexagon = styled(Hexagon)`
+const Hexagon = styled(imgHexagon)`
   color: rgba(255, 255, 255, 0.5);
 `
 
-export const Divider = props => (
+export const Divider = ({ color = 'red', borderColor = 'grey-400' }) => (
   <Box direction="row" gap="small" align="center" justify="center">
-    <StyledHr borderColor={props.borderColor} />
-    <StyledHexagon color={props.color} />
-    <StyledHr borderColor={props.borderColor} />
+    <Hr borderColor={borderColor} />
+    <Hexagon color={color} />
+    <Hr borderColor={borderColor} />
   </Box>
 )

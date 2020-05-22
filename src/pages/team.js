@@ -4,7 +4,8 @@ import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
 import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { FullWidth } from '../components/TwoCols'
+
+import FullWidth from '../components/FullWidth'
 
 export default () => {
   const team = useStaticQuery(graphql`

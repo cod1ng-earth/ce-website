@@ -60,7 +60,7 @@ module.exports = {
       options: {
         typeName: 'GraphCMS',
         fieldName: 'graphcms',
-        refetchInterval: 480,
+        refetchInterval: 960,
         url: process.env.GRAPHCMS_ENDPOINT,
         headers: {
           Authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,

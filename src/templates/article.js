@@ -7,7 +7,7 @@ import SEO from '../components/seo'
 
 import comp from '../components/Mdx'
 
-import { FullWidth } from '../components/TwoCols'
+import FullWidth from '../components/FullWidth'
 
 export default ({ data: { mdx } }) => (
   <Layout>

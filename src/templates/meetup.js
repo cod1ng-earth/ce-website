@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import { Carousel } from 'react-responsive-carousel'
-import { FullWidth } from '../components/TwoCols'
+import FullWidth from '../components/FullWidth'
 import { Anchor, Box, Image } from 'grommet'
 import { FormPrevious } from 'grommet-icons'
 
@@ -96,4 +96,18 @@ export const query = graphql`
         }
       }
     }
-    `
+    allCloudinaryMedia(
+      filter: { tags: { in: [$cloudinaryTag] } }
+      sort: { fields: created_at, order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          maxeco_image {
+            secure_url
+          }
+        }
+      }
+    }
+  }
+`

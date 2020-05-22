@@ -46,9 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
-//render graphcms descriptions to HTML
-//
-
+// render graphcms descriptions to HTML
 // exports.createResolvers = ({
 //   actions,
 //   createResolvers,
@@ -74,26 +72,6 @@ exports.createPages = async ({ graphql, actions }) => {
 //               content: source.description,
 //             },
 //           })
-//         },
-//       },
-//     },
-//   })
-// }
-
-// exports.createResolvers = ({
-//   actions,
-//   createResolvers,
-//   createContentDigest,
-//   createNodeId,
-// }) => {
-//   const { createNode } = actions
-
-//   createResolvers({
-//     GraphCMS_Meetup: {
-//       description: {
-//         type: 'String',
-//         resolve(source) {
-//           return mdx(source.description)
 //         },
 //       },
 //     },

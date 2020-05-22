@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Anchor, Box, Image, Text } from 'grommet'
+import { Anchor, Image, Text } from 'grommet'
 import { Github } from 'grommet-icons'
 import gatsby_icon from '../../images/gatsby-icon.png'
 import grommet_icon from '../../images/grommet.png'
-import { FullWidth } from '../TwoCols'
+import FullWidth from '../FullWidth'
 
 export default () => (
   <FullWidth
