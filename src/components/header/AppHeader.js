@@ -59,7 +59,6 @@ export default ({ isHero = false }) => {
         <Nav direction="row" margin={{ right: 'medium' }}>
           <StyledLink to="/">Upcoming Events</StyledLink>
           <StyledLink to="/sofar">Previous Events</StyledLink>
-          <StyledAnchor>Our Rules</StyledAnchor>
         </Nav>
         {!isAuthenticated && (
           <Button
@@ -77,6 +76,7 @@ export default ({ isHero = false }) => {
           <Button
             color="dark-1"
             primary
+            size="small"
             icon={
               user && (
                 <Avatar size="small" background="black" src={user.picture} />

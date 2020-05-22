@@ -5,7 +5,7 @@ const FullWidth = props => (
   <Box
     pad={{ vertical: 'medium' }}
     {...props}
-    fill
+    fill="horizontal"
     align="center"
     justify="center"
   >
