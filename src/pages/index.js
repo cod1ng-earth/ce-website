@@ -17,6 +17,8 @@ import RulesOfCodingEarth from '../components/index/RulesOfCodingEarth'
 import { useStaticQuery, graphql } from 'gatsby'
 import UpcomingMeetup from '../components/UpcomingMeetup'
 
+import 'react-typist/dist/standalone/Typist.min.css'
+
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {

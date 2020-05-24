@@ -4,13 +4,12 @@ import TwoCols from '../TwoCols'
 import FullWidth from '../FullWidth'
 import logo from '../../images/ce-logo.svg'
 import styled from 'styled-components'
+import Typist from 'react-typist'
 
 const HeroHeader = styled(Heading)`
   font-size: 6em;
   line-height: 0.95;
-  max-width: 450px;
-  margin-block-start: 0;
-  margin-block-end: 0;
+  max-width: 500px;
   span {
     display: inline-block;
   }
@@ -35,8 +34,19 @@ const Hero = () => (
 
             <Box basis="1/2" align="center">
               <HeroHeader color="grey-100">
-                <span>Hello,</span>
-                <span style={{ marginLeft: '90px' }}>world.</span>
+                <Typist
+                  avgTypingDelay={350}
+                  startDelay={1000}
+                  cursor={{ hideWhenDone: true }}
+                >
+                  <span>Hello,</span>
+                  <Typist.Delay ms={500} />
+                  <span style={{ marginLeft: '80px' }}>World!</span>
+                  <Typist.Backspace count={6} delay={800} />
+                  <span style={{ marginLeft: '80px' }}>earth!</span>
+                  <Typist.Backspace count={6} delay={800} />
+                  <span style={{ marginLeft: '80px' }}>coders!</span>
+                </Typist>
               </HeroHeader>
               <Paragraph
                 fill
