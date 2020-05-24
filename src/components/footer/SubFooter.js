@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Anchor, Image, Text } from 'grommet'
+import { Anchor, Image, Text, Box } from 'grommet'
 import { Github } from 'grommet-icons'
 import gatsby_icon from '../../images/gatsby-icon.png'
 import grommet_icon from '../../images/grommet.png'
@@ -52,15 +52,25 @@ export default () => (
         />
       </Anchor>
     </Text>
-    <Text textAlign="center" margin={{ top: 'medium' }} size="small">
-      Found an issue?{' '}
+    <Box
+      direction="row"
+      margin={{ top: 'small' }}
+      alignSelf="center"
+      gap="xsmall"
+      align="center"
+    >
+      <Text size="small" alignSelf="center">
+        Found an issue?{' '}
+      </Text>
       <Anchor
         href="https://github.com/cod1ng-earth/ce-website"
         target="_blank"
         rel="noopener"
-      >
-        <Github size="medium" color="brand" /> Fork us and fix it
-      </Anchor>
-    </Text>
+        size="small"
+        reverse
+        icon={<Github color="brand" size="small" />}
+        label="Fork us and fix it"
+      ></Anchor>
+    </Box>
   </FullWidth>
 )

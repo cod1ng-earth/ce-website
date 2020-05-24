@@ -28,7 +28,7 @@ export default function({ meetups }) {
         <Box
           key={meetup.id}
           align="center"
-          onClick={() => navigate(`meetup/${meetup.id}`)}
+          onClick={() => navigate(`/meetup/${meetup.id}`)}
         >
           <Box
             height="200px"

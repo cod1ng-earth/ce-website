@@ -4,6 +4,7 @@ import { Fade } from 'react-reveal'
 import Layout from '../components/layout'
 import { MailchimpSignup } from '../components/MailchimpSignup'
 import PastMeetups from '../components/PastMeetups'
+
 import SEO from '../components/seo'
 import TwoCols from '../components/TwoCols'
 import FullWidth from '../components/FullWidth'
@@ -14,28 +15,58 @@ import { SectionButton } from '../components/SectionButton'
 import Hero from '../components/index/Hero'
 import RulesOfCodingEarth from '../components/index/RulesOfCodingEarth'
 import { useStaticQuery, graphql } from 'gatsby'
+import UpcomingMeetup from '../components/UpcomingMeetup'
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
       graphcms {
-        pastMeetups: meetups(orderBy: time_DESC, first: 6, stage: PUBLISHED) {
+        allMeetups: meetups(orderBy: time_DESC, first: 7, stage: PUBLISHED) {
           id
           name
           time
-
+          duration
+          description
+          onlineUrl
+          recording
           keyImage {
             url
           }
           highlightImage {
             url
           }
+          talks {
+            id
+            title
+            description
+            slides
+            recording
+            time
+            speaker {
+              name
+              location
+              company
+              companyUrl
+              twitter
+              github
+              linkedin
+              avatar {
+                url
+              }
+            }
+          }
         }
       }
     }
   `)
 
-  const pastMeetups = data.graphcms.pastMeetups
+  const now = new Date()
+  const pastMeetups = data.graphcms.allMeetups.filter(
+    m => new Date(m.time).getTime() < now.getTime()
+  )
+  const upcomingMeetups = data.graphcms.allMeetups.filter(
+    m => new Date(m.time).getTime() > now.getTime()
+  )
 
   return (
     <Layout isHero>
@@ -46,7 +77,6 @@ const IndexPage = () => {
       />
 
       <Hero />
-
       <FullWidth
         background="grey-800"
         pad={{ vertical: 'medium', horizontal: 'large' }}
@@ -69,6 +99,21 @@ const IndexPage = () => {
           </Fade>
         </Box>
       </FullWidth>
+
+      {upcomingMeetups.length > 0 && (
+        <FullWidth background="black" pad={{ vertical: 'large' }}>
+          <Box direction="row" align="baseline">
+            <Heading level={2}>Upcoming meetups.</Heading>
+            <Text color="grey-400" size="small" margin={{ left: 'small' }}>
+              Save the date.
+            </Text>
+          </Box>
+
+          {upcomingMeetups.map(meetup => (
+            <UpcomingMeetup key={`meetup-${meetup.id}`} meetup={meetup} />
+          ))}
+        </FullWidth>
+      )}
 
       <FullWidth background="grey-900" pad={{ vertical: 'large' }}>
         <Box direction="row" align="baseline">

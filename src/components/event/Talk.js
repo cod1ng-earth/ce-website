@@ -43,7 +43,13 @@ export default ({
         </Box>
       </Box>
       {time && (
-        <Box background="grey-800" pad="small" round>
+        <Box
+          background="grey-800"
+          pad="small"
+          round
+          width={{ min: '100px' }}
+          align="center"
+        >
           <Text size="small">
             {new Date(time.time).toLocaleTimeString(time.locale, {
               timeZone: time.timeZone,

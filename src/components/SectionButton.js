@@ -7,7 +7,8 @@ export const SectionButton = ({
   icon = null,
   label,
   to,
-  color = 'orange-400',
+  color = 'orange',
+  size = 'large',
 }) => (
   <Stack anchor="left" alignSelf="center">
     <Button
@@ -15,11 +16,17 @@ export const SectionButton = ({
       as={Link}
       to={to}
       label={label}
-      style={{ paddingLeft: icon ? '70px' : '' }}
-      color={color}
+      style={{ paddingLeft: icon ? (size == 'large' ? '70px' : '50px') : '' }}
+      color={`${color}-400`}
+      size={size}
     />
     {icon && (
-      <Box background="orange-600" pad="11px" fill="vertical" round>
+      <Box
+        background={`${color}-600`}
+        pad={size == 'large' ? '10px' : '4px'}
+        fill="vertical"
+        round
+      >
         {icon}
       </Box>
     )}

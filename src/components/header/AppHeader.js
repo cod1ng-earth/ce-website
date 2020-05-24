@@ -1,4 +1,4 @@
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import { Anchor, Avatar, Box, Button, Image, Nav } from 'grommet'
 import { Github } from 'grommet-icons'
 import React from 'react'
@@ -7,27 +7,36 @@ import logo from '../../images/ce-logo.svg'
 import { useAuth0 } from '../auth/react-auth0-spa'
 import { theme } from '../theme'
 
-const LinkStyles = `
+const StyledLink = styled(Link)`
   color: ${theme.global.colors.white};
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
-  
+
+  &.active {
+    color: ${theme.global.colors.turqoise};
+  }
   :hover {
     color: ${theme.global.colors.turqoise};
     text-decoration: none;
   }
 `
 
-const StyledLink = styled(Link)`
-  ${LinkStyles}
-`
-const StyledAnchor = styled(Anchor)`
-  ${LinkStyles}
-`
-
 export default ({ isHero = false }) => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
+
+  const data = useStaticQuery(graphql`
+    query {
+      graphcms {
+        meetups(where: { time_gt: "now" }) {
+          id
+          name
+        }
+      }
+    }
+  `)
+
+  const upcomingMeetup = data.graphcms.meetups[0]
 
   return (
     <Box
@@ -57,8 +66,18 @@ export default ({ isHero = false }) => {
       )}
       <Box direction="row" align="center">
         <Nav direction="row" margin={{ right: 'medium' }}>
-          <StyledLink to="/">Upcoming Events</StyledLink>
-          <StyledLink to="/sofar">Previous Events</StyledLink>
+          {upcomingMeetup && (
+            <StyledLink
+              to={`/meetup/${upcomingMeetup.id}`}
+              title={upcomingMeetup.name}
+              activeClassName="active"
+            >
+              Upcoming Meetups
+            </StyledLink>
+          )}
+          <StyledLink to="/sofar" activeClassName="active">
+            Previous Events
+          </StyledLink>
         </Nav>
         {!isAuthenticated && (
           <Button

@@ -10,7 +10,12 @@ export default () => {
   const data = useStaticQuery(graphql`
     query {
       graphcms {
-        pastMeetups: meetups(orderBy: time_DESC, first: 24, stage: PUBLISHED) {
+        pastMeetups: meetups(
+          where: { time_lt: "now" }
+          orderBy: time_DESC
+          first: 24
+          stage: PUBLISHED
+        ) {
           id
           name
           time
