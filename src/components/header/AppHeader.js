@@ -1,5 +1,5 @@
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { Anchor, Avatar, Box, Button, Image, Nav } from 'grommet'
+import { Avatar, Box, Button, Image, Nav } from 'grommet'
 import { Github } from 'grommet-icons'
 import React from 'react'
 import styled from 'styled-components'
@@ -65,7 +65,7 @@ export default ({ isHero = false }) => {
         </Link>
       )}
       <Box direction="row" align="center">
-        <Nav direction="row" margin={{ right: 'medium' }}>
+        <Nav direction="row" margin={{ right: 'medium' }} align="center">
           {upcomingMeetup && (
             <StyledLink
               to={`/meetup/${upcomingMeetup.id}`}
@@ -78,33 +78,31 @@ export default ({ isHero = false }) => {
           <StyledLink to="/sofar" activeClassName="active">
             Previous Events
           </StyledLink>
+          {isAuthenticated ? (
+            <Button
+              color="dark-1"
+              primary
+              size="small"
+              icon={
+                user && (
+                  <Avatar size="small" background="black" src={user.picture} />
+                )
+              }
+              label="Log out"
+              onClick={() => logout({ returnTo: 'https://coding.earth' })}
+            />
+          ) : (
+            <Button
+              color="black"
+              primary
+              size="small"
+              icon={<Github size="20px" />}
+              style={{ padding: '10px 30px' }}
+              label="Log in"
+              onClick={() => loginWithRedirect()}
+            />
+          )}
         </Nav>
-        {!isAuthenticated && (
-          <Button
-            color="black"
-            primary
-            size="small"
-            icon={<Github size="20px" />}
-            style={{ padding: '10px 30px' }}
-            label="Log in"
-            onClick={() => loginWithRedirect()}
-          />
-        )}
-
-        {isAuthenticated && (
-          <Button
-            color="dark-1"
-            primary
-            size="small"
-            icon={
-              user && (
-                <Avatar size="small" background="black" src={user.picture} />
-              )
-            }
-            label="Log out"
-            onClick={() => logout({ returnTo: 'https://coding.earth' })}
-          />
-        )}
       </Box>
     </Box>
   )
