@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="398px" height="230px" viewBox="0 0 398 230" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>hero-pattern</title>
+    <desc>Created with Sketch.</desc>
+    <g id="hero-pattern" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <line x1="197.5" y1="230.5" x2="398.5" y2="113.5" id="Line" stroke="#333333"></line>
+        <line x1="198.5" y1="-0.5" x2="398.5" y2="113.5" id="Line-Copy" stroke="#333333"></line>
+        <line x1="-0.5" y1="230.5" x2="200.5" y2="113.5" id="Line-Copy-3" stroke="#333333" transform="translate(100.000000, 172.000000) scale(-1, 1) translate(-100.000000, -172.000000) "></line>
+        <line x1="0.5" y1="-0.5" x2="200.5" y2="113.5" id="Line-Copy-2" stroke="#333333" transform="translate(100.500000, 56.500000) scale(-1, 1) translate(-100.500000, -56.500000) "></line>
+        <line x1="298.5" y1="0.5" x2="298.5" y2="230.5" id="Line-3" stroke="#333333"></line>
+        <line x1="100.5" y1="0.5" x2="100.5" y2="230.5" id="Line-2" stroke="#333333"></line>
+    </g>
+</svg>

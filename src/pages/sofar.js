@@ -1,13 +1,37 @@
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Box, Heading, Text } from 'grommet'
 import React from 'react'
+import FullWidth from '../components/FullWidth'
 import Layout from '../components/layout'
+import PastMeetups from '../components/PastMeetups'
 import SEO from '../components/seo'
-import { Anchor, Heading, Text, Box } from 'grommet'
-import { FullWidth } from '../components/TwoCols'
-import Time from '../components/Time'
 
-export default ({ data }) => {
-  const meetups = data.graphcms.meetups
+export default () => {
+  const data = useStaticQuery(graphql`
+    query {
+      graphcms {
+        pastMeetups: meetups(
+          where: { time_lt: "now" }
+          orderBy: time_DESC
+          first: 24
+          stage: PUBLISHED
+        ) {
+          id
+          name
+          time
+
+          keyImage {
+            url
+          }
+          highlightImage {
+            url
+          }
+        }
+      }
+    }
+  `)
+
+  const pastMeetups = data.graphcms.pastMeetups
 
   return (
     <Layout>
@@ -17,37 +41,34 @@ export default ({ data }) => {
       />
 
       <FullWidth>
-        <Heading level={1} color="turqoise">
-          previously, on coding earth.
-        </Heading>
+        <Box direction="row" align="baseline">
+          <Heading level={1} color="white">
+            Previously.
+          </Heading>
+          <Text color="grey-400" size="small" margin={{ left: 'small' }}>
+            On coding.earth
+          </Text>
+        </Box>
+      </FullWidth>
 
-        {meetups.map(m => (
-          <Box key={m.id} margin={{ bottom: 'medium' }}>
-            <Text>{Time({ timeString: m.time })} </Text>
-            {m.meetupGroup?.name && (
-              <Text size="small">{m.meetupGroup.name}</Text>
-            )}
-            <Anchor as={Link} to={`meetup/${m.id}`} size="medium">
-              {m.name}
-            </Anchor>
-          </Box>
-        ))}
+      <FullWidth background="grey-900" pad={{ vertical: 'medium' }}>
+        <PastMeetups meetups={pastMeetups} />
       </FullWidth>
     </Layout>
   )
 }
 
-export const query = graphql`
-  query($today: GraphCMS_DateTime) {
-    graphcms {
-      meetups(orderBy: time_DESC, where: { time_lt: $today }) {
-        id
-        name
-        time
-        meetupGroup {
-          name
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query($today: GraphCMS_DateTime) {
+//     graphcms {
+//       meetups(orderBy: time_DESC, where: { time_lt: $today }) {
+//         id
+//         name
+//         time
+//         meetupGroup {
+//           name
+//         }
+//       }
+//     }
+//   }
+// `

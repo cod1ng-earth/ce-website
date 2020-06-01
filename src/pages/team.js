@@ -1,10 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import Image from 'gatsby-image'
-import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
+import { Box, Grid, Heading, ResponsiveContext, Text } from 'grommet'
 import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { FullWidth } from '../components/TwoCols'
+
+import FullWidth from '../components/FullWidth'
 
 export default () => {
   const team = useStaticQuery(graphql`
@@ -45,23 +46,15 @@ export default () => {
     <Layout>
       <SEO title="Team" description="The team members of Coding Earth" />
       <FullWidth>
-        <Heading level={1} color="turqoise">
-          Team &amp; Organizers
-        </Heading>
+        <Heading level={1}>Team &amp; Organizers</Heading>
         <Box direction="row-responsive" wrap>
           {team.allTeamJson.edges.map(({ node }) => (
             <Box key={node.id} basis="1/2" pad="small">
-              <Heading level={3} color="brand" margin="none">
+              <Heading level={3} margin="none">
                 {node.name}
               </Heading>
-              <Heading
-                level={4}
-                color="turqoise"
-                margin={{ vertical: 'small' }}
-              >
-                {node.position}
-              </Heading>
-              <Box margin={{ bottom: 'large' }} height={{ min: 'medium' }}>
+              <Text>{node.position}</Text>
+              <Box margin={{ vertical: 'medium' }} height={{ min: 'medium' }}>
                 <Image
                   durationFadeIn={5000}
                   fluid={imgMap[node.img].childImageSharp.fluid}

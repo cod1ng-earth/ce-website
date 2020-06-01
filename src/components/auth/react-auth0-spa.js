@@ -20,8 +20,8 @@ export const Auth0Provider = ({
   const currentLocation = useLocation()
 
   useEffect(() => {
-    const initAuth0 = async () => {
-      try {
+    try {
+      ;(async () => {
         import(
           /* webpackChunkName: "auth0-spa-js" */ '@auth0/auth0-spa-js'
         ).then(async ({ default: createAuth0Client }) => {
@@ -45,15 +45,13 @@ export const Auth0Provider = ({
             setUser(user)
           }
         })
-      } catch (error) {
-        console.error(error)
-      } finally {
-        setLoading(false)
-      }
+      })()
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoading(false)
     }
-    initAuth0()
-    // eslint-disable-next-line
-  }, []);
+  }, [])
 
   const loginWithRedirect = async (params = {}) =>
     await auth0Client.loginWithRedirect({

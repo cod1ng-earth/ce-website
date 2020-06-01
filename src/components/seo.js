@@ -92,7 +92,7 @@ function SEO({ description, lang, meta, title, seoImage }) {
       ].concat(meta)}
     >
       <link
-        href="https://fonts.googleapis.com/css?family=Karla|Source+Code+Pro&display=swap"
+        href="https://fonts.googleapis.com/css?family=Manrope&display=swap"
         rel="stylesheet"
       />
       <style type="text/css">{`

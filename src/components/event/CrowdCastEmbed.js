@@ -1,4 +1,5 @@
 import React from 'react'
+import { Anchor } from 'grommet'
 
 const CrowdcastEmbed = ({ url }) => (
   <>
@@ -28,7 +29,7 @@ const CrowdcastEmbed = ({ url }) => (
         padding: '5px 0',
       }}
     >
-      powered by Crowdcast
+      powered by <Anchor href={url}>Crowdcast</Anchor>
     </a>
   </>
 )

@@ -1,78 +1,70 @@
-import React from 'react'
-import { graphql, navigate, useStaticQuery } from 'gatsby'
-import { Box, Heading, Text } from 'grommet'
-import { Rewind } from 'grommet-icons'
-
-import { theme } from './theme'
+import React, { useContext } from 'react'
+import { Box, Heading, Text, Image, ResponsiveContext, Grid } from 'grommet'
+import { Calendar } from 'grommet-icons'
+import { navigate } from 'gatsby'
+import styled from 'styled-components'
 import Time from './Time'
+import defaultImage from '../images/coding_earth_meetup.png'
 
-const colors = theme.global.colors
+const StyledH3 = styled(Heading)`
+  font-size: 20px;
+  line-height: 30px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+`
 
-export default function() {
-  const data = useStaticQuery(graphql`
-    query {
-      graphcms {
-        meetups(orderBy: time_DESC, first: 6, stage: PUBLISHED) {
-          id
-          name
-          time
+export default function({ meetups }) {
+  const breakpoint = useContext(ResponsiveContext)
 
-          keyImage {
-            url
-          }
-          highlightImage {
-            url
-          }
-        }
-      }
-    }
-  `)
-
-  const meetups = data.graphcms.meetups
   return (
-    <>
-      <Heading level={2} color="turqoise">
-        <Rewind
-          size="large"
-          color="turqoise"
-          style={{ verticalAlign: 'sub' }}
-        />{' '}
-        Previously, on coding earth
-      </Heading>
-      <Box pad={{ vertical: 'medium' }} direction="row-responsive" wrap={true}>
-        {meetups.map(meetup => (
+    <Grid
+      columns={{
+        count: { small: 1, medium: 2, large: 3 }[breakpoint],
+        size: 'auto',
+      }}
+      gap="small"
+    >
+      {meetups.map(meetup => (
+        <Box
+          key={meetup.id}
+          align="center"
+          onClick={() => navigate(`/meetup/${meetup.id}`)}
+        >
           <Box
-            pad="small"
-            basis="1/2"
-            key={meetup.id}
-            align="center"
-            responsive={true}
-            onClick={() => navigate(`meetup/${meetup.id}`)}
+            height="200px"
+            round={{ size: '4px', corner: 'top' }}
+            overflow="hidden"
           >
-            <Box
-              pad="small"
+            <Image
+              fit="cover"
               fill
-              height={{ min: 'medium' }}
-              background={{ image: `url(${meetup.highlightImage.url})` }}
-              align="start"
-              justify="end"
-            >
-              <Box
-                background={{ color: 'dark-1', opacity: true }}
-                fill="horizontal"
-                pad="small"
-              >
-                <Heading level={3} color="brand" margin="none">
-                  {meetup.name}
-                </Heading>
-                <Text color="white" size="medium">
-                  {Time({ timeString: meetup.time })}
-                </Text>
-              </Box>
+              src={
+                meetup.highlightImage ? meetup.highlightImage.url : defaultImage
+              }
+            />
+          </Box>
+          <Box
+            background={{ color: 'grey-700', opacity: true }}
+            fill="horizontal"
+            pad={{ vertical: 'small', horizontal: 'medium' }}
+            justify="between"
+            gap="small"
+            height="115px"
+            round={{ size: '4px', corner: 'bottom' }}
+            elevation="xsmall"
+          >
+            <StyledH3 level={3} color="white" margin="none">
+              {meetup.name}
+            </StyledH3>
+            <Box direction="row" align="center">
+              <Calendar color="orange-400" />
+              <Text color="grey-100" size="small" margin={{ left: 'small' }}>
+                {Time({ timeString: meetup.time })}
+              </Text>
             </Box>
           </Box>
-        ))}
-      </Box>
-    </>
+        </Box>
+      ))}
+    </Grid>
   )
 }

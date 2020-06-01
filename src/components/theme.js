@@ -1,14 +1,7 @@
-import { dark } from 'grommet'
+import { base, generate } from 'grommet/themes'
 import { deepMerge } from 'grommet/utils'
 
-const noMaxWidthHeaders = {
-  small: { maxWidth: 'none' },
-  medium: { maxWidth: 'none' },
-  large: { maxWidth: 'none' },
-  xlarge: { maxWidth: 'none' },
-}
-
-export const theme = deepMerge(dark, {
+export const theme = deepMerge(base, {
   global: {
     colors: {
       black: '#000000',
@@ -21,23 +14,52 @@ export const theme = deepMerge(dark, {
       gatsby: 'hsl(270, 50%, 40%)',
       'gatsby-light': 'hsl(270, 50%, 50%)',
       'meetup-red': '#F64060',
+
+      // Grey
+      'grey-900': '#1A1A1A',
+      'grey-900-rgb': '26, 26, 26',
+      'grey-800': '#242424',
+      'grey-700': '#2E2E2E',
+      'grey-600': '#3D3D3D',
+      'grey-500': '#4D4D4D',
+      'grey-400': '#999999',
+      'grey-100': '#E6E6E6',
+
+      // Purple
+      'purple-700': '#4B1383',
+      'purple-600': '#6528A1',
+      'purple-500': '#8040BF',
+      'purple-400': '#9E66D4',
+      'purple-300': '#BB9ED7',
+      'purple-100': '#C19AE8',
+
+      // Orange
+      'orange-600': '#E06C00',
+      'orange-400': '#FF9900',
     },
     elevation: {
       light: {
-        small: '0 0 1px 0 rgba(0, 0, 0, 0.40), 0 1px 2px 0 rgba(0,0,0,0.40)',
+        xsmall: '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0,0,0,0.24)',
+        small: '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0,0,0,0.24)',
         medium: '0 0 2px 0 rgba(0,0,0,0.40), 0 2px 4px 0 rgba(0,0,0,0.40)',
         large: '0 0 1px 0 rgba(0,0,0,0.40), 0 4px 8px 0 rgba(0,0,0,0.40)',
+        xlarge: '0 0 1px 0 rgba(0,0,0,0.40), 0 8px 16px 0 rgba(0,0,0,0.40)',
+      },
+      dark: {
+        xsmall: '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0,0,0,0.24)',
+        small: '0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0,0,0,0.24)',
+        medium: '0 0 2px 0 rgba(0,0,0,0.40), 0 2px 4px 0 rgba(0,0,0,0.40)',
+        large: '0 0 10px 0 rgba(0,0,0,0.50), 0 6px 10px 0 rgba(0,0,0,0.60)',
         xlarge: '0 0 1px 0 rgba(0,0,0,0.40), 0 8px 16px 0 rgba(0,0,0,0.40)',
       },
     },
 
     font: {
-      family: "'Karla', sans-serif",
-      size: '16px',
-      height: '20px',
+      // eslint-disable-next-line quotes
+      family: "'Manrope', sans-serif",
     },
     input: {
-      weight: 500,
+      weight: 400,
     },
     size: {
       avatar: '36px',
@@ -48,51 +70,178 @@ export const theme = deepMerge(dark, {
         value: 1180,
       },
     },
-  },
 
+    control: {
+      border: {
+        radius: '4px',
+      },
+    },
+    focus: {
+      border: {
+        color: {
+          dark: '#000',
+        },
+      },
+    },
+  },
+  button: {
+    border: {
+      width: 0,
+    },
+    size: {
+      medium: {
+        border: {
+          radius: '30px',
+        },
+        pad: {
+          horizontal: '30px',
+          vertical: '8px',
+        },
+      },
+    },
+    primary: {
+      color: 'orange-400',
+      extend: {
+        fontWeight: 600,
+        color: 'white',
+      },
+    },
+  },
   anchor: {
     color: 'brand',
-    fontWeight: 900,
+    fontWeight: 500,
     hover: {
       color: 'turquoise',
     },
   },
-  icon: {
-    size: {
-      medium: '18px',
-    },
-  },
+  icon: {},
   heading: {
-    font: { family: 'OCR-A' },
     level: {
-      '1': noMaxWidthHeaders,
-      '2': noMaxWidthHeaders,
-      '3': noMaxWidthHeaders,
-      '4': noMaxWidthHeaders,
+      '1': {
+        small: {
+          maxWidth: 'none',
+        },
+        medium: {
+          maxWidth: 'none',
+        },
+        large: {
+          maxWidth: 'none',
+        },
+        xlarge: {
+          maxWidth: 'none',
+        },
+      },
+      '2': {
+        small: {
+          maxWidth: 'none',
+        },
+        medium: {
+          size: '32px',
+          maxWidth: 'none',
+        },
+        large: {
+          maxWidth: 'none',
+        },
+        xlarge: {
+          maxWidth: 'none',
+        },
+      },
+      '3': {
+        font: {},
+        small: {
+          maxWidth: 'none',
+        },
+        medium: {
+          maxWidth: 'none',
+        },
+        large: {
+          maxWidth: 'none',
+        },
+        xlarge: {
+          maxWidth: 'none',
+        },
+      },
+      '4': {
+        font: {},
+        small: {
+          maxWidth: 'none',
+        },
+        medium: {
+          maxWidth: 'none',
+        },
+        large: {
+          maxWidth: 'none',
+        },
+        xlarge: {
+          maxWidth: 'none',
+        },
+      },
     },
   },
   paragraph: {
+    small: {
+      height: '1.15',
+    },
     medium: {
-      size: '20px',
-      height: '28px',
+      size: '16px',
+      height: '1.5',
     },
     large: {
-      size: '24px',
-      height: '28px',
+      size: '18px',
+      height: '1.75',
     },
   },
   text: {
-    small: {
-      size: '16px',
-      height: '18px',
-    },
-    medium: {
+    xlarge: {
       size: '20px',
-      height: '28px',
     },
     large: {
-      size: '24px',
-      height: '28px',
+      size: '18px',
     },
+    medium: {
+      size: '16px',
+    },
+    code: {
+      extend: {
+        family: 'OCR-A',
+      },
+    },
+  },
+
+  formField: {
+    border: {
+      color: {
+        dark: 'transparent',
+      },
+      side: 'none',
+      size: '0',
+    },
+    extend: `
+      border-radius: 4px;
+      background: #2E2E2E;
+      border: 1px solid #141414;
+      font-size: 14px;
+      padding: 10px 12px;
+    `,
+  },
+  textArea: {
+    border: {
+      color: {
+        dark: 'transparent',
+      },
+      side: 'none',
+      size: '0',
+    },
+    extend: `
+      border-radius: 4px;
+      background: #2E2E2E;
+      border: 1px solid #141414;
+      font-size: 14px;
+      padding: 20px 25px;
+
+      &:focus {
+        border-color: #000;
+      }
+    `,
   },
 })

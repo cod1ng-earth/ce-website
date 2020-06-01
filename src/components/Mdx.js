@@ -1,30 +1,15 @@
 import React from 'react'
 
-import { Heading, Paragraph } from 'grommet'
+import { Heading, Paragraph, Anchor } from 'grommet'
 
-import Twitter from './ui/Twitter'
-import Agenda from './ui/Agenda'
-
-const shortcodes = { Twitter, Agenda }
 const components = {
   //...shortcodes,
 
   p: props => <Paragraph fill>{props.children}</Paragraph>,
   paragraph: Paragraph,
-  h1: props => (
-    <Heading level={1} color="turqoise">
-      {props.children}
-    </Heading>
-  ),
-  h2: props => (
-    <Heading level={2} color="brand">
-      {props.children}
-    </Heading>
-  ),
-  h3: props => (
-    <Heading level={3} color="brand">
-      {props.children}
-    </Heading>
-  ),
+  a: props => <Anchor href={props.href}>{props.children}</Anchor>,
+  h1: props => <Heading level={1}>{props.children}</Heading>,
+  h2: props => <Heading level={2}>{props.children}</Heading>,
+  h3: props => <Heading level={3}>{props.children}</Heading>,
 }
 export default components

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Fade } from 'react-reveal'
-import { Button, Form, FormField, TextArea, Paragraph } from 'grommet'
+import { Button, Form, FormField, TextArea, Paragraph, Box } from 'grommet'
 import postSubmission from '../../lib/postSubmission'
 
 const HiddenField = styled.div`
@@ -17,7 +17,7 @@ const ThankYou = () => (
       textAlign="center"
       style={{ fontWeight: 'bolder' }}
     >
-      We received your message. <br /> Please standby.
+      We received your message and <br /> will get back to you shortly.
     </Paragraph>
   </Fade>
 )
@@ -70,15 +70,15 @@ const TheForm = ({ submitForm }) => {
         value={body.message}
         onChange={e => setBody({ ...body, message: e.target.value })}
       />
-      <Button
-        type="submit"
-        color="brand"
-        disabled={disabled}
-        primarymessage
-        fill="horizontal"
-        label="Submit"
-        margin={{ top: 'medium' }}
-      />
+      <Box direction="row-reverse">
+        <Button
+          type="submit"
+          disabled={disabled}
+          primary
+          label="Submit"
+          margin={{ top: 'medium' }}
+        />
+      </Box>
     </Form>
   )
 }
