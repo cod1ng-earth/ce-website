@@ -68,6 +68,7 @@ const Hero = () => (
               {size === 'small' ? MobileHeader() : DesktopHeader()}
               <Paragraph
                 fill
+                size="large"
                 margin={{ top: 'large' }}
                 color="white"
                 textAlign="center"

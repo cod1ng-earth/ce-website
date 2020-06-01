@@ -87,12 +87,18 @@ export const theme = deepMerge(base, {
   button: {
     border: {
       width: 0,
-      radius: '24px',
     },
-    padding: {
-      vertical: '11px',
+    size: {
+      medium: {
+        border: {
+          radius: '30px',
+        },
+        pad: {
+          horizontal: '30px',
+          vertical: '8px',
+        },
+      },
     },
-
     primary: {
       color: 'orange-400',
       extend: {
@@ -112,7 +118,6 @@ export const theme = deepMerge(base, {
   heading: {
     level: {
       '1': {
-        font: {},
         small: {
           maxWidth: 'none',
         },
@@ -127,13 +132,11 @@ export const theme = deepMerge(base, {
         },
       },
       '2': {
-        font: {
-          size: '30px',
-        },
         small: {
           maxWidth: 'none',
         },
         medium: {
+          size: '32px',
           maxWidth: 'none',
         },
         large: {
@@ -180,19 +183,31 @@ export const theme = deepMerge(base, {
       height: '1.15',
     },
     medium: {
+      size: '16px',
       height: '1.5',
     },
     large: {
+      size: '18px',
       height: '1.75',
     },
   },
   text: {
+    xlarge: {
+      size: '20px',
+    },
+    large: {
+      size: '18px',
+    },
+    medium: {
+      size: '16px',
+    },
     code: {
       extend: {
         family: 'OCR-A',
       },
     },
   },
+
   formField: {
     border: {
       color: {

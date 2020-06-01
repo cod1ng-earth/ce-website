@@ -35,29 +35,36 @@ const UpcomingMeetup = ({ meetup }) => {
         justify="between"
         height={{ min: 'medium' }}
       >
-        <Heading level={3} margin={{ vertical: 'small', bottom: 'none' }}>
-          {meetup.name}
-        </Heading>
-        <Paragraph fill>
-          <ReactMarkdown>{meetup.description}</ReactMarkdown>
-        </Paragraph>
-
-        <Box direction="row" gap="small">
-          <Box gap="small" direction="row" align="center">
-            <ScheduleNew color="brand" />
-            <Text size="small">{LocalDate(meetup.time)}</Text>
+        <Box>
+          <Heading level={2} margin={{ vertical: 'small', bottom: 'none' }}>
+            {meetup.name}
+          </Heading>
+          <Paragraph fill>
+            <ReactMarkdown>{meetup.description}</ReactMarkdown>
+          </Paragraph>
+        </Box>
+        <Box direction="row" justify="between">
+          <Box direction="row" gap="small">
+            <Box gap="small" direction="row" align="center">
+              <ScheduleNew color="brand" />
+              <Text size="small" weight="bold">
+                {LocalDate(meetup.time)}
+              </Text>
+            </Box>
+            <Box gap="small" direction="row" align="center">
+              <Clock color="brand" />
+              <Text size="small" weight="bold">
+                {LocalTime(meetup.time)}
+              </Text>
+            </Box>
           </Box>
-          <Box gap="small" direction="row" align="center">
-            <Clock color="brand" />
-            <Text size="small">{LocalTime(meetup.time)}</Text>
-          </Box>
-          <Box flex="grow">
+          <Box>
             <SectionButton
               color="purple"
               to={`/meetup/${meetup.id}`}
-              icon={<Next color="white" />}
+              Icon={Next}
               label="attend"
-              size="medium"
+              size="small"
             />
           </Box>
         </Box>

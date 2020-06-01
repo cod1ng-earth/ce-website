@@ -88,6 +88,7 @@ const IndexPage = () => {
             <Divider />
             <Paragraph
               fill
+              size="large"
               textAlign="center"
               margin={{ top: 'large' }}
               color="grey-100"
@@ -130,8 +131,9 @@ const IndexPage = () => {
         <Box margin={{ top: 'large' }}>
           <SectionButton
             to="/sofar"
-            icon={<Next color="white" />}
+            Icon={Next}
             label="See all previous events"
+            size="medium"
           />
         </Box>
       </FullWidth>
@@ -155,7 +157,7 @@ const IndexPage = () => {
             <Heading level="2" margin={{ top: 'none' }}>
               1 line of code.
             </Heading>
-            <Paragraph fill>
+            <Paragraph fill size="medium">
               Isn't it amazing how many technologies, languages and tools to
               know in modern software development? Be it blockchains for storing
               transactions, machines taking decisions based on digital learning

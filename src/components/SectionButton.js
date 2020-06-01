@@ -4,11 +4,11 @@ import { Button, Stack, Box } from 'grommet'
 import { Link } from 'gatsby'
 
 export const SectionButton = ({
-  icon = null,
+  Icon = null,
   label,
   to,
   color = 'orange',
-  size = 'large',
+  size = 'medium',
 }) => (
   <Stack anchor="left" alignSelf="center">
     <Button
@@ -16,18 +16,18 @@ export const SectionButton = ({
       as={Link}
       to={to}
       label={label}
-      style={{ paddingLeft: icon ? (size == 'large' ? '70px' : '50px') : '' }}
+      focusIndicator={false}
+      style={{ paddingLeft: Icon ? (size == 'small' ? '40px' : '60px') : '' }}
       color={`${color}-400`}
       size={size}
     />
-    {icon && (
+    {Icon && (
       <Box
         background={`${color}-600`}
-        pad={size == 'large' ? '10px' : '4px'}
-        fill="vertical"
-        round
+        pad="8px"
+        style={{ borderRadius: '20px' }}
       >
-        {icon}
+        <Icon size={size} color="white" />
       </Box>
     )}
   </Stack>
