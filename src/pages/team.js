@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import Image from 'gatsby-image'
-import { Box, Grid, Heading, ResponsiveContext } from 'grommet'
+import { Box, Grid, Heading, ResponsiveContext, Text } from 'grommet'
 import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -50,13 +50,11 @@ export default () => {
         <Box direction="row-responsive" wrap>
           {team.allTeamJson.edges.map(({ node }) => (
             <Box key={node.id} basis="1/2" pad="small">
-              <Heading level={3} color="brand" margin="none">
+              <Heading level={3} margin="none">
                 {node.name}
               </Heading>
-              <Heading level={4} margin={{ vertical: 'small' }}>
-                {node.position}
-              </Heading>
-              <Box margin={{ bottom: 'large' }} height={{ min: 'medium' }}>
+              <Text>{node.position}</Text>
+              <Box margin={{ vertical: 'medium' }} height={{ min: 'medium' }}>
                 <Image
                   durationFadeIn={5000}
                   fluid={imgMap[node.img].childImageSharp.fluid}

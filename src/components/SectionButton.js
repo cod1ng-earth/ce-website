@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Stack, Box } from 'grommet'
 
-import { Link } from 'gatsby'
+import Link from './Link'
 
 export const SectionButton = ({
   Icon = null,

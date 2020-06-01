@@ -22,7 +22,6 @@ export const Auth0Provider = ({
   useEffect(() => {
     try {
       ;(async () => {
-        console.log('foo')
         import(
           /* webpackChunkName: "auth0-spa-js" */ '@auth0/auth0-spa-js'
         ).then(async ({ default: createAuth0Client }) => {

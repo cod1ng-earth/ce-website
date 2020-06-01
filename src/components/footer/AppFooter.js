@@ -1,6 +1,6 @@
-import { Link } from 'gatsby'
-import { Anchor, Box, Heading, Image, Text } from 'grommet'
 import React from 'react'
+import { Box, Heading, Image, Text } from 'grommet'
+import Link from '../Link'
 import logo_ce from '../../images/ce-logo.svg'
 import ContactForm from './ContactForm'
 import SocialButtons from './SocialButtons'
@@ -31,32 +31,32 @@ export default () => (
 
         <SocialButtons />
 
-        <Box margin={{ bottom: 'small', top: 'medium' }} direction="row">
-          <Text size="small">
-            <Anchor
-              as={Link}
-              to="/imprint"
-              aria-label="information about our contact"
-            >
-              Imprint
-            </Anchor>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-            <Anchor
-              as={Link}
-              to="/code-of-conduct"
-              aria-label="our code of conduct"
-            >
-              Code of Conduct
-            </Anchor>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-            <Anchor
-              as={Link}
-              to="/team"
-              aria-label="see who's behind coding earth"
-            >
-              Team
-            </Anchor>
-          </Text>
+        <Box
+          margin={{ bottom: 'small', top: 'medium' }}
+          direction="row"
+          gap="small"
+        >
+          <Link
+            to="/imprint"
+            aria-label="information about our contact"
+            size="small"
+          >
+            Imprint
+          </Link>
+          <Link
+            to="/code-of-conduct"
+            aria-label="our code of conduct"
+            size="small"
+          >
+            Code of Conduct
+          </Link>
+          <Link
+            to="/team"
+            aria-label="see who's behind coding earth"
+            size="small"
+          >
+            Team
+          </Link>
         </Box>
         <Text size="xsmall">&copy; 2019-2020 coding earth</Text>
       </Box>

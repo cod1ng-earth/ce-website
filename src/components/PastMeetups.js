@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Box, Heading, Text, Image, ResponsiveContext, Grid } from 'grommet'
 import { Calendar } from 'grommet-icons'
-import { graphql, useStaticQuery, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 import styled from 'styled-components'
 import Time from './Time'
 import defaultImage from '../images/coding_earth_meetup.png'
