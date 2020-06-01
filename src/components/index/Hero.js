@@ -5,6 +5,7 @@ import FullWidth from '../FullWidth'
 import logo from '../../images/ce-logo.svg'
 import styled from 'styled-components'
 import Typist from 'react-typist'
+import { useContext } from 'react'
 
 const HeroHeader = styled(Heading)`
   line-height: 0.95;
@@ -44,44 +45,42 @@ const DesktopHeader = () => (
   </HeroHeader>
 )
 
-const Hero = () => (
-  <ResponsiveContext>
-    {size => {
-      const logoStyles =
-        size === 'small'
-          ? {
-              position: 'relative',
-              top: '50px',
-            }
-          : {
-              position: 'absolute',
-              left: '98px',
-              top: '140px',
-            }
-      return (
-        <FullWidth height="large">
-          <TwoCols>
-            <Box basis="1/2">
-              <Image src={logo} style={{ ...logoStyles }} />
-            </Box>
-            <Box basis="1/2">
-              {size === 'small' ? MobileHeader() : DesktopHeader()}
-              <Paragraph
-                fill
-                size="large"
-                margin={{ top: 'large' }}
-                color="white"
-                textAlign="center"
-              >
-                Welcome to the <strong>meetup home for developers</strong> of
-                all skill-levels.
-              </Paragraph>
-            </Box>
-          </TwoCols>
-        </FullWidth>
-      )
-    }}
-  </ResponsiveContext>
-)
+const Hero = () => {
+  const size = useContext(ResponsiveContext)
+  const logoStyles =
+    size === 'small'
+      ? {
+          position: 'relative',
+          top: '50px',
+        }
+      : {
+          position: 'absolute',
+          left: '98px',
+          top: '140px',
+        }
+
+  return (
+    <FullWidth height="large">
+      <TwoCols>
+        <Box basis="1/2">
+          <Image src={logo} style={{ ...logoStyles }} />
+        </Box>
+        <Box basis="1/2">
+          {size === 'small' ? MobileHeader() : DesktopHeader()}
+          <Paragraph
+            fill
+            size="large"
+            margin={{ top: 'large' }}
+            color="white"
+            textAlign="center"
+          >
+            Welcome to the <strong>meetup home for developers</strong> of all
+            skill-levels.
+          </Paragraph>
+        </Box>
+      </TwoCols>
+    </FullWidth>
+  )
+}
 
 export default Hero

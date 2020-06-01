@@ -66,7 +66,7 @@ export function MailchimpSignup() {
             position: 'absolute',
             left: '-5000px',
           }}
-          ariaHidden="true"
+          aria-hidden="true"
         >
           <input
             type="text"

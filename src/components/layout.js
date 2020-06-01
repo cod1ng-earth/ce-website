@@ -54,13 +54,13 @@ const Layout = ({ children, isHero }) => {
   }
 
   return (
-    <Auth0Provider
-      domain={process.env.GATSBY_AUTH0_DOMAIN}
-      client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
-      onRedirectCallback={onRedirectCallback}
-    >
-      <Grommet theme={theme} themeMode="dark">
-        <Stack anchor="top-left" fill="vertical">
+    <Grommet theme={theme} themeMode="dark">
+      <Auth0Provider
+        domain={process.env.GATSBY_AUTH0_DOMAIN}
+        client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
+        onRedirectCallback={onRedirectCallback}
+      >
+        <Stack anchor="top-left">
           <Box background={topBackground}>
             <AppHeader
               onSetShowSidebar={() => {
@@ -96,8 +96,8 @@ const Layout = ({ children, isHero }) => {
             </Sidebar>
           )}
         </Stack>
-      </Grommet>
-    </Auth0Provider>
+      </Auth0Provider>
+    </Grommet>
   )
 }
 

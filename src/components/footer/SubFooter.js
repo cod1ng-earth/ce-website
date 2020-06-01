@@ -13,7 +13,7 @@ export default () => (
     background="gatsby-light"
     pad={{ vertical: 'large' }}
   >
-    <Text textAlign="center" size="xmedium" weight="600">
+    <Text textAlign="center" size="xmedium" weight="bold">
       built with
       <Anchor href="https://www.gatsbyjs.org" target="_blank" rel="noopener">
         <Image

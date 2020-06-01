@@ -36,7 +36,7 @@ export default () => (
             <Anchor
               as={Link}
               to="/imprint"
-              ariaLabel="information about our contact"
+              aria-label="information about our contact"
             >
               Imprint
             </Anchor>
@@ -44,7 +44,7 @@ export default () => (
             <Anchor
               as={Link}
               to="/code-of-conduct"
-              ariaLabel="our code of conduct"
+              aria-label="our code of conduct"
             >
               Code of Conduct
             </Anchor>
@@ -52,7 +52,7 @@ export default () => (
             <Anchor
               as={Link}
               to="/team"
-              ariaLabel="see who's behind coding earth"
+              aria-label="see who's behind coding earth"
             >
               Team
             </Anchor>

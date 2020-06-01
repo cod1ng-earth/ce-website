@@ -11,16 +11,16 @@ export const SectionButton = ({
   size = 'medium',
 }) => (
   <Stack anchor="left" alignSelf="center">
-    <Button
-      primary
-      as={Link}
-      to={to}
-      label={label}
-      focusIndicator={false}
-      style={{ paddingLeft: Icon ? (size == 'small' ? '40px' : '60px') : '' }}
-      color={`${color}-400`}
-      size={size}
-    />
+    <Link to={to}>
+      <Button
+        primary
+        label={label}
+        focusIndicator={false}
+        style={{ paddingLeft: Icon ? (size == 'small' ? '40px' : '60px') : '' }}
+        color={`${color}-400`}
+        size={size}
+      />
+    </Link>
     {Icon && (
       <Box
         background={`${color}-600`}
