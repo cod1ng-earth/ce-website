@@ -6,7 +6,9 @@ import { LocalDate, LocalTime } from '../Time'
 
 const Header = ({ meetup, timeZone }) => (
   <Box direction="row-responsive" fill="horizontal" justify="between">
-    <SectionButton to="/sofar" label="all meetups" Icon={Previous} />
+    <Box alignSelf="start">
+      <SectionButton to="/sofar" label="all meetups" Icon={Previous} />
+    </Box>
     <Box direction="row" align="center" gap="small" pad="small">
       <Schedule color="grey-400" size="medium" />
       <Text weight="bold">{LocalDate(meetup.time)}</Text>

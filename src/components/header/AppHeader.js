@@ -1,42 +1,12 @@
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { Avatar, Box, Button, Image, Nav } from 'grommet'
-import { Github } from 'grommet-icons'
-import React from 'react'
-import styled from 'styled-components'
+import { Link } from 'gatsby'
+import { Box, Button, Image, ResponsiveContext } from 'grommet'
+import { Menu as MenuIcon } from 'grommet-icons'
+import React, { useContext } from 'react'
 import logo from '../../images/ce-logo.svg'
-import { useAuth0 } from '../auth/react-auth0-spa'
-import { theme } from '../theme'
+import Navigation from './Navigation'
 
-const StyledLink = styled(Link)`
-  color: ${theme.global.colors.white};
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-
-  &.active {
-    color: ${theme.global.colors.turqoise};
-  }
-  :hover {
-    color: ${theme.global.colors.turqoise};
-    text-decoration: none;
-  }
-`
-
-export default ({ isHero = false }) => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
-
-  const data = useStaticQuery(graphql`
-    query {
-      graphcms {
-        meetups(where: { time_gt: "now" }) {
-          id
-          name
-        }
-      }
-    }
-  `)
-
-  const upcomingMeetup = data.graphcms.meetups[0]
+export default ({ isHero = false, onSetShowSidebar }) => {
+  const size = useContext(ResponsiveContext)
 
   return (
     <Box
@@ -64,46 +34,16 @@ export default ({ isHero = false }) => {
           />
         </Link>
       )}
-      <Box direction="row" align="center">
-        <Nav direction="row" margin={{ right: 'medium' }} align="center">
-          {upcomingMeetup && (
-            <StyledLink
-              to={`/meetup/${upcomingMeetup.id}`}
-              title={upcomingMeetup.name}
-              activeClassName="active"
-            >
-              Upcoming Meetups
-            </StyledLink>
-          )}
-          <StyledLink to="/sofar" activeClassName="active">
-            Previous Events
-          </StyledLink>
-          {isAuthenticated ? (
-            <Button
-              color="dark-1"
-              primary
-              size="small"
-              icon={
-                user && (
-                  <Avatar size="small" background="black" src={user.picture} />
-                )
-              }
-              label="Log out"
-              onClick={() => logout({ returnTo: 'https://coding.earth' })}
-            />
-          ) : (
-            <Button
-              color="black"
-              primary
-              size="small"
-              icon={<Github size="20px" />}
-              style={{ padding: '10px 30px' }}
-              label="Log in"
-              onClick={() => loginWithRedirect()}
-            />
-          )}
-        </Nav>
-      </Box>
+
+      {size == 'small' ? (
+        <Button>
+          <MenuIcon size="medium" color="white" onClick={onSetShowSidebar} />
+        </Button>
+      ) : (
+        <Box direction="row" align="center">
+          <Navigation />
+        </Box>
+      )}
     </Box>
   )
 }

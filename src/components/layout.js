@@ -1,13 +1,15 @@
 import { graphql, navigate, useStaticQuery } from 'gatsby'
-import { Box, Grommet } from 'grommet'
+import { Box, Grommet, Nav, Sidebar, Button, Stack, Text } from 'grommet'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Auth0Provider } from './auth/react-auth0-spa'
 import AppFooter from './footer/AppFooter'
 import SubFooter from './footer/SubFooter'
 import AppHeader from './header/AppHeader'
+import Navigation from './header/Navigation'
 import { theme } from './theme'
 import heroPattern from '../images/hero-pattern.svg'
+import { Close } from 'grommet-icons'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
@@ -41,7 +43,7 @@ const Layout = ({ children, isHero }) => {
     dark: true,
   }
 
-  //const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(false)
 
   const onRedirectCallback = appState => {
     navigate(
@@ -58,14 +60,42 @@ const Layout = ({ children, isHero }) => {
       onRedirectCallback={onRedirectCallback}
     >
       <Grommet theme={theme} themeMode="dark">
-        <Box background={topBackground}>
-          <AppHeader appName="coding earth" isHero={isHero} />
-          <Box full align="center">
-            {children}
+        <Stack anchor="top-left" fill="vertical">
+          <Box background={topBackground}>
+            <AppHeader
+              onSetShowSidebar={() => {
+                setShowSidebar(!showSidebar)
+              }}
+              appName="coding earth"
+              isHero={isHero}
+            />
+
+            <Box full align="center">
+              {children}
+            </Box>
+
+            <AppFooter />
+            <SubFooter />
           </Box>
-          <AppFooter />
-          <SubFooter />
-        </Box>
+          {showSidebar && (
+            <Sidebar
+              pad="large"
+              animation={{ type: 'slideRight', size: 'xlarge' }}
+              background="grey-500"
+              width="75vw"
+              height="100vh"
+              header={
+                <Button
+                  color="grey-900"
+                  icon={<Close />}
+                  onClick={() => setShowSidebar(false)}
+                />
+              }
+            >
+              <Navigation showHome />
+            </Sidebar>
+          )}
+        </Stack>
       </Grommet>
     </Auth0Provider>
   )
