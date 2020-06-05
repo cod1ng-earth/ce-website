@@ -41,7 +41,7 @@ export default ({ data: { graphcms, allCloudinaryMedia } }) => {
       <FullWidth background="grey-800">
         <MeetupHeader meetup={meetup} timeZone={timeZone} />
       </FullWidth>
-      <FullWidth>
+      <FullWidth background="grey-900">
         <Box direction="row-responsive" gap="medium">
           <Box basis="2/3">
             <Meetup
