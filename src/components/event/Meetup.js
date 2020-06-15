@@ -13,26 +13,27 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
 
   return (
     <Box>
+      {!upcoming && meetup.keyImage && (
+        <Box height={{ max: 'large' }}>
+          <Image src={meetup.keyImage.url} fill />
+        </Box>
+      )}
       <Paragraph fill margin="none">
-        {!upcoming && meetup.keyImage && (
-          <Box height={{ max: 'large' }}>
-            <Image src={meetup.keyImage.url} fill />
-          </Box>
-        )}
         <ReactMarkdown>{meetup.description}</ReactMarkdown>
       </Paragraph>
 
       {upcoming && (
-        <>
-          <Paragraph fill>
-            To become part of the meetup, ask questions, chat with us and be
-            able to bookmark parts of the sessions, select{' '}
-            <Anchor onClick={() => setEmbed('cc')}>CrowdCast</Anchor> as
-            streaming option (and please signup for it). If you prefer to lean
-            back and watch, tune into the{' '}
-            <Anchor onClick={() => setEmbed('yt')}>Youtube channel</Anchor>
-          </Paragraph>
-
+        <Box direction="column">
+          <Box>
+            <Paragraph fill>
+              To become part of the meetup, ask questions, chat with us and be
+              able to bookmark parts of the sessions, select{' '}
+              <Anchor onClick={() => setEmbed('cc')}>CrowdCast</Anchor> as
+              streaming option (and please signup for it). If you prefer to lean
+              back and watch, tune into the{' '}
+              <Anchor onClick={() => setEmbed('yt')}>Youtube channel</Anchor>
+            </Paragraph>
+          </Box>
           <Box direction="row" margin={{ vertical: 'medium' }} gap="medium">
             <Text>Stream: </Text>
             <RadioButton
@@ -46,13 +47,14 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
               onChange={() => setEmbed('cc')}
             />
           </Box>
-
-          {embed === 'yt' ? (
-            <YoutubeEmbed url={meetup.recording} />
-          ) : (
-            <CrowdcastEmbed url={meetup.onlineUrl} />
-          )}
-        </>
+          <Box height={{ min: '400px' }}>
+            {embed === 'yt' ? (
+              <YoutubeEmbed url={meetup.recording} />
+            ) : (
+              <CrowdcastEmbed url={meetup.onlineUrl} />
+            )}
+          </Box>
+        </Box>
       )}
 
       {meetup.talks.length === 0 ? (

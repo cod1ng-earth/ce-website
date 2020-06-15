@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Avatar, Text, Anchor } from 'grommet'
+import { Box, Avatar, Paragraph, Text, Anchor } from 'grommet'
 import ReactMarkdown from '../ReactMarkdown'
 import YoutubeEmbed from './YoutubeEmbed'
 
@@ -62,7 +62,11 @@ export default ({
     </Box>
     <Box>
       <ReactMarkdown>{abstract || children}</ReactMarkdown>
-      {recording && <YoutubeEmbed url={recording} />}
     </Box>
+    {recording && (
+      <Box>
+        <YoutubeEmbed url={recording} />
+      </Box>
+    )}
   </Box>
 )
