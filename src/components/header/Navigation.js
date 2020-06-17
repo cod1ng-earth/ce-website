@@ -31,6 +31,7 @@ const Navigation = ({ showHome = false }) => {
         meetups(where: { time_gt: "now" }) {
           id
           name
+          description
         }
       }
     }
