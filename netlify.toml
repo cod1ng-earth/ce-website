@@ -30,5 +30,12 @@
   force = false
   headers = {X-From = "Netlify"}
 
+[[redirects]]
+  from = "/global_4"
+  to = "/meetup/ckbuzizag046l0151tivgzf0x"
+  status = 301
+  force = false
+  headers = {X-From = "Netlify"}
+
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
