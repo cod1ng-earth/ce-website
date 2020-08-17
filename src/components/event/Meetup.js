@@ -1,13 +1,10 @@
-import { Anchor, Box, Image, Paragraph, RadioButton, Text } from 'grommet'
-import React, { useState } from 'react'
+import { Box, Image, Paragraph, Text } from 'grommet'
+import React from 'react'
 import ReactMarkdown from '../ReactMarkdown'
-import CrowdcastEmbed from './CrowdCastEmbed'
+import MediaEmbed, { guessService } from './MediaChooser'
 import Talk from './Talk'
-import YoutubeEmbed from './YoutubeEmbed'
 
 const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
-  const [embed, setEmbed] = useState('cc')
-
   const userLocale = Intl.DateTimeFormat().resolvedOptions().locale
   const upcoming = meetupUTCTime.getTime() > new Date().getTime()
 
@@ -24,36 +21,11 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
 
       {upcoming && (
         <Box direction="column">
-          <Box>
-            <Paragraph fill>
-              To become part of the meetup, ask questions, chat with us and be
-              able to bookmark parts of the sessions, select{' '}
-              <Anchor onClick={() => setEmbed('cc')}>CrowdCast</Anchor> as
-              streaming option (and please signup for it). If you prefer to lean
-              back and watch, tune into the{' '}
-              <Anchor onClick={() => setEmbed('yt')}>Youtube channel</Anchor>
-            </Paragraph>
-          </Box>
-          <Box direction="row" margin={{ vertical: 'medium' }} gap="medium">
-            <Text>Stream: </Text>
-            <RadioButton
-              checked={embed === 'yt'}
-              label="Youtube"
-              onChange={() => setEmbed('yt')}
-            />
-            <RadioButton
-              checked={embed === 'cc'}
-              label="CrowdCast"
-              onChange={() => setEmbed('cc')}
-            />
-          </Box>
-          <Box height={{ min: '400px' }}>
-            {embed === 'yt' ? (
-              <YoutubeEmbed url={meetup.recording} />
-            ) : (
-              <CrowdcastEmbed url={meetup.onlineUrl} />
-            )}
-          </Box>
+          {'cc' == guessService(meetup.onlineUrl) ? (
+            <MediaEmbed meetup={meetup} />
+          ) : (
+            <Text>Zoom {meetup.onlineUrl}</Text>
+          )}
         </Box>
       )}
 

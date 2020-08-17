@@ -38,6 +38,7 @@
     "gatsby-transformer-sharp": "^2.4.4",
     "graphql-tag": "^2.10.3",
     "grommet": "^2.13.0",
+    "grommet-icons": "^4.4.0",
     "lodash.map": "^4.6.0",
     "luxon": "^1.23.0",
     "netlify-lambda": "^1.6.3",
