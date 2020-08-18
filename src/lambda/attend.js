@@ -105,7 +105,12 @@ export async function handler(event, context) {
   try {
     const { meetup, email } = JSON.parse(event.body)
 
-    const userData = await fetchUserData(event.headers['authorization'])
+    const userDataResult = fetchUserData(event.headers['authorization'])
+    const meetupDataResult = fetchMeetupData(meetup)
+
+    const results = await Promise.all([userDataResult, meetupDataResult])
+
+    const userData = results[0]
     if (!userData) {
       return {
         statusCode: 401,
@@ -116,10 +121,11 @@ export async function handler(event, context) {
       }
     }
     userData.email = email
+    const { meetup: meetupData } = results[1]
 
     console.debug(userData)
-    const { meetup: meetupData } = await fetchMeetupData(meetup)
     console.debug(meetupData)
+
     const times = makeDates(new Date(meetupData.time))
 
     let mailContent = replaceAll(
@@ -160,7 +166,7 @@ export async function handler(event, context) {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        message: `signed up: ${mailInfo.messageId}`,
+        message: `signed up: foo ${mailInfo.messageId}`,
       }),
     }
   } catch (e) {
