@@ -84,11 +84,11 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build && npm run lambda",
+    "build": "gatsby build && yarn run lambda",
     "lambda": "netlify-lambda build src/lambda/",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
     "importer:build": "tsc -p importer",

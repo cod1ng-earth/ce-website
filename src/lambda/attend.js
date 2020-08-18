@@ -149,6 +149,8 @@ export async function handler(event, context) {
     const meetupDate = new Date(meetupData.time).toLocaleString('en-UK')
     const subject = `You're in, yay: ${meetupData.name} (${meetupDate})`
 
+    console.debug('email content built')
+
     const mailInfo = await sendMail(mailContent, subject, userData.email)
 
     console.debug('Message sent', mailInfo)
