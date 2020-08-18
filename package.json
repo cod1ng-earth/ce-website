@@ -42,6 +42,7 @@
     "lodash.map": "^4.6.0",
     "luxon": "^1.23.0",
     "netlify-lambda": "^1.6.3",
+    "nodemailer": "^6.4.11",
     "polished": "^3.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -73,6 +74,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "http-proxy-middleware": "^1.0.5",
     "netlify-cli": "^2.41.0",
     "prettier": "^1.19.1",
     "typescript": "^3.8.3"

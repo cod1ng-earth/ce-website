@@ -1,6 +1,18 @@
 require('dotenv').config()
+const { createProxyMiddleware } = require('http-proxy-middleware') //v1.x.x
 
 module.exports = {
+  developMiddleware: app => {
+    app.use(
+      '/.netlify/functions/',
+      createProxyMiddleware({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      })
+    )
+  },
   siteMetadata: {
     title: 'coding.earth',
     description:

@@ -1,4 +1,4 @@
-import { Box, Image, Paragraph, Text } from 'grommet'
+import { Box, Image, Paragraph, Text, Anchor } from 'grommet'
 import React from 'react'
 import ReactMarkdown from '../ReactMarkdown'
 import MediaEmbed, { guessService } from './MediaChooser'
@@ -8,9 +8,10 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
   const userLocale = Intl.DateTimeFormat().resolvedOptions().locale
   const upcoming = meetupUTCTime.getTime() > new Date().getTime()
 
+  const guessedService = guessService(meetup.onlineUrl)
   return (
     <Box>
-      {!upcoming && meetup.keyImage && (
+      {meetup.keyImage && (!upcoming || 'zoom' === guessedService) && (
         <Box height={{ max: 'large' }}>
           <Image src={meetup.keyImage.url} fill />
         </Box>
@@ -21,10 +22,14 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
 
       {upcoming && (
         <Box direction="column">
-          {'cc' == guessService(meetup.onlineUrl) ? (
+          {'cc' == guessedService ? (
             <MediaEmbed meetup={meetup} />
           ) : (
-            <Text>Zoom {meetup.onlineUrl}</Text>
+            <Text>
+              Our <Anchor href={meetup.onlineUrl}>Zoom meeting</Anchor> is{' '}
+              <strong>password protected</strong>. To join, authenticate against
+              your Github account and hit the attend button on the info box.{' '}
+            </Text>
           )}
         </Box>
       )}

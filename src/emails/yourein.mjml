@@ -1,0 +1,107 @@
+<mjml>
+  <mj-head>
+    <mj-title>Coding Earth Meetup</mj-title>
+    <mj-preview>Coding Earth Meetup</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-all>
+      <mj-text font-weight="400" font-size="16px" color="#000000" line-height="24px" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-text>
+    </mj-attributes>
+    <mj-style inline="inline">
+      .body-section { -webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); }
+    </mj-style>
+    <mj-style inline="inline">
+      .text-link { color: #E06C00 }
+    </mj-style>
+    <mj-style inline="inline">
+      .footer-link { color: #888888 }
+    </mj-style>
+
+  </mj-head>
+  <mj-body background-color="#333333" width="600px">
+    <mj-section full-width="full-width" background-color="#222222" padding-bottom="0">
+      <mj-column width="100%">
+        <mj-image src="data:image/png;base64,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" alt="" align="center" width="150px" />
+        <mj-text color="#E06C00" align="center" font-size="13px" padding-top="0" font-weight="bold" text-transform="uppercase" letter-spacing="1px" line-height="20px">
+          ###MEETUP_NAME###
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
+      <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
+        <mj-column width="100%">
+          <mj-text color="#212b35" font-weight="bold" font-size="20px">
+            Confirming your attendance
+          </mj-text>
+          <mj-text color="#637381" font-size="16px">
+            Hi ###USER_NAME###,
+          </mj-text>
+          <mj-text color="#637381" font-size="16px">
+            This is for letting you know that you've registered for <b>###MEETUP_NAME###</b> successfully. We're happy to have you aboard this time :) 
+          </mj-text>
+          <mj-text color="#637381" font-size="16px">
+            Here's your join link and a password to get into the session. Please make sure to <b>not</b> share it with anyone you don't trust to prevent Zoom bombers.
+          </mj-text>
+          <mj-text color="#637381" align="center" font-size="16px">
+          	Link: <a href="###MEETUP_LINK###" class="text-link" >###MEETUP_LINK###</a>
+          </mj-text>
+          <mj-text color="#637381" align="center" font-size="16px">
+          	Password: ###MEETUP_PASSWORD###
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      
+      <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px" padding-top="0">
+        <mj-column width="100%">
+          <mj-divider border-color="#DFE3E8" border-width="1px" />
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0 15px 0 15px">
+        <mj-column width="100%">
+
+          <mj-text color="#637381" font-size="16px">
+            We're looking forward meeting you.
+          </mj-text>
+          <mj-text color="#637381" font-size="16px">
+            Stefan, Joao, Lars &amp; Thomas
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
+        <mj-column width="100%">
+          <mj-text color="#212b35" font-size="12px" text-transform="uppercase" font-weight="bold" padding-bottom="0">
+            ###MEETUP_NAME###
+          </mj-text>
+          <mj-text color="#637381" font-size="14px" padding-top="0">
+            UTC (London): ###MEETUP_TIME_UTC### <br/>
+            CET (Berlin): ###MEETUP_TIME_CET### <br/>
+            WET (Lisbon): ###MEETUP_TIME_WET### <br/>
+            ET  (New York): ###MEETUP_TIME_ET### <br/>
+            PT  (Los Angeles): ###MEETUP_TIME_PT### <br/>
+          </mj-text>
+        </mj-column>
+        <mj-column width="50%">
+        </mj-column>
+      </mj-section>
+     
+    </mj-wrapper>
+
+    <mj-wrapper full-width="full-width">
+      <mj-section>
+        <mj-column width="100%" padding="0">
+          <mj-social font-size="15px" icon-size="30px" mode="horizontal" padding="0" align="center">
+            <mj-social-element name="github" href="http://github.com/cod1ng-earth/" background-color="#9E66D4">
+            </mj-social-element>
+            <mj-social-element name="twitter-noshare" href="https://twitter.com/coding_earth" background-color="#9E66D4">
+            </mj-social-element>
+          </mj-social>
+          
+          <mj-text color="#8040BF" font-size="12px" align="center" line-height="16px">
+            You are receiving this email because you signed up for this event at https://coding.earth (If you think you got this email in error, let us know: <a href="https://coding.earth/imprint" style="color: #FF9900;">https://coding.earth/imprint</a>).
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+
+  </mj-body>
+</mjml>
