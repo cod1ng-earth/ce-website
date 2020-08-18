@@ -4,6 +4,8 @@ import React, { useEffect } from 'react'
 import { useAuth0 } from '../auth/react-auth0-spa'
 import AttendButton from './AttendButton'
 import TimezonePicker from './TimezonePicker'
+import { guessService } from './MediaChooser'
+import { Zoom } from '../icons/Zoom'
 
 const Sidebar = ({ setTimeZone, attending, setAttending, meetup }) => {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0()
@@ -17,16 +19,22 @@ const Sidebar = ({ setTimeZone, attending, setAttending, meetup }) => {
   const meetupUTCTime = new Date(meetup.time)
   const upcoming = meetupUTCTime.getTime() > new Date().getTime()
 
+  const guessedService = guessService(meetup.onlineUrl)
+
   return (
     <Box direction="column" gap="medium">
       <TimezonePicker meetupUTCTime={meetupUTCTime} tzUpdated={setTimeZone} />
 
       {meetup.onlineUrl && (
         <Box direction="row" align="center" gap="small">
-          <Group color="grey-400" />
+          {'zoom' === guessedService ? (
+            <Zoom color="plain" />
+          ) : (
+            <Group color="grey-400" />
+          )}
           <Text>
             <Anchor href={meetup.onlineUrl} target="_blank">
-              Cast
+              {'zoom' === guessedService ? 'Zoom' : 'Cast'}
             </Anchor>
           </Text>
         </Box>
