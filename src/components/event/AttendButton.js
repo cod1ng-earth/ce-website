@@ -33,13 +33,20 @@ export default function AttendButton({ meetupId, user, setAttending }) {
           Authorization: `Bearer ${silentToken}`,
         },
       })
-
-      const attending = JSON.parse(localStorage.getItem('attending') || '{}')
-      attending[meetupId] = true
-      localStorage.setItem('attending', JSON.stringify(attending))
-      setAttending(true)
+      if (!result.ok) {
+        const res = await result.json()
+        setSubmittable(false)
+        setEmail('')
+        throw Error(res.errorMessage)
+      } else {
+        const attending = JSON.parse(localStorage.getItem('attending') || '{}')
+        attending[meetupId] = true
+        localStorage.setItem('attending', JSON.stringify(attending))
+        setAttending(true)
+      }
     } catch (e) {
-      //alert('uhoh, something went wrong')
+      console.error(e)
+      alert(e.message)
     }
   }
 

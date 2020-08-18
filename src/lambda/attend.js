@@ -110,7 +110,8 @@ export async function handler(event, context) {
       return {
         statusCode: 401,
         body: JSON.stringify({
-          message: 'Your authorization seems to be broken. Please login again.',
+          errorMessage:
+            'Your authorization seems to be broken. Please login again.',
         }),
       }
     }
@@ -165,7 +166,7 @@ export async function handler(event, context) {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        message: e.message,
+        errorMessage: e.message,
       }),
     }
   }
