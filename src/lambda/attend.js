@@ -74,7 +74,7 @@ async function sendMail(content, subject, mailAddress) {
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_SERVER,
     port: process.env.MAIL_PORT,
-    secure: false, // true for 465, false for other ports
+    secure: true, // true for 465, false for other ports
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS,
@@ -157,16 +157,18 @@ export async function handler(event, context) {
 
     console.debug('email content built')
 
-    const mailInfo = await sendMail(mailContent, subject, userData.email)
+    const mailInfoResult = sendMail(mailContent, subject, userData.email)
+    const slackResult = notifySlack(userData, meetupData)
 
-    console.debug('Message sent', mailInfo)
+    const notificationResults = await Promise.all([mailInfoResult, slackResult])
 
-    notifySlack(userData, meetupData)
+    console.debug('Message sent', notificationResults[0])
+    console.debug('Notification sent', notificationResults[1])
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        message: `signed up: foo ${mailInfo.messageId}`,
+        message: `signed up: ${notificationResults[0].messageId}`,
       }),
     }
   } catch (e) {
