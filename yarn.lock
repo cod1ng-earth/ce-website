@@ -5296,7 +5296,7 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-cloudinary@^1.15.0:
+cloudinary@^1.11.0:
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.22.0.tgz#48a36aab98838f910d350300419e2b10e4eb7e6b"
   integrity sha512-qQhSVqGyOWtGbPc3JrwyUXJEZpdqsEzBFSf5+gTo7gbKbXdzEysLagigoSlp6JYI7YW2oEbz4aeZlgN2ucOkzQ==
@@ -8692,11 +8692,12 @@ gatsby-recipes@^0.2.16:
     yoga-layout-prebuilt "^1.9.6"
     yup "^0.27.0"
 
-"gatsby-source-cloudinary@github:elmariachi111/gatsby-source-cloudinary":
-  version "0.1.7"
-  resolved "https://codeload.github.com/elmariachi111/gatsby-source-cloudinary/tar.gz/91b39ce512f6b6a23bc31e7e250007624a5171ad"
+"gatsby-source-cloudinary@github:elmariachi111/gatsby-source-cloudinary#config_transformations":
+  version "0.1.14"
+  resolved "https://codeload.github.com/elmariachi111/gatsby-source-cloudinary/tar.gz/959b5695f5ced93955ed9b534b6ab50fc1b83ba3"
   dependencies:
-    cloudinary "^1.15.0"
+    cloudinary "^1.11.0"
+    lodash.snakecase "^4.1.1"
 
 gatsby-source-filesystem@^2.2.2:
   version "2.3.24"

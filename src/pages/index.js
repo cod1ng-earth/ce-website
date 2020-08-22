@@ -18,10 +18,33 @@ import { useStaticQuery, graphql } from 'gatsby'
 import UpcomingMeetup from '../components/UpcomingMeetup'
 
 import 'react-typist/dist/standalone/Typist.min.css'
+import { Carousel } from 'react-responsive-carousel'
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
+      allCloudinaryMedia(
+        filter: { tags: { in: ["index"] } }
+        sort: { fields: created_at, order: ASC }
+      ) {
+        edges {
+          node {
+            id
+            secure_url
+            context {
+              custom {
+                alt
+                caption
+              }
+            }
+
+            maxeco {
+              secure_url
+            }
+          }
+        }
+      }
+
       graphcms {
         allMeetups: meetups(orderBy: time_DESC, first: 7, stage: PUBLISHED) {
           id
@@ -136,6 +159,38 @@ const IndexPage = () => {
             size="medium"
           />
         </Box>
+      </FullWidth>
+
+      <FullWidth background="black" pad={{ vertical: 'large' }}>
+        <Heading
+          level={2}
+          color="white"
+          alignSelf="center"
+          margin={{ top: 'medium', bottom: 'medium' }}
+        >
+          pre pandemic Impressions
+        </Heading>
+
+        <Carousel
+          transitionTime={800}
+          useKeyboardArrows
+          autoPlay
+          infiniteLoop
+          centerMode
+          showThumbs={true}
+          showArrows={true}
+          emulateTouch={true}
+          showIndicators={false}
+        >
+          {data.allCloudinaryMedia.edges.map(({ node }) => (
+            <Box key={node.id} pad="small">
+              <Image src={node.maxeco.secure_url} fit="contain" />
+              <Paragraph className="legend" fill>
+                {node.context.custom.caption} | {node.context.custom.alt}
+              </Paragraph>
+            </Box>
+          ))}
+        </Carousel>
       </FullWidth>
 
       <FullWidth background="grey-800" pad={{ vertical: 'large' }}>
