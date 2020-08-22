@@ -29,7 +29,7 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.5.4",
     "gatsby-plugin-styled-components": "^3.2.1",
-    "gatsby-source-cloudinary": "github:elmariachi111/gatsby-source-cloudinary",
+    "gatsby-source-cloudinary": "github:elmariachi111/gatsby-source-cloudinary#config_transformations",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-source-graphql": "^2.3.2",
     "gatsby-source-meetup": "github:elmariachi111/gatsby-source-meetup#prelim",

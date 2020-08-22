@@ -88,9 +88,12 @@ module.exports = {
         resourceType: 'image',
         tags: true,
         maxResults: 500,
+        context: true,
         //type: `upload`,
         //prefix: `coding-earth/coding-berlin`,
-        transformations: ['txb_preview', 'maxeco'],
+        transformations: {
+          maxeco: 'maxeco',
+        },
       },
     },
     {

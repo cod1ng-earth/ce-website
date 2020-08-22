@@ -82,7 +82,7 @@ export default ({ data }) => {
           >
             {data.allCloudinaryMedia.edges.map(({ node }) => (
               <Box key={node.id} height="large" pad="medium">
-                <Image src={node.maxeco_image.secure_url} fit="contain" />
+                <Image src={node.maxeco.secure_url} fit="contain" />
               </Box>
             ))}
           </Carousel>
@@ -139,7 +139,7 @@ export const query = graphql`
       edges {
         node {
           id
-          maxeco_image {
+          maxeco {
             secure_url
           }
         }

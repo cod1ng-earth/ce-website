@@ -44,7 +44,7 @@
         txb_preview_image {
           secure_url
         }
-        maxeco_image {
+        maxeco {
           secure_url
         }
         thumb_dims {
