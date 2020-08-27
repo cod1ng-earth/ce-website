@@ -208,7 +208,7 @@ export const theme = deepMerge(base, {
     },
   },
 
-  formField: {
+  textInput: {
     border: {
       color: {
         dark: 'transparent',
@@ -217,11 +217,11 @@ export const theme = deepMerge(base, {
       size: '0',
     },
     extend: `
+      font-size: 14px;      
       border-radius: 4px;
       background: #2E2E2E;
-      border: 1px solid #141414;
-      font-size: 14px;
-      padding: 10px 12px;
+      border: none;
+
     `,
   },
   textArea: {
@@ -235,13 +235,10 @@ export const theme = deepMerge(base, {
     extend: `
       border-radius: 4px;
       background: #2E2E2E;
-      border: 1px solid #141414;
+      border: none;
       font-size: 14px;
       padding: 20px 25px;
 
-      &:focus {
-        border-color: #000;
-      }
     `,
   },
 })

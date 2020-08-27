@@ -36,9 +36,9 @@ const UpcomingMeetup = ({ meetup }) => (
         <Heading level={2} margin={{ vertical: 'small', bottom: 'none' }}>
           {meetup.name}
         </Heading>
-        <Paragraph fill>
+        <Box fill>
           <ReactMarkdown>{meetup.description}</ReactMarkdown>
-        </Paragraph>
+        </Box>
       </Box>
       <Box direction="row" justify="between">
         <Box direction="row" gap="small">

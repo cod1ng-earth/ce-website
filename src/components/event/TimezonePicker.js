@@ -33,7 +33,7 @@ export default ({ meetupUTCTime, tzUpdated }) => {
           })}{' '}
         </Text>
       </Box>
-      <Box align="center" direction="row">
+      <Box align="center" direction="row" gap="small">
         <Globe color="grey-400" />
         <Select
           plain

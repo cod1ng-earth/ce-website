@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Fade } from 'react-reveal'
-import { Button, Form, FormField, TextArea, Paragraph, Box } from 'grommet'
+import {
+  Button,
+  Form,
+  TextArea,
+  Paragraph,
+  Box,
+  TextInput,
+  Grid,
+} from 'grommet'
 import postSubmission from '../../lib/postSubmission'
+import { theme } from '../theme'
 
 const HiddenField = styled.div`
   display: none;
@@ -38,47 +47,52 @@ const TheForm = ({ submitForm }) => {
       data-netlify-honeypot="important-note-field"
       onSubmit={() => submitForm(body)}
     >
-      <FormField
-        aria-label="your email address"
-        name="email"
-        type="email"
-        placeholder="Your@emailaddre.ss"
-        onChange={e => setBody({ ...body, email: e.target.value })}
-      />
-      <HiddenField>
-        <label>
-          Another field for you to fill:{' '}
+      <Grid gap="small">
+        <TextInput
+          aria-label="your email address"
+          name="email"
+          type="email"
+          placeholder="Your@emailaddre.ss"
+          style={{ padding: '20px 25px' }}
+          onChange={e => setBody({ ...body, email: e.target.value })}
+        />
+        <HiddenField>
+          <label>
+            Another field for you to fill:{' '}
+            <input
+              aria-label="dont fill this field if youre not a machine"
+              name="important-note-field"
+            />
+          </label>
           <input
-            aria-label="dont fill this field if youre not a machine"
-            name="important-note-field"
+            type="hidden"
+            name="form-name"
+            aria-label="a technical field thats filled automatically"
+            value={NETLIFY_FORM_NAME}
           />
-        </label>
-        <input
-          type="hidden"
-          name="form-name"
-          aria-label="a technical field thats filled automatically"
-          value={NETLIFY_FORM_NAME}
-        />
-      </HiddenField>
+        </HiddenField>
 
-      <TextArea
-        name="message"
-        focusIndicator={true}
-        resize="vertical"
-        ariaLabel="your message for us"
-        placeholder="your message"
-        value={body.message}
-        onChange={e => setBody({ ...body, message: e.target.value })}
-      />
-      <Box direction="row-reverse">
-        <Button
-          type="submit"
-          disabled={disabled}
-          primary
-          label="Submit"
-          margin={{ top: 'medium' }}
+        <TextArea
+          name="message"
+          focusIndicator={true}
+          resize="vertical"
+          ariaLabel="your message for us"
+          placeholder="your message"
+          value={body.message}
+          onChange={e => setBody({ ...body, message: e.target.value })}
         />
-      </Box>
+        <Box direction="row-reverse">
+          <Button
+            color="orange-400"
+            alignSelf="end"
+            type="submit"
+            disabled={disabled}
+            label="Submit"
+            primary
+            margin={{ top: 'medium' }}
+          />
+        </Box>
+      </Grid>
     </Form>
   )
 }

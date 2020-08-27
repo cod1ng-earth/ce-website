@@ -24,7 +24,6 @@ const Sidebar = ({ setTimeZone, attending, setAttending, meetup }) => {
   return (
     <Box direction="column" gap="medium">
       <TimezonePicker meetupUTCTime={meetupUTCTime} tzUpdated={setTimeZone} />
-
       {meetup.onlineUrl && (
         <Box direction="row" align="center" gap="small">
           {'zoom' === guessedService ? (
@@ -39,7 +38,6 @@ const Sidebar = ({ setTimeZone, attending, setAttending, meetup }) => {
           </Text>
         </Box>
       )}
-
       {meetup.recording && (
         <Box direction="row" align="center" gap="small">
           <Video color="grey-400" size="medium" />
@@ -48,7 +46,6 @@ const Sidebar = ({ setTimeZone, attending, setAttending, meetup }) => {
           </Anchor>
         </Box>
       )}
-
       <Box>
         {upcoming &&
           (attending ? (
