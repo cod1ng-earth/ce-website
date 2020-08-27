@@ -1,4 +1,5 @@
-import { Box, Image, Paragraph, Text, Anchor } from 'grommet'
+import { Box, Paragraph, Text, Anchor } from 'grommet'
+
 import React from 'react'
 import ReactMarkdown from '../ReactMarkdown'
 import MediaEmbed, { guessService } from './MediaChooser'
@@ -21,19 +22,25 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
         <ReactMarkdown>{meetup.description}</ReactMarkdown>
       </Box>
 
-      {upcoming && (
-        <Box direction="column">
-          {'cc' == guessedService ? (
+      {upcoming &&
+        ('cc' === guessedService ? (
+          <Box>
             <MediaEmbed meetup={meetup} />
-          ) : (
+          </Box>
+        ) : (
+          <Box
+            margin={{ top: 'medium' }}
+            border={{ color: 'orange-400', size: 'medium' }}
+            pad="medium"
+            round
+          >
             <Text>
               Our <Anchor href={meetup.onlineUrl}>Zoom meeting</Anchor> is{' '}
               <strong>password protected</strong>. To join, authenticate against
               your Github account and hit the attend button on the info box.{' '}
             </Text>
-          )}
-        </Box>
-      )}
+          </Box>
+        ))}
 
       {meetup.talks.length === 0 ? (
         upcoming && (
@@ -41,28 +48,17 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
         )
       ) : (
         <Box>
-          {meetup.talks.map(talk => {
-            const speaker = talk.speaker[0]
-
-            return (
-              <Talk
-                key={talk.id}
-                name={speaker.name}
-                company={{
-                  url: speaker.companyUrl,
-                  name: speaker.company,
-                }}
-                link={speaker.twitter}
-                image={speaker.avatar?.url}
-                origin={speaker.location}
-                title={talk.title}
-                time={{ time: talk.time, userLocale, timeZone }}
-                abstract={talk.description}
-                recording={talk.recording}
-                slides={talk.slides}
-              />
-            )
-          })}
+          {meetup.talks.map(talk => (
+            <Talk
+              key={talk.id}
+              speaker={talk.speaker}
+              title={talk.title}
+              time={{ time: talk.time, userLocale, timeZone }}
+              abstract={talk.description}
+              recording={talk.recording}
+              slides={talk.slides}
+            />
+          ))}
         </Box>
       )}
 

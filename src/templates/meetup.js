@@ -121,6 +121,7 @@ export const query = graphql`
           recording
           time
           speaker {
+            id
             name
             location
             company

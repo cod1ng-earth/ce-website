@@ -1,47 +1,60 @@
 import React from 'react'
-import { Box, Avatar, Paragraph, Text, Anchor } from 'grommet'
+import { Box, Avatar, Text, Anchor } from 'grommet'
 import ReactMarkdown from '../ReactMarkdown'
 import YoutubeEmbed from './YoutubeEmbed'
 
-export default ({
-  name,
-  link,
-  image,
-  origin,
-  title,
-  abstract,
-  company,
-  children,
-  time,
-  recording,
-  slides,
-}) => (
-  <Box margin={{ vertical: 'large' }}>
-    <Box direction="row-responsive" align="center" justify="between">
-      <Box direction="row" align="center" gap="small">
-        {image && <Avatar src={image} size="large" />}
-        <Box direction="column">
-          <Text weight="bold" size="large" margin={{ bottom: 'small' }}>
-            {title}
-          </Text>
-          <Text size="medium">
-            <Anchor href={link} target="_blank" rel="noopener">
-              {name}
-            </Anchor>{' '}
-            {origin && <>({origin})</>}
-          </Text>
-          {company.name && (
+const Speaker = ({ speaker }) => {
+  const { name, location, company, companyUrl, avatar } = speaker
+
+  const link = speaker.twitter ?? speaker.github ?? speaker.linkedin
+  return (
+    <Box direction="row" align="center" gap="small">
+      {avatar && <Avatar src={avatar.url} size="large" />}
+      <Box direction="column">
+        <Text size="large">
+          <Anchor
+            href={link}
+            target="_blank"
+            rel="noopener"
+            style={{ fontWeight: 'bold' }}
+          >
+            {name}
+          </Anchor>{' '}
+        </Text>
+
+        <Text>
+          {location && (
+            <span style={{ marginRight: '.5rem' }}>({location})</span>
+          )}
+          {companyUrl ? (
             <Anchor
               size="medium"
-              href={company.url}
+              href={companyUrl}
               target="_blank"
               rel="noopener"
             >
-              {company.name}
+              {company}
             </Anchor>
+          ) : (
+            company
           )}
-        </Box>
+        </Text>
       </Box>
+    </Box>
+  )
+}
+
+export default ({ speaker, title, abstract, time, recording, children }) => (
+  <Box margin={{ top: 'large' }}>
+    <Box
+      direction="row"
+      align="center"
+      justify="between"
+      margin={{ bottom: 'small' }}
+    >
+      <Text weight="bold" size="xlarge">
+        {title}
+      </Text>
       {time && (
         <Box
           background="grey-800"
@@ -59,6 +72,13 @@ export default ({
           </Text>
         </Box>
       )}
+    </Box>
+    <Box direction="row-responsive" align="center" justify="between">
+      <Box direction="column" gap="small">
+        {speaker.map(_speaker => (
+          <Speaker key={_speaker.id} speaker={_speaker} />
+        ))}
+      </Box>
     </Box>
     <Box>
       <ReactMarkdown>{abstract || children}</ReactMarkdown>
