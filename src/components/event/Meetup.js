@@ -12,13 +12,14 @@ const Meetup = ({ meetup, meetupUTCTime, timeZone }) => {
   return (
     <Box>
       {meetup.keyImage && (!upcoming || 'zoom' === guessedService) && (
-        <Box height={{ max: 'large' }}>
-          <Image src={meetup.keyImage.url} fill />
-        </Box>
+        <img
+          src={meetup.keyImage.url}
+          style={{ width: '100%', height: 'auto' }}
+        />
       )}
-      <Paragraph fill margin="none">
+      <Box>
         <ReactMarkdown>{meetup.description}</ReactMarkdown>
-      </Paragraph>
+      </Box>
 
       {upcoming && (
         <Box direction="column">

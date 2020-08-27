@@ -1,5 +1,5 @@
+import { Anchor, Heading, Paragraph } from 'grommet'
 import React from 'react'
-import { Paragraph, Heading, Anchor } from 'grommet'
 import { default as ReactMarkdownBase } from 'react-markdown/with-html'
 
 const renderers = {

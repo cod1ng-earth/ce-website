@@ -177,7 +177,7 @@ const IndexPage = () => {
           autoPlay
           infiniteLoop
           centerMode
-          showThumbs={true}
+          showThumbs={false}
           showArrows={true}
           emulateTouch={true}
           showIndicators={false}
