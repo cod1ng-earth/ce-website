@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.6.5",
+    "@auth0/auth0-spa-js": "1.10.0",
     "@mdx-js/mdx": "^1.5.8",
     "@mdx-js/react": "^1.5.8",
     "apollo-cache-inmemory": "^1.6.5",

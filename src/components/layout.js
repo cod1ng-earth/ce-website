@@ -58,6 +58,7 @@ const Layout = ({ children, isHero }) => {
       <Auth0Provider
         domain={process.env.GATSBY_AUTH0_DOMAIN}
         client_id={process.env.GATSBY_AUTH0_CLIENT_ID}
+        cacheLocation="localstorage"
         onRedirectCallback={onRedirectCallback}
       >
         <Stack anchor="top-left">
