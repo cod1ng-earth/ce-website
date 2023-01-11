@@ -34,7 +34,7 @@
     "gatsby-source-graphql": "^2.3.2",
     "gatsby-source-meetup": "github:elmariachi111/gatsby-source-meetup#prelim",
     "gatsby-transformer-json": "^2.3.1",
-    "gatsby-transformer-remark": "^2.7.1",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.4.4",
     "graphql-tag": "^2.10.3",
     "grommet": "^2.13.0",
